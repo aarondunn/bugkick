@@ -1,0 +1,47 @@
+// File: members.less
+// Description: Styles for members grid in "account->members"
+
+/*  Account -> members -> grid */
+#user-grid.grid-view table.items{
+    border: 1px solid #E5E5E5;
+    .rounded(5px);
+    display: block;
+    overflow: hidden;
+    behavior: url(PIE.htc);
+}
+
+.grid-view table.items tr.odd,
+.grid-view table.items tr.even {
+	background-color: rgba(255,255,255,0.5) !important;
+}
+.grid-view table.items thead tr th {
+	/*background: url('../images/bg25.png') repeat-x scroll 0 0 transparent;*/
+}
+.grid-view table.items tr:hover,
+.grid-view table.items tr.selected
+{
+    background-color: rgba(235, 235, 235, 0.5) !important;
+}
+.grid-view table.items {
+    background: none !important;
+}
+
+.grid-view table.items th,
+.grid-view table.items td,
+.grid-view table.items{
+    border: none !important;
+}
+.grid-view table.items tr{
+    border-top: 1px solid #E5E5E5;
+}
+    .grid-view table.items tr:first-child{ border-top: none; }
+.grid-view a{
+    color: black;
+    text-decoration: none;
+}
+.grid-view table.items th,
+.grid-view table.items td{
+    padding: 0.5em !important;
+}
+
+/* End of Members grid */

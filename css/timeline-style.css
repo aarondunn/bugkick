@@ -1,0 +1,175 @@
+#container, #containertop	
+{	
+    width:860px; 
+    margin: 0 auto 0px;
+    font-family:arial; 
+    font-size:13px
+}
+
+.borderclass { 
+    border:1px solid #A9B6D2; 
+    -webkit-border-radius: 3px; 
+    -moz-border-radius: 3px;
+}
+.item, .masonry-brick{
+    position: relative !important;
+    left: 0 !important;
+    top: 0 !important;
+    float: none !important;
+}
+.timeline{
+    left: -21px !important;
+}
+
+.item {
+    position: relative !important;
+    left: 0 !important;
+    top: 0 !important;
+
+    //width: 408px;
+    margin: 10px;
+    /*float: left;*/
+    float: none;
+    margin-top:10px;
+    /* background:#ffffff url(/images/body_backgrounds/blizzard.png);*/
+    border:solid 1px #B4BBCD;
+    min-height:20px;
+    text-align:justify;
+    color: #3D3D3D;/*#737373;*/
+    word-wrap:break-word; 
+    border:none !important;
+}
+h2{
+    text-align: center
+}
+.item img{
+    margin:8px 10px 8px 10px;
+    float: left;
+    -webkit-border-radius: 5px; -moz-border-radius: 5px;
+}
+.infoBox{
+    margin:8px 10px 8px 10px;
+    background-image: url("images/midle-updates-message.png");
+    margin-top: 2px;
+    margin-left: 2px;
+    height: 31px;
+    padding-top: 15px!important;
+    padding-bottom: 0px!important;
+}
+.endMessage{
+    width: 6px;
+    height: 46px;
+    background-image: url("images/end-updates-message.png");
+    display: block;
+    float: right;
+    margin-top: -15px;
+    margin-right: -65px;
+}
+.bug-profile-pic {
+    //margin-left: -45px!important;
+}
+.dateItem {
+    //width: 134px;
+    //height: 134px; 
+    -webkit-border-radius: 134px;
+    -moz-border-radius: 134px;
+    border-radius: 134px;
+    text-align: left;
+    //margin-left:360px !important;
+    border: 3px solid #E08989;
+    font-family: 'Handlee', cursive;
+    font-size: 16px;
+    background:#ffffff;
+}
+.stagger{
+    min-height: 60px !important;
+}
+.dateText{
+    padding: 0px ;
+    margin-left: -55px;
+    overflow: overlay;
+    background: white;
+    font-family: arial;
+    color: #BFBFBF;
+    /*color: #02adb4;*/
+}
+.dateTimeLeft{
+    float:right;
+    color: #808080;
+    display:inline;
+}
+.todaysDate{
+    color: #737373;
+}
+.topbox
+{
+    margin: 10px;
+    margin-top: 10px;
+    background-color: white;
+    border: solid 1px #B4BBCD;
+}
+.item div, .topbox div
+{
+    padding:8px;	
+}
+.rightCorner { 
+    background-image: url("images/right.png");
+    display: block;
+    height: 15px;
+    margin-left: 408px;
+    margin-top: 8px;
+    padding: 0;
+    vertical-align: top;
+    width: 13px;
+    z-index:2;
+    position: absolute;
+}
+.leftCorner{
+    background-image: url("images/left-updates-message.png");
+    display: block;
+    height: 47px;
+    width: 15px;
+    margin-left: -13px;
+    position: absolute;
+    z-index: 2;
+}
+#box
+{
+    padding:8px;	
+}
+.timeline_container{
+    width: 16px;
+    text-align: center;
+    margin: 0 auto;
+    cursor:pointer;
+    display: block;
+}
+.timeline{
+    margin: 0 auto;
+    background-color:#BFBFBF;
+    display: block;
+    float: left;
+    height: 96%;
+    left: 428px;
+    margin-top: 10px;
+    position: absolute;
+    width: 4px;
+}
+.shade{
+    -webkit-box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, .3);
+    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, .3);
+}
+.item .bug-profile-pic-wrapper{
+    overflow: overlay;
+    background: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 0px;
+    float: left;
+    margin-left: -65px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+#containertop #container.masonry{
+    height: 100% !important;
+}

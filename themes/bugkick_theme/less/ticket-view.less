@@ -1,0 +1,431 @@
+// File: ticket-view.less
+// Description: Styles for single ticket view
+
+/* Ticket View */
+
+/* Ticket */
+
+#content .ticket_wrapper {
+    padding: 3px 4px 22px 3px;
+}
+
+#content .ticket_content {
+    width: 668px;
+    background: url("../images/ticket_wrapper.png") repeat-y 0 0;
+    padding: 12px 18px 17px;
+    position: relative;
+}
+#content .ticket_content_top {
+    width: 704px;
+    height: 4px;
+    background: url("../images/ticket_wrapper_top.png") repeat-y 0 0;
+}
+#content .ticket_content_bottom {
+    width: 704px;
+    height: 9px;
+    background: url("../images/ticket_wrapper_bottom.png") repeat-y 0 0;
+    margin-bottom: 6px;
+}
+
+#content .ticket_content h3.title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #5a6876;
+    line-height: 27px;
+}
+
+#content .ticket_content #btn_prev,
+#content .ticket_content #btn_next {
+    display: block;
+    position: absolute;
+    width: 27px;
+    height: 27px;
+    text-indent: -9999px;
+    top: 12px;
+}
+
+#content .ticket_content #btn_prev {
+    right: 51px;
+    background: url("../images/btn_prev.png") no-repeat 0 0;
+}
+
+#content .ticket_content #btn_next {
+    right: 18px;
+    background: url("../images/btn_next.png") no-repeat 0 0;
+}
+
+#content .ticket_info {
+    border-bottom: 1px solid #f1f1f1;
+    border-top: 1px solid #f1f1f1;
+    margin-top: 12px;
+}
+
+#content .ticket_info span.top-line {
+    display: block;
+    line-height: 44px;
+    color: #889099;
+    font-size: 11px;
+    float: left;
+}
+
+#content .ticket_info .photo {
+    margin: 6px 7px 0 11px;
+}
+
+#content .ticket_info .grade {
+    margin-right: 8px;
+    text-indent: -9999px;
+}
+
+#content .ticket_info .performer {
+    margin-left: 7px;
+}
+#content .ticket_info .status-label{
+    margin-left: 10px;
+}
+
+
+#content .ticket_info ul.options {
+    float: right;
+    margin: 14px 0 ;
+}
+
+#content .ticket_info ul.options li.comment {
+    margin-right: 10px;
+}
+
+#content .ticket_info ul.options li.print {
+    margin-right: 12px;
+}
+
+#content .ticket_info ul.options li.delete {
+    margin-right: 14px;
+}
+
+#content .ticket_info ul.options li.duplicate {
+
+}
+
+#content .ticket_content .description {
+    font-size: 12px;
+    color: #889099;
+    line-height: 18px;
+    margin-top: 14px;
+}
+
+#content .ticket_reply {
+    margin: 0 auto;
+    width: 670px;
+}
+
+#content .ticket_reply h3.header {
+    font-size: 14px;
+    font-weight: bold;
+    color: #5a6876;
+    width: 654px;
+    height: 37px;
+    padding-top: 11px;
+    padding-left: 16px;
+    background: url("../images/ticket_reply_header_bg.png") no-repeat 0 0;
+    line-height: 37px;
+}
+
+#content .ticket_reply ul.post_comment {
+    border-top: 1px solid #ececed;
+    border-left: 1px solid #f0f0f0;
+    border-right: 1px solid #f0f0f0;
+    width: 635px;
+    padding: 19px 18px 21px 15px;
+}
+#content .ticket_reply ul.message li.body-comment{
+    border-bottom: 1px solid #F0F0F0;
+    margin-bottom: 20px;
+}
+#content .ticket_reply ul.message{
+    border-top: 1px solid #f7f7f7;
+}
+#content .ticket_reply ul.post_comment li.leave-comment-part,
+#content .ticket_reply ul.message li {
+    float: right;
+    width: 583px;
+}
+
+#content .ticket_reply ul.post_comment li.photo,
+#content .ticket_reply ul.message li.photo {
+    margin-right: 18px;
+    float: left;
+    text-align: center;
+}
+
+#content .ticket_reply ul.post_comment li .name,
+#content .ticket_reply ul.message li .name {
+    display: block;
+    float: left;
+    color: #5a6876;
+    font-weight: bold;
+    line-height: 19px;
+}
+
+#content .ticket_reply ul.post_comment li .date,
+#content .ticket_reply ul.message li .date {
+    display: block;
+    float: right;
+    color: #889099;
+    font-size: 11px;
+    line-height: 19px;
+}
+
+#content .ticket_reply ul.post_comment li textarea {
+    width: 571px;
+    height: 58px;
+    padding: 5px;
+    border-top: 1px solid #c9c9c9;
+    border-right: 1px solid #cecece;
+    border-bottom: 1px solid #d1d1d1;
+    border-left: 1px solid #cdcdcd;
+    margin-top: 12px;
+    color: #666;
+    font-size: 13px;
+    line-height: 18px;
+    background: url("../images/textarea_bg.jpg") repeat-x 0 0;
+    .rounded(3px);
+    behavior: url(PIE.htc);
+}
+
+#content .ticket_reply ul.post_comment li #btn_post_comment {
+    display: block;
+    width: 121px;
+    height: 37px;
+    float: right;
+    margin-top: 16px;
+    background: url("../images/btn_post_comment.png") no-repeat 0 0;
+    margin-right: -1px;
+    text-indent: -9999px;
+}
+
+#content .ticket_reply ul.message {
+    padding: 10px 18px 20px 15px;
+    border-right: 1px solid #f0f0f0;
+    border-left: 1px solid #f0f0f0;
+}
+
+#content .ticket_reply ul.message p {
+    color: #889099;
+    line-height: 18px;
+    margin: 10px 0;
+    width: 100%;
+}
+
+#content .ticket_reply .bottom {
+    width: 670px;
+    height: 8px;
+    background: url("../images/ticket_reply_bottom_bg.png") no-repeat 0 0;
+}
+
+.comment-thumb{
+    width: 34px !important;
+}
+
+/* End of ticket */
+
+#commentBlock{
+    .clearfix();
+	width: 580px;
+}
+    #commentBlock .txtAreaBlock{
+        margin-bottom: 20px;
+        width:568px;
+    }
+    /* Comment Block Buttons */
+
+    #commentBlock .row.buttons{
+        width: 100%;
+    }
+
+    #commentBlock .row.buttons #postCommentCloseBtn{
+        float: right;
+        margin-right: 5px;
+    }
+
+    #commentBlock .row.buttons #postCommentBtn{
+        float: right;
+    }
+
+/* Comments Advanced Options */
+
+    #commentBlock .row.buttons #showAdvancedOptions{
+        float: left;
+    }   
+        #commentBlock .row.buttons #showAdvancedOptions:hover span.arrow-down{
+            border-top-color: #1a60be;
+        }
+
+        #commentBlock .row.buttons #showAdvancedOptions.open{
+            height: 40px;
+            border-bottom: none;
+            position: relative;
+            z-index: 10;
+            .rounded-all(inherit, inherit, 0, 0);
+            margin-bottom: -1px;   
+            outline: none; 
+        }
+            #commentBlock .row.buttons #showAdvancedOptions.open:hover span.arrow-up{
+                border-bottom-color: #1a60be;
+            }
+        #advancedOptions{
+            background: #f8f8f9;
+            border: 1px solid #eaeaee;
+            .rounded(0 4px 4px 4px);
+            clear: both;
+            color: #666666;
+            display: none;
+            padding: 10px 50px 0;
+        }
+
+            #advancedOptions .advancedOption{
+                margin-bottom: 10px;
+                width: 230px;
+            }
+
+                #advancedOptions .advancedOption.fl label{
+                    float: left;
+                }
+
+                 #advancedOptions label{
+                    display: inline-block;
+                    float: right;
+                    line-height: 25px;
+                    margin-right: 10px;
+                 }
+
+                 #advancedOptions select, #advancedOptions input[type="text"]{
+                    float: right;
+                    margin: 0;
+                    width: 150px;
+                 }
+                    #advancedOptions .chzn-container{
+                        float: right;
+                    }
+
+            #advancedOptions .advancedOption.whole-row{
+                clear: both;
+                margin-bottom: 10px;
+                width: 100%;
+            }
+
+                #advancedOptions .advancedOption.whole-row label{
+                    display: block;
+                    float: none;
+                    line-height: 18px;
+                    padding: 0;
+                }
+
+                #advancedOptions .advancedOption.whole-row select,
+                #advancedOptions .advancedOption.whole-row input[type="text"],
+                #advancedOptions .advancedOption.whole-row .chzn-container {
+                    float: none;
+                    display: block;
+                    width: 100% !important;
+                }
+                    #advancedOptions .advancedOption.whole-row .chzn-container .chzn-drop{
+                        width: 100% !important;
+                    }
+        /* Arrow down */
+        span.arrow-down{
+            border-top: 5px solid #8a8a8a;
+            border-right: 5px solid transparent;
+            /* border-bottom: 5px solid #8a8a8a; */
+            border-left: 5px solid transparent;
+            display: inline-block;
+            height: 0;
+            margin-left: 2px;
+            margin-bottom: 1px;
+            width: 0;
+        }
+        /* End of arrow down */
+        /* Arrow up */
+        span.arrow-up{
+            /* border-top: 5px solid #8a8a8a; */
+            border-right: 5px solid transparent;
+            border-bottom: 5px solid #8a8a8a; 
+            border-left: 5px solid transparent;
+            display: inline-block;
+            height: 0;
+            margin-left: 2px;
+            margin-bottom: 2px;
+            width: 0;
+        }
+        /* End of arrow up */
+
+    /* END of Comment Block Buttons */
+/* End of Comments Advanced options */
+
+/* Comment Message form */
+#Comment_message {
+    width: 430px;
+    max-width: 430px;
+    min-width: 430px;
+    height: 40px;
+    min-height: 40px;
+    .rounded(6px);
+    background-color: #ffffff;
+    margin-left: 3px;
+    behavior: url(PIE.htc);
+}
+
+#comment-form .row{
+    width: 465px;
+    float: left;
+}
+
+    #comment-form .txtAreaBlock .codeBtn {
+        margin-left:7px;
+        vertical-align: bottom;
+    }
+
+    .imgBtn{
+        cursor: pointer;
+    }
+/* End of Comment message form */
+
+/* Ticket description and options */
+div.comment {
+    width: 500px;
+    border-top: 1px solid #DDDDDD;
+    padding: 10px;
+    background-color: #F6F5F7;
+}
+
+.comment a{
+    color: #373737;
+    text-decoration: none;
+}
+.commentDate{
+    float: right;
+}
+.commentMessage, .commentMessageFull{
+    margin: 10px 0;
+    color: #889099;
+    position: relative;
+}
+.commentMessage{
+     cursor: pointer;
+}
+
+/* Buble tag */
+.bubble-ticket {
+    float: none !important;
+    color: #ffffff !important;
+    display: inline !important;
+}
+
+.bug-profile-pic{
+    max-width: 31px;
+    max-height: 31px;
+    .rounded(4px);
+    behavior: url(PIE.htc);
+}
+
+/* End of Ticket description and options */
+
+/* End of Ticket View */

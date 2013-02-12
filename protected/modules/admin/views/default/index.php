@@ -1,0 +1,1 @@
+<?php echo CHtml::link('Re-encrypt password', $this->createUrl('/admin/passwords/re-encrypt')); ?>

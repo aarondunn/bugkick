@@ -1,0 +1,75 @@
+<?php
+/**
+ * Author: Alexey kavshirko@gmail.com
+ * Date: 22.11.11
+ * Time: 5:02
+ */
+$str_js = "
+        var fixHelper = function(e, ui) {
+            ui.children().each(function() {
+                $(this).width($(this).width());
+            });
+            return ui;
+        };
+
+        $('#bug-list div.items').sortable({
+            forcePlaceholderSize: true,
+            forceHelperSize: true,
+            items: 'div.ticket-item-view',
+            revert: false,
+            update : function () {
+                serial = $('#bug-list div.items').sortable('serialize', {key: 'items[]', attribute: 'class'});
+                $.ajax({
+                    'url': '" . $this->createUrl('//bug/prioritySort') . "',
+                    'type': 'post',
+                    'data': serial,
+                    'success': function(data){
+                    },
+                    'error': function(request, status, error){
+                        alert('We are unable to set the sort order at this time.  Please try again in a few minutes.');
+                    }
+                });
+            },
+            helper: fixHelper
+        }).disableSelection();
+    ";
+    Yii::app()->clientScript->registerScript('sortable-tickets', $str_js);
+?>
+<?php
+$this->widget('zii.widgets.CListView', array(
+    'id'=>'bug-list',
+    'dataProvider' => $model,
+    'itemView' => '_listViewItem',
+    'enableSorting' => false,
+    'enablePagination' => true,
+    'summaryText' => '',
+    'pagerCssClass' => 'list-pager',
+    'pager' =>array('header'=>''),
+	'afterAjaxUpdate'=>'js:function(id, data) {addTooltip();}',
+    //'pager'=>array('class'=>$pages),
+
+/*  Uncomment for infinite scroll
+    'pager' => array(
+        'class' => 'ext.yiinfinite-scroll.YiinfiniteScroller',
+        'contentSelector' => 'div.items',
+        'itemSelector' => 'div.ticket-item-view',
+        'loadingImg' => Yii::app()->theme->baseUrl . '/images/ajax-loader-bar-gray.gif',
+        'loadingText' => Yii::t('main', 'Loading...'),
+        'donetext' => Yii::t('main', 'There is no more tickets'),
+        'pages' => $pages
+    ),
+*/
+));
+
+if ($currentView != 'archived' && !empty($textForSearch)){
+?>
+  <div class="search-archived">
+      <a href="<?php echo $this->createUrl('/bug/archived/filterText/' . $textForSearch); ?>"><?php echo Yii::t('main', 'Show results for archived tickets'); ?></a>
+  </div>
+<?php
+}
+//apc testing
+//Yii::app()->cache->flush();
+//Yii::app()->cache->set('key1','10');
+//echo Yii::app()->cache->get('key1');
+?>

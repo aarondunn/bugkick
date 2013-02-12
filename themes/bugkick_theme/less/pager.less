@@ -1,0 +1,54 @@
+// File: pager.less
+// Description: BugKick pager styles 
+
+/* Pager */
+
+/*hide next-prev links when first last page */
+.yiiPager li.hidden {
+    display: none;
+}
+
+ul.yiiPager a:link,
+ul.yiiPager a:visited{
+    border: 1px solid #bebebe !important;
+    .rounded(2px 2px 2px 2px);
+    .box-shadow(0, 0, 2px, #cccccc;
+    color: #626262 !important;
+    background-color: #f4f4f4;
+    font-weight: bold !important;
+    padding: 3px 8px !important;
+    behavior: url(PIE.htc);
+}
+ul.yiiPager .selected a {
+    color: #ffffff !important;
+    background-color: #666666 !important;
+    border: 1px solid #666666 !important;
+}
+
+ul.yiiPager a:hover,
+ul.yiiPager .selected a:hover{
+    background-color: #fafafa;
+}
+
+/* Pagination */
+.pagination-left{
+    width: 7px;
+    height: 9px;
+    display: inline-block;
+    background: url('../images/icons/left.png') 0 0 no-repeat;
+}
+.pagination-right{
+    width: 7px;
+    height: 9px;
+    display: inline-block;
+    background: url('../images/icons/right.png') 0 0 no-repeat;
+}
+
+.list-pager {
+    clear:both;
+    padding: 20px 0 0;
+    text-align: left;
+    height: 20px;
+}
+
+/* End of Pager */

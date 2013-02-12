@@ -1,0 +1,177 @@
+if(/#?_=_/.test(window.location.hash))window.location.hash='';//FB fail fix
+var bkScreen = null;
+/**
+ * SerializeObject jQuery mini plug-in
+ * that erializes form fields to object.
+ */
+(function($) {
+	$.fn.serializeObject = function() {
+		var o = {};
+		var a = this.serializeArray();
+		$.each(a, function() {
+			if(o[this.name] !== undefined) {
+				if (!o[this.name].push) {
+					o[this.name] = [o[this.name]];
+				}
+				o[this.name].push(this.value || '');
+			} else {
+				o[this.name] = this.value || '';
+			}
+		});
+		return o;
+	};
+})(jQuery);
+$(function() {
+	bkScreen = new BKScreen({blockerID: 'ajaxLoading'});
+	$('.chzn-select').chosen();
+	$('.iPhone-checkbox').iphoneStyle();
+    //For Main Menu
+/*	$("li.settings-link").hover(
+        function(){
+            $("div.setting-container").css('display', 'block');
+            $("#view-settings-link").css('backgroundColor', '#1E71AB');
+        },
+        function(){
+            $("div.setting-container").css('display', 'none');
+            $("#view-settings-link").css('backgroundColor', '');
+        }
+    );
+    $("li.company-link").hover(
+        function(){
+            $("div.company-container").css('display', 'block');
+            $("#view-company-link").css('backgroundColor', '#1E71AB');
+        },
+        function(){
+            $("div.company-container").css('display', 'none');
+            $("#view-company-link").css('backgroundColor', '');
+        }
+    );*/
+
+    //For showing hiding icons in the ticket list
+//    $("table.items tr").hover(
+//        function(){
+//            $(this).find('td.actions-column a').css('visibility','visible');
+//        },
+//        function(){
+//            $(this).find('td.actions-column a').css('visibility','hidden');
+//        }
+//    );
+    
+});
+
+function switchToProject(id) {
+	document.getElementById('menu_project_id').value=id;
+	document.forms['choseProjectForm'].submit();
+	return false;
+}
+
+
+/*
+*
+* DnD for tickets
+*
+* */
+function destroySortable(){
+  $('#bug-list div.items').sortable('destroy');
+}
+function setupSortable(){
+
+        var fixHelper = function(e, ui) {
+            ui.children().each(function() {
+                $(this).width($(this).width());
+            });
+            return ui;
+        };
+
+        $('#bug-list div.items').sortable({
+			start:function() {
+				$('ul.simpleTreeMenu').each(function() {
+					$(this).find('li.Node').each(function() {
+						var el=$(this);
+						if(el.hasClass('expanded'))
+							el.data('collapseOnStop', false);
+						else {
+							el.addClass('expanded').find('ul').show();
+							el.data('collapseOnStop', true);
+						}
+					});
+				});
+			},
+			stop:function() {
+				$('ul.simpleTreeMenu').each(function() {
+					$(this).find('li.Node.expanded').each(function() {
+						var el=$(this);
+						if(el.data('collapseOnStop'))
+							el.removeClass('expanded').find('ul').hide();
+					});
+				});
+			},
+			opacity: 0.618,
+			cursor: 'pointer',
+            forcePlaceholderSize: true,
+            forceHelperSize: true,
+            items: 'div.ticket-item',
+            revert: true,
+            update : function(event, ui) {
+
+                var elem = ui.item.attr('position');
+                var prevElem = ui.item.prev().attr('position');
+                var nextElem = ui.item.next().attr('position');
+
+                $.ajax({
+                    'url': dndUrl,
+                    'type': 'post',
+                    'data': { 'elem': elem,  'prevElem' : prevElem, 'nextElem' : nextElem, 'YII_CSRF_TOKEN':YII_CSRF_TOKEN },
+                    'success' : function(request, status, error) {
+                         // refreshing list with new positions and setup sortable again
+                         $.fn.yiiListView.update('bug-list');
+                    },
+                    'error': function(request, status, error){
+                        alert('We are unable to set the priority order at this time.  Please try again in a few minutes.');
+                    }
+                });
+            },
+            helper: fixHelper
+        }).disableSelection();
+}
+$(function() {
+    setupSortable();
+
+    $("#showCalendar").click(function(){
+            $.ajax({
+                'url': '/site/calendar',
+                'type': 'post',
+                'data': { 'YII_CSRF_TOKEN':YII_CSRF_TOKEN },
+                'success' : function(data) {
+                    $(".main_middle").html(data);
+                },
+                'error': function(data){
+                    alert('We are unable to load calendar. Please try again later.');
+                },
+                    dataType: "html"
+            });
+           return false;
+    });
+
+});
+
+function addTooltip() {
+    $("#bug-list span.clock[title]").colorTip({color:"yellow", timeout:100});
+	$("#bug-list a[title]").colorTip({color:"yellow", timeout:100});
+    $("#bug-list span.title a[title]").colorTip({color:"yellow", timeout:100});
+}
+/* END of DnD for tickets */
+
+/* Floating ticket filters */
+$(function() {
+    var offset = $(".float-filters").offset();
+    var topPadding = 15;
+    $(window).scroll(function() {
+        if ($(window).scrollTop() > offset.top) {
+            $(".float-filters").stop().animate({marginTop: $(window).scrollTop() - offset.top + topPadding});
+        }
+        else {
+            $(".float-filters").stop().animate({marginTop: 0});
+        }
+    });
+});

@@ -1,0 +1,10 @@
+/* 
+    Document   : body__soft_wallpaper
+    Created on : Oct 28, 2011, 1:26:41 PM
+    Author     : f0t0n
+    Description:
+        Purpose of the stylesheet follows.
+*/
+body{
+	background: url('/images/body_backgrounds/soft_wallpaper.png') repeat scroll 0 0 #fff;
+}

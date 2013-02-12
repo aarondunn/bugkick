@@ -1,0 +1,6 @@
+<IfModule mod_headers.c>
+    Header add Access-Control-Allow-Origin "*"
+    Header add Access-Control-Allow-Methods "POST, GET, OPTIONS"
+    Header add Access-Control-Max-Age "1000"
+    Header add Access-Control-Allow-Headers "Content-Type"
+</IfModule>

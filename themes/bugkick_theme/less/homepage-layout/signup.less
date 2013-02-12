@@ -1,0 +1,165 @@
+/* SignUp Page Styles */
+/* Profile Logo */
+
+@profilePicHeight: 40px;
+@profilePicWidth: 40px;
+
+#signup .row .profile-pic{
+	border: 1px solid #e3e3e3;
+	.rounded(5px);
+	float: left;
+	height: @profilePicHeight;
+	margin-right: 10px;
+	padding: 4px;
+	width: @profilePicWidth;
+}
+	#signup .row .profile-pic .profile-pic-preview{
+		border: 1px solid #d6d6d6;
+		.rounded(3px);
+		height: @profilePicHeight - 2px; 
+		overflow: hidden;
+		position: relative;
+		width: @profilePicWidth - 2px;
+	}
+		#signup .row .profile-pic .profile-pic-preview .profile-pic-shadow{
+			.box-shadow-inset(0, 1px, 3px, rgba(0, 0, 0, 0.2));
+			height: 100%;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			z-index: 10;
+		}
+	#signup .row .description{
+		margin-bottom: 10px;
+	}
+	#signup .row .description label[for="profile-pic-upload"]{
+		display: inline-block;
+		font-weight: bold;
+	}		
+
+/* Profile Picture Upload */
+	#signup .row #photo-upload{
+		float: left;
+	}
+		#signup .row #photo-upload:after{
+			content: "";
+			clear: both;
+		}
+	
+	#signup .row #photo-upload input[type="file"]{
+		width: 220px;
+	}
+
+	#signup .qq-uploader { position:relative; width: 100%;}
+
+	#signup .qq-upload-button {
+		background: #eeeeee;
+		background: -moz-linear-gradient(90deg, #eeeeee 50%, rgb(255, 255, 255) 60%);
+		background: -webkit-linear-gradient(90deg, #eeeeee 50%, rgb(255, 255, 255) 60%);
+		background: -o-linear-gradient(90deg, #eeeeee 50%, rgb(255, 255, 255) 60%);
+		background: -ms-linear-gradient(90deg, #eeeeee 50%, rgb(255, 255, 255) 60%);
+		background: linear-gradient(90deg, #eeeeee 50%, rgb(255, 255, 255) 60%);
+		border: 1px solid #989898;
+		.rounded(5px);
+		.box-shadow(0, 1px, 2px, #eeeeee);
+	    display: block;
+	    font-size: 12px;
+	   	height: 16px;
+	   	line-height: 16px;
+	   	text-align: center;
+	   	width: 100px;
+	}
+
+	#signup	.qq-upload-drop-area {
+	    position:absolute; top:0; left:0; width:100%; height:100%; min-height: 70px; z-index:2;
+	    background:#FF9797; text-align:center; 
+	}
+	#signup	.qq-upload-drop-area span {
+	    display:block; position:absolute; top: 50%; width:100%; margin-top:-8px; font-size:16px;
+	}
+	#signup	.qq-upload-drop-area-active {background:#FF7171;}
+
+	#signup	.qq-upload-list {margin:15px 35px; padding:0; list-style:disc;}
+	#signup	.qq-upload-list li { margin:0; padding:0; line-height:15px; font-size:12px;}
+	#signup	.qq-upload-file, .qq-upload-spinner, .qq-upload-size, .qq-upload-cancel, .qq-upload-failed-text {
+	    margin-right: 7px;
+	}
+
+	#signup	.qq-upload-file {}
+	#signup	.qq-upload-spinner {display:inline-block; background: url("loading.gif"); width:15px; height:15px; vertical-align:text-bottom;}
+	#signup	.qq-upload-size,.qq-upload-cancel {font-size:11px;}
+
+	#signup	.qq-upload-failed-text {display:none;}
+	#signup	.qq-upload-fail .qq-upload-failed-text {display:inline;}
+/* End of Profile Picture Upload */
+
+/* Premium plan description */
+@premiumContainerWidth: 239px;
+@premiumContainerPadding: 15px;
+@premiumHeadHeight: 14px;
+@premiumWidthDifference: 2px;
+
+#premium-description{
+	background: #f5f5f5;
+	.rounded(10px 20px 19px 10px);
+	.box-shadow(2px, 2px, 2px, rgba(0, 0, 0, 0.1));
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: @premiumContainerWidth;
+}
+	#premium-description .head-outer{
+		background: url("../images/signup/premium-3d-head.png") no-repeat 231px -2px;
+		.rounded(10px 20px 0 0);
+		height: @premiumHeadHeight + 2*@premiumContainerPadding + 15px;
+		position: relative;
+		width: @premiumContainerWidth + @premiumWidthDifference;
+		z-index: 10;
+	}
+
+	#premium-description .head{
+		.gradient(#78b046, #86ba57, #69a43a);
+		border: 1px solid #598e2f;
+		.rounded(5px 5px 0 0);
+		.box-shadow-inset(0, 1px, 1px, #bae592);
+		height: @premiumHeadHeight + 2*@premiumContainerPadding;
+		line-height: @premiumHeadHeight + 2*@premiumContainerPadding;
+		padding: 0 @premiumContainerPadding;
+		width: @premiumContainerWidth - 9px - 2*@premiumContainerPadding + 1px;
+	}
+		#premium-description .head h3{
+			color: #ffffff;
+			float: left;
+			font-size: 20px;
+			.text-shadow(0, 1px, 1px, #3d5c23);
+		}
+
+		#premium-description .head #premium-price{
+			color: #ffffff;
+			float: right;
+			.opacity(0.8, 80);
+			.text-shadow(0, 1px, 1px, rgba(0, 0, 0, 0.3));
+		}
+
+	#premium-description .content-outer{
+		background: url("../images/signup/premium-3d-bg.png") repeat-y 231px 0;
+		.rounded(0 0 19px 0);
+		width: @premiumContainerWidth + @premiumWidthDifference;
+	}
+	#premium-description .content{
+		background: #f5f5f5;
+		border: 1px solid #e5e5e5;
+		border-top: none;
+		.rounded(0 0 5px 5px);
+		margin-top: -13px;
+		padding: @premiumContainerPadding;
+		width: @premiumContainerWidth - 9px - 2*@premiumContainerPadding;
+	}
+
+		#premium-description .content ul{
+			list-style: disc;
+			padding-left: 15px;
+		}
+/* End of Premium plan description */
+/* End of SignUp page styles */

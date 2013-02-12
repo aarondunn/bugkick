@@ -1,0 +1,294 @@
+@import "../mixins.less";
+@import "main-vars.less";
+
+/* Landing Page Styles */
+
+/* Misc styles */
+
+body{
+	background: @bodyBg;
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: @defaultFontSize;
+	line-height: @defaultLineHeight;
+}
+
+/* End of Misc styles */
+
+/* Helpers */
+/* Helping for Sticky Footer */
+html, body{
+    height: 100%;
+    width: 100%;
+}
+
+#main-wrapper{
+	background: @mainWrapBg repeat-x;
+    min-height: 100%;
+    height: auto;
+    position: relative;
+}
+/* End of Sticky Footer Helpers */
+
+.clear{ clear: both; }
+.fl { float: left; }
+.fr { float: right; }
+
+input[type="text"], input[type="password"], textarea {
+    border: 1px solid #e6e6e6;
+    color: black;
+    font: @defaultFontSize Arial, Helvetica, sans-serif;
+    height: @defaultFontSize;
+    line-height: @defaultFontSize;
+    padding: @inputPaddingV @inputPaddingH;
+    .rounded(7px);
+    behavior: url(../../../css/PIE.htc);
+}
+	input[type="text"]:focus, input[type="password"]:focus {
+    	border-color: #9ecaed;
+    	box-shadow: 0 0 5px #9ecaed;
+    	outline: 0;
+	}
+
+.buttonLandingStyle,
+input[type="submit"].buttonLandingStyle,
+input[type="reset"].buttonLandingStyle,
+button.buttonLandingStyle{
+	.rounded(4px);
+	color: @buttonTextColor;
+	cursor: pointer;	
+	display: block;
+	font-weight: bold;
+	/* height:	@buttonHeight; */
+	line-height: @buttonHeight - 2*@buttonPaddingV;
+	padding: @buttonPaddingV @buttonPaddingH;
+	text-decoration: none;	
+}
+	.buttonLandingStyle.blue{
+		background: @buttonsBg 0 0 repeat-x;
+		border: 1px solid #174792;
+		.text-shadow(0, 1px, 1px, #5581af);
+	}
+		.buttonLandingStyle.blue:hover{
+			background-position: 0 -64px;
+			.text-shadow(0, -1px, 1px, #5581af);
+		}
+
+	.buttonLandingStyle.green{
+		background: @buttonsBg 0 -32px repeat-x;
+		border: 1px solid #5e8d36;
+		.text-shadow(0, 1px, 1px, #6b9843);
+	}
+		.buttonLandingStyle.green:hover{
+			background: @buttonsBg 0 -96px repeat-x;
+			.text-shadow(0, -1px, 1px, #6b9843);
+		}
+
+	.buttonLandingStyle.no-bg{
+		padding: @buttonPaddingV 0;
+		height: auto;
+	}
+
+.small{
+	color: @smallColor;
+	font-size: 0.9*@defaultFontSize;
+}
+
+/* Form Flash Success, Error, Notice */
+div.flash-error, div.flash-notice, div.flash-success {
+    padding: .8em;
+    margin-bottom: 1em;
+    border: 2px solid #ddd;
+}
+
+div.flash-error {
+    background: #FBE3E4;
+	background: rgba(251, 227, 228, 0.7);
+    color: #8a1f11;
+    border-color: #FBC2C4;
+}
+
+div.flash-notice {
+    background: #FFF6BF;
+    background: rgba(255, 246, 191, 0.7);
+    color: #514721;
+    border-color: #FFD324;
+}
+
+div.flash-success {
+    background: #E6EFC2;
+    background: rgba(230, 239, 194, 0.7);
+    color: #264409;
+    border-color: #C6D880;
+}
+
+div.flash-error a {
+    color: #8a1f11;
+}
+
+div.flash-notice a {
+    color: #514721;
+}
+
+div.flash-success a {
+    color: #264409;
+}
+
+/* End of flashes */
+/* End of Helpers */
+
+/* Header */
+#header {
+	width: 100%;
+	height: 60px;
+	background: url("../images/header_bg.png") repeat-x left top;
+	min-width: 980px;
+}
+
+#header .wrapper {
+	width: @mainContainerWidth;
+	height: 100%;
+	margin: 0 auto;
+}
+
+#logo {
+	background: url("../images/logo.png") no-repeat;
+	display: block;
+	float: left;
+	height: 33px;
+	margin-top: 10px;
+	text-indent: -9999px;
+	width: 132px;
+}
+
+
+#header #landing-nav{
+	float: right;
+	padding: 12px 0;
+}
+	#header #landing-nav li{
+		float: left;
+		line-height: 34px;
+		margin-left: 20px;
+	}
+
+	#header #landing-nav li{
+		border-right: 1px solid #2163b3;
+		padding-right: 10px;
+	}
+	#header #landing-nav li + li{
+		border-left: 1px solid #448bcc;
+		border-left: 1px solid rgba(68, 139, 204, 0.5);
+		border-right: none;
+		height: 34px;
+		margin-left: 0;
+		padding-left: 10px;
+	}
+		#header #landing-nav li#back-to-home{
+			border: none;
+		}
+/* End of Header */
+
+/* Content */
+
+#content {
+	margin: 40px auto 0;
+	width: @contentWidth;
+    padding-bottom: 121px;
+    position: relative;
+}
+
+/* ------ Landing Page ------ */
+@import "landing.less";
+/* --- End of landing Page --- */
+
+/* Centered form for SingUp and Login */
+@import "centered-form.less";
+/* ------ End of Centered form ------ */
+/* ------ SignUp Page ------ */
+@import "signup.less";
+/* --- End of SignUp Page --- */
+
+/* ------ LogIn Page ------- */
+@import "login.less";
+/* --- End of LogIn Page --- */
+/* End of Content */
+
+/* Footer */
+
+/* FOOTER */
+.footer-wrapper {
+    background: url("../images/footer_bg.png") repeat-x;
+    border-top: 1px solid #bdbdbd;
+    bottom: 0;
+    color: @footerTextColor;
+    font-size: @defaultFontSize;
+    font-weight: bold;
+    height: 79px;
+    left: 0;
+    line-height: 79px;
+    margin: 40px 0 0;
+    position: absolute;
+    text-align: center;
+    text-shadow: 0 1px 2px #ebebeb;
+    width: 100%;
+}
+.footer-inner{
+    background: url("../images/footer_bug.png") center bottom no-repeat;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 953px;
+}
+.footer-inner a {
+    color: @footerLinkColor;
+    font-size: @defaultFontSize;
+    text-decoration: none;
+}
+
+.footer-inner p,
+.footer-inner ul{
+    display: block;
+    height: 79px;
+    line-height: 79px;
+    margin-bottom: 0;
+}
+
+.footer-inner .copyright{
+    float: left;
+}
+.footer-inner .footer-info{
+    float: right;
+}
+    .footer-inner .footer-info li{
+        float: left;
+    }
+        .footer-inner .footer-info li span{
+            border-left: 1px solid #a3a2a2;
+            font-size: @defaultFontSize;
+            padding-left: 6px;
+            margin-left: 6px;
+        }
+
+        .footer-inner .footer-info li:first-child,
+        .footer-inner .footer-info li:first-child span{
+            border-left: none;
+            padding-left: 0;
+            margin-left: 0;
+        }
+
+/* End of Footer */
+
+/* Dialgos */
+
+#resetPasswordDialog{
+    padding: 50px 20px;
+}
+#resetPasswordDialog .row.buttons{
+    padding-top: 2px;
+}
+	#resetPasswordDialog .row.buttons input[type="submit"]{
+		display: block;
+		margin: 0 auto;
+		width: 100px;
+	}
+
+/* END of Dialogs */

@@ -1,0 +1,77 @@
+# add mime-type and encoding
+AddType 'text/css; charset=utf-8' .css
+AddType 'text/javascript; charset=utf-8' .js
+AddType 'image/x-icon; charset=utf-8' .ico
+AddType 'text/html; charset=utf-8' .html .shtml
+AddType 'text/xml; charset=utf-8' .xml
+AddType 'application/json; charset=utf-8' .json
+
+AddType audio/mp4 .m4a
+AddType audio/flac .flac
+AddType audio/mpeg .mp3
+AddType audio/ogg .ogg .oga
+AddType audio/wav .wav
+
+AddType video/ogg .ogm .ogv .ogg
+AddType video/mp4 .mp4 .m4v .f4v
+AddType video/webm .webm
+AddType video/x-flv .flv
+
+AddType application/pdf .pdf
+
+AddType application/vnd.ms-fontobject .eot
+AddType application/octet-stream .otf .ttf
+AddType application/x-font-ttf .ttf
+AddType application/x-font-woff .woff
+
+# add file comporessing
+<IfModule mod_deflate.c>
+	AddOutputFilterByType DEFLATE text/html text/plain text/css text/json application/json
+	AddOutputFilterByType DEFLATE text/javascript application/javascript application/x-javascript
+	AddOutputFilterByType DEFLATE text/xml application/xml text/x-component image/x-icon
+	# handle bandy browsers
+	BrowserMatch ^Mozilla/4 gzip-only-text/html
+	BrowserMatch ^Mozilla/4\.0[678] no-gzip
+	BrowserMatch Konqueror no-gzip
+	BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+	<FilesMatch "\.(?!(mp3|ogg|avi|ttf|otf|eot)$)">
+		SetOutputFilter DEFLATE
+	</FilesMatch>
+</IfModule>
+
+<IfModule mod_headers.c>
+    
+	Header append Vary User-Agent
+	#	add header gzip:
+	<IfModule mod_deflate.c>
+		<FilesMatch "\.gz$">
+			Header set Content-Encoding gzip
+	</FilesMatch>
+	</IfModule>
+
+	# allow file caching on client side
+
+	# 1 YEAR
+	<FilesMatch "\.(html|jpg|jpeg|png|gif|js|css|ico|swf|flv|pdf|avi|mov|ppt|doc|mp3|wmv|wav)$">
+		Header set Last-Modified "Thu, 31 Dec 2000 23:59:59 GMT"
+		Header set Expires "Thu, 31 Dec 2037 23:59:59 GMT"
+		Header set Cache-Control "public, max-age=31536000"
+		Header set Accept-Ranges "bytes"
+	</FilesMatch>
+
+	# 3 HOUR
+	<FilesMatch "\.(txt|xml)$">
+		Header set Cache-Control "max-age=10800"
+	</FilesMatch>
+</IfModule>
+
+# add header Expires with one month term
+<IfModule mod_expires.c>
+	ExpiresActive On
+	ExpiresDefault "access plus 1 month"
+</IfModule>
+
+# ETag  header (core feature)
+FileETag MTime Size
+
+####################	speedup end		####################

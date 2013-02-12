@@ -1,0 +1,39 @@
+/* 
+    Document   : fprogress-bar.css
+    Created on : Dec 13, 2011, 4:59:23 AM
+    Author     : Evgeniy `f0t0n` Naydenov
+    Description:
+        Purpose of the stylesheet follows.
+*/
+.FProgressBarContainer {
+    border:1px solid #2A93CD;
+    height:16px;
+    margin:5px 0;
+    padding:0;
+    position:relative;
+    text-align:center;
+}
+.FProgressBarContainer .FProgress {
+    background:url('img/progress_1x16px.gif') repeat-x scroll 0 0 transparent;
+    height:16px;
+    width:0;
+}
+.FProgressBarContainer .FProgress .FText {
+	color:#555;
+    font-family:sans-serif;
+    font-size:12px;
+    font-weight:700;
+    height:100%;
+    left:0;
+    position:absolute;
+    text-align:center;
+    top:0;
+    width:100%;
+}
+.FProgressBarContainer,
+.FProgressBarContainer .FProgress,
+.FProgressBarContainer .FProgress .FText{
+	border-radius:4px;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+}

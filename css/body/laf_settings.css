@@ -1,0 +1,29 @@
+/* 
+    Document   : laf_settings
+    Created on : Oct 28, 2011, 2:27:59 PM
+    Author     : f0t0n
+    Description:
+        Purpose of the stylesheet follows.
+*/
+#laf-choice{
+    width: 400px;
+    float: left;
+    margin-bottom: 30px;
+}
+#laf-choice .laf-sample{
+    display: block;
+    float: left;
+    width: 108px;
+    height: 108px;
+    margin: 0 25px 10px 0;
+	cursor:pointer;
+    border-radius: 5px;
+    box-shadow:0 0 3px rgba(0,0,0,0.5);
+    background: #fff url("../../images/body_backgrounds/body_bg.jpg") no-repeat center;
+}
+#laf-choice .laf-sample:hover{
+	box-shadow:0 0 8px rgba(0,0,0,0.5);
+}
+#laf-choice div.clear{
+	clear:both;
+}

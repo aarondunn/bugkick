@@ -1,0 +1,16 @@
+/* 
+    Document   : common
+    Created on : Jan 7, 2012, 5:15:04 PM
+    Author     : f0t0n
+    Description: Styles for /payment/pro-account page
+*/
+div.left{
+	width:250px;
+	float:left;
+	border-right: 1px solid #8EC1DA;
+	overflow: hidden;
+}
+div.right{
+	margin-left:5px;
+	overflow: hidden;
+}

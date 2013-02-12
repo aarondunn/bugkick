@@ -1,0 +1,10 @@
+/* 
+    Document   : body_black-Linen
+    Created on : Oct 28, 2011, 1:22:00 PM
+    Author     : f0t0n
+    Description:
+        Purpose of the stylesheet follows.
+*/
+body{
+	background: url('/images/body_backgrounds/black-Linen.png') repeat scroll 0 0 #fff;
+}

@@ -1,0 +1,64 @@
+/* 
+    Document   : imageset
+    Created on : Jul 15, 2012, 1:10:55 PM
+    Author     : f0t0n
+    Edited     : Boyan Yordanov (netoholic)
+    Description:
+        The styles for imageSet jQuery plugin
+*/
+
+.ticket-item .imageset {
+/*    display: inline-block;*/
+    display: none;
+    float: right;
+    border:  1px solid #e3e3e3;
+    height: 26px;
+    padding: 1px 2px 2px 0;
+    width: 26px;
+}
+
+.ticket-item .imageset img{
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    float: left;
+    height: auto !important;
+    max-height: 11px;
+    margin-left: 2px;
+    margin-top: 2px;
+    width: 11px !important;
+}
+
+.ticket-item .imageset .colorTip{
+    background: #282828;
+    background: rgba(40, 40, 40, 0.95);
+    border: 2px solid #000;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    padding: 4px;
+}
+    .ticket-item .imageset .colorTip > div{
+        overflow: hidden;
+    }
+.ticket-item .imageset .colorTip a{
+    display: block;
+    float: left;
+    height: 31px;
+    margin: 3px !important;
+    overflow: hidden;
+    width: 31px;
+}
+.ticket-item .imageset div {
+    float: left;
+}
+.ticket-item .imageset .colorTip a img{
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    float: none !important;
+    height: auto !important;
+    margin: 0 !important;
+    max-height: 31px;
+    width: 31px !important;
+}

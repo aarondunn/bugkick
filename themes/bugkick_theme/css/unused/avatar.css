@@ -1,0 +1,42 @@
+/* 
+    Document   : avatar
+    Created on : Dec 3, 2011, 11:42:44 AM
+    Author     : f0t0n
+    Description:
+        Purpose of the stylesheet follows.
+*/
+.avatarRnd {
+	position: relative;
+	overflow: hidden;
+	float: left;
+	margin: 10px;
+	padding: 7px;
+	-webkit-border-radius: 50em;
+	-moz-border-radius: 50em;
+	border-radius: 50em;
+}
+.avatarRnd:after,
+.avatarRnd:before {
+	content: "";
+	position: absolute;
+	z-index: 2;
+	top: 3px;
+	left: 3px;
+	right: 3px;
+	bottom: 3px;
+	border: 1px solid #999;
+	-webkit-border-radius: 50em;
+	-moz-border-radius: 50em;
+	border-radius: 50em;
+	box-shadow: 0px 1px 1px 1px #bbb;
+}
+.avatarRnd:after {
+	z-index: 1;
+	border: 5px solid #fff;
+	-webkit-box-shadow: 0px 0px 0px 50px #fff;
+	-moz-box-shadow: 0px 0px 0px 50px  #fff;
+	box-shadow: 0px 0px 0px 50px  #fff;   
+}
+.avatarRnd img {
+	display: block;
+}

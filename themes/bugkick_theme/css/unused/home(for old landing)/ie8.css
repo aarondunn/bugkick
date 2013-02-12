@@ -1,0 +1,16 @@
+/* CSS Document */
+
+.testimonials{z-index:1;}
+
+.footer{
+	position:relative;
+	float:left;
+	z-index:0;
+	margin:-106px 0px 0px 0px;
+}
+
+.reveal-modal-bg{
+	background:none;
+	background-image:url(../../images/home/ie-background.png);
+	background-repeat:repeat;
+}

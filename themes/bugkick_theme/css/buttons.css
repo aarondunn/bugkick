@@ -1,0 +1,312 @@
+/* 
+    Document   : buttons.less
+    Created on :Aug 2, 2012
+    Author     : Boyan
+    Description: LESS code for BugKick buttons.
+*/
+/* 
+    Document   : buttons.less
+    Created on :Aug 2, 2012
+    Author     : Boyan
+    Description: LESS code for BugKick buttons.
+*/
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+/*
+	Default Blue Button Small
+ */
+input[type="submit"],
+input[type="button"],
+button,
+input[type="submit"].bkButtonBlueSmall,
+input[type="button"].bkButtonBlueSmall,
+.bkButtonBlueSmall,
+a.bkButtonBlueSmall,
+.grid-view a.bkButtonBlueSmall,
+.ui-widget-content a.bkButtonBlueSmall {
+  background-color: #2175c8;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#288dd4), to(#1a60be));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #288dd4, #1a60be);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+  background-image: -moz-linear-gradient(top, #288dd4, #1a60be);
+  /* FF3.6+ */
+
+  background-image: -o-linear-gradient(top, #288dd4, #1a60be);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(to bottom, #288dd4, #1a60be);
+  border: 1px solid #154faa;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-box-shadow: 0 1px 1px #d4d4d4;
+  -moz-box-shadow: 0 1px 1px #d4d4d4;
+  box-shadow: 0 1px 1px #d4d4d4;
+  display: inline-block;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 5px;
+  text-decoration: none;
+  text-shadow: 0 1px 1px #1a5ea6;
+  margin-bottom: 3px;
+}
+input[type="submit"]:hover,
+input[type="button"]:hover,
+button:hover,
+input[type="submit"].bkButtonBlueSmall:hover,
+input[type="button"].bkButtonBlueSmall:hover,
+.bkButtonBlueSmall:hover,
+a.bkButtonBlueSmall:hover,
+.grid-view a.bkButtonBlueSmall:hover,
+.ui-widget-content a.bkButtonBlueSmall:hover {
+  background-color: #1a60be;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#1a60be), to(#288dd4));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #1a60be, #288dd4);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+  background-image: -moz-linear-gradient(top, #1a60be, #288dd4);
+  /* FF3.6+ */
+
+  background-image: -o-linear-gradient(top, #1a60be, #288dd4);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(to bottom, #1a60be, #288dd4);
+  color: #eeeeee;
+  text-decoration: none;
+}
+input[type="submit"].bkButtonBlueSmall:active,
+input[type="button"].bkButtonBlueSmall:active,
+.bkButtonBlueSmall:active,
+a.bkButtonBlueSmall:active,
+.grid-view a.bkButtonBlueSmall:active,
+.ui-widget-content a.bkButtonBlueSmall:active {
+  position: relative;
+  top: 1px;
+  color: #ffffff;
+  text-decoration: none;
+}
+/* End of Default Blue button */
+/*
+    Default Gray Button Small
+*/
+input[type="submit"].bkButtonGraySmall,
+input[type="button"].bkButtonGraySmall,
+.bkButtonGraySmall,
+a.bkButtonGraySmall,
+.grid-view a.bkButtonGraySmall,
+.ui-widget-content a.bkButtonGraySmall {
+  -webkit-box-shadow: inset 0 1px 0 #ffffff;
+  -moz-box-shadow: inset 0 1px 0 #ffffff;
+  box-shadow: inset 0 1px 0 #ffffff;
+  background-color: #ededed;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#dfdfdf));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #ededed, #dfdfdf);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+  background-image: -moz-linear-gradient(top, #ededed, #dfdfdf);
+  /* FF3.6+ */
+
+  background-image: -o-linear-gradient(top, #ededed, #dfdfdf);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(to bottom, #ededed, #dfdfdf);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #dcdcdc;
+  display: inline-block;
+  color: #777777;
+  font-family: arial;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 3px 5px;
+  text-decoration: none;
+  text-shadow: 1px 1px 0px #ffffff;
+}
+input[type="submit"].bkButtonGraySmall:hover,
+input[type="button"].bkButtonGraySmall:hover,
+.bkButtonGraySmall:hover,
+a.bkButtonGraySmall:hover,
+.grid-view a.bkButtonGraySmall:hover,
+.ui-widget-content a.bkButtonGraySmall:hover {
+  background-color: #dfdfdf;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#dfdfdf), to(#ededed));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #dfdfdf, #ededed);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+  background-image: -moz-linear-gradient(top, #dfdfdf, #ededed);
+  /* FF3.6+ */
+
+  background-image: -o-linear-gradient(top, #dfdfdf, #ededed);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(to bottom, #dfdfdf, #ededed);
+  color: #1a60be;
+  text-decoration: none;
+}
+.bkButtonGraySmall:active,
+a.bkButtonGraySmall:active,
+.grid-view a.bkButtonGraySmall:active,
+.ui-widget-content a.bkButtonGraySmall:active {
+  position: relative;
+  top: 1px;
+}
+/* End of Defalt Gray Button */
+/* Disabled Default Button */
+input[type="submit"].bkButtonBlueSmall:disabled,
+input[type="button"].bkButtonBlueSmall:disabled,
+a.bkButtonBlueSmall:disabled,
+.bkButtonBlueSmall:disabled,
+input[type="submit"].bkButtonGraySmall:disabled,
+input[type="button"].bkButtonGraySmall:disabled,
+a.bkButtonGraySmall:disabled,
+.bkButtonGraySmall:disabled {
+  position: relative;
+  top: 0px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  background-color: #aed1f3;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#d9d9d9));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #fafafa, #d9d9d9);
+  /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+  background-image: -moz-linear-gradient(top, #fafafa, #d9d9d9);
+  /* FF3.6+ */
+
+  background-image: -o-linear-gradient(top, #fafafa, #d9d9d9);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(to bottom, #fafafa, #d9d9d9);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #aaa;
+  display: inline-block;
+  color: #aaa;
+  font-family: arial;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 3px 5px;
+  text-decoration: none;
+  text-shadow: none;
+  margin-bottom: 3px;
+}
+input[type="submit"].bkButtonBlueSmall.normal,
+input[type="button"].bkButtonBlueSmall.normal,
+.bkButtonBlueSmall.normal,
+.bkButtonGraySmall.normal,
+a.bkButtonBlueSmall.normal,
+a.bkButtonGraySmall.normal {
+  font-size: 12px;
+  padding: 8px 19px;
+}
+input[type="submit"].bkButtonBlueSmall.medium,
+input[type="button"].bkButtonBlueSmall.medium,
+.bkButtonBlueSmall.medium,
+.bkButtonGraySmall.medium,
+a.bkButtonBlueSmall.medium,
+a.bkButtonGraySmall.medium {
+  font-size: 12px;
+  padding: 4px 20px;
+}
+/* Main buttons END *//* 
+    Light Gray Button
+*/
+.button {
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  cursor: pointer;
+  display: block;
+  font-weight: bold;
+  line-height: 15px;
+  outline: none;
+  padding: 8px 12px;
+  text-decoration: none;
+}
+.button.light-gray {
+  background: #f8f8f9;
+  border: 1px solid #eaeaee;
+  color: #8a8a8a;
+}
+.button.light-gray:hover {
+  color: #1a60be;
+  text-decoration: none;
+}
+/* Light gray button END */
+/* 
+    Buttons like those used in the landing page 
+*/
+.buttonLandingStyle,
+input[type="submit"].buttonLandingStyle,
+input[type="reset"].buttonLandingStyle,
+button.buttonLandingStyle {
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: block;
+  font-weight: bold;
+  line-height: 22px;
+  padding: 4px 25px;
+  text-decoration: none;
+}
+.buttonLandingStyle.blue {
+  background: url("../images/landing/landing_buttons_bg.jpg") 0 0 repeat-x;
+  border: 1px solid #174792;
+  text-shadow: 0 1px 1px #5581af;
+}
+.buttonLandingStyle.blue:hover {
+  background-position: 0 -64px;
+  text-shadow: 0 -1px 1px #5581af;
+}
+.buttonLandingStyle.green {
+  background: url("../images/landing/landing_buttons_bg.jpg") 0 -32px repeat-x;
+  border: 1px solid #5e8d36;
+  text-shadow: 0 1px 1px #6b9843;
+}
+.buttonLandingStyle.green:hover {
+  background: url("../images/landing/landing_buttons_bg.jpg") 0 -96px repeat-x;
+  text-shadow: 0 -1px 1px #6b9843;
+}
+/* end of landing style */

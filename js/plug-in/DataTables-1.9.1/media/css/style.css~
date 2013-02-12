@@ -1,0 +1,50 @@
+/* nice table */
+table {
+    *border-collapse: collapse; /* IE7 and lower */
+    border-spacing: 0;
+    width: 100%;    
+	margin: 0 auto;
+	clear: both;
+	-webkit-border-radius: 5px; 
+    -moz-border-radius: 5px;   
+}
+tr{
+	background:#fff;
+}
+
+.bordered {
+    border: solid #ccc 1px;     
+}
+
+.bordered td, .bordered th {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    padding: 1%;
+    text-align: left;    
+}
+.bordered th {
+    background-color: white;
+	color:#039;
+    border-top: none;
+	padding: 8px 18px 8px 10px;
+}
+
+.bordered td:first-child, .bordered th:first-child {
+    border-left: none;
+}
+
+.dataTables_filter {
+	width: 50%;
+	float: right;
+	text-align: right;
+}
+.dataTables_length{
+	width:50%;
+	float:left;
+}
+.dataTables_wrapper div{
+    padding:0.5em 0;
+}
+.dataTables_wrapper{
+    margin: 0 0 100px 0;
+}

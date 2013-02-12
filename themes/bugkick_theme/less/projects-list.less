@@ -1,0 +1,93 @@
+// File: projects-list.less
+// Description: Styles for main projects page
+
+/* Projects page */
+
+#projects-list-wrapper h2{
+    padding-left: 7px;
+}
+
+.project-container{
+    width: 222px;
+    margin: 7px;
+    float: left;
+}
+    .project-container .update,
+    .project-container .hide{
+        visibility: hidden;
+        .opacity(0, 0);
+    }
+    .project-container:hover .update,
+    .project-container:hover .hide{
+        visibility: visible;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+        .opacity(1, 100);
+    }
+
+.project-container:before{
+    content: "";
+    display: block;
+    width: 222px;
+    height: 5px;
+    background: url("../images/project-top.png") no-repeat;
+}
+.project-container:after{
+    content: "";
+    display: block;
+    width: 222px;
+    height: 6px;
+    background: url("../images/project-bottom.png") no-repeat;
+}
+.project-center{
+    width: 222px;
+    min-height: 73px;
+    background: url("../images/project-center.png") repeat-y;
+    padding: 2px 8px 0;
+    overflow: hidden; /* added to keep the box around the picutre and description */
+}
+/* 
+    Changes to project page: Boyan;
+*/
+.project-center a{
+    display: block;
+}
+/* Shrinked the spacing under the title */
+#content #main .project-center .project-description a h3{
+    height: 22px;
+    line-height: 22px;
+}
+.project-center a img{
+    float: left;
+    .rounded(5px);
+    behavior: url(PIE.htc);
+}
+.project-description{
+    width: 145px;
+    float: right;
+}
+.progress-container{
+    width: 100px;
+    height: 12px;
+    border: 1px solid #dbdbdb;
+    .rounded(4px);
+    background-color: #f5f5f5;
+    font-size: 8px;
+    font-weight: bold;
+    color:white;
+    behavior: url(PIE.htc);
+    margin-top: 5px; /* Added to create some nice spacing between the title, edit link and hte progress bar */
+}
+.progress-completed{
+    height: 12px;
+    background-color: #88c2f4;
+    .rounded(4px);
+    text-align: center;
+    behavior: url(PIE.htc);
+    vertical-align: middle;
+    line-height: 12px;
+}
+
+/* End of Projects page */

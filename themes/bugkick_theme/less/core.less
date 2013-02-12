@@ -1,0 +1,378 @@
+// File: core.less
+// Description: Bugkick default styles and helpers
+
+/* Helping for Sticky Footer */
+html, body{
+    height: 100%;
+    width: 100%;
+}
+
+#main-wrapper{
+    min-height: 100%;
+    height: auto;
+    position: relative;
+}
+/* End of Sticky Footer Helpers */
+
+/* Default styles for elements */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    background: url("../images/body_bg.jpg") repeat center top;
+    font-family: Arial;
+    font-size: 12px;
+}
+
+a {
+    outline: none;
+    text-decoration: none;
+}
+
+li {
+    list-style: none outside none;
+}
+
+a:focus, a:hover {
+    color: @defaultLinkColorHover;
+}
+
+a{
+    color: @defaultLinkColor;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+input[type="text"], input[type="password"], textarea {
+    border: 1px solid #e6e6e6;
+    color: black;
+    font: 14px Arial, Helvetica, sans-serif;
+    padding: 4px;
+    width: 210px;
+    .rounded(5px);
+    behavior: url(PIE.htc);
+}
+
+div.grid-view table tr td input[type="text"] {
+	width: 95%;
+}
+
+pre {
+    margin: 5px 0 10px;
+}
+
+/* End of default styles for elements */
+
+/* Helpers */
+.clear {
+    width: 0px;
+    height: 0px;
+    line-height: 0px;
+    overflow: hidden;
+    visibility: hidden;
+    clear: both;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.form .row{
+    float: none;
+}
+
+div.view {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #C9E0ED;
+}
+
+div.breadcrumbs {
+    font-size: 0.9em;
+    padding: 5px 20px;
+}
+
+div.breadcrumbs span {
+    font-weight: bold;
+}
+
+div.search-form {
+    padding: 10px;
+    margin: 10px 0;
+    background: #eee;
+}
+
+.errorMessage {
+    color: red;
+    font-size: 0.9em;
+}
+
+.clr {
+    clear: both;
+}
+
+.f_left {
+    float: left;
+}
+
+.shorten{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.no-border {
+    border: none !important;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+::-webkit-input-placeholder {
+    color:    #666;
+}
+:-moz-placeholder {
+    color:    #666;
+}
+
+.highlight {
+    background: none;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.clearfix:after {
+  clear: both;
+}
+/* End of Helpers */
+
+/* Flash messages */
+
+div.flash-error, div.flash-notice, div.flash-success {
+    padding: .8em;
+    margin-bottom: 1em;
+    border: 2px solid #ddd;
+}
+
+div.flash-error {
+    background: #FBE3E4;
+    color: #8a1f11;
+    border-color: #FBC2C4;
+}
+
+div.flash-notice {
+    background: #FFF6BF;
+    color: #514721;
+    border-color: #FFD324;
+}
+
+div.flash-success {
+    background: #E6EFC2;
+    color: #264409;
+    border-color: #C6D880;
+}
+
+div.flash-error a {
+    color: #8a1f11;
+}
+
+div.flash-notice a {
+    color: #514721;
+}
+
+div.flash-success a {
+    color: #264409;
+}
+
+/* End of Flash messages */
+
+/* Ajax Loading */
+
+#ajaxLoading {
+    display:none;
+    background: url('../images/bg_flat_0_aaaaaa_40x100.png') repeat-x scroll 50% 50% #aaa;
+}
+#ajaxLoading div {
+    background: url('../images/ajaxLoading.gif') no-repeat scroll 50% 50% transparent;
+}
+#ajaxLoading, #ajaxLoading div {
+    z-index:9999;
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    opacity:0.3;
+}
+
+/* End of Ajax loading */
+
+/*  iPhone checkboxes BEGIN */
+.iPhoneCheckContainer{
+    width:70px;
+}
+.iPhoneCheckContainer label{
+    font-size: 17px !important;
+}
+.iPhoneCheckHandle{
+    width:20px;
+}
+/*  iPhone checkboxes END */
+
+/* Generic BugKick Styles */
+
+.photo a, .photo img{
+    margin: 0 auto;
+}
+
+/* End of Generic BugKick Styles */
+
+/* Main layout */
+
+#header {
+    width: 100%;
+    height: 60px;
+    background: url("../images/header_bg.png") repeat-x left top;
+    min-width: 980px;
+}
+
+#header .wrapper {
+    width: 943px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+#logo {
+    display: block;
+    width: 132px;
+    height: 33px;
+    margin-top: 12px;
+    float: left;
+}
+
+/* Main wrapper remove additional elements */ 
+
+#content {
+    margin: 40px auto 0;
+    width: 982px;
+    padding-bottom: 121px;
+}
+
+#content #main {
+    width: 723px;
+    float: left;
+}
+
+#content #main:before{
+    content: "";
+    display: block;
+    width: 723px;
+    height: 6px;
+    background: url("../images/main_top_bg.png") no-repeat 0 0;
+}
+
+#content #main .main_middle {
+    width: 711px;
+    background: url("../images/main_middle_bg.png") repeat-y 0 0;
+    padding: 1px 6px;
+}
+
+#content #main:after{
+    content: "";
+    display: block;
+    width: 723px;
+    height: 6px;
+    background: url("../images/main_bottom_bg.png") no-repeat 0 0;
+}
+
+/* End of Main wrapper background */
+
+#content #main_wide{
+    width: 953px;
+    float: left;
+    background: #ffffff;
+    .rounded(10px);
+    .box-shadow(0, 0, 2px, #cccccc);
+    padding: 10px;
+    behavior: url(PIE.htc);
+}
+
+#content #main h2,
+#content #main_wide h2{
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #f1f1f1;
+    color: #59677a;
+    font-weight: bold;
+    font-size: 18px;
+}
+#content #main h3 {
+    height: 40px;
+    line-height: 40px;
+    color: #59677a;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#main_wide .error{
+    margin: 10px 0;
+}
+
+/* Tabed Navigation */
+
+#content #tabed-nav{
+    margin-bottom: 15px;
+    margin-left: 3px;
+    overflow: hidden;
+    text-align: left;
+}
+
+#content #tabed-nav ul li{
+    float: left;
+    margin-left: 20px;
+}
+    #content #tabed-nav ul li:first-child{
+        margin-left: 0;
+    }
+
+    #content #tabed-nav ul li a:hover,
+    #content #tabed-nav ul li.current a{
+        border-color: #2a70bf;
+        cursor: pointer;
+    }
+    #content #tabed-nav ul li.current a{
+        font-weight: bold;
+    }
+
+#content #tabed-nav ul li a{
+    border-bottom: 3px solid #bbbbbb;
+    color: #5A6876;
+    display: block;
+    font-size: 15px;
+    padding: 0 10px 5px;
+    text-decoration: none;
+}
+
+/* End of Tabed Navigation */
+/* End of main layout */

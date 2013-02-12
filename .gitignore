@@ -1,0 +1,13 @@
+assets/
+protected/config/db.php
+protected/config/node.php
+protected/config/curl-options.php
+protected/config/bugkick-api-settings.php
+protected/config/params/
+protected/runtime/
+tmp/
+temp/
+images/project_logo/
+images/profile_img/
+images/company_top_logo/
+log/

@@ -1,0 +1,364 @@
+// File: ticket-list.less
+// Description: Styles for the list of tickets
+
+/* Ticket List */
+
+.tickets-container{
+    padding: 6px 5px 8px 6px;
+}
+
+#content div#bug-list {
+    width: 700px;
+}
+
+#content div#bug-list div.ticket-item {
+    position: relative;
+    margin-bottom: 10px;
+    width: 688px;
+    height: 43px;
+    .rounded(3px);
+    border: 1px solid #F1F1F1;
+    border-left: none;
+    behavior: url(PIE.htc);
+}
+
+#content div#bug-list div.ticket-item .title {
+    display: block;
+    color: #5a6876;
+    float: left;
+    font-weight: bold;
+    line-height: 43px;
+    padding: 0 12px 0 15px;
+}
+
+#content div#bug-list div.ticket-item .title a{
+    color: #5a6876;
+}
+    #content div#bug-list div.ticket-item .title .colorTip{
+        min-width: 300px;
+        max-width: 600px;
+        white-space: normal;
+    }
+        #content div#bug-list div.ticket-item .title .colorTip:after{
+            content: "...";
+        }
+
+#content div#bug-list div.ticket-item .title a .ticket-number{
+    color: #aaaaaa;
+    padding-right: 5px;
+}
+
+#content div#bug-list div.ticket-item .grade {
+    display: none;
+    float: left;
+    text-indent: -9999px;
+    margin-top: 12px;
+}
+
+#content div#bug-list div.ticket-item .comments{
+    background: #fbfdff;
+    border-left: 1px solid #f1f1f1;
+    color: #56a8ee;
+    display: block;
+    float: right;
+    font-size: 11px;
+    font-weight: bold;
+    height: 43px;
+    /* line-height: 43px; */
+    padding: 0 11px;
+    text-align: center;
+    width: 20px;
+}
+
+    #content div#bug-list div.ticket-item .comments .comment-count-icon{
+        background: url("../images/icons/i_ticket_comments.png") no-repeat;
+        display: block;
+        height: 13px;
+        margin: 8px auto 3px;
+        width: 14px;
+    }
+
+#content div#bug-list div.ticket-item .photo {
+    float: right;
+    margin-top: 6px;
+    margin-right: 6px;
+    text-align: center;
+}
+
+#content .photo {
+    display: block;
+    position: relative;
+}
+
+#content .photo .edge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9;
+}
+
+#content .photo img {
+    position: relative;
+    z-index: 0;
+}
+    #content div#bug-list .photo:before{
+        .box-shadow-inset(0, 2px, 1px, rgba(0, 0, 0, 0.1));    
+        .rounded(4px);
+        behavior: url(PIE.htc);
+        content: "";
+        display: block;
+        height: 31px;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 31px;
+        z-index: 10;
+    }
+
+#content .photo.thumb {
+    min-width: 34px !important;
+    height: 31px !important;
+}
+
+#content .photo.thumb .edge {
+    width: 31px;
+    height: 31px;
+    background: url("../images/edge.png") no-repeat 0 0;
+}
+
+#content .photo.medium {
+    width: 81px !important;
+    height: 81px !important;
+}
+
+#content .photo.medium .edge {
+    width: 81px;
+    height: 81px;
+    background: url("../images/edge2.png") no-repeat 0 0;
+}
+
+#content div#bug-list div.ticket-item .clock {
+    display: block;
+    float: right;
+    width: 13px;
+    height: 16px;
+    background: url("../images/icons/clock.png") no-repeat 0 0;
+    margin-top: 14px;
+    margin-right: 10px;
+}
+#content div#bug-list div.negativeDays .clock {
+    background: url("../images/icons/clock-red.png") no-repeat 0 0;
+}
+
+#content div#bug-list div.ticket-item ul.options {
+    float: right;
+    width: 114px;
+    height: 28px;
+    padding-left: 15px;
+    padding-top: 13px;
+    margin-top: 1px;
+    margin-right: 8px;
+    border-left: 1px solid #f2f2f2;
+    border-right: 1px solid #f2f2f2;
+}
+
+ul.options li {
+    float: left;
+}
+
+ul.options li.detail {
+    width: 17px;
+    height: 16px;
+    background: url("../images/icons/i_enlarge.png") no-repeat 0 0;
+}
+
+#content div#bug-list div.ticket-item ul.options li.detail {
+    margin-right: 14px;
+}
+
+ul.options li.comment {
+    width: 16px;
+    height: 16px;
+    background: url("../images/icons/i_comment.png") no-repeat 0 0;
+}
+
+#content div#bug-list div.ticket-item ul.options li.comment {
+    margin-right: 13px;
+}
+
+ul.options li.delete {
+    width: 16px;
+    height: 16px;
+    background: url("../images/icons/i_delete.png") no-repeat 0 0;
+}
+
+#content div#bug-list div.ticket-item ul.options li.delete {
+    margin-right: 10px;
+    margin-top: 2px;
+}
+
+ul.options li.print {
+    width: 16px;
+    height: 16px;
+    background: url("../images/icons/i_print.png") no-repeat 0 0;
+}
+
+#content div#bug-list div.ticket-item ul.options li.print {
+    margin-top: 2px;
+}
+
+ul.options li.duplicate {
+    width: 16px;
+    height: 16px;
+    background: url("../images/icons/i_duplicate.png") no-repeat 0 0;
+}
+
+ul.options li a {
+    display: block;
+    text-indent: -9999px;
+    width: 100%;
+    height: 100%;
+}
+
+.ticket-item-view div{
+    float: left;
+    display: table-cell;
+    vertical-align: middle;
+}
+.ticket-item-view{
+    clear: both;
+    height: 38px;
+}
+.ticket-item-view:hover{
+}
+.ticket-item-status{
+    height: 36px;
+    border-right: none !important;
+}
+.ticket-item-title{
+    font-size: 14px;
+    width: 530px;
+    height: 29px;
+    padding: 8px 2px 0 8px;
+    border-top: 1px solid #E5E5E5;
+}
+.ticket-item-due{
+    width: 77px;
+    height: 28px;
+    padding: 9px 6px 0 0;
+    border-top: 1px solid #E5E5E5;
+}
+.ticket-item-photo{
+    width: 30px;
+    height: 33px;
+    padding: 4px 4px 0 0;
+    border-top: 1px solid #E5E5E5;
+}
+.ticket-item-comments{
+    width: 40px;
+    height: 27px;
+    padding: 10px 2px 0 0;
+    border-top: 1px solid #E5E5E5;
+}
+.due-date-bubble{
+    margin-right: 0px;
+}
+.ticket-item-title a{
+    font-size: 14px;
+    color: #000;
+    text-decoration: none;
+}
+div.ticket-item span.status{
+    border-left: 1px solid transparent;
+    width: 4px;
+    float: left;
+    height: 43px;
+    .rounded(3px 0 0 3px);
+    behavior: url(PIE.htc);
+}
+    div.ticket-item span.status.not-set{
+        border-left: 1px solid #f1f1f1;
+    }
+
+.ticket-item.selected{
+    .box-shadow(2px, 2px, 3px, #8EC1DA);
+}
+
+#bug-list .items .ticket-item .checkbox {
+    position: absolute;
+    left: 5px;
+    top: 0px;
+    z-index: 3;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+/*    margin: 14px 0 0 5px;*/
+    margin: 0;
+    min-height: 0;
+    cursor: pointer;
+}
+#bug-list .items .ticket-item .checkbox.checked {
+    background: url('../images/icons/checkbox_sprite.png') -16px 0 no-repeat;
+}
+#bug-list .items .ticket-item .checkbox.unchecked {
+    background: url('../images/icons/checkbox_sprite.png') 0 0 no-repeat;
+    display: none;
+}
+
+.infinite_navigation{
+    display: none;
+}
+
+/*removing of ajax animation in the ticket list */
+.tickets-container .list-view-loading{
+    background: none !important;
+}
+
+div.bug-list-mouse-selection {
+    display: none;
+    height: 0;
+    width: 0;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-color: #56A8EE;
+    border: 1px solid #063F7A;
+}
+body.unselectable, body *.unselectable {
+   -webkit-touch-callout:none;
+   -webkit-user-select:none;
+   -khtml-user-select:none;
+   -moz-user-select:none;
+   -ms-user-select:none; /* Introduced in IE 10. See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/ */
+   user-select:none;
+}
+
+/* Buble tags */
+.bubble {
+    font-size: 10px;
+    color: #ffffff;
+    padding: 3px 5px;
+    .rounded(4px);
+    margin-left: 5px;
+    text-transform: uppercase;
+    font-weight: normal;
+    letter-spacing: 0px;
+    behavior: url(PIE.htc);
+}
+/* End of buble tags */
+
+/* Search results */
+.search-archived{
+    margin-top: 20px;
+    padding-top: 5px;
+    border-top: 1px dotted #E5E5E5;
+    clear: both;
+    width: 300px;
+}
+.search-archived a{
+    padding-top: 5px;
+    text-decoration: none;
+}
+
+/* End of search results */
+/* End of Ticket List */

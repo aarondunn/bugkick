@@ -1,0 +1,19 @@
+/* CSS Document */
+
+.testimonials{z-index:10;}
+
+.footer{
+	position:relative;
+	float:left;
+	z-index:1;
+	margin:0px 0px 0px 0px;
+}
+
+.clouds{z-index:11;}
+.screenshot-badge{z-index:50;}
+
+.reveal-modal-bg{
+	background:none;
+	background-image:url(../../images/home/ie-background.png);
+	background-repeat:repeat;
+}

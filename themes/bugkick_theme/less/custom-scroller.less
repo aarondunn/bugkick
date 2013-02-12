@@ -1,0 +1,85 @@
+// File: custom-scroller.less
+// Descriptions: Styles for the custom scrollbar jquery plugin
+
+/* Custon Scrolling */
+.jspContainer{
+        overflow: hidden;
+        position: relative;
+        height: auto;
+}
+
+.jspPane{ position: absolute; }
+
+.jspVerticalBar{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 7px;
+        height: 100%;
+        background: inherit;
+}
+
+.jspHorizontalBar{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 7px;
+        background: inherit;
+}
+
+.jspVerticalBar *,
+.jspHorizontalBar *{ margin: 0; padding: 0; }
+
+.jspCap{ display: none; }
+
+.jspHorizontalBar .jspCap{ float: left; }
+
+.jspTrack{ background: inherit; position: relative; width: 7px;}
+
+.jspDrag{
+        background: #56A8EE;
+        .rounded(5px);
+        position: relative;
+        top: 0;
+        left: -5px;
+        cursor: pointer;
+        width: 7px;
+        .opacity(0.3, 30);
+}
+
+.jspDrag:hover{
+    .opacity(1, 100);
+}
+.jspHorizontalBar .jspTrack,
+.jspHorizontalBar .jspDrag{ float: left; height: 100%; }
+
+.jspArrow{
+        background: #7d7a77;
+        text-indent: -20000px;
+        display: block;
+        cursor: pointer;
+}
+
+.jspArrow.jspDisabled{ cursor: default; background: #7d7a77; }
+
+.jspVerticalBar .jspArrow{ height: 16px; }
+
+.jspHorizontalBar .jspArrow{
+        width: 16px;
+        float: left;
+        height: 100%;
+}
+
+.jspVerticalBar .jspArrow:focus{ outline: none; }
+
+.jspCorner{
+        background: #eeeef4;
+        float: left;
+        height: 100%;
+}
+
+/* Yuk! CSS Hack for IE6 3 pixel bug  */
+* html .jspCorner{ margin: 0 -3px 0 0; }
+
+/* END of Custom Scrolling */

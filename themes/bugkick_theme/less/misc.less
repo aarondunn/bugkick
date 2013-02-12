@@ -1,0 +1,201 @@
+// File: misc.less
+// Description: Misc styles
+
+/* Misc styles */
+
+.duplicate-number-label{
+    padding: 6px 3px 0 0;
+    display: inline-block;
+    float: left;
+}
+.duplicate-number-input{
+    width: 30px !important;
+    text-align: right;
+}
+
+.drophover a{
+    color: red !important;
+}
+
+.list-view .summary {
+    margin: 0 !important;
+}
+
+.thumb a img{
+    margin-right: 3px;
+}
+
+.embed-textarea{
+    width: 308px !important;
+    height: 110px;
+    overflow: hidden;
+}
+
+.empty{
+    margin: 10px;
+    display: block;
+}
+
+.popup-content{
+    margin: 10px;
+}
+
+/* Misc Helpers */
+
+.fl-left {
+    float: left;
+}
+.fl-right {
+    float: right;
+}
+.fl-none {
+    float: none;
+}
+
+.opacity03 {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";/* IE 8 */
+    filter: alpha(opacity=30);/* IE 5-7 */
+    -moz-opacity: 0.3;/* Netscape */
+    -khtml-opacity: 0.3;/* Safari 1.x */
+    opacity: 0.3;/* Good browsers */
+}
+.opacity05 {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";/* IE 8 */
+    filter: alpha(opacity=50);/* IE 5-7 */
+    -moz-opacity: 0.5;/* Netscape */
+    -khtml-opacity: 0.5;/* Safari 1.x */
+    opacity: 0.5;/* Good browsers */
+}
+.opacity1 {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";/* IE 8 */
+    filter: alpha(opacity=100);/* IE 5-7 */
+    -moz-opacity: 1;/* Netscape */
+    -khtml-opacity: 1;/* Safari 1.x */
+    opacity: 1;/* Good browsers */
+}
+
+/* End of Misc Helpers */
+/* Misc Buttons */
+
+#createProjectBtn{
+    font-size: 14px;
+    text-decoration: none;
+    width: 144px;
+    margin: 8px;
+}
+#createProjectBtn img{
+    margin-bottom: -5px;
+}
+
+/* End of Misc Buttons */
+/* End of misc styles */
+
+/* Admin */
+/* not really sure if this is used */
+#adminSidebar{
+ margin: 0 5px 10px; 
+}
+#adminSidebar h2{
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #f1f1f1;
+    color: #5a6876;
+    font-weight: bold;
+    font-size: 18px;
+}
+#adminSidebar h3 {
+    height: 40px;
+    line-height: 40px;
+    color: #5a6876;
+    font-weight: bold;
+    font-size: 15px;
+}
+#adminSidebar .item {
+  margin:2px 0 2px 10px;
+  word-wrap: normal;
+}
+.ajax-loader{
+  width:50px;
+  height:50px;
+  margin: 0 auto;
+  display: block;
+}
+
+/* End of Admin */
+
+/* GitHub repo connect */
+
+#github-repo-list {
+    margin: 5px;
+    padding: 5px;
+}
+.repo-view-item {
+    border: 1px solid #DFDFDF;
+    margin: 5px;
+    padding: 5px;
+}
+.repo-view-item:hover {
+    background-image: linear-gradient(bottom, rgb(245,245,245) 0%, rgb(255,255,255) 51%);
+    background-image: -o-linear-gradient(bottom, rgb(245,245,245) 0%, rgb(255,255,255) 51%);
+    background-image: -moz-linear-gradient(bottom, rgb(245,245,245) 0%, rgb(255,255,255) 51%);
+    background-image: -webkit-linear-gradient(bottom, rgb(245,245,245) 0%, rgb(255,255,255) 51%);
+    background-image: -ms-linear-gradient(bottom, rgb(245,245,245) 0%, rgb(255,255,255) 51%);
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, rgb(245,245,245)),
+        color-stop(0.51, rgb(255,255,255))
+    );
+}
+.repo-view-item .access-indicator,
+.repo-view-item .state-indicator {
+    width: 16px;
+    height: 16px;
+    margin: 0 7px;
+    background-color: transparent;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+}
+.repo-view-item .access-indicator.private {
+   background-image: url('../images/icons/lock.png');
+}
+.repo-view-item a {
+    font-weight: 700;
+}
+.repo-view-item .state-indicator.connected {
+    background-image: url('../images/icons/yes.png');
+}
+#connect-repo-form .row {
+    margin: 5px 15px;
+}
+#connect-repo-form .row.buttons {
+    text-align: right;
+    margin: 5px 20px;
+}
+#connect-repo-form .row label {
+    font-weight: 700;
+    margin: 5px;
+}
+
+/* End of GitHub repo connect */
+
+/* Form Container Style */ 
+
+.form-container{
+    margin: 5px auto 10px;
+    width: 430px;
+}
+.form-container-border{
+    border-top: 1px solid #fafafa;
+    border-bottom: 1px solid #e3e3e6;
+    margin: 5px auto 10px;
+    width: 430px;
+}
+
+.form-container-border label{
+    color: #5A6876;
+    display: inline !important;
+}
+
+/* End of Form Container Style */ 

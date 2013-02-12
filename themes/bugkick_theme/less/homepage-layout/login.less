@@ -1,0 +1,42 @@
+/* Login Page Styles */
+/* Additional actions block ( under login box ) */
+
+#additional-actions{
+	color: @labelTextColor;
+	margin: 10px auto;
+	text-align: center;
+	width: @formWidth;
+}
+	#additional-actions a{
+		color: @labelTextColor;
+	}
+		#additional-actions a:hover{
+			text-decoration: none;
+		}
+/* End of the additional actions */
+/* Connect with facebook */
+#facebook-connect{
+	background: #b9cbdc;
+	background: rgba(67, 129, 187, 0.1);
+	border: 1px solid #aac0d7;
+	border-left: none;
+	.rounded(0 10px 10px 0);
+	content: @labelTextColor;
+	font-size: 1.2*@defaultFontSize;
+	line-height: 21px;
+	padding: 15px;
+	position: absolute;
+	right: -230px;
+	.text-shadow(0, 0, 2px, rgba(90, 90, 00, 0.4));
+	top: 40%;
+}
+	#facebook-connect a#fb-conn{
+		background: @fbButton no-repeat;
+		display: inline-block;
+		height: 21px;
+		margin-left: 10px;
+		text-indent: -9999px;
+		width: 169px; 
+	}
+/* End of facebook connect */
+/* End of Login Page styles */

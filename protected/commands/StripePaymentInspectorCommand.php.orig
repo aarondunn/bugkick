@@ -1,0 +1,88 @@
+<?php
+/**
+ * Author: Alexey kavshirko@gmail.com
+ * Date: 04.01.12
+ * Time: 0:25
+ */
+class StripePaymentInspectorCommand extends Command
+{
+   	public function actionIndex()
+    {
+        //Downgrade companies with canceled payments
+        $downgradedNum = $this->downgradeCompanies();
+        if ( $downgradedNum >0)
+            print $downgradedNum . ' companies were downgraded...';
+
+        $customers = $this->checkCustomers();
+        if (!empty($customers)){
+
+            //Notify customers with canceled payments
+            if (!empty($customers['canceled'])){
+                 Notificator::outdatedPayment($customers['canceled']);
+
+                foreach($customers['canceled'] as $value){
+                    $customersIDs[] = $value->customer_id;
+                }
+
+                $criteria = new CDbCriteria();
+                $criteria->addInCondition('customer_id', $customersIDs);
+                StripeCustomer::model()->updateAll(array('notified_at'=>time()), $criteria);
+                print 'Users were notified about canceled payments...';
+            }
+
+            //Check customers with outdated payment information
+            if (!empty($customers['outdated'])){
+                foreach($customers['outdated'] as $value){
+                    //To-do: Check customers status
+
+                }
+            }
+
+        }
+        else{
+            print 'There are no problems with payments.';
+        }
+    }
+
+    private function checkCustomers()
+    {
+        $customers = array();
+        //Find customers with outdated payment information
+        $criteria = new CDbCriteria();
+        $lastTerm = time();
+        $criteria->condition='( (t.last_payment_time + t.payment_interval) < :$lastTerm) AND (is_canceled = 0)';
+        $criteria->params=array(':lastTerm'=>$lastTerm);
+        $customers['outdated'] = StripeCustomer::model()->with('user')->findAll($criteria);
+
+        //Find customers with canceled payments
+        $criteria = new CDbCriteria();
+        $criteria->condition = 't.is_canceled = 1 AND t.notified_at = NULL';
+        $customers['canceled'] = StripeCustomer::model()->with('user')->findAll($criteria);
+
+        return $customers;
+    }
+
+    private function downgradeCompanies()
+    {
+        //Find and downgrade companies with canceled payments
+        $criteria = new CDbCriteria();
+        $lastTerm = time() - Yii::app()->params['delayBeforeDowngrade'];
+        $criteria->condition = '(t.last_payment_time + t.payment_interval) < :$lastTerm)';
+        $criteria->params = array(':lastTerm'=>$lastTerm);
+        $companies = StripeCustomer::model()->findAll($criteria);
+
+        if (!empty($companies)){
+            
+            foreach($companies as $value){
+                $companyIDs[] = $value->company_id;
+            }
+            
+            $criteria = new CDbCriteria();
+            $criteria->addInCondition('company_id', $companyIDs);
+            StripeCustomer::model()->deleteAll($criteria);
+            return Company::model()->updateAll(array('account_type'=>Company::TYPE_FREE), $criteria);
+        }
+        return 0;
+    }
+
+}

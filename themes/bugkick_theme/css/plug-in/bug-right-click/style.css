@@ -1,0 +1,29 @@
+.vmenu,
+.vmenu_dl {
+    border: 1px solid #aaa;
+    position: absolute;
+    background: #fff;
+    display: none;
+    font-size: 0.9em;
+}
+.vmenu .first_li span,
+.vmenu_dl .first_li span {
+    width: 100px;
+    display: block;
+    padding: 5px 10px;
+    cursor: pointer
+}
+.vmenu .inner_li,
+.vmenu_dl .inner_li {
+    display: none;
+    margin-left: 120px;
+    position: absolute;
+    border: 1px solid #aaa;
+    border-left: 1px solid #ccc;
+    margin-top: -28px;
+    background: #fff;
+}
+.vmenu .sep_li,
+.vmenu_dl .sep_li {
+    border-top: 1px ridge #aaa
+}

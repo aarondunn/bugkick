@@ -1,0 +1,297 @@
+$(document).ready(function() {
+	var baseUrl = window.location.protocol + '//' + window.location.hostname;
+	//Tree-menu
+	$(".tree").simpleTreeMenu();
+	//var get =  "'.$filterText.'";
+	var request = unescape(get).substring(1, get.length);
+	var paramArray = request.split("&");
+	// console.log(request,paramArray);
+	
+	for(var i=0; i<paramArray.length ; i++) {
+        var paramIndex = paramArray[i].match(/=(\d+)/i);
+        var paramName = paramArray[i].match(/\w+/i);
+        //console.log(paramIndex, paramName);
+        if(paramIndex != null) {
+            var param = paramName[0] + "_" + paramIndex[1];
+            //console.log(param);
+
+            //expand active menu items
+            if (paramName == "user" || paramName == "status" || paramName == "label" || paramName == "group" || paramName == "filter" ){
+                $("#"+paramName+"Tree").simpleTreeMenu("expandToNode", $("#target-"+paramName));
+            }
+
+            $("#"+param).css("color", "red");
+            input = $("#"+param).next(":input");
+            input.val(paramIndex[1]);
+        }
+    }
+
+
+
+
+    var DELAY = 180, clicks = 0, timer = null;
+
+
+	//console.log(paramArray);
+	$(".operations a").click(function(){
+
+
+        var link = $(this);
+        clicks++;  //count clicks
+
+        if(clicks === 1) {
+
+            timer = setTimeout(function() {
+            //single click
+
+
+                var status_id = link.attr("id");
+                var id;
+                var input;
+
+                if (status_id == 'saveFilter')
+                  return false;
+
+                id = status_id.match(/\d+/i)[0];
+                input = link.next(":input");
+                //turnoff old saved filters
+                 if (link.attr("class") == 'saved-filters-link'){
+                     if(input.val() == "") {
+                         $(".operations a").css("color", "");
+                         $(".operations a").next(":input").val("");
+                     }
+                 }
+                 else{
+                     $('.saved-filters-link').css("color", "");
+                     $('.saved-filters-input').val("");
+                 }
+
+
+
+
+                if(input.val() == "") {
+                    link.css("color", "red");
+                    input.val(id);
+                }
+                else {
+                    link.css("color", "");
+                    input.val("");
+                }
+
+
+                sendFilterData();
+
+
+
+
+                clicks = 0;             //after action performed, reset counter
+            }, DELAY);
+
+        } else {
+        //double click
+
+
+            var status_id = link.attr("id");
+            var id;
+            var input;
+
+            if (status_id == 'saveFilter')
+              return false;
+
+            id = status_id.match(/\d+/i)[0];
+            input = link.next(":input");
+
+
+            //turnoff old saved filters
+            if (link.attr("class") == 'saved-filters-link'){
+                if(input.val() == "") {
+                    $(".operations a").css("color", "");
+                    $(".operations a").next(":input").val("");
+                }
+            }
+            else{
+                $('.saved-filters-link').css("color", "");
+                $('.saved-filters-input').val("");
+            }
+
+            if(input.val() == "") {
+                link.css("color", "grey");
+                input.val(id);
+            }
+            else {
+                link.css("color", "");
+                input.val("");
+            }
+
+            sendFilterData();
+
+
+
+
+
+
+
+            clearTimeout(timer);    //prevent single-click action
+            clicks = 0;             //after action performed, reset counter
+        }
+
+        return false;
+    }).live("dblclick", function(e){
+        e.preventDefault();  //cancel system double-click event
+    });
+
+    function sendFilterData()
+    {
+        //getting new data...
+        $("#filterForm").ajaxSubmit({
+            url     : baseUrl + act, //+ "/bug/" + act,
+            beforeSubmit:function(data) {
+               // $.flashMessage().beginProgress();
+            },
+            success: function(data) {
+                $("#bug-list").html(data);
+                addTooltip();
+                destroySortable();
+                setupSortable();
+               // $.flashMessage().message('Ready');
+            },
+            error: function(data) {
+               // $.flashMessage().message('An Error has occurred');
+            },
+            dataType: "html"
+        });
+    }
+
+
+
+
+
+
+
+
+	function _makeDroppable(selector, targetIdName, requestUrl, errorCallback) {
+		$(selector).droppable({
+			greedy: true,
+			tolerance : "pointer",
+			hoverClass: "drophover",
+			accept:'div.ticket-item',
+			drop : function(event, ui) {
+				var elemID = ui.draggable.attr("ticketID");
+				var targetID = $(this).attr(targetIdName);
+				var postData={
+					elemID:elemID,
+                    YII_CSRF_TOKEN:YII_CSRF_TOKEN
+				};
+				postData[targetIdName]=targetID;
+				$.ajax({
+					url: requestUrl,
+					type: "post",
+					data: postData,
+					success: function(request, status, error) {
+						//refreshing tickets list
+                        var searchKeywords = $('input#bugSearch').serialize();
+                        $.fn.yiiListView.update('bug-list', {data: searchKeywords});
+                        if(targetIdName == 'labelID'){
+                            updateLabels();
+                        }
+					},
+					error: errorCallback
+				});
+
+                $('#bug-list div.items').data('disallowSort', true);
+
+
+                //$('#bug-list div.items').sortable('cancel');
+                //destroySortable();
+			}
+		});
+	}
+	function getErrorCallback(msg) {
+		return function(request, status, error){
+			alert(msg);
+		};
+	}
+	var filterItems=[
+		{
+			selector:'div.label-container',
+			targetIdName:'labelID',
+			requestUrl:baseUrl + '/bug/DndAddLabel',
+			errorCallback:getErrorCallback('We are unable to set the label at this time.  Please try again in a few minutes.')
+		},
+		{
+			selector:'li.user',
+			targetIdName:'userID',
+			requestUrl:baseUrl + '/bug/DndAddUser',
+			errorCallback:getErrorCallback('We are unable to set the assignee at this time.  Please try again in a few minutes.')
+        },
+		{
+			selector:'li.status',
+			targetIdName:'statusID',
+			requestUrl:baseUrl + '/bug/DndAddStatus',
+			errorCallback:getErrorCallback('We are unable to change the status at this time.  Please try again in a few minutes.')
+		}
+	];
+	for(i=0; i < filterItems.length; i++)
+		_makeDroppable(
+			filterItems[i].selector,
+			filterItems[i].targetIdName,
+			filterItems[i].requestUrl,
+			filterItems[i].errorCallback
+		);
+	//Expand filter menus when tickets dragged over
+	/*$('span.menu-title').droppable({
+		greedy: true,
+		tolerance: 'pointer',
+		over: function(event, ui) {
+			var el=$(this);
+			el.simpleTreeMenu('expandToNode', el.next('ul'));
+		}
+	});*/
+
+    //Remember state of filters
+    if(typeof(localStorage) != 'undefined' ) {
+        if (localStorage.getItem('statusTree') == 1){
+            $("#statusTree").simpleTreeMenu("expandToNode", $("#target-status"));
+        }
+        if (localStorage.getItem('labelTree') == 1){
+            $("#labelTree").simpleTreeMenu("expandToNode", $("#target-label"));
+        }
+        if (localStorage.getItem('userTree') == 1){
+            $("#userTree").simpleTreeMenu("expandToNode", $("#target-user"));
+        }
+        if (localStorage.getItem('groupTree') == 1){
+            $("#groupTree").simpleTreeMenu("expandToNode", $("#target-group"));
+        }
+        if (localStorage.getItem('filterTree') == 1){
+            $("#filterTree").simpleTreeMenu("expandToNode", $("#target-filter"));
+        }
+    }
+
+   $('.delete-filter').click(function(){
+       var id = $(this).attr("id");
+       if (id >0){
+           if (confirm('Delete this filter?')){
+               window.location = baseUrl + '/user/deleteFilter/id/'+id;
+           }
+       }
+       return false;
+   });
+
+});
+//Updates number of tickets by label
+function updateLabels(){
+    $.ajax({
+        'url': 'label/updateCount',
+        'type': 'post',
+        'data': { 'YII_CSRF_TOKEN':YII_CSRF_TOKEN },
+        'success' : function(request, status, error) {
+            $.each(request.labels, function(index, value) {
+                $('#label_' + index).find('.label-count').html(value);
+            });
+        },
+        'error': function(request, status, error){
+            alert('We are unable to update labels at this time.  Please try again in a few minutes.');
+        },
+        dataType: "json"
+    });
+}

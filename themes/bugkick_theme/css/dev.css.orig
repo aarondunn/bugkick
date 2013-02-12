@@ -1,0 +1,221 @@
+/* 
+    Document   : dev
+    Created on : Jul 28, 2012, 12:10:57 AM
+    Author     : f0t0n
+    Description:
+        Intended to be merged with main stylesheet eventually.
+    Additional ( from Boyan ): 	Please use this file to place any styles you need,
+								while I am doing the cleaning up of dead CSS and the conversion to LESS.
+								Later I'll review the code here and place it in the appropriate files.
+								It will take some time, and I'll do it step by step.
+								After I start you can look into the less folder for the files already converted and 
+								edit them there. ( Recompilations is needed );
+*/
+
+#comment-form .wysiwyg {
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+/*Fix for the 'Status' dropdown in advanced options for comments (options were hidden)*/
+#advancedOptions .chzn-search input[type="text"]{
+    float: none;
+}
+
+.createBug_newLabelBtn{
+	cursor: pointer;
+    margin: 1px 0 1px 4px;
+}
+
+#content .ticket_content .description{
+    word-wrap: break-word;
+}
+.signup_plans.plans_summary{
+    margin: 10px 20px;
+}
+.signup_plans.plans_summary .title{
+    font-weight: bold;
+}
+.form.left{
+    padding-right: 20px;
+}
+
+.search-container{
+    position: relative;
+}
+a.cancel-search{
+    background: url("/themes/bugkick_theme/images/icons/help_cancel_edit.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 16px;
+    position: absolute;
+    right: 18px;
+    text-indent: -9999px;
+    top: 7px;
+    width: 16px;
+    outline: none !important;
+}
+.collapse-icon,
+.expand-icon{
+    background: url("../images/icons/collapse.png") 0 0 repeat-x;
+    width: 22px;
+    height: 10px;
+    cursor: pointer;
+    margin: 3px 0 8px 3px;
+    float:right;
+}
+.collapse-icon{
+    background: url("../images/icons/expand.png") 0 0 repeat-x;
+}
+ul.message :nth-last-child(2){
+    border: none !important;
+}
+
+.view-more-pager li.next a{
+    display: block;
+    width: 190px;
+    border-color: #F0F0F0 !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
+    color: #0088CC !important;
+    background-color: transparent;
+    box-shadow: none;
+    text-align: center;
+    margin: 0 10px;
+    padding: 10px !important;
+    outline: none !important;
+}
+span.view-more-label{
+    background: url("/themes/bugkick_theme/images/arrow1.png") 100% 50% no-repeat;
+    padding-right: 10px;
+}
+.view-more-pager li.previous a{
+    display: none;
+}
+.shortcut-container a:hover{
+    color: #E7D959;
+}
+.shortcut-container{
+    position: fixed;
+    top: 200px;
+}
+#content div#bug-list{
+    width: 100%;
+}
+.ticket_changes a,
+.ticket_changes a:hover{
+    color: #5A6876;
+}
+#managePeopleBtn{
+    font-size: 14px;
+    text-decoration: none;
+    width: 144px;
+    margin: 8px;
+}
+#managePeopleBtn img{
+    margin-bottom: -5px;
+}
+
+#sidebar .ui-resizable-handle{
+    background: url("/themes/bugkick_theme/images/icons/ellipsis.png") no-repeat 50% 50%;
+    height: 14px;
+    opacity: .2;
+}
+.calendar-tab{
+    width: 24px;
+    height: 24px;
+    display: block;
+    padding: 0;
+    margin: 15px 0 0;
+}
+
+/*New users tutorial*/
+.steps{
+    margin: 0 auto;
+    width: 912px;
+    padding-top: 70px;
+}
+.step1{
+    background: url("/themes/bugkick_theme/images/new/step1.png") no-repeat;
+}
+.step2{
+    background: url("/themes/bugkick_theme/images/new/step2.png") no-repeat;
+}
+.step3{
+    background: url("/themes/bugkick_theme/images/new/step3.png") no-repeat;
+}
+.step-item{
+    margin: 0 10px;
+    width: 280px;
+    float: left;
+}
+.step-item a{
+    float: left !important;
+    font-size: 12px !important;
+    margin: 0 !important;
+    width: auto !important;
+}
+
+ul.options li.open {
+    width: 16px;
+    height: 14px;
+    background: url("../images/icons/i_open.png") no-repeat 0 0;
+}
+#content .ticket_info ul.options li.open {
+	margin-right: 10px;
+}
+
+/* help dialog window*/
+#helpDialog .help-back-link{
+    float: left;
+    display: block;
+    width: 50px;
+    height: 34px;
+    outline: none !important;
+    background: url("/themes/bugkick_theme/images/icons/back-help-form.png");
+    background-repeat: no-repeat;
+}
+
+#helpDialog .form-container .row.search label {
+    left: 55px;
+}
+#helpDialog .form-container .row.search #cancel-search {
+    background: url("/themes/bugkick_theme/images/icons/close-help-form.png");
+    background-repeat: no-repeat;
+    right: 0px;
+    top: 0px;
+    height: 33px;
+    width: 42px;
+}
+#content div#bug-list .comments .colorTip {
+    white-space: normal;
+    min-width: 300px;
+}
+#helpDialog .form input[type="text"] {
+    width: 450px;
+}
+/*end help dialog window*/
+
+/* help dialog window*/
+#contact-us{
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+}
+#contact-us .row {
+    margin-left: 0;
+}
+#contact-us .buttonLandingStyle{
+    text-align: center;
+    color: white;
+}
+/*end help dialog window*/
+
+.api-ticket-email{
+    font-style: italic;
+    color: #59677A;
+}

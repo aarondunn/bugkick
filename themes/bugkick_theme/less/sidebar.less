@@ -1,0 +1,333 @@
+// File: sidebar.less
+// Description: Styles for the sidebar
+
+/* Sidebar */
+
+/* Sidebar Layout */
+
+#sidebar {
+    width: 242px;
+    float: right;
+}
+
+#sidebar:before{
+    content: "";
+    display: block;
+    width: 242px;
+    height: 12px;
+    background: url("../images/sidebar_top_bg.png") no-repeat 0 0;
+}
+
+#sidebar .sidebar_middle {
+    width: 230px;
+    background: url("../images/sidebar_middle_bg.png") repeat-y 0 0;
+    padding: 1px 6px;
+}
+
+#sidebar:after {
+    content: "";
+    display: block;
+    width: 242px;
+    height: 13px;
+    background: url("../images/sidebar_bottom_bg.png") no-repeat 0 0;
+}
+
+#sidebar .search_box {
+    display: block;
+    width: 131px;
+    height: 30px;
+    padding: 0 17px 0 33px;
+    background: url("../images/search_box_bg.png") no-repeat 0 0;
+    margin: 10px 0 15px 20px;
+    font-size: 13px;
+    color: #bfbfbf;
+    line-height: 30px;
+    border: none;
+    -moz-transition: none;
+    .box-shadow-remove();
+}
+ /* End of Sidebar layout */
+
+#bugSearchWidget {
+    vertical-align: middle
+}
+
+/* simpleTreeMenu for Filters */
+ul.simpleTreeMenu, ul.simpleTreeMenu ul {
+	padding-left: 35px;
+}
+ul.simpleTreeMenu li.Node {
+	list-style-image: url("../images/arrow.png");
+    color: #5A6876;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 28px;
+    width: 185px;
+}
+ul.simpleTreeMenu li.Node span.menu-title{
+    line-height: 25px;
+}
+ul.simpleTreeMenu li.Node span {
+	cursor: pointer;
+}
+ul.simpleTreeMenu li.expanded {
+	list-style-image: url("../images/arrow1.png");
+    width: 185px;
+}
+ul#labelTree li.expanded ul{
+    width: 200px;
+    margin-left: -3px;
+}
+
+ul.simpleTreeMenu li.expanded ul{
+    padding-left: 0px;
+}
+ul.simpleTreeMenu a, ul.simpleTreeMenu a:visited {
+    border-bottom: 1px solid #F1F1F1;
+    color: #56A8EE;
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    height: 28px;
+    /*line-height: 28px;*/
+}
+ul.simpleTreeMenu ul#target-label a,
+ul.simpleTreeMenu ul#target-label a:visited {
+    border: none;
+}
+
+#target-label{
+   padding-top: 10px;
+}
+
+/* Lables - in the sidebar */
+
+#target-label li.label{
+    float: left;
+    margin-bottom: 8px;
+    padding: 0;
+    margin-right: 16px;
+    line-height: 100%;
+
+    &:last-child{
+        margin-right: 0;
+        
+        .label-container a:after{
+            display: none;
+        }
+    }
+}
+
+.operations div.label-container {
+    //float: left;
+}
+
+    // .operations .label-container:before {
+    //     content: "";
+    //     display: block;
+    //     background: url("../images/icons/tag_left.png") 0 0 no-repeat;
+    //     width: 14px;
+    //     float: left;
+    //     height: 23px;
+    // }
+
+.operations #target-label .label .label-container a{
+    //background: url("../images/icons/tag_repeat.png") 0 0 repeat-x;
+    //border-top: 1px solid #edb14a;
+    //border-bottom: 1px solid #ce922e;
+    //border-right: 1px solid #e1a53f;
+    //.rounded(0 3px 3px 0);
+    //color: #996633;
+    //float: left;
+    font-size: 11px;
+    font-weight: bold;
+    //height: 21px;
+    //line-height: 21px;
+    max-width: 140px;
+    //padding: 0 10px 0 5px;
+    text-decoration: none;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+    position: relative;
+    height: auto;
+
+    &:before{
+        content: "•";
+        font-size: 12px;
+        display: inline-block;
+        color: #b0b0b0;
+        position: absolute;
+        top: 1px;
+        left: -10px;
+        width: 4px;
+    }
+}
+
+.operations #target-label .label .label-container a:visited {
+    //color: #996633;
+}
+
+.operations #target-label .label .label-container a:hover .label-count{
+    color: #b0b0b0;
+}
+
+.operations #target-label .label .label-container a .label-count {
+    color: #b0b0b0;
+    padding-left: 5px;
+}
+
+/* End of Labels - for the sidebar  */
+
+/* Filter */
+
+.float-filters{
+    z-index: 1 !important;
+}
+
+#saveFilter{
+    display: block;
+    margin: 4px 0 0 -20px;
+    color: #56A8EE;
+    font-weight: bold;
+    border: none;
+}
+.save-search-icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+    float: left;
+    margin: 7px 4px 0 0;
+    background: url('../images/icons/plus_1.png') 0 0 no-repeat;
+}
+
+span.delete-filter{
+    background: url("../images/icons/close_sprite2.png") no-repeat scroll 0 -8px transparent;
+    cursor: pointer;
+    height: 8px;
+    margin-top: 10px;
+    width: 8px;
+    float: right;
+    display: none;
+}
+
+.saved-filters-link:hover span.delete-filter{
+    display: block;
+}
+span.delete-filter:hover{
+    background: url("../images/icons/close_sprite2.png") no-repeat scroll 0 0 transparent;
+}
+
+#filterForm a.filter-edit-link{
+    float: right;
+    width: 14px;
+    height: 14px;
+    background: url("../images/icons/edit-icon.png") no-repeat 0 0;
+    border: none;
+    display: none;
+    margin-top: 5px;
+}
+#filterForm li.Node:hover a.filter-edit-link{
+    display: block;
+}
+
+#bugkick-multidrag-container {
+    display: none;
+    position: absolute;
+    height: 0;
+    width: 0;
+    background-color: #56A8EE;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    height: auto;
+    padding: 15px 25px 10px 15px;
+}
+#bugkick-multidrag-container #content {
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: hidden;
+}
+/* End of Filter */
+
+/* Sidebar variations */
+
+/* Ticket page */
+#sidebar ul.ticket_changes {
+    padding: 9px 11px;
+}
+
+#sidebar ul.ticket_changes li.photo {
+    width: 31px;
+    height: 31px;
+    float: left;
+    margin-right: 13px;
+    margin-top: 4px;
+    text-align: center;
+}
+
+#sidebar ul.ticket_changes li.info {
+    float: left;
+    width: 160px;
+    color: #889099;
+    line-height: 18px;
+    font-size: 12px;
+}
+
+#sidebar ul.ticket_changes li.info .name{
+    color: #0088cc;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.no-changes{
+    color: #889099;
+    margin: 2px 10px;
+    font-style: italic;
+}
+
+#sidebar ul.ticket_changes li.info b{
+    color: #5a6876;
+    font-weight: bold;
+}
+#sidebar ul.ticket_changes li.info strong{
+    font-size: 12px;
+    color: #5a6876;
+}
+
+#sidebar .ticket_changes .photo.thumb{
+    min-width: 31px !important;
+}
+
+/* End of Ticket Page */
+/* Settings page */
+
+#sidebar ul#right_menu {
+    margin: 18px 17px;
+}
+
+#sidebar ul#right_menu > li {
+    height: 20px;
+    margin: 10px 0;
+    padding-left: 10px;
+    background: url("../images/arrow.png") no-repeat left center;
+}
+
+#sidebar ul#right_menu > li a {
+    display: block;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #5a6876;
+}
+
+#sidebar ul#right_menu > li a:hover,
+#sidebar ul#right_menu > li a.active {
+    color: #56a8ee;
+}
+
+/* End of Settings page */
+/* End of Sidebar variations */
+/* End of Sidebar */

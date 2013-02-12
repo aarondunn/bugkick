@@ -1,0 +1,164 @@
+// Colors
+@introTextColor: #485457;
+
+@columnHeadingsColor: #5a6876;
+@columnTextColor: #666666;
+
+@footerLinkColor: #008EC9;
+@footerTextColor: #888888;
+
+@buttonTextColor: #ffffff;
+
+// Misc 
+
+@bugImage: url("../images/Landing/bug_bg.png");
+
+/* Landing Page Styles */
+
+#intro{
+	width: @contentWidth - 350px;
+}
+	#intro h2{
+		color: #485457;
+		font-size: 36px;
+		font-weight: bold;
+		margin-bottom: 20px;
+		.text-shadow(0, 1px, 1px, #dce6f0);
+	}
+
+	#intro p{
+		color: @introTextColor;
+		.text-shadow(0, 1px, 1px, #e2ebf3);
+	}
+
+#main-content{
+	background: #ffffff;
+	.rounded(10px);
+	.box-shadow(-1px, 1px, 10px, rgba(0, 0, 0, 0.25));
+	margin: 50px 0 10px;
+	position: relative;
+}
+
+	#main-content .screenshots{
+		overflow: hidden;
+		padding: 20px;
+	}
+
+		#main-content .screenshots ul li{
+			border: 1px solid #e7e7e7;
+			.rounded(5px);
+			.box-shadow(0, 1px, 5px, #e7e7e7);
+			float: left;
+			margin-left: 10px;
+			padding: 5px;
+		}
+			#main-content .screenshots ul li:first-child{
+				margin-left: 0;
+			}
+
+			#main-content .screenshots ul li a{
+				border: 1px solid #d7d7d7;
+				.rounded(4px);
+				.box-shadow-inset(0, 1px, 5px, #e7e7e7);
+				height:70px;
+				display: block;
+				overflow: hidden;
+				width: 90px;
+			}
+
+			#main-content #bug-image{
+				background: @bugImage no-repeat;
+				height: 250px;
+				position: absolute;
+				right: 0;
+				top: -159px;
+				width: 260px; 
+				z-index: -1;
+			}
+				#main-content #bug{
+					position: absolute;
+					right: 0;
+					top: -159px;
+					z-index: 10;
+				}
+#features{
+	border-top: 1px solid #e5e5e5;
+	.box-shadow-inset(0, 5px, 30px, rgba(229, 229, 229, 0.7));
+	min-height: 300px;
+	overflow: hidden;
+	padding: 30px 20px 20px;
+}
+	#features .feature-container{
+		border-left: 1px solid #e9e9eb;
+		float: left;
+		margin-left: 30px;
+		padding: 15px 0 20px 20px;
+		width: (@contentWidth - 40px - 102px)/3;
+        height: 160px;
+	}
+		#features .feature-container:first-child{
+			border-left: none;
+			margin-left: 0;
+			padding-left: 0;
+		}
+
+	#features .feature-container h3{
+		color: @columnHeadingsColor;
+		font-size: 22px;
+		font-weight: bold;
+		margin-bottom: 20px;
+	}
+
+	#features .feature-container p{
+		color: @columnTextColor;
+	}
+
+	#features .feature-container ul{
+		color: #1ba2cd;
+		font-size: 12px;
+		list-style: disc;
+		line-height: 18px;
+		margin-left: 17px;
+		margin-top: 10px;
+	}
+		#features .feature-container ul li a{
+			color: #1ba2cd;
+			outline: none;
+		}
+
+		#features .feature-container ul li p{
+			padding: 5px 0;
+		}
+		
+#content-footer{
+	background: #fff6ce;
+	border-top: 1px solid #f4e7ae;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	padding: 20px;
+}
+	#content-footer .inner{
+		margin: 0 auto;
+		overflow: hidden;
+		width: @contentWidth/2 + 4px;
+	}
+
+		#content-footer .inner .desc{
+			color: #a18c7a;
+			float: left;
+			margin-right: 10px;
+		}
+			#content-footer .inner .desc .accent{
+				color: #76675a;
+				font-size: 16px;
+				font-weight: bold;
+			}
+		#content-footer .inner .button.green{
+			float: right;
+		}
+/* End of Landing Page styles */
+.video-intro{
+    clear: both;
+    padding: 40px;
+    text-align: center;
+}

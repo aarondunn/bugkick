@@ -1,0 +1,72 @@
+// Mixins
+.rounded(@radius: 5px){
+	border-radius: @radius;
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+
+	-moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+}
+
+.rounded-all(@topLeft, @topRight, @bottomLeft, @bottomRight){
+	border-radius: @topLeft @topRight @bottomRight @bottomLeft;
+	-webkit-border-radius: @topLeft @topRight @bottomRight @bottomLeft;
+	-moz-border-radius: @topLeft @topRight @bottomRight @bottomLeft;
+
+	-moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+}
+
+.text-shadow(@hor, @ver, @blur, @color){
+	text-shadow: @hor @ver @blur @color;
+}
+
+.box-shadow(@hor, @ver, @blur, @color){
+	 -webkit-box-shadow: @hor @ver @blur @color;
+	 	-moz-box-shadow: @hor @ver @blur @color;
+        	 box-shadow: @hor @ver @blur @color;
+}
+
+.box-shadow-inset(@hor, @ver, @blur, @color){
+	 -webkit-box-shadow: inset @hor @ver @blur @color;
+	 	-moz-box-shadow: inset @hor @ver @blur @color;
+        	 box-shadow: inset @hor @ver @blur @color;
+}
+
+.box-shadow-remove(){
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.gradient(@colorFallBack, @colorFrom, @colorTo) {
+	background-color: @colorFallBack;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(@colorFrom), to(@colorTo)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(top, @colorFrom, @colorTo); /* Chrome 10+, Saf5.1+, iOS 5+ */
+	background-image:    -moz-linear-gradient(top, @colorFrom, @colorTo); /* FF3.6+ */
+	background-image:      -o-linear-gradient(top, @colorFrom, @colorTo); /* Opera 11.10+ */
+	background-image:         linear-gradient(to bottom, @colorFrom, @colorTo);
+}
+
+.opacity(@value, @valueIE) {
+  opacity: @value; /* Chrome 4+, FF2+, Saf3.1+, Opera 9+, IE9, iOS 3.2+, Android 2.1+ */
+  filter: alpha(opacity=@valueIE); /* IE6-IE8 */
+}
+
+.size(@width, @height){
+	height: @height;
+	width: @width;
+}
+
+// Clearfix
+// --------
+// For clearing floats like a boss h5bp.com/q
+.clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+  }
+  &:after {
+    clear: both;
+  }
+}

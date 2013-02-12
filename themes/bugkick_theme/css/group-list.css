@@ -1,0 +1,172 @@
+/* 
+    Document   : group-list.css
+    Created on : Dec 5, 2011, 2:15:14 PM
+    Author     : f0t0n
+    Description:
+        Purpose of the stylesheet follows.
+*/
+.invis{
+	display:none;
+}
+.userGroupItem{
+	float:left;
+	border:1px solid #cccccc;
+	/*box-shadow:0 0 5px #cccccc;*/
+	margin:5px;
+}
+.userGroupItem .nameContainer{
+	margin: 2px 10px 10px;
+}
+.userGroupItem .name{
+	font-weight:bold;
+	padding:3px;
+	cursor:pointer;
+}
+.userGroupItem .name:hover{
+/*	background-color:#DFDFDF;*/
+	box-shadow:0 0 3px #cccccc;
+}
+.userGroupItem .project, .groupCaption, .gBack{
+	padding:2px 5px;
+	font-style:italic;
+}
+.userGroupItem .project, .groupCaption{
+	border-bottom:1px solid #cccccc;
+	border-left:1px solid #cccccc;
+	border-radius:0 0 0 3px;
+	-moz-border-radius:0 0 0 3px;
+	-webkit-border-radius:0 0 0 3px;
+	float:right;
+}
+.gBack{
+	border-radius:0 0 3px 0;
+	-moz-border-radius:0 0 3px 0;
+	-webkit-border-radius:0 0 3px 0;
+	border-bottom:1px solid #cccccc;
+	border-right:1px solid #cccccc;
+	float:left;
+	cursor:pointer;
+	font-weight:700;
+}
+.gBack:hover{
+	border-color:rgb(71,133,209);
+	color:#fff;
+	background-image: linear-gradient(bottom, rgb(71,133,209) 31%, rgb(133,169,222) 50%, rgb(71,133,209) 83%);
+	background-image: -o-linear-gradient(bottom, rgb(71,133,209) 31%, rgb(133,169,222) 50%, rgb(71,133,209) 83%);
+	background-image: -moz-linear-gradient(bottom, rgb(71,133,209) 31%, rgb(133,169,222) 50%, rgb(71,133,209) 83%);
+	background-image: -webkit-linear-gradient(bottom, rgb(71,133,209) 31%, rgb(133,169,222) 50%, rgb(71,133,209) 83%);
+	background-image: -ms-linear-gradient(bottom, rgb(71,133,209) 31%, rgb(133,169,222) 50%, rgb(71,133,209) 83%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.31, rgb(71,133,209)),
+		color-stop(0.5, rgb(133,169,222)),
+		color-stop(0.83, rgb(71,133,209))
+	);
+}
+.gBack:active{
+	color:#fff;
+	background-image: linear-gradient(bottom, rgb(71,133,209) 41%, rgb(133,169,222) 60%, rgb(71,133,209) 93%);
+	background-image: -o-linear-gradient(bottom, rgb(71,133,209) 41%, rgb(133,169,222) 60%, rgb(71,133,209) 93%);
+	background-image: -moz-linear-gradient(bottom, rgb(71,133,209) 41%, rgb(133,169,222) 60%, rgb(71,133,209) 93%);
+	background-image: -webkit-linear-gradient(bottom, rgb(71,133,209) 41%, rgb(133,169,222) 60%, rgb(71,133,209) 93%);
+	background-image: -ms-linear-gradient(bottom, rgb(71,133,209) 41%, rgb(133,169,222) 60%, rgb(71,133,209) 93%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.41, rgb(71,133,209)),
+		color-stop(0.5, rgb(133,169,222)),
+		color-stop(0.93, rgb(71,133,209))
+	);
+}
+.user, .userItem{
+	float:left;
+	overflow:hidden;
+	border:1px solid #cccccc;
+	/*box-shadow:0 0 5px #cccccc;*/
+	margin:5px;
+	padding:5px;
+	background-color:#fff;
+}
+.userImage{
+    padding-top: 1px;
+	float:left;
+	background-color: #FFF;
+    border: 1px solid #BDBDBD;
+    box-shadow: 0 0 2px #CCC;
+    height: 32px;
+    text-align: center;
+    vertical-align: middle;
+    width: 33px;
+}
+.userImage img{
+	vertical-align:middle;
+}
+.userName{
+	float:right;
+	padding:5px;
+}
+.userName a{
+	color:#777;
+	font-weight:700;
+	text-decoration:none;
+}
+#group,
+#groups,
+#users{
+	/*box-shadow:0 0 5px #cccccc;*/
+	/*border:1px solid #cccccc;*/
+	margin:10px;
+	overflow:hidden;
+}
+#group{
+	border:1px solid #cccccc;
+}
+#users{
+    padding-bottom:10px;
+    border-bottom:1px solid #F1F1F1
+}
+#user-list .items, .usersContainer{
+	min-height:44px;
+	max-height:300px;
+	overflow:auto;
+}
+.droppableActive{
+	background-color:#e5ecf9;
+}
+.edit{
+	margin:4px 5px 0 0;
+	background: transparent;
+	cursor:pointer;
+	width:16px;
+	/*height:8px;*/
+	float:right;
+}
+.edit img{
+	visibility: hidden;
+}
+.userGroupItem:hover img{
+    visibility: visible;
+}
+.delete{
+	margin:2px 2px 2px 2px;
+	cursor:pointer;
+	width:8px;
+	height:8px;
+	float:left;
+	background:transparent url('../images/icons/close_sprite2.png') no-repeat 0 -8px scroll;
+}
+.delete:hover{
+	background:transparent url('../images/icons/close_sprite2.png') no-repeat 0 0 scroll;
+}
+div.plusOneSphere{
+	position:fixed;
+	width:37px;
+	height:37px;
+	background:transparent url('../images/icons/plus_one_sphere.png') no-repeat 0 0 scroll;
+}
+.groupOver{
+	box-shadow:0 0 7px #ddd;
+}

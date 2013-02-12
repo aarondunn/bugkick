@@ -1,0 +1,9 @@
+.tooltip {
+	display:none;
+	background:transparent url(/images/tooltip/black_arrow.png) no-repeat;
+	font-size:12px;
+	height:40px;
+	/*width:70px;*/
+	padding:10px;
+	color:#fff;
+}

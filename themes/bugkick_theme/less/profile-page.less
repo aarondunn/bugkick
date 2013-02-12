@@ -1,0 +1,120 @@
+// File: profile-page.less
+// Description: Styles for Profile page
+
+/* Profile Page */
+
+.profile-content, .admin_content{
+    color: #59677a;
+    margin-top: 20px;
+}
+
+.profile-title{
+    height: 58px;
+    background: url('../images/profile-title-bg.png') repeat-x;
+    padding: 10px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333333;
+}
+.profile-photo{
+    width: 81px;
+    padding: 2px;
+    margin: 0 20px 0 10px;
+    border: 1px solid #DDDDDD;
+    float: left;
+    vertical-align: middle;
+}
+.profile-photo img{
+    vertical-align: middle;
+}
+
+/* Profile Description */
+.profile-description{
+    width: 300px;
+    float: left;
+    font-size: 13px;
+    color: #808080;
+    margin-bottom: 15px;
+}
+
+.profile-description div{
+    margin-bottom: 15px;
+}
+.profile-description #name{
+    overflow: hidden;
+}
+.profile-description #name #first-name{
+    float: left;
+    margin-bottom: 0;
+}
+.profile-description #name #last-name{
+    float: right;
+    margin-bottom: 0;
+}
+
+.profile-description .desc{
+    font-weight: bold;
+}
+
+/* User Activity */
+
+.user-activity{
+    clear: both;
+    margin: 10px;
+}
+
+.activity-list{
+    background-color: #f6f5f7;
+    border: 1px solid #DDDDDD;
+    .rounded(5px);
+    margin-bottom: 20px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.activity-list ul li{
+    border-bottom: 1px solid #dddddd;
+    overflow: hidden;
+}
+    .activity-list ul li:hover{
+        background: #ffffff;
+    }
+    .activity-list ul li:last-child{
+        border-bottom: none;
+    }
+.activity-list .activity-date,
+.activity-list .activity-desc{
+    color: #808080;
+    font-size: 11px;
+}
+
+.activity-list .activity-date{
+    /* border-bottom: 1px solid #dddddd; */
+    border-right: 1px dotted #a6a6a6;
+    clear: both;
+    float: left;
+    height: 30px;
+    padding: 15px 2%;
+    width: 10%;
+}
+
+.activity-list .ticket-data{
+    /* border-bottom: 1px solid #dddddd; */
+    border-left: 1px dotted #fdfcfd;
+    float: left;
+    height: 40px;
+    padding: 10px 2%;
+    width: 80%;
+}
+
+.activity-list a{
+    color: #333333;
+    text-decoration: none;
+}
+
+.activity-list .item-name{
+    color: #353c45;
+    font-weight: bold;
+}
+
+/* End of Profile page */

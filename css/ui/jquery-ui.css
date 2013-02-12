@@ -1,0 +1,104 @@
+/*------------------------*/
+
+.ui-dialog{
+    overflow: inherit !important;
+    border-radius: 5px !important;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    text-align: center;
+}
+
+.ui-dialog .ui-dialog-title {
+    float: none !important;
+    font-size: 14px;
+}
+.ui-widget-header{
+    background: url(images/create_bug_top.png) repeat-x !important;
+    border: none !important;
+    border-radius: 0px !important;
+    padding: 0 10px !important;
+    height: 60px;
+    line-height: 60px;
+    color: #5A6876 !important;
+}
+.ui-widget-content{
+    background: #ffffff !important;
+    border: none !important;
+}
+
+.ui-state-default{
+    background: none !important;
+    border-color: #c0c0c0 !important;
+}
+.ui-state-hover{
+    background: none !important;
+    border-color: #999797 !important;
+}
+.ui-dialog-titlebar-close{
+    border: 1px solid transparent !important;
+    padding: 0 !important;
+    top: 40% !important;
+    right: 2.1em !important;
+}
+.ui-icon-closethick{
+    background: url(images/btn_close.png) 0 0 !important;
+    background-position: left top;
+    background-repeat: no-repeat;
+    display: block;
+    height: 26px !important;
+    width: 27px !important;
+}
+.ui-icon-closethick:hover{
+    background-position: left bottom !important;
+}
+.ui-dialog .ui-dialog-content {
+    overflow: visible !important;
+}
+#updateBugDialog, #updateUserDialog{
+    padding: 0 !important;
+}
+
+.ui-widget-overlay{
+    opacity: 0.7 !important;
+    background: #000000 !important;
+}
+
+.ui-dialog .ui-dialog-buttonpane button {
+  /* 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #AED1F3), color-stop(1, #448AE0) ) !important;
+   	background:-moz-linear-gradient( center top, #AED1F3 5%, #448AE0 100% ) !important;
+   	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#AED1F3', endColorstr='#448AE0') !important;
+    background-image: -o-linear-gradient(top,rgb(173,208,242),rgb(67,137,222))!important; /*opera*/
+  /*  background-color:#AED1F3;
+   	-moz-border-radius:4px;
+   	-webkit-border-radius:4px;
+   	border-radius:4px;
+   	border:1px solid #83B6EA !important;
+   	display:inline-block;
+   	color:#ffffff;
+   	font-family:arial;
+    font-size:12px; 
+  */
+   	padding:8px 19px;
+  /* 	font-weight:bold;
+   	text-decoration:none;
+   	text-shadow:1px 1px 0px #448AE0;
+  */
+    margin-bottom: 3px;
+}
+.ui-dialog .ui-dialog-buttonpane button:hover {
+  /*  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #448AE0), color-stop(1, #AED1F3) ) !important;
+   	background:-moz-linear-gradient( center top, #448AE0 5%, #AED1F3 100% ) !important;
+   	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#448AE0', endColorstr='#AED1F3') !important;
+    background-image: -o-linear-gradient(top,rgb(67,137,222),rgb(173,208,242))!important; /*opera*/
+  /* 	background-color:#448AE0;
+  */
+}
+
+.ui-dialog .ui-dialog-buttonpane button:active {
+    position:relative;
+   	top:1px;
+}
+button .ui-button-text {
+    padding: 0 !important;
+}

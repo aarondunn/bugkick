@@ -1,0 +1,86 @@
+/* 
+    Document   : common
+    Created on : Nov 1, 2011, 2:25:41 AM
+    Author     : f0t0n
+    Description:
+        Purpose of the stylesheet follows.
+*/
+/*
+#login-form{
+    color: #555555;
+}
+.login-container{
+    padding-top: 20px;
+}
+#login-form .left-column,#login-form .right-column,#login-form .column-separator{
+    width: 300px;
+	float:left;
+    margin-left: 200px;
+}
+#login-form .column-separator{
+	width: 1px;
+	height: 210px;
+	background: url('/themes/bugkick_theme/images/bugkick_blue_vertical.png') repeat-y scroll 0 0 transparent;
+	margin: 0 35px 0 40px;
+}
+#login-form div.clear{
+	clear: both;
+}
+#login-form .rememberMe{
+    font-weight: normal;
+}
+    #login-form .rememberMe input[type="checkbox"]{
+        display: inline;
+        width: auto;
+    }
+.login-header{
+    background: url('../../../images/login-top-bg.png') repeat-x;
+    height: 38px;
+    padding: 12px 0 0 0;
+    text-align: center;
+    font-weight: bold;
+    color: #555555;
+    font-size: 14px;
+}
+#login-form .left-column{
+    background-color: #FDFDFD;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    box-shadow: 0 0 8px silver;
+}
+#login-form .form{
+    padding: 20px 40px;
+}
+.not-registered{
+    margin: 15px 0 10px 240px;
+}
+input[type="text"], input[type="password"] {
+    border: 1px solid darkgray;
+    color: black;
+    font: 13px Arial, Helvetica, sans-serif;
+    padding: 4px;
+    width: 240px;
+    height: 18px;
+    box-shadow: 0 0 5px silver;
+}
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #9ecaed;
+    box-shadow: 0 0 5px #9ecaed;
+}
+#login-form a{
+    color: #555555;
+    text-decoration: none;
+}
+#login-form a:hover{
+    color: #008EC9;
+    text-decoration: none;
+}
+
+#login-form input[type="text"],
+#login-form input[type="password"]{ float: none; width: 96%; }
+#login-form .row{ width: 100%; }
+
+#login-form .row.buttons{ text-align: center; }
+#login-form .row.buttons input{ width: auto; }
+*/

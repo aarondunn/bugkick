@@ -1,0 +1,107 @@
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+.sidebar-nav {
+    padding: 9px 0;
+}
+.container{
+    width: 100%;
+}
+
+.errorMessage{
+    color: red;
+}
+.errorSummary {
+    border: 1px solid #EED3D7;
+    border-radius: 4px 4px 4px 4px;
+    color: #C09853;
+    margin-bottom: 18px;
+    padding: 8px 35px 8px 14px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    background-color: #F2DEDE;
+    font-size: 12px;
+    font-weight: 200;
+    line-height: 27px;
+}
+.pager .previous a{
+    float: none;
+}
+
+.comment-left{
+    padding: 1em 1em 0 1em;
+    width: 120px;
+    float: left;
+}
+dt, .comment-left p{
+    font-size: 13px;
+    font-weight: normal;
+}
+.comment-right{
+    padding: 1.5em 1em;
+    margin-left: 140px;
+}
+.comment-right.odd{
+    /*background-color: #EEE;*/
+}
+.comment-stuff{
+    padding-top: 5px;
+    border-top: 1px dotted #CCC;
+    clear: both;
+    font-size: 11px;
+}
+.comment{
+    border: 1px solid silver;
+    -moz-border-radius: 6px;
+    -khtml-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+.hero-unit p.user-details{
+    font-size: 11px;
+}
+.fr{
+    float: right;
+}
+.pr_20{
+    padding-right: 20px;
+}
+.pad_20{
+    padding: 20px 0;
+}
+.navbar-fixed-top, .navbar-fixed-bottom{
+    z-index: 2003;
+}
+.row.buttons{
+    padding-top: 10px;
+}
+.hero-unit p{
+    font-size: inherit;
+    font-weight: normal;
+}
+footer{
+    text-align: center;
+}
+.comment-actions a{
+    margin-right: 5px;
+}
+.comment-actions{
+    float: right;
+}
+.search_box {
+    margin: 5px;
+	width: 155px;
+}
+a.cancel-search{
+    display: block;
+    height: 16px;
+    position: absolute;
+    right: 18px;
+    top: 7px;
+    width: 16px;
+    outline: none !important;
+}
+.search-container{
+    position: relative;
+}

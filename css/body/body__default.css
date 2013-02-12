@@ -1,0 +1,10 @@
+/* 
+    Document   : body__default.css
+    Created on : Oct 28, 2011, 2:56:39 PM
+    Author     : f0t0n
+    Description:
+        Purpose of the stylesheet follows.
+*/
+body{
+    background: url("/images/body_backgrounds/body_bg.jpg") repeat center top;
+}

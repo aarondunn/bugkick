@@ -1,0 +1,259 @@
+// File: top-menu.less
+// Styles for the top menu
+
+/*Top Menu*/
+
+/* Actual menu */
+
+.top_tab {
+    display: block;
+    height: 37px;
+    line-height: 37px;
+    float: right;
+    padding: 0 7px 0 10px;
+    margin: 9px 0px 0 10px;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 1px 2px #143962;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.top_tab a {
+    color: #fff;
+}
+    .top_tab a:hover{
+        color: #a9d7f6;
+        text-decoration: none;
+    }
+
+.top_tab.has_menu {
+    position: relative;
+    /*z-index: 19999;*/
+    .rounded(5px 5px 0 0);
+    behavior: url(PIE.htc);
+}
+
+.top_tab.has_menu .menu-arrow {
+    display: inline-block;
+    height: 5px;
+    margin-left: 5px;
+    width: 8px;
+    background: url("../images/white_arrow.png") no-repeat scroll 0 0 transparent;
+}
+
+.top_tab.has_menu:hover {
+    color: #56a8ee;
+    background-color: #fff;
+    .box-shadow(0, 1px, 1px, #aaa);
+    behavior: url(PIE.htc);
+    text-shadow: none;
+}
+
+.top_tab.has_menu:hover .menu-arrow {
+    background: url("../images/blue-arrow.png") no-repeat scroll 0 0 transparent;
+}
+
+.top_tab.has_menu:hover > a {
+    color: #56a8ee;
+}
+
+.top_tab.new_ticket {
+    padding: 0 20px 0 0;
+}
+
+.top_tab span.hi {
+    font-weight: normal;
+}
+
+.top_tab span.name {
+    font-weight: bold;
+}
+
+.top_tab.has_menu ul.sub_menu {
+    position: absolute;
+    padding: 8px 0 8px;
+    background-color: #ffffff;
+    color: #56a8ee;
+    top: -9999px;
+    right: 0px;
+    z-index: 19998;
+    .rounded(5px 0 5px 5px);
+    .box-shadow(0, 1px, 1px, #aaa);
+    behavior: url(PIE.htc);
+    text-shadow: none;
+}
+
+.top_tab.has_menu:hover ul.sub_menu {
+    top: 37px;
+}
+
+ul.sub_menu li a {
+    display: block;
+    height: 33px;
+    line-height: 33px;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    padding-left: 43px;
+    padding-right: 30px;
+    color: #56a8ee;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+ul.sub_menu li a:hover,
+ul.sub_menu li a.active {
+    border-top: 1px solid #f5f5f5;
+    border-bottom: 1px solid #f5f5f5;
+    background-color: #fcfcfc;
+}
+
+ul.sub_menu li a#view_profile {
+    background-image: url("../images/icons/i_profile.png");
+    background-repeat: no-repeat;
+    background-position: 13px center;
+}
+
+ul.sub_menu li a#admin-panel {
+    background-image: url("../images/icons/i_blog.png");
+    background-repeat: no-repeat;
+    background-position: 13px center;
+}
+
+ul.sub_menu li a#show-help {
+    background-image: url("../images/icons/i_help.png");
+    background-repeat: no-repeat;
+    background-position: 14px center;
+}
+
+ul.sub_menu li a#settings {
+    background-image: url("../images/icons/i_settings.png");
+    background-repeat: no-repeat;
+    background-position: 12px center;
+}
+
+ul.sub_menu li a#dashboard {
+    background-image: url("../images/icons/i_dashboard.png");
+    background-repeat: no-repeat;
+    background-position: 11px center;
+}
+
+ul.sub_menu li a#new_blog {
+    background-image: url("../images/icons/i_blog.png");
+    background-repeat: no-repeat;
+    background-position: 13px center;
+}
+
+ul.sub_menu li a#showCalendar,
+ul.sub_menu li a#calendar{
+    background-image: url("../images/icons/i_calendar.png");
+    background-repeat: no-repeat;
+    background-position: 13px center;
+}
+
+ul.sub_menu li a#bugkick {
+    background-image: url("../images/icons/i_bugkick.png");
+    background-repeat: no-repeat;
+    background-position: 17px center;
+}
+
+ul.sub_menu li a#logout {
+    background-image: url("../images/icons/i_logout2.png");
+    background-repeat: no-repeat;
+    background-position: 13px center;
+}
+
+ul.sub_menu li a.new-project-icon {
+    background-image: url("../images/icons/i_dashboard.png");
+    background-repeat: no-repeat;
+    background-position: 11px center;
+}
+
+ul.sub_menu li a.project-url {
+    background-image: url("../images/icons/i_blog.png");
+    background-repeat: no-repeat;
+    background-position: 13px center;
+}
+
+/* End of Actual top menu */
+
+/* Not really sure if these styles are used */ 
+.setting-container{
+    position: absolute;
+    right: 20px;
+    top:50px;
+    .rounded(0px 0px 6px 6px);
+    border: 1px solid #BDBDBD;
+    border-top: none !important;
+    .box-shadow(0, 0, 2px, #cccccc);
+    background-color: #ffffff;
+    padding: 5px 0;
+    behavior: url(PIE.htc);
+}
+.company-container{
+    position: absolute;
+    left: 300px;
+    top:50px;
+    .rounded(0px 0px 6px 6px);
+    border: 1px solid #BDBDBD;
+    border-top: none !important;
+    .box-shadow(0, 0, 2px, #cccccc);
+    background-color: #ffffff;
+    padding: 5px 0;
+    behavior: url(PIE.htc);
+}
+:root .company-container{left: 305px\9;} /*for ie9*/
+.settings-item a,.company-item a{
+    width: 140px;
+    display: block;
+    color: #2D74B0 !important;
+    padding: 2px !important;
+    height: 20px !important;
+    font-size: 13px !important;
+    float: none !important;
+}
+.settings-item a:hover, .company-item a:hover{
+    background-color: #EFF5F9 !important;
+}
+.menu-icons{
+    width: 16px;
+    height: 16px;
+    display: block;
+    float: left;
+    margin: 3px 4px 0 10px;
+}
+.gear-icon{
+    background: url('../images/icons/icons.png') -62px -140px no-repeat;
+}
+.profile-icon{
+    background: url('../images/icons/icons.png') -10px -220px no-repeat;
+}
+.logout-icon{
+    background: url('../images/icons/icons.png') -10px -140px no-repeat;
+}
+.project-icon{
+    background: url('../images/icons/icons.png') -37px -140px no-repeat;
+}
+
+ul#menu li a.new-project-icon {
+    background: url("../images/icons/i_dashboard.png") no-repeat 11px center;
+}
+
+.new-item-icon{
+    width: 16px;
+    height: 16px;
+    display: block;
+    float: left;
+    margin: 7px 4px 0 0;
+    background: url('../images/icons/plus_1.png') 0 0 no-repeat;
+}
+
+/* Specific menu items */
+
+a.project-link{
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+/* End of specific menu items */
+
+/* End of Top Menu */

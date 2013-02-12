@@ -1,0 +1,483 @@
+// File: dialogs.less
+// Description: Styles for BugKick dialogs
+ 
+/* Default dialog -> form -> row styles */
+
+.ui-dialog form .row{
+    margin: 0 0 5px;
+    width: 100%;
+}
+
+.ui-dialog form .row label{
+    display: inline-block;
+    margin-bottom: 5px;
+}
+.ui-dialog form .row input[type="text"],
+.ui-dialog form .row .chzn-container,
+/* #login-form form .row input[type="text"] */{
+    display: block;
+    width: 96%;
+}
+
+.ui-dialog form .row .chzn-select{
+    width: 100%;
+}
+
+.ui-dialog form .row.buttons{
+    clear: both;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.ui-dialog form .row input[type="submit"],
+.ui-dialog form .row input[type="reset"],
+.ui-dialog form .row input[type="button"],
+.ui-dialog form .row button{
+    width: auto;
+}
+
+/* End of default form -> row styles */
+
+/* Dialogs */
+
+#labelDialog{
+    padding: 20px 30px;
+}
+#resetPasswordDialog{
+    padding: 50px 20px;
+}
+#resetPasswordDialog .row.buttons{
+    float: right;
+    padding-top: 2px;
+}
+
+#labelDialog-edit{
+    padding: 20px;
+}
+#labelUpdateForm .row.buttons .bkButtonGraySmall,
+#statusUpdateForm .row.buttons .bkButtonGraySmall{
+    float: left;
+    margin-top: 10px;
+}
+
+#labelUpdateForm .row.buttons .bkButtonBlueSmall,
+#statusUpdateForm .row.buttons .bkButtonBlueSmall{
+    .box-shadow-remove();
+    float: right;
+}
+
+/* Shortcuts popup */
+.shortcut-container{
+    position: absolute;
+    background-color: rgba(0,0,0,0.7);
+    .rounded(10px);
+    padding: 10px;
+    width:500px;
+    height:250px;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin:-125px 0 0 -250px;
+    color: #ffffff;
+    z-index: 1000;
+    behavior: url(PIE.htc);
+}
+.shortcut-header, .shortcut-top{
+    border-bottom: 1px solid #9a9a9a;
+    padding: 8px;
+}
+.shortcut-container a{
+    color: #E7D959;
+    font-weight: bold;
+}
+.shortcut-close-link{
+    float: right;
+}
+.shortcut-header{
+    font-size: 16px;
+    font-weight: bold;
+}
+.shortcut-body{
+    padding: 8px;
+}
+.shortcut-body h4{
+    padding: 0px;
+    margin: 0px;
+    color: #E7D959;
+    font-size: 12px;
+}
+.shortcut-body table{
+    width: 100%;
+}
+.shortcut-body table td{
+    vertical-align: top;
+    padding: 3px 2px;
+}
+.short-key{
+    color: #E7D959;
+    font-size: 12px;
+    text-align: right;
+    padding-right: 0px;
+}
+/*End Shortcuts popup */
+
+
+/* Edit Project Dialog */
+
+#project-form-dialog{
+    min-width: 525px;
+    padding: 10px 0;
+}
+
+#project-form-dialog .chzn-container{
+    width: 525px !important;
+}
+
+#project-form{
+    float:left;
+}
+
+#project-form-dialog .nav.nav-tabs{
+    padding: 0 40px;
+    width: auto;
+}
+
+    #project-form-dialog .nav.nav-tabs li.active a:focus{
+        outline: none;
+    }
+
+#project-form-dialog .tab-content{
+    overflow: visible;
+    padding: 0 20px;
+    width: 525px;
+}
+
+#project-form #project-common-info .main-info .row{
+    float: left;
+    width: 337px;
+}
+    #project-form #project-common-info .main-info .row textarea{
+        max-width: 96%;
+        width: 96%;
+    }
+
+    #project-form #project-common-info .row label{
+        display: block;
+    }
+
+#project-form .main-info{
+    margin: 10px auto 0;
+    overflow: hidden; 
+    width: 430px;
+}
+
+div.project-pic{
+    float:left;
+    margin: 7px 20px 0 0;
+    padding: 0;
+}
+
+#project-form .project-pic #uploadProjectLogo{
+    margin-top: 5px;
+}
+div.project-pic .qq-uploader{
+    width: 50px;
+    word-wrap: normal;
+}
+div.project-pic .qq-upload-list{
+    margin: 0;
+}
+div.project-pic .qq-upload-fail{
+    word-wrap: break-word;
+    width:100px;
+}
+div.basic-project-text{
+    float:left;
+    width: 100%;
+}
+
+#project-form-dialog #extra-features .row{
+    padding-top: 20px;
+    text-align: center;
+}
+
+/* End of Edit Project dialog */
+/* New ticket Dialog and Update ticket Dialog */ 
+
+#createBugDialog{
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+#createBugDialog .new-ticket-title label{
+  display: inline-block;
+}
+
+
+#createBugDialog textarea,
+#updateBugDialog textarea{
+    max-width: 420px;
+    width: 420px;
+    height: 95px;
+    border-color: #e3e3e6;
+}
+#createBugDialog textarea:focus,
+#updateBugDialog textarea:focus{
+    .box-shadow(0, 0, 8px, silver);
+}
+
+.form-container-border #duedate{
+    border: 1px solid #e6e6e6;
+    .rounded(5px);
+}
+
+.form-date-row{
+    float: right;
+    width: 161px;
+}
+
+#createBugDialog .row,
+#updateBugDialog .row{
+    float: none;
+}
+
+#createBugDialog .chzn-container
+#updateBugDialog .chzn-container {
+    float: left; 
+}
+#createBugDialog .assignees-dropdown,
+#updateBugDialog .assignees-dropdown {
+    float: left;
+}
+
+#createBugDialog .assignees-dropdown #BugForm_assignees_chzn,
+#updateBugDialog .assignees-dropdown #BugForm_assignees_chzn {
+    float: left;
+    width: 180px;
+}
+
+#createBugDialog .form-date-row label,
+#createBugDialog .assignees-dropdown label,
+#createBugDialog .row label,
+#updateBugDialog .form-date-row label,
+#updateBugDialog .assignees-dropdown label,
+#updateBugDialog .row label{
+    float: left;
+    line-height: 26px;
+    margin-right: 5px;
+}
+.form-date-row #duedate{
+    margin: 0;
+}
+
+#createBugDialog .row #BugForm_labels_chzn,
+#updateBugDialog .row #BugForm_labels_chzn{
+    display: inline-block;
+    margin-left: 22px;
+    margin-right: 6px;
+}
+
+#updateBugDialog .row.update-ticket-status .chzn-container{
+    float: left;
+    margin-left: 22px;
+}
+
+.calendar-field{
+    background: #ffffff url('../images/icons/calendar-icon.png') 95% 50% no-repeat !important;
+    height: 21px;
+    width: 110px !important;
+    cursor: pointer;
+    border: 1px solid #E3D9C8;
+    .rounded(3px);
+    behavior: url(PIE.htc);
+}
+
+.createBug_newLabelBtn{
+    cursor: pointer;
+    /*vertical-align: middle;*/
+    margin: 1px 0 1px 4px;
+}
+#duedate-update{
+    margin-top: 0px;
+}
+
+/* End of new ticket Dialog */
+/* Classes for jQueryUI Dialog without title bar */
+
+.ui-dialog.no-title{
+    position: relative; 
+    .rounded(10px); 
+    padding: 0 !important;
+}
+
+.ui-dialog.no-title .ui-dialog-titlebar.ui-widget-header{
+    display: none;
+
+        border-bottom: none;
+        border-bottom-left-radius: 10px !important;
+        border-bottom-right-radius: 10px !important;
+        height: 31px;
+        margin: 0;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 0 !important;
+        width: 31px;
+        z-index: 2000;
+}
+.ui-dialog.no-title .ui-dialog-content{ padding: 0; } 
+.ui-dialog.no-title .ui-dialog-titlebar-close{
+        right: 1px !important;
+        bottom: 1px !important;
+        margin: 0;
+        top: 0 !important;
+        width: auto;
+}
+
+.ui-dialog.no-title .dlg-title{
+        /* background: ; */
+        /* border-bottom: ; */
+        border-top-left-radius: 7px;
+        height: 27px;
+        padding: 20px;
+}
+        .ui-dialog.no-title .dlg-title h2{
+                /* color: #; */
+                font-size: 22px;
+                line-height: 28px;
+        }
+/*END of UI Dialog with no title bar */
+/* Help Topics Dialog */
+
+.article-link{
+    display: block;
+}
+
+#helpDialog{
+    .rounded(10px);
+}
+
+#helpDialog .form{
+    border-bottom: 1px solid #e3e3e3;
+    padding: 10px 0;
+}
+    #helpDialog .form .form-container { 
+        margin: 0 10px;
+        width: auto;
+    }
+        #helpDialog .form .row{
+            margin: 0;
+        }
+        #helpDialog .form input[type="text"]{
+            margin: 0;
+            padding: 6px 5px 6px 25px;
+            width: 348px;
+        }
+#helpDialog .help-content{
+    padding: 10px 20px;
+}
+    #helpDialog .help-content ul .items li{
+        color: #666666;
+        list-style: disc;
+        margin-left: 10px;
+        margin-top: 10px;
+        text-shadow: 0 0 1px #999;
+    }
+        #helpDialog .help-content ul .items li a{
+            color: #666666;
+        }
+            #helpDialog .help-content ul .items li a:hover{
+                color: #999999;
+                text-decoration: none; 
+            }
+
+#helpDialog .row.buttons{
+    border-top: 1px solid #e3e3e3;
+    float: none;
+    margin: 10px 0 0 0;
+    padding: 13px 10px;
+    text-align: center;
+}
+    #helpDialog .row.buttons a{
+        display: block;
+        /* float: left; */ 
+        /* margin-left: 10px; */
+        text-align: center;
+    }
+        #helpDialog .row.buttons .buttonLandingStyle{
+            color: #ffffff;
+        }
+        #helpDialog .row.buttons a:first-child{
+            margin-left: 0;
+        }
+        #helpDialog .row.buttons a:hover{
+            text-decoration: none;
+        }
+
+/* Search Field */
+
+#helpDialog .form-container .row.search{
+    position: relative;
+}
+
+    #helpDialog .form-container .row.search label{
+        background: url("../images/icons/help_search_icon.png") no-repeat;
+        display: block;
+        height: 18px;
+        left: 5px;
+        padding: 0;
+        position: absolute;
+        text-indent: -9999px;
+        top: 7px;
+        width: 18px; 
+    }
+
+    #helpDialog .form-container .row.search #cancel-search{
+        background: url("../images/icons/help_cancel_edit.png") 0 0 no-repeat;
+        display: block;
+        height: 16px;
+        position: absolute;
+        right: 10px;
+        top: 8px;
+        text-indent: -9999px;
+        width: 16px;
+    }
+
+/* End of Search Field */
+/* Article */
+
+#helpDialog .help-content h3{
+    margin-bottom: 10px;
+}
+
+#helpDialog .help-content p{
+    text-indent: 1.5em;
+}
+
+#helpDialog .help-content ul,
+#helpDialog .help-content ol{
+    margin: 5px 0;
+    padding-left: 20px;
+}
+#helpDialog .help-content ul li{
+    list-style: disc;
+    margin-left: 15px;
+}
+#helpDialog .help-content ol li{
+    list-style: decimal;
+    margin-left: 22px;
+}
+/* Article */
+/* Pagination */
+/*pagination fix in help popup*/
+#helpDialog .list-pager ul, #helpDialog .list-pager ul li{
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+#helpDialog .list-pager{
+    text-align: right;
+}
+/* End of Pagination
+/* End of Help Toppics Dialog */
+/* End of dialogs */
