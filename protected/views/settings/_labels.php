@@ -21,7 +21,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
         array(
             'name' => 'name',
             'type' => 'html',
-            'filter' => CHtml::listData(Company::getProjects(),'project_id','name'),
+            'filter' => CHtml::listData(Company::getProjects(null,true),'project_id','name'),
             'value' =>'(!empty($data->label_color))
             ? "<span class=\"bubble\" style=\"background-color:".$data->label_color."\">".$data->name."</span>"
             : "<span class=\"bubble-name\">".$data->name."</span>"'

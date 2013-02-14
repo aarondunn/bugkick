@@ -223,7 +223,13 @@ class SettingsController extends Controller {
         $criteria = new CDbCriteria();
         $criteria->condition = 't.company_id=' . Company::current();
         $criteria->with=array(
-            'projects'=>array('condition'=>'projects.project_id='.$projectID, 'together'=>true),
+            'projects'=>array(
+                'condition'=>'projects.project_id=:project_id AND projects.archived=0',
+                'together'=>true,
+                'params'=>array(
+                    ':project_id'=>$projectID,
+                ),
+            ),
         );
         $criteria->distinct=true;
         $criteria->together=false;

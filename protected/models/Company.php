@@ -295,13 +295,26 @@ class Company extends CActiveRecord
             return null;
     }
 
-    public static function getProjects($company_id = '')
+    public static function getProjects($company_id = '',$notArchived=false)
     {
         if (empty($company_id))
             $company_id = Company::current();
 
-        $company = Company::model()->findByPk($company_id);
-        return $company->project;
+        if(!empty($company_id)){
+            $notArchivedSQL = '';
+            if($notArchived)
+                $notArchivedSQL = ' AND archived=0';
+
+            $criteria = new CDbCriteria();
+            $criteria->condition = 'company_id=:company_id' . $notArchivedSQL;
+            $criteria->params = array(
+                ':company_id'=>$company_id,
+            );
+        }
+        else{
+            return array();
+        }
+        return Project::model()->findAll($criteria);
     }
 
     public static function getBugs($company_id = '')
