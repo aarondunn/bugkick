@@ -211,13 +211,33 @@ class Company extends CActiveRecord
 		return self::$_current_company;
     }
 
-    public static function getLabels($company_id = '')
+    public static function getLabels($company_id = '', $withoutArchived=false)
     {
         if (empty($company_id))
             $company_id = Company::current();
 
         $company = Company::model()->findByPk($company_id);
-        return empty($company) ? array() : $company->label;
+
+        if(empty($company))
+            return array();
+
+        if($withoutArchived){
+            $criteria = new CDbCriteria();
+            $criteria->condition = 't.company_id=:company_id';
+            $criteria->params = array(
+                ':company_id'=>$company->company_id,
+            );
+            $criteria->with = array(
+                'projects'=>array(
+                    'condition'=>'archived=0'
+                )
+            );
+            $labels = Label::model()->findAll($criteria);
+        }
+        else{
+            $labels = $company->label;
+        }
+        return $labels;
     }
 
     public static function getPreCreatedLabels($company_id = '')
@@ -275,13 +295,26 @@ class Company extends CActiveRecord
             return null;
     }
 
-    public static function getProjects($company_id = '')
+    public static function getProjects($company_id = '',$notArchived=false)
     {
         if (empty($company_id))
             $company_id = Company::current();
 
-        $company = Company::model()->findByPk($company_id);
-        return $company->project;
+        if(!empty($company_id)){
+            $notArchivedSQL = '';
+            if($notArchived)
+                $notArchivedSQL = ' AND archived=0';
+
+            $criteria = new CDbCriteria();
+            $criteria->condition = 'company_id=:company_id' . $notArchivedSQL;
+            $criteria->params = array(
+                ':company_id'=>$company_id,
+            );
+        }
+        else{
+            return array();
+        }
+        return Project::model()->findAll($criteria);
     }
 
     public static function getBugs($company_id = '')

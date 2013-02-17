@@ -362,7 +362,7 @@ class SiteController extends Controller {
 
         $users = Company::getUsers();
         $statuses = Company::getStatuses();
-        $labels = Company::getLabels();
+        $labels = Company::getLabels(null,true);
 
         $this->render('dashboard', array(
             'bugCount' => $bugCount,

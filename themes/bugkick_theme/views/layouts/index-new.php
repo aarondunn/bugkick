@@ -69,7 +69,7 @@ JS
     </div>
     <div class="footer-wrapper" id="footer-wrapper">
         <div class="footer-inner" id="footer-inner">
-            <p class="copyright">BugKick &copy; <!-- <?php echo date('Y'); ?> --> 2012</p>
+            <p class="copyright">BugKick &copy; <!-- <?php echo date('Y'); ?> --> 2013</p>
             <div class="footer-info" id="footer-info">
             	<a href="<?php echo $this->createUrl('/site/login'); ?>" title="Sign In to BugKick">Sign in >></a>
             </div>
