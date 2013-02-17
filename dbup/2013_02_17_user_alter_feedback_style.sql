@@ -1,0 +1,1 @@
+ALTER TABLE `bk_user` ADD `feedback_style` smallint(6) DEFAULT '322' COMMENT 'means Position | Style | Color';

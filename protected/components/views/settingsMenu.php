@@ -11,6 +11,9 @@
 	<li><?php echo CHtml::link(Yii::t('main','Edit Labels'), CHtml::normalizeUrl(array('settings/labelListing')),
                    ($controllerId == 'settings' && $actionId == 'labelListing')? array('class'=>'active') : array()
     ) ?></li>
+    <li><?php echo CHtml::link(Yii::t('main','Edit Feedback'), CHtml::normalizeUrl(array('settings/editFeedback')),
+                   ($controllerId == 'settings' && $actionId == 'editFeedback')? array('class'=>'active') : array()
+    ) ?></li>
 	<li><?php echo CHtml::link(Yii::t('main','Edit Status'), CHtml::normalizeUrl(array('settings/statusListing')),
                    ($controllerId == 'settings' && $actionId == 'statusListing')? array('class'=>'active') : array()
     ) ?></li>

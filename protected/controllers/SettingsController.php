@@ -24,7 +24,7 @@ class SettingsController extends Controller {
 					'UserListing', 'InviteMembers', 'PendingMembers','Members', 
 					'PasswordChange', 'ExportTickets', 'UploadPhoto',
 					'ShortcutsState','Company', 'ResetCompanyTopBar', 'Groups',
-                    'Projects', 'projectSettings'
+                    'Projects', 'projectSettings', 'EditFeedback'
 				),
                 'users' => array('@'),
             ),
@@ -246,6 +246,48 @@ class SettingsController extends Controller {
         MixPanel::instance()->registerEvent(MixPanel::LABELS_PAGE_VIEW); // MixPanel events tracking
 
         $this->render('labelListing', array('labelProvider' => $model, 'labelModel' => $labelModel));
+    }
+    
+    public function actionEditFeedback()
+    {
+    	if( isset($_POST['hf_position']) ){
+    		try{
+	    		$iPosition = (int)$_POST['hf_position'];
+	    		$iStyle    = (int)$_POST['hf_style'];
+	    		$iColor    = (int)$_POST['hf_color'];
+	    		
+	    		if( !(($iPosition >= 1) && ($iPosition <= 3)) ) $iPosition = 3;
+	    		if( !(($iStyle >= 1) && ($iStyle <= 4)) ) $iStyle = 2;
+	    		if( !(($iColor >= 1) && ($iColor <= 4)) ) $iColor = 2;
+	    		$sFeedbackStyle = $iPosition . $iStyle . $iColor;
+	    		
+	    		$user = User::current();
+	    		$user->feedback_style = $sFeedbackStyle;
+	    		$user->save();
+	    		
+	    		if(Yii::app()->request->cookies->contains('BK_FEEDBACK_STYLE')){
+	    			Yii::app()->request->cookies['BK_FEEDBACK_STYLE'] = new CHttpCookie('BK_FEEDBACK_STYLE', $sFeedbackStyle);
+	    		} else{
+		    		$cookie = new CHttpCookie('BK_FEEDBACK_STYLE', $sFeedbackStyle);
+		    		$cookie->expire = time()+60*60*24*7; //7days
+		    		Yii::app()->request->cookies['BK_FEEDBACK_STYLE'] = $cookie;
+	    		}
+	    		
+	    		echo json_encode(array("status" => 200));
+	    	} catch (Exception $e) {
+	    		echo json_encode(array("status" => 'Error.'));
+	    	}
+	    	return true;
+    	}
+
+    	$sFeedbackStyle = User::current()->feedback_style;
+    	$iPosition = substr($sFeedbackStyle, 0, 1);
+    	$iStyle    = substr($sFeedbackStyle, 1, 1);
+    	$iColor    = substr($sFeedbackStyle, 2, 1);
+    	
+    	MixPanel::instance()->registerEvent(MixPanel::FEEDBACK_SETTINGS_PAGE_VIEW); // MixPanel events tracking
+    	Yii::app()->clientScript->registerScriptFile('/js/settings/index/feedbackEdit.js');
+    	$this->render('editFeedback', array('iPosition' => $iPosition, 'iStyle' => $iStyle, 'iColor' => $iColor));
     }
 
     public function actionStatusListing()

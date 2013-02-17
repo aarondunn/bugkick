@@ -4,7 +4,8 @@
     Authors     :
         Boyan Yordanov,
         Evgeniy `f0t0n` Naydenov,
-        Alexey Kavshirko
+        Alexey Kavshirko,
+		Taras Bilyn
     Copyright: BugKick
     Description:
         BugKick API widget styles
@@ -17,33 +18,134 @@
 }
 
 /* Feedback Button */
-#bugkick-feedback-widget .bugkick-feedback-button div {
-    width: 22px;
-    height: 90px;
-    border: none;
-    background: url('../images/feedback_tab_white.png') 0 0 no-repeat transparent;
-}
-
 #bugkick-feedback-widget .bugkick-feedback-button {
     position: fixed;
-    top: 200px;
-    left: 0px;
-    width: 28px;
-    height: 96px;
-    padding: 3px 3px;
-    border: 4px double #fff;
-    border-left: none;
     cursor: pointer;
-    background: rgb(37,141,200);
-    background: -moz-linear-gradient(left, rgba(37,141,200,1) 30%, rgba(64,97,229,1) 100%);
-    background: -webkit-gradient(linear, left top, right top, color-stop(30%,rgba(37,141,200,1)), color-stop(100%,rgba(64,97,229,1)));
-    background: -webkit-linear-gradient(left, rgba(37,141,200,1) 30%,rgba(64,97,229,1) 100%);
-    background: -o-linear-gradient(left, rgba(37,141,200,1) 30%,rgba(64,97,229,1) 100%);
-    background: -ms-linear-gradient(left, rgba(37,141,200,1) 30%,rgba(64,97,229,1) 100%);
-    background: linear-gradient(left, rgba(37,141,200,1) 30%,rgba(64,97,229,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#258dc8', endColorstr='#4061e5',GradientType=1 );
-    border-radius: 0 4px 4px 0;
 }
+
+#bugkick-feedback-widget .bugkick-feedback-button.s_1{
+	height: 39px;
+    width: 55px;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.s_1.active{
+	width: 122px;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.s_2{
+	height: 118px;
+    width: 41px;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.s_3{
+	height: 39px;
+    width: 108px;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.s_4{
+	height: 32px;
+    width: 165px;
+}
+
+#bugkick-feedback-widget .bugkick-feedback-button.s_1.c_azure{
+	background: url('../images/fb_1_azure.png') -67px 0 no-repeat transparent;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.s_1.c_blue{
+	background: url('../images/fb_1_blue.png') -67px 0 no-repeat transparent;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.s_1.c_gray{
+	background: url('../images/fb_1_gray.png') -67px 0 no-repeat transparent;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.s_1.c_green{
+	background: url('../images/fb_1_green.png') -67px 0 no-repeat transparent;
+}
+
+#bugkick-feedback-widget .bugkick-feedback-button.s_1.active.c_azure{
+	background: url('../images/fb_1_azure.png') 0 -39px no-repeat transparent;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.s_1.active.c_blue{
+	background: url('../images/fb_1_blue.png') 0 -39px no-repeat transparent;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.s_1.active.c_gray{
+	background: url('../images/fb_1_gray.png') 0 -39px no-repeat transparent;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.s_1.active.c_green{
+	background: url('../images/fb_1_green.png') 0 -39px no-repeat transparent;
+}
+
+#bugkick-feedback-widget .bugkick-feedback-button.s_2.c_azure{
+	background: url('../images/fb_2_azure.png') 0 0 no-repeat transparent;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.s_2.c_blue{
+	background: url('../images/fb_2_blue.png') 0 0 no-repeat transparent;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.s_2.c_gray{
+	background: url('../images/fb_2_gray.png') 0 0 no-repeat transparent;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.s_2.c_green{
+	background: url('../images/fb_2_green.png') 0 0 no-repeat transparent;
+}
+
+#bugkick-feedback-widget .bugkick-feedback-button.s_3.c_azure{
+	background: url('../images/fb_3_azure.png') 0 0 no-repeat transparent;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.s_3.c_blue{
+	background: url('../images/fb_3_blue.png') 0 0 no-repeat transparent;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.s_3.c_gray{
+	background: url('../images/fb_3_gray.png') 0 0 no-repeat transparent;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.s_3.c_green{
+	background: url('../images/fb_3_green.png') 0 0 no-repeat transparent;
+}
+
+#bugkick-feedback-widget .bugkick-feedback-button.s_4.c_azure{
+	background: url('../images/fb_4_azure.png') 0 0 no-repeat transparent;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.s_4.c_blue{
+	background: url('../images/fb_4_blue.png') 0 0 no-repeat transparent;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.s_4.c_gray{
+	background: url('../images/fb_4_gray.png') 0 0 no-repeat transparent;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.s_4.c_green{
+	background: url('../images/fb_4_green.png') 0 0 no-repeat transparent;
+}
+
+#bugkick-feedback-widget .bugkick-feedback-button.p_left{
+	left: -4px;
+	top: 200px;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.p_left.s_4{
+	top: inherit;
+	bottom: 0;
+    left: -12px;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.p_bottom.s_1{
+	bottom: -5px;
+    left: 95.8%;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.p_bottom.s_1.active{
+	left: 90.1%;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.p_bottom.s_2{
+	bottom: -5px;
+    left: 97%;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.p_bottom.s_3{
+	bottom: -5px;
+    left: 91.3%;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.p_bottom.s_4{
+	bottom: 0;
+    left: 86.2%;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.p_right{
+	right: -5px;
+	top: 200px;
+}
+#bugkick-feedback-widget .bugkick-feedback-button.p_right.s_4{
+	top: inherit;
+	bottom: 0;
+    right: -2px;
+}
+
 /* End of Feedback Button */
 
 /* Overlay */

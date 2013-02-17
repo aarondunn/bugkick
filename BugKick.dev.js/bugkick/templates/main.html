@@ -31,3 +31,80 @@
         </form>
     </div>
 </div>
+
+<script>
+function getCookie(c_name){
+	var i,x,y,ARRcookies=document.cookie.split(";");
+	for (i=0; i<ARRcookies.length; i++){
+	  x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+	  y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+	  x=x.replace(/^\s+|\s+$/g,"");
+	  if (x==c_name){
+	    return unescape(y);
+	  }
+	}
+}
+$(function() {
+	$sFeedbackStyle = getCookie("BK_FEEDBACK_STYLE");
+	if(typeof $sFeedbackStyle === 'undefined'){
+		$sFeedbackStyle = "322";
+	}
+	
+	$iPosition = $sFeedbackStyle.substr(0, 1);
+	$iStyle = $sFeedbackStyle.substr(1, 1);
+	$iColor = $sFeedbackStyle.substr(2, 1);
+	
+	$oBugkick = $("#bugkick-feedback-widget .bugkick-feedback-button");
+	
+	switch($iPosition){
+		case('1'):
+			$oBugkick.addClass("p_left");
+	        break;
+		case('2'):
+			$oBugkick.addClass("p_bottom");
+	        break;
+		case('3'):
+			$oBugkick.addClass("p_right");
+	        break;
+	}
+	
+	switch($iStyle){
+		case('1'):
+			$oBugkick.addClass("s_1");
+	        break;
+		case('2'):
+			$oBugkick.addClass("s_2");
+	        break;
+		case('3'):
+			$oBugkick.addClass("s_3");
+	        break;
+		case('4'):
+			$oBugkick.addClass("s_4");
+	        break;
+	}
+	
+	switch($iColor){
+		case('1'):
+			$oBugkick.addClass("c_azure");
+	        break;
+		case('2'):
+			$oBugkick.addClass("c_blue");
+	        break;
+		case('3'):
+			$oBugkick.addClass("c_gray");
+	        break;
+		case('4'):
+			$oBugkick.addClass("c_green");
+	        break;
+	}
+	
+	$("#bugkick-feedback-widget .bugkick-feedback-button.s_1").hover(
+	     function(){
+		     $(this).addClass("active");
+	     },
+	     function(){
+	    	 $(this).removeClass("active");
+	     }
+	);
+});
+</script>

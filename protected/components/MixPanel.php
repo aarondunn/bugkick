@@ -22,6 +22,7 @@ class MixPanel {
     const EMAIL_PREFERENCES_PAGE_VIEW = 'Page View - Email Preferences';
     const LABELS_PAGE_VIEW = 'Page View - Edit Labels';
     const STATUS_PAGE_VIEW = 'Page View - Edit Status';
+    const FEEDBACK_SETTINGS_PAGE_VIEW = 'Page View - Edit Feedback';
     const MEMBERS_PAGE_VIEW = 'Page View - Members';
     const GROUPS_PAGE_VIEW = 'Page View - Groups';
     const COMPANY_SETTINGS_PAGE_VIEW = 'Page View - Company Settings';

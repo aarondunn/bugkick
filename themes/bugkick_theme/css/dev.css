@@ -381,3 +381,208 @@ a#calendar-tab{
 #content #tabed-nav{
     margin-right: 282px;
 }
+
+#main .settings #save_feedback{
+	float: right;
+	width: 47px;
+	text-align: center;
+}
+
+#main .settings .left_side{
+	float: left;
+}
+
+#main .settings .left_side .b_panel{
+	background: url("/images/feedback/fb_bg.png") no-repeat;
+	height: 290px;
+    width: 221px;
+}
+
+.settings .left_side .b_panel ul.b_styles li ul.b_positions{
+	margin: 0 37px 0 0;
+	padding-top: 8px;
+}
+
+.settings .left_side .b_panel ul.b_styles li ul.b_positions li{
+	float: right;
+	clear: both;
+	margin-top: 12px;
+}
+
+.settings .left_side .b_panel ul.b_styles li ul.b_positions .b_first{
+	height: 39px;
+    width: 55px;
+}
+.settings .left_side .b_panel ul.b_styles li ul.b_positions .b_first.active{
+	height: 39px;
+    width: 122px;
+}
+.settings .left_side .b_panel ul.b_styles li ul.b_positions .b_second{
+	height: 118px;
+    width: 41px;
+}
+.settings .left_side .b_panel ul.b_styles li ul.b_positions .b_third{
+	height: 39px;
+    width: 108px;
+}
+.settings .left_side .b_panel ul.b_styles li ul.b_positions .b_fourth{
+	height: 32px;
+    width: 165px;
+    margin-right: 4px;
+}
+
+.settings .left_side .b_panel ul.b_styles .b_azure ul.b_positions .b_first{
+	background: url("/images/feedback/fb_sprite_cs.png") no-repeat scroll -115px 0px transparent;
+}
+.settings .left_side .b_panel ul.b_styles .b_blue ul.b_positions .b_first{
+	background: url("/images/feedback/fb_sprite_cs.png") no-repeat scroll -115px -860px transparent;
+}
+.settings .left_side .b_panel ul.b_styles .b_gray ul.b_positions .b_first{
+	background: url("/images/feedback/fb_sprite_cs.png") no-repeat scroll -115px -286px transparent;
+}
+.settings .left_side .b_panel ul.b_styles .b_green ul.b_positions .b_first{
+	background: url("/images/feedback/fb_sprite_cs.png") no-repeat scroll -115px -577px transparent;
+}
+
+.settings .left_side .b_panel ul.b_styles .b_azure ul.b_positions .b_second{
+	background: url("/images/feedback/fb_sprite_cs.png") no-repeat scroll -129px -51px transparent;
+}
+.settings .left_side .b_panel ul.b_styles .b_blue ul.b_positions .b_second{
+	background: url("/images/feedback/fb_sprite_cs.png") no-repeat scroll -129px -911px transparent;
+}
+.settings .left_side .b_panel ul.b_styles .b_gray ul.b_positions .b_second{
+	background: url("/images/feedback/fb_sprite_cs.png") no-repeat scroll -129px -337px transparent;
+}
+.settings .left_side .b_panel ul.b_styles .b_green ul.b_positions .b_second{
+	background: url("/images/feedback/fb_sprite_cs.png") no-repeat scroll -129px -628px transparent;
+}
+
+.settings .left_side .b_panel ul.b_styles .b_azure ul.b_positions .b_third{
+	background: url("/images/feedback/fb_sprite_cs.png") no-repeat scroll -62px -181px transparent;
+}
+.settings .left_side .b_panel ul.b_styles .b_blue ul.b_positions .b_third{
+	background: url("/images/feedback/fb_sprite_cs.png") no-repeat scroll -62px -1041px transparent;
+}
+.settings .left_side .b_panel ul.b_styles .b_gray ul.b_positions .b_third{
+	background: url("/images/feedback/fb_sprite_cs.png") no-repeat scroll -62px -467px transparent;
+}
+.settings .left_side .b_panel ul.b_styles .b_green ul.b_positions .b_third{
+	background: url("/images/feedback/fb_sprite_cs.png") no-repeat scroll -62px -758px transparent;
+}
+
+.settings .left_side .b_panel ul.b_styles .b_azure ul.b_positions .b_fourth{
+	background: url("/images/feedback/fb_sprite_cs.png") no-repeat scroll 0px -232px transparent;
+}
+.settings .left_side .b_panel ul.b_styles .b_blue ul.b_positions .b_fourth{
+	background: url("/images/feedback/fb_sprite_cs.png") no-repeat scroll 0px -1092px transparent;
+}
+.settings .left_side .b_panel ul.b_styles .b_gray ul.b_positions .b_fourth{
+	background: url("/images/feedback/fb_sprite_cs.png") no-repeat scroll 0px -518px transparent;
+}
+.settings .left_side .b_panel ul.b_styles .b_green ul.b_positions .b_fourth{
+	background: url("/images/feedback/fb_sprite_cs.png") no-repeat scroll 0px -809px transparent;
+}
+
+.settings .left_side .b_panel ul.b_styles > li{
+	display: none;
+}
+.settings .left_side .b_panel ul.b_styles > li.active{
+	display: block;
+}
+
+#main .settings .right_side{	
+	border-left: 1px solid #ECECED;
+    color: #59677A;
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 32px;
+    margin: 0 0 30px 20px;
+    padding: 0 0 0 20px;
+    width: 407px;
+}
+
+.settings .right_side ul.b_options > li:first-child{
+	padding-top: 5px;
+}
+.settings .right_side ul.b_options > li{
+	clear: both;
+	height: 56px;
+    padding: 25px 0 0;
+	border-bottom: 1px solid #ECECED;
+}
+
+.settings .right_side ul.b_options li label{
+	width: 90px;
+	float: left;
+	line-height: 32px;
+	font-weight: bold;
+}
+
+.settings .right_side ul.b_options li ul{
+	float: left;
+}
+
+.settings .right_side ul.b_options li ul li{
+	float: left;
+	text-align: center;
+}
+
+.settings .right_side ul.b_options li.b_position ul li:first-child{
+	margin-left: 0px;
+}
+.settings .right_side ul.b_options li.b_position ul li{
+	background: url("/images/feedback/fb_sprite_position.png") no-repeat scroll 0px 0px transparent;
+	width: 98px;
+	height: 32px;
+	cursor: pointer;
+	margin-left: 11px;
+}
+.settings .right_side ul.b_options li.b_position ul li.active{
+	background: url("/images/feedback/fb_sprite_position.png") no-repeat scroll 0px -32px transparent;
+	color: #FFFFFF;
+}
+
+.settings .right_side ul.b_options li.b_style ul li:first-child{
+	margin-left: 0px;
+}
+.settings .right_side ul.b_options li.b_style ul li{
+	background: url("/images/feedback/fb_sprite_style.png") no-repeat scroll 0px 0px transparent;
+	width: 70px;
+	height: 32px;
+	cursor: pointer;
+	margin-left: 12px;
+}
+.settings .right_side ul.b_options li.b_style ul li.active{
+	background: url("/images/feedback/fb_sprite_style.png") no-repeat scroll 0px -32px transparent;
+	color: #FFFFFF;
+}
+
+.settings .right_side ul.b_options li.b_color ul li:first-child{
+	margin-left: 0px;
+}
+.settings .right_side ul.b_options li.b_color ul li,
+.settings .right_side ul.b_options li.b_color ul li div.active{
+	width: 76px;
+	height: 38px;
+	cursor: pointer;
+}
+.settings .right_side ul.b_options li.b_color ul li{
+	margin-left: 4px;
+}
+.settings .right_side ul.b_options li.b_color ul li.c_azure{
+	background: url("/images/feedback/fb_sprite_color.png") no-repeat scroll 0px -1px transparent;
+}
+.settings .right_side ul.b_options li.b_color ul li.c_blue{
+	background: url("/images/feedback/fb_sprite_color.png") no-repeat scroll 0px -81px transparent;
+}
+.settings .right_side ul.b_options li.b_color ul li.c_gray{
+	background: url("/images/feedback/fb_sprite_color.png") no-repeat scroll 0px -172px transparent;
+}
+.settings .right_side ul.b_options li.b_color ul li.c_green{
+	background: url("/images/feedback/fb_sprite_color.png") no-repeat scroll 0px -267px transparent;
+}
+.settings .right_side ul.b_options li.b_color ul li div.active{
+	background: url("/images/feedback/fb_sprite_color.png") no-repeat scroll 0px -344px transparent;
+}
+

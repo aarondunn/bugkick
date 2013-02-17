@@ -74,9 +74,22 @@ class SiteController extends Controller {
         // using the default layout 'protected/views/layouts/main.php'
 
         if (!Yii::app()->user->isGuest) {
+        	if(!Yii::app()->request->cookies->contains('BK_FEEDBACK_STYLE') ||
+        			(Yii::app()->request->cookies->contains('BK_FEEDBACK_STYLE')->value != User::current()->feedback_style) ){
+        		$cookie = new CHttpCookie('BK_FEEDBACK_STYLE', User::current()->feedback_style);
+        		$cookie->expire = time()+60*60*24*7; //7days
+        		Yii::app()->request->cookies['BK_FEEDBACK_STYLE'] = $cookie;
+        	}
+        	
             $this->redirect($this->createUrl('bug/'));
         }
-
+		
+        if(!Yii::app()->request->cookies->contains('BK_FEEDBACK_STYLE')){
+        	$cookie = new CHttpCookie('BK_FEEDBACK_STYLE', '322');
+        	$cookie->expire = time()+60*60*24*7; //7days
+        	Yii::app()->request->cookies['BK_FEEDBACK_STYLE'] = $cookie;
+        }
+        
         //if user already registered then redirect
         //to the login page instead of showing main page
         if (Yii::app()->request->cookies->contains(self::BK_USER_COOKIE)
