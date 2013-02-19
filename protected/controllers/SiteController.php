@@ -75,7 +75,7 @@ class SiteController extends Controller {
 
         if (!Yii::app()->user->isGuest) {
         	if(!Yii::app()->request->cookies->contains('BK_FEEDBACK_STYLE') ||
-        			(Yii::app()->request->cookies->contains('BK_FEEDBACK_STYLE')->value != User::current()->feedback_style) ){
+        			(isset(Yii::app()->request->cookies['BK_FEEDBACK_STYLE']) && Yii::app()->request->cookies['BK_FEEDBACK_STYLE']->value != User::current()->feedback_style) ){
         		$cookie = new CHttpCookie('BK_FEEDBACK_STYLE', User::current()->feedback_style);
         		$cookie->expire = time()+60*60*24*7; //7days
         		Yii::app()->request->cookies['BK_FEEDBACK_STYLE'] = $cookie;
