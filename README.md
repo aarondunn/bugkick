@@ -6,6 +6,7 @@
 
 1. Copy configuration files from /devconf to /protected/config/ and change them according to your settings.
 2. Use /protected/data/bugkick.sql to setup DB
+3. By default we use APC cache. You can change it main.php or turn it off.
 
 ### Instant Notifications
 
