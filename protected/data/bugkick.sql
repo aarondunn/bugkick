@@ -1,41 +1,28 @@
--- phpMyAdmin SQL Dump
--- version 3.5.1
--- http://www.phpmyadmin.net
--- 2013.02.09
-
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- `bugkick`
---
-
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Server version:               5.5.25-log - MySQL Community Server (GPL)
+-- Server OS:                    Win32
+-- HeidiSQL version:             7.0.0.4053
+-- Date/time:                    2013-02-20 22:04:51
 -- --------------------------------------------------------
 
---
--- `bk_article`
---
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET FOREIGN_KEY_CHECKS=0 */;
 
+-- Dumping structure for table bug.bk_article
 CREATE TABLE IF NOT EXISTS `bk_article` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `content` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `title` (`title`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_bug`
---
 
+-- Dumping structure for table bug.bk_bug
 CREATE TABLE IF NOT EXISTS `bk_bug` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `github_issue_id` bigint(20) unsigned DEFAULT NULL COMMENT 'FK(bk_github_issue)',
@@ -61,9 +48,10 @@ CREATE TABLE IF NOT EXISTS `bk_bug` (
   `duplicate_number` int(10) unsigned NOT NULL,
   `priority_order` bigint(20) NOT NULL,
   `is_created_with_api` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `api_user_email` varchar(255) NOT NULL COMMENT 'Email of the user who submitted a bug using API ',
   `type` enum('Bug','Feature request','Suggestion') DEFAULT NULL COMMENT 'The type of ticket created via BugKick API',
-  `user_set` text NOT NULL COMMENT 'This field stores all assigned users. Data is stored as serialized array of users ID. It duplicates the data from bk_bug_by_user and neccessary for fast work of the ticket list',
-  `label_set` text NOT NULL COMMENT 'This field stores all ticket''s labels. Data is stored as serialized array of labels ID. It duplicates the data from bk_bug_by_label and neccessary for fast work of the ticket list',
+  `user_set` text NOT NULL COMMENT 'This field stores all assigned users. Data is stored as serialized array of user IDs. It duplicates the data from bk_bug_by_user and necessary for fast work of the ticket list',
+  `label_set` text NOT NULL COMMENT 'This field stores all ticket''s labels. Data is stored as serialized array of label IDs. It duplicates the data from bk_bug_by_label and necessary for fast work of the ticket list',
   PRIMARY KEY (`id`),
   KEY `bug_FI_1` (`status_id`),
   KEY `project_id` (`project_id`),
@@ -78,41 +66,83 @@ CREATE TABLE IF NOT EXISTS `bk_bug` (
   KEY `type` (`type`),
   KEY `isarchive` (`isarchive`),
   KEY `github_issue_id` (`github_issue_id`),
-  KEY `company_id` (`company_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=433 ;
+  KEY `company_id` (`company_id`),
+  CONSTRAINT `bk_bug_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_ibfk_10` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_ibfk_11` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_ibfk_12` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_ibfk_13` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_ibfk_14` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_ibfk_15` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_ibfk_16` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_ibfk_2` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_ibfk_3` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_ibfk_4` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_ibfk_5` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_ibfk_6` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_ibfk_7` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_ibfk_8` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_ibfk_9` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_bug_by_label`
---
 
+-- Dumping structure for table bug.bk_bug_by_label
 CREATE TABLE IF NOT EXISTS `bk_bug_by_label` (
   `bug_id` bigint(20) unsigned NOT NULL,
   `label_id` bigint(20) unsigned NOT NULL,
   KEY `bug_id` (`bug_id`),
-  KEY `label_id` (`label_id`)
+  KEY `label_id` (`label_id`),
+  CONSTRAINT `bk_bug_by_label_ibfk_1` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_label_ibfk_10` FOREIGN KEY (`label_id`) REFERENCES `bk_label` (`label_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_label_ibfk_11` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_label_ibfk_12` FOREIGN KEY (`label_id`) REFERENCES `bk_label` (`label_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_label_ibfk_13` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_label_ibfk_14` FOREIGN KEY (`label_id`) REFERENCES `bk_label` (`label_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_label_ibfk_15` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_label_ibfk_16` FOREIGN KEY (`label_id`) REFERENCES `bk_label` (`label_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_label_ibfk_2` FOREIGN KEY (`label_id`) REFERENCES `bk_label` (`label_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_label_ibfk_3` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_label_ibfk_4` FOREIGN KEY (`label_id`) REFERENCES `bk_label` (`label_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_label_ibfk_5` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_label_ibfk_6` FOREIGN KEY (`label_id`) REFERENCES `bk_label` (`label_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_label_ibfk_7` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_label_ibfk_8` FOREIGN KEY (`label_id`) REFERENCES `bk_label` (`label_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_label_ibfk_9` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_bug_by_user`
---
 
+-- Dumping structure for table bug.bk_bug_by_user
 CREATE TABLE IF NOT EXISTS `bk_bug_by_user` (
   `bug_id` bigint(20) unsigned NOT NULL,
   `user_id` bigint(20) unsigned NOT NULL,
   KEY `bug_id` (`bug_id`),
-  KEY `user_id` (`user_id`)
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `bk_bug_by_user_ibfk_1` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_user_ibfk_10` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_user_ibfk_11` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_user_ibfk_12` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_user_ibfk_13` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_user_ibfk_14` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_user_ibfk_15` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_user_ibfk_16` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_user_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_user_ibfk_3` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_user_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_user_ibfk_5` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_user_ibfk_6` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_user_ibfk_7` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_user_ibfk_8` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_by_user_ibfk_9` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_bug_changelog`
---
 
+-- Dumping structure for table bug.bk_bug_changelog
 CREATE TABLE IF NOT EXISTS `bk_bug_changelog` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `bug_id` bigint(20) unsigned NOT NULL,
@@ -121,15 +151,28 @@ CREATE TABLE IF NOT EXISTS `bk_bug_changelog` (
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `bug_id` (`bug_id`,`user_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=692 ;
+  KEY `user_id` (`user_id`),
+  KEY `user_id_2` (`user_id`),
+  KEY `user_id_3` (`user_id`),
+  KEY `user_id_4` (`user_id`),
+  KEY `user_id_5` (`user_id`),
+  KEY `user_id_6` (`user_id`),
+  KEY `user_id_7` (`user_id`),
+  KEY `user_id_8` (`user_id`),
+  CONSTRAINT `bk_bug_changelog_ibfk_1` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_changelog_ibfk_2` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_changelog_ibfk_3` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_changelog_ibfk_4` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_changelog_ibfk_5` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_changelog_ibfk_6` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_changelog_ibfk_7` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_bug_changelog_ibfk_8` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_comment`
---
 
+-- Dumping structure for table bug.bk_comment
 CREATE TABLE IF NOT EXISTS `bk_comment` (
   `comment_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `created_at` datetime DEFAULT NULL,
@@ -139,15 +182,21 @@ CREATE TABLE IF NOT EXISTS `bk_comment` (
   PRIMARY KEY (`comment_id`),
   KEY `comment_FI_1` (`user_id`),
   KEY `comment_FI_2` (`bug_id`),
-  KEY `created_at` (`created_at`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=537 ;
+  KEY `created_at` (`created_at`),
+  CONSTRAINT `bk_comment_ibfk_1` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_comment_ibfk_2` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_comment_ibfk_3` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_comment_ibfk_4` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_comment_ibfk_5` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_comment_ibfk_6` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_comment_ibfk_7` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_comment_ibfk_8` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_company`
---
 
+-- Dumping structure for table bug.bk_company
 CREATE TABLE IF NOT EXISTS `bk_company` (
   `company_id` int(11) NOT NULL AUTO_INCREMENT,
   `created_at` datetime DEFAULT NULL,
@@ -161,59 +210,118 @@ CREATE TABLE IF NOT EXISTS `bk_company` (
   `api_key` varchar(255) DEFAULT NULL,
   `show_ads` tinyint(2) NOT NULL DEFAULT '1',
   `owner_id` bigint(20) unsigned NOT NULL,
+  `coupon_id` int(10) unsigned NOT NULL,
+  `coupon_expires_at` int(10) unsigned NOT NULL,
   PRIMARY KEY (`company_id`),
-  UNIQUE KEY `api_key` (`api_key`),
   KEY `company_name` (`company_name`),
+  KEY `api_key` (`api_key`),
   KEY `account_plan` (`account_plan`),
-  KEY `owner_id` (`owner_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=78 ;
+  KEY `owner_id` (`owner_id`),
+  KEY `coupon_expires_at` (`coupon_expires_at`),
+  KEY `coupon_id` (`coupon_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_email_preference`
---
 
+-- Dumping structure for table bug.bk_coupon
+CREATE TABLE IF NOT EXISTS `bk_coupon` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `code` varchar(255) NOT NULL COMMENT 'Coupon code',
+  `enabled` tinyint(3) unsigned NOT NULL,
+  `period` int(11) NOT NULL COMMENT 'Defines how much time for free (in seconds)',
+  PRIMARY KEY (`id`),
+  KEY `code` (`code`,`enabled`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Data exporting was unselected.
+
+
+-- Dumping structure for table bug.bk_domains_blacklist
+CREATE TABLE IF NOT EXISTS `bk_domains_blacklist` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `domain` varchar(255) NOT NULL COMMENT 'Email services that are prohibited to register on Bugkick',
+  PRIMARY KEY (`id`),
+  KEY `domain` (`domain`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Data exporting was unselected.
+
+
+-- Dumping structure for table bug.bk_email_preference
 CREATE TABLE IF NOT EXISTS `bk_email_preference` (
   `email_preference_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`email_preference_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_filter`
---
 
+-- Dumping structure for table bug.bk_file
+CREATE TABLE IF NOT EXISTS `bk_file` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `public_name` varchar(255) NOT NULL COMMENT 'Public name of the file for downloading',
+  `user_id` bigint(20) unsigned NOT NULL COMMENT 'ID of user who uploaded ',
+  `ticket_id` bigint(20) unsigned NOT NULL,
+  `box_file_id` varchar(255) NOT NULL COMMENT 'Box.com file ID',
+  `size` bigint(20) unsigned NOT NULL COMMENT 'Size in bytes',
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`,`ticket_id`,`box_file_id`),
+  KEY `ticket_id` (`ticket_id`),
+  CONSTRAINT `bk_file_ibfk_1` FOREIGN KEY (`ticket_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Data exporting was unselected.
+
+
+-- Dumping structure for table bug.bk_filter
 CREATE TABLE IF NOT EXISTS `bk_filter` (
   `filter_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) unsigned NOT NULL,
   `name` varchar(255) NOT NULL,
   `filter` text NOT NULL,
   PRIMARY KEY (`filter_id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `bk_filter_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_filter_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_filter_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_filter_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_filter_ibfk_5` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_filter_ibfk_6` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_filter_ibfk_7` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_filter_ibfk_8` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_github_issue`
---
 
+-- Dumping structure for table bug.bk_forum
+CREATE TABLE IF NOT EXISTS `bk_forum` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `forum_title` (`title`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Data exporting was unselected.
+
+
+-- Dumping structure for table bug.bk_github_issue
 CREATE TABLE IF NOT EXISTS `bk_github_issue` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `number` bigint(20) unsigned NOT NULL,
   `html_url` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_github_user`
---
 
+-- Dumping structure for table bug.bk_github_user
 CREATE TABLE IF NOT EXISTS `bk_github_user` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `is_active` tinyint(1) unsigned NOT NULL DEFAULT '1',
@@ -222,14 +330,12 @@ CREATE TABLE IF NOT EXISTS `bk_github_user` (
   `avatar_url` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `is_active` (`is_active`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_invite`
---
 
+-- Dumping structure for table bug.bk_invite
 CREATE TABLE IF NOT EXISTS `bk_invite` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `company_id` bigint(20) unsigned NOT NULL,
@@ -243,14 +349,12 @@ CREATE TABLE IF NOT EXISTS `bk_invite` (
   KEY `user_id` (`user_id`),
   KEY `token` (`token`),
   KEY `invited_by_id` (`invited_by_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_label`
---
 
+-- Dumping structure for table bug.bk_label
 CREATE TABLE IF NOT EXISTS `bk_label` (
   `label_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
@@ -259,28 +363,58 @@ CREATE TABLE IF NOT EXISTS `bk_label` (
   `pre_created` tinyint(3) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`label_id`),
   KEY `pre_created` (`pre_created`),
-  KEY `company_id` (`company_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=165 ;
+  KEY `company_id` (`company_id`),
+  KEY `company_id_2` (`company_id`),
+  KEY `company_id_3` (`company_id`),
+  KEY `company_id_4` (`company_id`),
+  KEY `company_id_5` (`company_id`),
+  KEY `company_id_6` (`company_id`),
+  KEY `company_id_7` (`company_id`),
+  KEY `company_id_8` (`company_id`),
+  CONSTRAINT `bk_label_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_label_ibfk_2` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_label_ibfk_3` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_label_ibfk_4` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_label_ibfk_5` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_label_ibfk_6` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_label_ibfk_7` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_label_ibfk_8` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_label_by_project`
---
 
+-- Dumping structure for table bug.bk_label_by_project
 CREATE TABLE IF NOT EXISTS `bk_label_by_project` (
   `label_id` bigint(20) unsigned NOT NULL,
   `project_id` bigint(20) unsigned NOT NULL,
   KEY `label_id` (`label_id`,`project_id`),
-  KEY `project_id` (`project_id`)
+  KEY `project_id` (`project_id`),
+  KEY `project_id_2` (`project_id`),
+  KEY `project_id_3` (`project_id`),
+  KEY `project_id_4` (`project_id`),
+  KEY `project_id_5` (`project_id`),
+  KEY `project_id_6` (`project_id`),
+  KEY `project_id_7` (`project_id`),
+  KEY `project_id_8` (`project_id`),
+  CONSTRAINT `bk_label_by_project_ibfk_1` FOREIGN KEY (`label_id`) REFERENCES `bk_label` (`label_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_label_by_project_ibfk_10` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_label_by_project_ibfk_11` FOREIGN KEY (`label_id`) REFERENCES `bk_label` (`label_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_label_by_project_ibfk_12` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_label_by_project_ibfk_2` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_label_by_project_ibfk_3` FOREIGN KEY (`label_id`) REFERENCES `bk_label` (`label_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_label_by_project_ibfk_4` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_label_by_project_ibfk_5` FOREIGN KEY (`label_id`) REFERENCES `bk_label` (`label_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_label_by_project_ibfk_6` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_label_by_project_ibfk_7` FOREIGN KEY (`label_id`) REFERENCES `bk_label` (`label_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_label_by_project_ibfk_8` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_label_by_project_ibfk_9` FOREIGN KEY (`label_id`) REFERENCES `bk_label` (`label_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_log`
---
 
+-- Dumping structure for table bug.bk_log
 CREATE TABLE IF NOT EXISTS `bk_log` (
   `log_id` int(11) NOT NULL AUTO_INCREMENT,
   `timestamp` datetime NOT NULL,
@@ -289,26 +423,22 @@ CREATE TABLE IF NOT EXISTS `bk_log` (
   `comment` varchar(255) DEFAULT NULL,
   `success` enum('0','1') NOT NULL DEFAULT '1' COMMENT '0-failed, 1-successfull',
   PRIMARY KEY (`log_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=913 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_log_action`
---
 
+-- Dumping structure for table bug.bk_log_action
 CREATE TABLE IF NOT EXISTS `bk_log_action` (
   `log_action_id` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   PRIMARY KEY (`log_action_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_look_and_feel`
---
 
+-- Dumping structure for table bug.bk_look_and_feel
 CREATE TABLE IF NOT EXISTS `bk_look_and_feel` (
   `name` varchar(255) NOT NULL COMMENT 'The name of look-and-feel',
   `css_file` varchar(255) NOT NULL COMMENT 'Style-sheet file that contains the styles of this look-and-feel scheme',
@@ -317,12 +447,10 @@ CREATE TABLE IF NOT EXISTS `bk_look_and_feel` (
   KEY `css_file` (`css_file`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Site look and feel schemes';
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_notification`
---
 
+-- Dumping structure for table bug.bk_notification
 CREATE TABLE IF NOT EXISTS `bk_notification` (
   `notification_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned NOT NULL COMMENT 'This is a user who will see this notification(owner or assigned person)',
@@ -333,29 +461,47 @@ CREATE TABLE IF NOT EXISTS `bk_notification` (
   PRIMARY KEY (`notification_id`),
   KEY `user_id` (`user_id`,`date`),
   KEY `bug_id` (`bug_id`),
-  KEY `changer_id` (`changer_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=709 ;
+  KEY `changer_id` (`changer_id`),
+  CONSTRAINT `bk_notification_ibfk_1` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_notification_ibfk_2` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_notification_ibfk_3` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_notification_ibfk_4` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_notification_ibfk_5` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_notification_ibfk_6` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_page`
---
 
+-- Dumping structure for table bug.bk_page
 CREATE TABLE IF NOT EXISTS `bk_page` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `menu_label` varchar(20) NOT NULL,
   `title` varchar(100) NOT NULL,
   `content` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_project`
---
 
+-- Dumping structure for table bug.bk_post
+CREATE TABLE IF NOT EXISTS `bk_post` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `time` datetime NOT NULL,
+  `body` text NOT NULL,
+  `topic_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `post_time` (`time`),
+  KEY `fk_topic` (`topic_id`),
+  CONSTRAINT `fk_topic` FOREIGN KEY (`topic_id`) REFERENCES `bk_topic` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Data exporting was unselected.
+
+
+-- Dumping structure for table bug.bk_project
 CREATE TABLE IF NOT EXISTS `bk_project` (
   `project_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'The unique identifier of the project',
   `company_id` int(11) NOT NULL COMMENT 'The identifier of project''s company',
@@ -378,57 +524,79 @@ CREATE TABLE IF NOT EXISTS `bk_project` (
   KEY `api_ticket_default_assignee` (`api_ticket_default_assignee`),
   KEY `archived` (`archived`),
   KEY `github_repo` (`github_repo`),
-  KEY `translate_tickets` (`translate_tickets`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
+  KEY `translate_tickets` (`translate_tickets`),
+  CONSTRAINT `bk_project_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_project_ibfk_2` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_project_ibfk_3` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_project_ibfk_4` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_project_ibfk_5` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_project_ibfk_6` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_project_by_group`
---
 
+-- Dumping structure for table bug.bk_project_by_group
 CREATE TABLE IF NOT EXISTS `bk_project_by_group` (
   `project_id` bigint(20) unsigned NOT NULL,
   `group_id` bigint(20) unsigned NOT NULL,
   KEY `project_id` (`project_id`,`group_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_settings_by_project`
---
 
+-- Dumping structure for table bug.bk_settings_by_project
 CREATE TABLE IF NOT EXISTS `bk_settings_by_project` (
   `project_id` bigint(20) unsigned NOT NULL,
   `defaultAssignee` int(10) unsigned NOT NULL,
   `defaultLabel` int(10) unsigned NOT NULL,
   `defaultStatus` int(10) unsigned NOT NULL,
   `defaultCompany` int(10) unsigned NOT NULL,
-  KEY `project_id` (`project_id`)
+  KEY `project_id` (`project_id`),
+  CONSTRAINT `bk_settings_by_project_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_settings_by_project_ibfk_2` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_settings_by_project_ibfk_3` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_settings_by_project_ibfk_4` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_settings_by_project_ibfk_5` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_settings_by_project_ibfk_6` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_settings_by_user`
---
 
+-- Dumping structure for table bug.bk_settings_by_user
 CREATE TABLE IF NOT EXISTS `bk_settings_by_user` (
   `user_id` bigint(20) unsigned NOT NULL,
   `defaultAssignee` int(10) unsigned NOT NULL,
   `defaultLabel` int(10) unsigned NOT NULL,
   `defaultStatus` int(10) unsigned NOT NULL,
   `defaultCompany` int(10) unsigned NOT NULL,
-  KEY `user_id` (`user_id`)
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `bk_settings_by_user_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_settings_by_user_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_settings_by_user_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_settings_by_user_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_settings_by_user_ibfk_5` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_settings_by_user_ibfk_6` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_status`
---
 
+-- Dumping structure for table bug.bk_site_settings
+CREATE TABLE IF NOT EXISTS `bk_site_settings` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `invites_module` tinyint(1) unsigned NOT NULL COMMENT 'Defines if invites module is enabled',
+  `invites_count` int(10) unsigned NOT NULL COMMENT 'Limit of invites per user',
+  `invites_limit` tinyint(1) unsigned NOT NULL COMMENT 'Defines if we limit number of available invites per user',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Data exporting was unselected.
+
+
+-- Dumping structure for table bug.bk_status
 CREATE TABLE IF NOT EXISTS `bk_status` (
   `status_id` int(11) NOT NULL AUTO_INCREMENT,
   `label` varchar(30) NOT NULL,
@@ -436,15 +604,16 @@ CREATE TABLE IF NOT EXISTS `bk_status` (
   `is_visible_by_default` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `company_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`status_id`),
-  KEY `company_id` (`company_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=92 ;
+  KEY `company_id` (`company_id`),
+  CONSTRAINT `bk_status_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_status_ibfk_2` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_status_ibfk_3` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_stripe_customer`
---
 
+-- Dumping structure for table bug.bk_stripe_customer
 CREATE TABLE IF NOT EXISTS `bk_stripe_customer` (
   `customer_id` varchar(255) NOT NULL COMMENT 'Stripe customer ID (PK, varchar)',
   `user_id` bigint(20) unsigned NOT NULL COMMENT 'BugKick user''s ID (FK, index bigint)',
@@ -467,24 +636,20 @@ CREATE TABLE IF NOT EXISTS `bk_stripe_customer` (
   KEY `expires_at` (`expires_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stripe customers';
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_tbl_migration`
---
 
+-- Dumping structure for table bug.bk_tbl_migration
 CREATE TABLE IF NOT EXISTS `bk_tbl_migration` (
   `version` varchar(255) NOT NULL,
   `apply_time` int(11) DEFAULT NULL,
   PRIMARY KEY (`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_tmp_file`
---
 
+-- Dumping structure for table bug.bk_tmp_file
 CREATE TABLE IF NOT EXISTS `bk_tmp_file` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'The unique identifier of temporary file (PK)',
   `path` varchar(255) NOT NULL COMMENT 'The path relative to ''webroot.tmp''',
@@ -492,14 +657,32 @@ CREATE TABLE IF NOT EXISTS `bk_tmp_file` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `path` (`path`),
   KEY `created_at` (`created_at`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Temporary files' AUTO_INCREMENT=40 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Temporary files';
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_user`
---
 
+-- Dumping structure for table bug.bk_topic
+CREATE TABLE IF NOT EXISTS `bk_topic` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `forum_id` int(11) NOT NULL,
+  `topic_starter_id` int(10) unsigned NOT NULL,
+  `time` datetime NOT NULL,
+  `archived` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `topic_title` (`title`),
+  KEY `fk_forum` (`forum_id`),
+  KEY `topic_starter_id` (`topic_starter_id`),
+  KEY `archived` (`archived`),
+  CONSTRAINT `fk_forum` FOREIGN KEY (`forum_id`) REFERENCES `bk_forum` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Data exporting was unselected.
+
+
+-- Dumping structure for table bug.bk_user
 CREATE TABLE IF NOT EXISTS `bk_user` (
   `user_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `facebook_id` varchar(255) DEFAULT NULL COMMENT 'User''s identifier at the Facebook',
@@ -533,7 +716,9 @@ CREATE TABLE IF NOT EXISTS `bk_user` (
   `tickets_per_page` int(11) DEFAULT '30',
   `ticket_update_return` tinyint(1) unsigned NOT NULL DEFAULT '2',
   `use_wysiwyg` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `pro_status` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'pro_status  - means that every company that the user has, will have ''Pro'' plan',
+  `pro_status` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'pro_status  - means that all companies that the user has, were upgraded to ''Pro'' plan from admin panel',
+  `forum_role` varchar(50) NOT NULL DEFAULT 'user',
+  `feedback_style` smallint(6) DEFAULT '322' COMMENT 'means Position | Style | Color',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email` (`email`),
   KEY `look_and_feel` (`look_and_feel`),
@@ -543,15 +728,27 @@ CREATE TABLE IF NOT EXISTS `bk_user` (
   KEY `invited_by_id` (`invited_by_id`),
   KEY `github_user_id` (`github_user_id`),
   KEY `is_global_admin` (`is_global_admin`),
-  KEY `pro_status` (`pro_status`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=128 ;
+  KEY `pro_status` (`pro_status`),
+  KEY `forum_role` (`forum_role`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_user_by_company`
---
 
+-- Dumping structure for table bug.bk_user_block
+CREATE TABLE IF NOT EXISTS `bk_user_block` (
+  `user_ip` varchar(255) NOT NULL,
+  `block_to` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `count_entry` int(11) NOT NULL,
+  `first_entry` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Data exporting was unselected.
+
+
+-- Dumping structure for table bug.bk_user_by_company
 CREATE TABLE IF NOT EXISTS `bk_user_by_company` (
   `user_id` bigint(20) unsigned NOT NULL,
   `company_id` int(11) NOT NULL,
@@ -561,59 +758,66 @@ CREATE TABLE IF NOT EXISTS `bk_user_by_company` (
   KEY `company_id` (`company_id`),
   KEY `user_id_2` (`user_id`,`company_id`),
   KEY `is_admin` (`is_admin`),
-  KEY `user_status` (`user_status`)
+  KEY `user_status` (`user_status`),
+  CONSTRAINT `bk_user_by_company_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_user_by_company_ibfk_2` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_user_by_company_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_user_by_company_ibfk_4` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_user_by_email_preference`
---
 
+-- Dumping structure for table bug.bk_user_by_email_preference
 CREATE TABLE IF NOT EXISTS `bk_user_by_email_preference` (
   `user_id` bigint(20) unsigned NOT NULL,
   `email_preference_id` int(10) unsigned NOT NULL,
   `state` enum('on','off') NOT NULL,
   KEY `email_preference_id` (`email_preference_id`),
   KEY `user_id` (`user_id`),
-  KEY `state` (`state`)
+  KEY `state` (`state`),
+  CONSTRAINT `bk_user_by_email_preference_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_user_by_email_preference_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_user_by_group`
---
 
+-- Dumping structure for table bug.bk_user_by_group
 CREATE TABLE IF NOT EXISTS `bk_user_by_group` (
   `user_id` bigint(20) unsigned NOT NULL,
   `group_id` bigint(20) unsigned NOT NULL,
   KEY `user_id` (`user_id`),
   KEY `group_id` (`group_id`),
-  KEY `user_id_2` (`user_id`,`group_id`)
+  KEY `user_id_2` (`user_id`,`group_id`),
+  CONSTRAINT `bk_user_by_group_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_user_by_group_ibfk_2` FOREIGN KEY (`group_id`) REFERENCES `bk_user_group` (`group_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_user_by_group_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_user_by_group_ibfk_4` FOREIGN KEY (`group_id`) REFERENCES `bk_user_group` (`group_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_user_by_project`
---
 
+-- Dumping structure for table bug.bk_user_by_project
 CREATE TABLE IF NOT EXISTS `bk_user_by_project` (
   `user_id` bigint(20) unsigned NOT NULL,
   `project_id` bigint(20) unsigned NOT NULL,
   `is_admin` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT 'Defines is the user an admin of this project.',
   KEY `user_id` (`user_id`,`project_id`),
   KEY `is_admin` (`is_admin`),
-  KEY `project_id` (`project_id`)
+  KEY `project_id` (`project_id`),
+  KEY `project_id_2` (`project_id`),
+  CONSTRAINT `bk_user_by_project_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_user_by_project_ibfk_2` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_user_by_project_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_user_by_project_ibfk_4` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_user_group`
---
 
+-- Dumping structure for table bug.bk_user_group
 CREATE TABLE IF NOT EXISTS `bk_user_group` (
   `group_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `company_id` int(11) NOT NULL,
@@ -624,15 +828,15 @@ CREATE TABLE IF NOT EXISTS `bk_user_group` (
   PRIMARY KEY (`group_id`),
   KEY `name` (`name`),
   KEY `company_id` (`company_id`),
-  KEY `project_id` (`project_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+  KEY `project_id` (`project_id`),
+  CONSTRAINT `bk_user_group_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE,
+  CONSTRAINT `bk_user_group_ibfk_2` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- `bk_yii_session`
---
 
+-- Dumping structure for table bug.bk_yii_session
 CREATE TABLE IF NOT EXISTS `bk_yii_session` (
   `id` char(32) NOT NULL,
   `expire` int(11) DEFAULT NULL,
@@ -641,121 +845,16 @@ CREATE TABLE IF NOT EXISTS `bk_yii_session` (
   KEY `expire` (`expire`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- `bk_bug`
---
-ALTER TABLE `bk_bug`
-  ADD CONSTRAINT `bk_bug_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `bk_bug_ibfk_2` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE;
+-- Data exporting was unselected.
 
---
--- `bk_bug_by_label`
---
-ALTER TABLE `bk_bug_by_label`
-  ADD CONSTRAINT `bk_bug_by_label_ibfk_1` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `bk_bug_by_label_ibfk_2` FOREIGN KEY (`label_id`) REFERENCES `bk_label` (`label_id`) ON DELETE CASCADE;
 
---
--- `bk_bug_by_user`
---
-ALTER TABLE `bk_bug_by_user`
-  ADD CONSTRAINT `bk_bug_by_user_ibfk_1` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `bk_bug_by_user_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE;
+-- Dumping structure for table bug.tbl_migration
+CREATE TABLE IF NOT EXISTS `tbl_migration` (
+  `version` varchar(255) NOT NULL,
+  `apply_time` int(11) DEFAULT NULL,
+  PRIMARY KEY (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- `bk_bug_changelog`
---
-ALTER TABLE `bk_bug_changelog`
-  ADD CONSTRAINT `bk_bug_changelog_ibfk_1` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE;
-
---
--- `bk_comment`
---
-ALTER TABLE `bk_comment`
-  ADD CONSTRAINT `bk_comment_ibfk_1` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE;
-
---
--- `bk_filter`
---
-ALTER TABLE `bk_filter`
-  ADD CONSTRAINT `bk_filter_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE;
-
---
--- `bk_label`
---
-ALTER TABLE `bk_label`
-  ADD CONSTRAINT `bk_label_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE;
-
---
--- `bk_label_by_project`
---
-ALTER TABLE `bk_label_by_project`
-  ADD CONSTRAINT `bk_label_by_project_ibfk_1` FOREIGN KEY (`label_id`) REFERENCES `bk_label` (`label_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `bk_label_by_project_ibfk_2` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE;
-
---
--- `bk_notification`
---
-ALTER TABLE `bk_notification`
-  ADD CONSTRAINT `bk_notification_ibfk_1` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE;
-
---
--- `bk_project`
---
-ALTER TABLE `bk_project`
-  ADD CONSTRAINT `bk_project_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE;
-
---
--- `bk_settings_by_project`
---
-ALTER TABLE `bk_settings_by_project`
-  ADD CONSTRAINT `bk_settings_by_project_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE;
-
---
--- `bk_settings_by_user`
---
-ALTER TABLE `bk_settings_by_user`
-  ADD CONSTRAINT `bk_settings_by_user_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE;
-
---
--- `bk_status`
---
-ALTER TABLE `bk_status`
-  ADD CONSTRAINT `bk_status_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE;
-
---
--- `bk_user_by_company`
---
-ALTER TABLE `bk_user_by_company`
-  ADD CONSTRAINT `bk_user_by_company_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `bk_user_by_company_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE;
-
---
--- `bk_user_by_email_preference`
---
-ALTER TABLE `bk_user_by_email_preference`
-  ADD CONSTRAINT `bk_user_by_email_preference_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE;
-
---
--- `bk_user_by_group`
---
-ALTER TABLE `bk_user_by_group`
-  ADD CONSTRAINT `bk_user_by_group_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `bk_user_by_group_ibfk_2` FOREIGN KEY (`group_id`) REFERENCES `bk_user_group` (`group_id`) ON DELETE CASCADE;
-
---
--- `bk_user_by_project`
---
-ALTER TABLE `bk_user_by_project`
-  ADD CONSTRAINT `bk_user_by_project_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `bk_user_by_project_ibfk_2` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE;
-
---
--- `bk_user_group`
---
-ALTER TABLE `bk_user_group`
-  ADD CONSTRAINT `bk_user_group_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE;
-
+-- Data exporting was unselected.
+/*!40014 SET FOREIGN_KEY_CHECKS=1 */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
