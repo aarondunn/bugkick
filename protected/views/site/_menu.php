@@ -43,9 +43,10 @@ if(!Yii::app()->user->isGuest){
                 ),
                 array(
                     'text'=>'Settings',
-                    'url'=>Yii::app()->createUrl('/settings'),
+                    'url'=>Yii::app()->createUrl('project/edit', array('id'=>Project::getCurrent()->project_id)),
                     'title'=>'Customize your BugKick',
-                    'id'=>'settings-tab'
+                    'id'=>'settings-tab',
+                    'class'=>'update',
                 ),
                 array(
                     'text'=>'Calendar',
@@ -62,6 +63,13 @@ if(!Yii::app()->user->isGuest){
                 ),*/
             ),
         ));
+//        Yii::app()->clientScript->registerScript('settings-tab', '
+//            jQuery("a#settings-tab").live("click",function() {
+//                $("#project-form-dialog").dialog("open");
+//                return false;
+//            });
+//        ', CClientScript::POS_END);
+/*
         Yii::app()->clientScript->registerScript('settings-tab', '
             jQuery("a#settings-tab").live("click",function() {
                 $.post(
@@ -93,6 +101,9 @@ if(!Yii::app()->user->isGuest){
         ));
         echo '<div id="projectSettingsForm"></div>';
         $this->endWidget('zii.widgets.jui.CJuiDialog');
+
+   */
+
     }
     elseif($module == 'admin'){
         $this->widget('MainTabs', array(

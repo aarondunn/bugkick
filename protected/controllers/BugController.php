@@ -742,6 +742,16 @@ JS
 		if(empty($project))
 			$this->redirect($this->createUrl('/project/index'));
 
+        if(!Yii::app()->request->isAjaxRequest){
+            $baseUrl = Yii::app()->assetManager->publish('protected/extensions/EAjaxUpload/assets');
+            Yii::app()->clientScript->registerScriptFile($baseUrl . '/fileuploader.js', CClientScript::POS_HEAD);
+            Yii::app()->clientScript->registerCssFile($baseUrl.'/fileuploader.css');
+            //Edit Project Form
+            Yii::app()->clientScript->registerScriptFile(
+                Yii::app()->baseUrl . '/js/project/index/common.js'
+            );
+        }
+
         /*calendar view*/
         if ($this->request->getParam('show') == 'calendar'){
             $this->layout = 'column1';

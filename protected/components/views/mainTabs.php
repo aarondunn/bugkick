@@ -6,6 +6,7 @@
         echo CHtml::link(Yii::t('main', $tab['text']), $tab['url'], array(
             'title'=>$tab['title'],
             'id'=>$tab['id'],
+            'class'=>isset($tab['class'])?$tab['class']:'',
         ));
         ?>
         </li>

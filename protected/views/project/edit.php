@@ -59,7 +59,8 @@ $form = $this->beginWidget(
 ?>
     <ul class="nav nav-tabs">
         <li class="active"><a href="#project-common-info" data-toggle="tab">Common Info</a></li>
-        <li><a href="#project-users-and-labels" data-toggle="tab">Users and Labels</a></li>
+        <li><a href="#project-users" data-toggle="tab">People</a></li>
+        <li><a href="#project-labels" data-toggle="tab">Labels</a></li>
         <li><a href="#project-defaults" data-toggle="tab">Defaults</a></li>
         <?php if($projectForm->connectToGitHub) { ?>
         <li><a href="#extra-features" data-toggle="tab">Extra Features</a></li>
@@ -155,7 +156,7 @@ $form = $this->beginWidget(
             <div class="clear"></div>
         </div> <!-- #project-coomon-info -->
 
-        <div class="tab-pane" id="project-users-and-labels">
+        <div class="tab-pane" id="project-users">
             <div class="row">
                 <?php echo $form->labelEx($projectForm, 'Project Users'); ?>
                 <?php
@@ -173,6 +174,8 @@ $form = $this->beginWidget(
                 ?>
                 <?php echo $form->error($projectForm, 'users'); ?>
             </div>
+        </div>
+        <div class="tab-pane" id="project-labels">
             <div class="row">
                 <?php echo $form->labelEx($projectForm, 'Project Labels'); ?>
                 <?php

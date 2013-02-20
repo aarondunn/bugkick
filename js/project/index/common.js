@@ -3,7 +3,7 @@ $(function() {
 
     $('#projects-list a.update').live('click',editProject);
     $('#projects-grid a.update').live('click',editProject);
-    $('#createProjectBtn').live('click',editProject);
+    $('#createProjectBtn, a#settings-tab').live('click',editProject);
 
 //    if ($('div.items > span.empty').text() != "")
 //    {

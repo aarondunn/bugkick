@@ -43,8 +43,7 @@ $(document).on('click', '#switch-view-btn', function() {
     return false;
 });
 JS
-        ,
-            CClientScript::POS_END
+        ,CClientScript::POS_END
         );
 		$forceCreate=$this->request->getParam('forceCreate');
 		$this->beginWidget(
