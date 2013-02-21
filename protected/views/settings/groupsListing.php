@@ -6,7 +6,11 @@ $this->breadcrumbs=array(
 );
 ?>
 <div class="settings">
-<h2>Groups of members</h2>
+<h2>Groups</h2>
+    <p class="grey-tip"><?php echo Yii::t('main', 'Groups let\'s you organize people into teams,
+        allowing you to assign a task to anyone in "marketing" or "engineering"
+        so everyone is quickly notified at once. These are company wide, but
+        you can always exclude a group member from a specific project by not adding them to it.'); ?></p>
     <?php //$this->renderPartial('_groupGrid', $this->viewData); ?>
     <?php
         $this->clientScript->registerCssFile(

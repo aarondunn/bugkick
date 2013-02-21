@@ -1,9 +1,9 @@
 <?php
 $this->breadcrumbs=array(
-	'Settings',
+	'Statuses',
 );?>
 <div class="settings">
-<h2 class="listing-title"><?php echo Yii::t('main', 'Status Listing') ?></h2>
+<h2 class="listing-title"><?php echo Yii::t('main', 'Statuses') ?></h2>
 
 <?php if(!empty($statusProvider)): ?>
     <?php $this->renderPartial('_statuses',array(

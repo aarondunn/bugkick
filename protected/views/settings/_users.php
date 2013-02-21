@@ -11,15 +11,15 @@ $columns = array(
         );',
     ),
     array(
-        'name' => 'created_at',
-        'htmlOptions' => array('style'=>'width:150px'),
-        'value' => ' "Date joined: " . Helper::formatDateSlash($data->created_at)',
-    ),
-    array(
         'name' => 'name',
         'value' => '$data->name . " " . $data->lname',
     ),
     'email',
+    array(
+        'name' => 'created_at',
+        'htmlOptions' => array('style'=>'width:150px'),
+        'value' => ' "Date joined: " . Helper::formatDateSlash($data->created_at)',
+    ),
 );
 
 if(User::current()->isCompanyAdmin(Company::current())) {

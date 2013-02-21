@@ -585,4 +585,10 @@ a#calendar-tab{
 .settings .right_side ul.b_options li.b_color ul li div.active{
 	background: url("/images/feedback/fb_sprite_color.png") no-repeat scroll 0px -344px transparent;
 }
+.grey-tip{
+    color: #5A6876;
+    line-height: 25px;
+    margin: 10px 0;
+    font-size: 12px;
+}
 

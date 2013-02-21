@@ -1,9 +1,9 @@
 <?php
 $this->breadcrumbs=array(
-	'Settings',
+	'Labels',
 );?>
 <div class="settings">
-<h2 class="listing-title"><?php echo Yii::t('main', 'Label Listing'); ?></h2>
+<h2 class="listing-title"><?php echo Yii::t('main', 'Labels'); ?></h2>
 
 <?php if(!empty($labelProvider)): ?>
     <?php $this->renderPartial('_labels',array(

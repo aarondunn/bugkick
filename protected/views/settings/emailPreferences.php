@@ -1,30 +1,30 @@
 <?php
 $this->breadcrumbs = array(
     'Settings'=>'settings/',
-	'Email Preferences'
+	'Notifications'
 );
 ?>
 <div class="settings">
-<h2><?php echo Yii::t('main', 'Email Preferences'); ?></h2>
+<h2><?php echo Yii::t('main', 'Notifications'); ?></h2>
 <?php //$this->renderFlash(); ?>
 <div class="form" id="email-preferences-form">
 <?php $form=$this->beginWidget('CActiveForm'); ?>
 	<?php if($emailPrefForm->hasErrors()) { ?>
 	<div class="row"><?php echo $form->errorSummary($emailPrefForm); ?></div>
 	<?php } ?>
-    <div class="settings-email-row">
+    <?php $cbOptions=array('class'=>'cbEmailPref');?>
+<!--    <div class="settings-email-row">
           <div class="row-left">
-               <?php  $cbOptions=array('class'=>'cbEmailPref');
-               echo $form->label($emailPrefForm, 'email_notify');?> 	
+               <?php /* echo $form->label($emailPrefForm, 'email_notify');*/?>
           </div>
           <div class="row-left">
-               <?php echo $form->checkBox($emailPrefForm, 'email_notify'); ?>
-               <?php echo $form->error($emailPrefForm, 'email_notify'); ?>
+               <?php /*echo $form->checkBox($emailPrefForm, 'email_notify'); */?>
+               <?php /*echo $form->error($emailPrefForm, 'email_notify'); */?>
           </div>
     </div>
-    <div class="clear"></div>
+    <div class="clear"></div>-->
 
-	<h3><?php echo Yii::t('main', 'Email me for the following '); ?>:</h3>
+	<h3><?php echo Yii::t('main', 'These affect notifications for tickets you create or are assigned to'); ?>:</h3>
 	<div class="row" id="emailPreferences" <?php if(!$emailPrefForm->email_notify) echo 'style="display:none"'?>>
 		<?php
             echo $form->checkBoxList(

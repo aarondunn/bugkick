@@ -9,11 +9,13 @@ class UserForm extends FormModel {
 
     public $user_id;
 	public $projects = array();
+    public $is_company_admin;
 
 	public function rules() {
 		return array(
             array('user_id', 'numerical'),
 			array('projects', 'numArray'),
+			array('is_company_admin', 'numerical', 'integerOnly' => true),
 			array('user_id, projects', 'safe', 'on'=>'search'),
 		);
 	}
@@ -32,6 +34,7 @@ class UserForm extends FormModel {
 		return array(
             'user_id'=>'User',
 			'projects'=>'Projects',
+			'is_company_admin'=>'Company Admin',
 		);
 	}
 }

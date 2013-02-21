@@ -2,6 +2,8 @@
 return array(
     'signup'=>'registration',
 	'settings/email-preferences'=>'settings/emailPreferences',
+	'labels'=>'settings/labelListing',
+	'statuses'=>'settings/statusListing',
     'projects'=>'project',
     'projects/<action:\w+>'=>'project/<action>',
     'projects/<action:\w+>/<id:\d+>'=>'project/<action>',

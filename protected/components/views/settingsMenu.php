@@ -2,7 +2,7 @@
 	<li><?php echo CHtml::link(Yii::t('main','Settings'), CHtml::normalizeUrl(array('settings/')),
                    ($controllerId == 'settings' && $actionId == 'index')? array('class'=>'active') : array()
     ) ?></li>
-	<li><?php echo CHtml::link(Yii::t('main','Email Preferences'), CHtml::normalizeUrl(array('settings/email-preferences')),
+	<li><?php echo CHtml::link(Yii::t('main','Notifications'), CHtml::normalizeUrl(array('settings/email-preferences')),
                    ($controllerId == 'settings' && $actionId == 'emailPreferences')? array('class'=>'active') : array()
     ) ?></li>
 	<li><?php echo CHtml::link(Yii::t('main','View Profile'), CHtml::normalizeUrl(array('user/view')),

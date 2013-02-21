@@ -141,10 +141,18 @@ $this->breadcrumbs = array(
      <?php
          echo CHtml::linkButton(
              Yii::t('main', 'Save'),
-             array('class'=>'bkButtonBlueSmall normal','style'=>'float:left')
+             array('class'=>'bkButtonBlueSmall normal','style'=>'float:right')
          );
      ?>
-
+    <?php echo CHtml::link(
+        Yii::t('main','Export Tickets to XLS'),
+        '/settings/exportTickets',
+        array(
+            'target'=>'_blank',
+            'class'=>'bkButtonBlueSmall normal fr',
+            'style'=>'margin-right:10px')
+        );
+    ?>
      <?php $this->endWidget(); ?>
      <div class="clear"></div>
 </div>

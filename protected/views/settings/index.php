@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs = array(
-    'Settings',
+    'Preferences',
 );
 ?>
 <?php $this->renderFlash(); ?>
@@ -38,7 +38,7 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
 
 <div class="settings">
     <div class="settings-header">
-	   <h2>Settings</h2>
+	   <h2>Preferences</h2>
 	   <a href="#" id="btn_change_password"><?php echo Yii::t('main', 'Change Password'); ?></a>
     </div>
     <?php
@@ -229,15 +229,6 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
                                 'class'=>'bkButtonBlueSmall normal',
                                 'style'=>'float:right'
                             )
-                        );
-                    ?>
-                    <?php echo CHtml::link(
-                        Yii::t('main','Export Tickets to XLS'),
-                        'settings/exportTickets',
-                        array(
-                            'target'=>'_blank',
-                            'class'=>'bkButtonBlueSmall normal fr',
-                            'style'=>'margin-right:10px')
                         );
                     ?>
 				</li>

@@ -198,6 +198,12 @@ JS
                         $cmd->setText($sql)->execute($cmdParams); //	Insert the labels that has been set
                     }
                 }
+                UserByCompany::model()->updateAll(
+                    array('is_admin'=>($form->is_company_admin)? 1 : 0),
+                    'user_id=:user_id AND company_id=:company_id', array(
+                        ':user_id'=>$model->user_id,
+                        ':company_id'=>Company::current(),
+                ));
                 if ($model->save()) {
                     Yii::app()->user->setFlash('success', "Saved!");
                     $this->redirect(Yii::app()->user->returnUrl);
@@ -656,6 +662,7 @@ JS
             $model = $this->loadModel($id);
             $form = new UserForm();
             $form->setAttributes($model->attributes);
+            $form->is_company_admin = $model->isCompanyAdmin(Company::current());
             foreach ($model->project as $project)
                 $form->projects[] = $project->project_id;
             $this->layout = 'layout';
