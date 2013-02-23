@@ -69,6 +69,7 @@ class BugController extends Controller
                     'UpdateTicketOrder',
             		'UpdateAjaxComment',
             		'upload',
+                	'summaryTickets',
                 ),
                 'users' => array('@'),
             ),
@@ -1579,5 +1580,81 @@ JS
         }
         else
             throw new CHttpException(400, 'Invalid request.');
+    }
+    
+    public function actionSummaryTickets(){
+    	$this->layout = '//layouts/column1';
+    	 
+    	$user    = User::current();
+    	$project = Project::getCurrent();
+    	 
+    	$criteria = new CDbCriteria();
+    	$criteria->with = array(
+    			'label'   => array(),
+    			'user'    => array('condition'=>'user.user_id='.$user->id, 'together'=>true),
+    			'project' => array('condition'=>'project.archived=0', 'together'=>true),
+    			'company',
+    			'commentCount',
+    	);
+    	$criteria->distinct = true;
+    	$criteria->together = false;
+    	$criteria->order    = 'project.name ASC';
+    	 
+    	$pages = new CPagination(Bug::model()->currentCompany()->count($criteria));
+    	//tickets per page is set on settings page, by default, it's 30
+    	$pages->pageSize = $user->tickets_per_page;
+    	$pages->applyLimit($criteria);
+    	 
+    	//create model
+    	$bugFinder = Bug::model()->currentCompany();
+    	 
+    	$model = new CActiveDataProvider(
+    			$bugFinder,
+    			array(
+    					'criteria'   => $criteria,
+    					'pagination' => $pages,
+    			)
+    	);
+    	 
+    	//Tickets closed per day
+    	$iLastDaysCount = 30;
+    	$criteria = new CDbCriteria();
+    	$criteria->order = 'date DESC';
+    	$criteria->addSearchCondition('t.change', 'closed the ticket at');
+    	$criteria->with = array(
+    			'user' => array('condition'=>'user.user_id='.$user->id, 'together'=>true),
+    	);
+    	$last30Days  = date('Y-m-d H:i:s', time() - 3600 * 24 * $iLastDaysCount);
+    	$criteria->addCondition("t.date > '". $last30Days . "'");
+    
+    	$bugChanges = new CActiveDataProvider('BugChangelog', array(
+    			'criteria'  => $criteria,
+    	));
+    	$bugChanges->setPagination(false);
+    
+    	$arrClosedTickets = array();
+    	$iMaxClosed = 0;
+    	for($i = $iLastDaysCount; $i >= 1; $i--){
+    		$iCount = 0;
+    		$dDate = date('Y-m-d', time() - 3600 * 24 * $i);
+    		foreach($bugChanges->getData() as $record) {
+    			if( date('Y-m-d', strtotime($record->date)) == $dDate )
+    				$iCount++;
+    		}
+    		if( $iMaxClosed < $iCount )
+    			$iMaxClosed = $iCount;
+    		array_push($arrClosedTickets, array('date' => date('m/d/Y', strtotime($dDate)), 'count' => $iCount));
+    	}
+    	////////////////////////////////////////////
+    	 
+    	$this->render('summaryTickets', array(
+    			'project'       => $project,
+    			'model'         => $model,
+    			'bugChanges'    => $arrClosedTickets,
+    			'max_closed'    => $iMaxClosed,
+    			'pages'         => $pages,
+    			'currentView'   => $this->currentView,
+    			'textForSearch' => $this->textSearch,
+    	));
     }
 }

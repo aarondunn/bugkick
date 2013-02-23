@@ -596,3 +596,168 @@ a#calendar-tab{
     color: #5A6876;
     margin: 10px 0;
 }
+
+#header .top_tab.summary_tickets{
+	padding: 0;
+}
+#header .top_tab.summary_tickets a{
+	background: url("/themes/bugkick_theme/images/icons/summary_tickets.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 22px;
+    margin: 8px 0 0;
+    position: relative;
+    width: 22px;
+}
+#header .top_tab.t_separator{
+	background: url("/themes/bugkick_theme/images/bg_separator.png") no-repeat scroll 0 0 transparent;
+	padding: 0;
+	margin-left: 5px;
+    margin-right: 10px;
+	display: block;
+    height: 45px;
+    width: 2px;
+}
+
+#summary-tickets #b_project_list{
+	margin: 10px 15px 10px 15px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #AAAAAA;
+}
+
+#summary-tickets #b_project_list .b_project_name{
+	color: #AAAAAA;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    position: relative;
+    text-transform: uppercase;
+    width: 100%;
+	padding-top: 25px;
+}
+
+#summary-tickets #b_project_list .b_project_name div{
+	float: left;
+	margin-top: -7px;
+}
+
+#summary-tickets #b_project_list .b_project_name hr{
+	background-color: #AAAAAA;
+    display: block;
+    height: 1px;
+    position: relative;
+    margin-left: 10px;
+}
+
+#summary-tickets #b_project_list div.b_tickets > div{
+	width: 100%;
+	height: 35px;
+}
+
+#summary-tickets #b_project_list div.b_tickets > div.b_project_name{
+	height: 25px;
+}
+
+#summary-tickets #b_project_list div.b_tickets > div.b_project_name.disabled{
+	display: none;
+}
+
+#summary-tickets #b_project_list div.b_tickets > div .t_status{
+	display: block;
+    height: 17px;
+    width: 3px;
+    float: left;
+}
+
+#summary-tickets #b_project_list div.b_tickets > div div{
+	float: left;
+	display: block;
+}
+
+#summary-tickets #b_project_list div.b_tickets > div .t_number{
+	font-weight: bold;
+    margin: 0 7px;
+    color: #AAAAAA;
+}
+
+#summary-tickets #b_project_list div.b_tickets > div .t_text{
+	font-weight: bold;
+	color: #646877;
+}
+
+#summary-tickets #b_project_list div.b_tickets > div .t_text span{
+	color: #AAAAAA;
+	margin-left: 5px;
+}
+
+#summary-tickets .b_closed_tickets{
+	margin: 10px 15px;
+	display: block;
+	height: 80px;
+	widht: 100%;
+}
+#summary-tickets .b_closed_tickets .b_label{
+	padding-top: 30px;
+	margin-right: 20px;
+	color: #AAAAAA;
+	float: left;
+}
+#summary-tickets .b_closed_tickets ul.b_daily_score{
+	border-bottom: 3px solid #AAAAAA;
+    float: left;
+    height: 80px;
+    padding: 0 15px;
+    position: relative;
+    width: 740px;
+}
+#summary-tickets .b_closed_tickets ul.b_daily_score li{
+	float: left;
+	margin-left: 12px;
+    width: 13px;
+	height: 100%;
+}
+#summary-tickets .b_closed_tickets ul.b_daily_score li:first-child{
+	margin-left: 0px;
+}
+#summary-tickets .b_closed_tickets ul.b_daily_score li .b_graph{
+	cursor: pointer;
+	border-radius: 3px 3px 0px 0px;
+	background-color: #AAAAAA;
+	position: absolute;
+	width: 15px;
+	bottom: 0;
+}
+#summary-tickets .b_closed_tickets ul.b_daily_score li .b_score,
+#summary-tickets .b_closed_tickets ul.b_daily_score li .b_date{
+	display: none;
+}
+#summary-tickets .b_closed_tickets ul.b_daily_score li .b_score{
+	background: url("/themes/bugkick_theme/images/bubble_count.png") no-repeat scroll 0 0 transparent;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: bold;
+    height: 28px;
+    margin-left: -6px;
+    padding: 2px 0 0;
+    text-align: center;
+    width: 28px;
+    position: absolute;
+}
+#summary-tickets .b_closed_tickets ul.b_daily_score li .b_date{
+	background: url("/themes/bugkick_theme/images/date_b.png") no-repeat scroll 0 0 transparent;
+    color: #767676;
+    font-size: 12px;
+    font-weight: bold;
+    height: 30px;
+    margin-left: -62px;
+    margin-top: 83px;
+    padding: 11px 0 0;
+    text-align: center;
+    width: 140px;
+}
+#summary-tickets .b_closed_tickets ul.b_daily_score li:hover .b_score,
+#summary-tickets .b_closed_tickets ul.b_daily_score li:hover .b_date{
+	display: block;
+}
+#summary-tickets .b_closed_tickets ul.b_daily_score li:hover .b_graph{
+	background-color: #2875C4;
+}

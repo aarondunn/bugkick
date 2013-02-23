@@ -172,6 +172,13 @@ JS
             </li>
         </ul>
     </div>
+    
+    <div class="top_tab summary_tickets">
+    	<a href="<?php echo $this->createUrl('bug/summaryTickets'); ?>" title="Summary tickets"></a>
+    </div>
+    
+    <div class="top_tab t_separator"></div>
+    
 <?php
     $form = $this->beginWidget('CActiveForm', array(
         'action'=> $this->createUrl('/project/choose'),
