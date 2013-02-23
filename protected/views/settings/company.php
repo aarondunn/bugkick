@@ -34,14 +34,14 @@ $this->breadcrumbs = array(
         <h4>Current plan: Pro</h4>
         <?php
             if(!empty($model->stripeCustomer->expires_at)){
-                echo CHtml::tag('h4',null,Yii::t(
+                echo CHtml::tag('h4',array(),Yii::t(
                     'main',
                     'Your company will automatically downgraded after the end of current paid period at {date}.',
                     array('{date}'=>date('Y-m-d', $model->stripeCustomer->expires_at))
                 ));
             }
             else{
-                echo CHtml::tag('h4',null,Yii::t(
+                echo CHtml::tag('h4',array(),Yii::t(
                     'main',
                     'Set to renew on: {date}.',
                     array('{date}'=>date('Y-m-d', $model->stripeCustomer->next_payment_time))
