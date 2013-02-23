@@ -33,7 +33,6 @@ class MixPanel {
     const INTRO_PAGE_VIEW = 'Page View - Intro Page';
     const COMPLETE_STEP = 'User Completed Intro Step'; //params: 'step'=>1 , etc
     const SKIP_STEP = 'User Skipped Intro Step'; //params: 'step'=>1 , etc
-    const FROM_FEEDBACK_WIDGET = 'User From Feedback Widget'; //params: 'site'=>'site.com'
 
     private static $_instance = null;
     private $_enabled = false;

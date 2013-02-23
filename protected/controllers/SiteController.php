@@ -98,16 +98,7 @@ class SiteController extends Controller {
             $this->redirect($this->createUrl('site/login'));
         }
 
-        //track users that came from 'bugkick.com' link in Feedback form
-        if(Yii::app()->request->getParam('r')==1 && !empty(Yii::app()->request->urlReferrer)){
-            // MixPanel events tracking
-            MixPanel::instance()->registerEvent(MixPanel::FROM_FEEDBACK_WIDGET, array(
-                'site'=>CHtml::encode(Yii::app()->request->urlReferrer)
-            ));
-        }
-        else{
-            MixPanel::instance()->registerEvent(MixPanel::HOME_PAGE_VIEW); // MixPanel events tracking
-        }
+        MixPanel::instance()->registerEvent(MixPanel::HOME_PAGE_VIEW); // MixPanel events tracking
 
         $this->layout = '/layouts/index-new';
         $this->render('index');
@@ -133,13 +124,8 @@ class SiteController extends Controller {
         if (isset($_POST['ContactForm'])) {
             $model->attributes = $_POST['ContactForm'];
             if ($model->validate()) {
-                $SESMail = new SESMail();
-                $SESMail->send(
-                    Yii::app()->params['adminEmail'],
-                    $model->email,
-                    $model->subject,
-                    $model->body
-                );
+                $headers = "From: {$model->email}\r\nReply-To: {$model->email}";
+                mail('ylavrynovich@gmail.com', $model->subject, $model->body, $headers);
                 Yii::app()->user->setFlash('contact', 'Thank you for contacting us. We will respond to you as soon as possible.');
                 $this->refresh();
             }
