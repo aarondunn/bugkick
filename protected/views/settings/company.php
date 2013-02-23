@@ -46,7 +46,11 @@ $this->breadcrumbs = array(
                     'Set to renew on: {date}.',
                     array('{date}'=>date('Y-m-d', $model->stripeCustomer->next_payment_time))
                 ));
-                echo CHtml::link('Cancel auto renew',$this->createUrl('payment/cancel-subscription'));
+                echo CHtml::link(
+                    'Cancel auto renew',
+                    //$this->createUrl('payment/cancel-subscription'),
+                    array('class'=>'bkButtonGraySmall medium')
+                );
             }
         ?>
     </div>
