@@ -16,36 +16,59 @@ $this->breadcrumbs = array(
 <?php $this->renderFlash(); ?>
 
 <div class="company-settings">
-    <?php
-        if($model->account_type==Company::TYPE_FREE) {
-            echo CHtml::link(
-                'Upgrade company',
-                $this->createUrl('payment/chooseSubscription'),
-                array('class'=>'bkButtonBlueSmall medium')
-            );
-        }
-        elseif(!empty($model->stripeCustomer) && !empty($model->stripeCustomer->expires_at)) {
-    ?>
-	 <h4>
+<?php
+    if($model->account_type==Company::TYPE_FREE) { ?>
+        <div class="company-settings">
+            <h4>Current plan: Free</h4>
+        </div>
+<?php
+        echo CHtml::link(
+            'Upgrade company',
+            $this->createUrl('payment/chooseSubscription'),
+            array('class'=>'bkButtonBlueSmall medium')
+        );
+    }
+    elseif(!empty($model->stripeCustomer)) {
+?>
+    <div class="company-settings">
+        <h4>Current plan: Pro</h4>
         <?php
-            echo Yii::t(
-                'main',
-                'Your company will automatically downgraded after the end of current paid period at {date}.',
-                array('{date}'=>date('Y-m-d', $model->stripeCustomer->expires_at))
-            );
-        ?>
-     </h4>
-        <?php
+            if(!empty($model->stripeCustomer->expires_at)){
+                echo CHtml::tag('h4',null,Yii::t(
+                    'main',
+                    'Your company will automatically downgraded after the end of current paid period at {date}.',
+                    array('{date}'=>date('Y-m-d', $model->stripeCustomer->expires_at))
+                ));
             }
-            else {
-                echo CHtml::link(
-                    'Change subscription',
-                    //$this->createUrl('payment/cancel-subscription'),
-                    $this->createUrl('payment/chooseSubscription'),
-                    array('class'=>'bkButtonGraySmall medium')
-                );
+            else{
+                echo CHtml::tag('h4',null,Yii::t(
+                    'main',
+                    'Set to renew on: {date}.',
+                    array('{date}'=>date('Y-m-d', $model->stripeCustomer->next_payment_time))
+                ));
+                echo CHtml::link('Cancel auto renew',$this->createUrl('payment/cancel-subscription'));
             }
         ?>
+    </div>
+<?php
+    }
+    else {
+?>
+    <div class="company-settings">
+        <h4>Current plan: Pro</h4>
+        <?php if(!empty($model->coupon_expires_at)):?>
+            <h4>Coupon expires on: <?php echo date('Y-m-d', $model->stripeCustomer->expires_at);?></h4>
+        <?php endif;?>
+    </div>
+<?php
+        echo CHtml::link(
+            'Change subscription',
+            //$this->createUrl('payment/cancel-subscription'),
+            $this->createUrl('payment/chooseSubscription'),
+            array('class'=>'bkButtonGraySmall medium')
+        );
+    }
+?>
 	 <div class="generate-api-key">
         <?php
             echo  CHtml::link(

@@ -5,8 +5,8 @@
 ## Bugkick.com Installation Reference
 
 1. Copy configuration files from /devconf to /protected/config/ and change them according to your settings.
-2. Use /protected/data/bugkick.sql to setup DB
-3. By default we use APC cache. You can change it main.php or turn it off.
+2. Use /protected/data/bugkick_<date>.sql to setup DB and apply sql updates(in /www/dbup folder) starting from the <date>.
+3. By default we use APC cache. You can change it main.php config or turn it off.
 
 ### Instant Notifications
 
