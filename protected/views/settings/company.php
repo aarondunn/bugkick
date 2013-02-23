@@ -18,7 +18,7 @@ $this->breadcrumbs = array(
 <div class="company-settings">
 <?php
     if($model->account_type==Company::TYPE_FREE) { ?>
-        <div class="company-settings">
+        <div class="company-plan">
             <h4>Current plan: Free</h4>
         </div>
 <?php
@@ -30,7 +30,7 @@ $this->breadcrumbs = array(
     }
     elseif(!empty($model->stripeCustomer)) {
 ?>
-    <div class="company-settings">
+    <div class="company-plan">
         <h4>Current plan: Pro</h4>
         <?php
             if(!empty($model->stripeCustomer->expires_at)){
@@ -46,19 +46,21 @@ $this->breadcrumbs = array(
                     'Set to renew on: {date}.',
                     array('{date}'=>date('Y-m-d', $model->stripeCustomer->next_payment_time))
                 ));
-                echo CHtml::link(
-                    'Cancel auto renew',
-                    //$this->createUrl('payment/cancel-subscription'),
-                    array('class'=>'bkButtonGraySmall medium')
-                );
             }
         ?>
     </div>
 <?php
+        if(empty($model->stripeCustomer->expires_at)){
+            echo CHtml::link(
+                'Cancel auto renew',
+                $this->createUrl('payment/cancel-subscription'),
+                array('class'=>'bkButtonGraySmall medium')
+            );
+        }
     }
     else {
 ?>
-    <div class="company-settings">
+    <div class="company-plan">
         <h4>Current plan: Pro</h4>
         <?php if(!empty($model->coupon_expires_at)):?>
             <h4>Coupon expires on: <?php echo date('Y-m-d', $model->stripeCustomer->expires_at);?></h4>

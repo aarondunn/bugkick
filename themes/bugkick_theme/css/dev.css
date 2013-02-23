@@ -591,4 +591,8 @@ a#calendar-tab{
     margin: 10px 0;
     font-size: 12px;
 }
-
+.company-plan h4{
+    font-size: 13px;
+    color: #5A6876;
+    margin: 10px 0;
+}
