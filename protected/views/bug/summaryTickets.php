@@ -42,7 +42,7 @@ $this->widget('zii.widgets.CListView', array(
 		<div class="b_label">Tickets Closed per Day:</div>
 		<ul class="b_daily_score">
 		  <?php foreach($bugChanges as $record) { 
-		  	$fScorePerc = ($record['count'] / $max_closed) * 100;
+		  	$fScorePerc = ($max_closed == 0) ? 0 : (($record['count'] / $max_closed) * 100);
 		  	?>
         	<li>
 				<div class="b_graph" style="height:<?php echo $fScorePerc ?>%;"></div>
