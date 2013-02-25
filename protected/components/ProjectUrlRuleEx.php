@@ -67,6 +67,7 @@ class ProjectUrlRuleEx extends CBaseUrlRule {
 				return 'bug/';
 			}
 			if(Yii::app()->user->isGuest) {
+                Yii::app()->user->setState('fromUrl',Yii::app()->request->requestUri);
                 Yii::app()->user->setFlash('error','Please log in to view this ticket.');
                 return 'bug/';
             }

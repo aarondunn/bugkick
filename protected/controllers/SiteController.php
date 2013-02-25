@@ -254,7 +254,12 @@ class SiteController extends Controller {
 	                	$user->save();
 	                }
                 }
-                
+
+                $from = Yii::app()->user->getState('fromUrl');
+                if(!empty($from)){
+                    Yii::app()->user->setState('fromUrl',null);
+                    $this->redirect($from);
+                }
                 $this->redirect(Yii::app()->user->returnUrl);
             } else {
                 $user->addBlock($_SERVER['REMOTE_ADDR']);
