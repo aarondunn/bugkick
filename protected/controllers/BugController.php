@@ -1006,9 +1006,9 @@ JS
 
         //create model
         if(empty($archiveFilter))
-            $bugFinder = Bug::model()->currentCompany();
+            $bugFinder = Bug::model();//$bugFinder = Bug::model()->currentCompany();
         else
-            $bugFinder = Bug::model()->resetScope()->currentCompany();
+            $bugFinder = Bug::model()->resetScope();//$bugFinder = Bug::model()->currentCompany();
 
 		$model = new CActiveDataProvider(
 			$bugFinder,
