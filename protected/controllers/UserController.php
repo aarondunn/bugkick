@@ -710,7 +710,7 @@ JS
     }
 
     public function actionAdminUserStats() {
-        if (User::current()->isadmin) {
+        if (User::current()->is_global_admin) {
             header('Content-type: application/json');
             $sql = "SELECT S.*
              ,COUNT(C.comment_id) AS commentCount
@@ -740,7 +740,7 @@ JS
     }
 
     public function actionFiveNewest() {
-        if (User::current()->isadmin) {
+        if (User::current()->is_global_admin) {
             header('Content-type: application/json');
             $sql = "SELECT U.name, DATE_FORMAT(U.created_at, '%d/%m/%Y') AS date
             FROM bk_user U
@@ -757,7 +757,7 @@ JS
     }
 
     public function actionTopFiveActive() {
-        if (User::current()->isadmin) {
+        if (User::current()->is_global_admin) {
             header('Content-type: application/json');
             $sql = "SELECT U.name, COUNT(N.notification_id) AS count
             FROM bk_user U
@@ -776,7 +776,7 @@ JS
     }
 
     public function actionAdminUserUpdate($id) {
-        if (User::current()->isadmin) {
+        if (User::current()->is_global_admin) {
             $model = $this->loadModel($id);
             $model->email = $_GET['email'];
             $messageType = 'error';
@@ -821,5 +821,4 @@ JS
         }
         $this->redirect(Yii::app()->createUrl('bug/index'));
     }
-
 }
