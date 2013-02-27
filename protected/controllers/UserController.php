@@ -28,9 +28,9 @@ class UserController extends Controller {
                 'actions' => array(
                     //'index',
                     'view',
-                    'create',
+                   // 'create',
                     'update',
-                    'admin',
+//                    'admin',
                     'delete',
                     'restore',
                     'Invite',
@@ -117,7 +117,7 @@ JS
      * Creates a new model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
-    public function actionCreate() {
+/*    public function actionCreate() {
         $model = new User('registration');
 
         $userProvider = new CActiveDataProvider('User', array(
@@ -151,7 +151,7 @@ JS
             $this->redirect(Yii::app()->createUrl('settings/userListing'));
         }
         Yii::app()->end();
-    }
+    }*/
 
     /**
      * Updates a particular model.
@@ -308,7 +308,7 @@ JS
     /**
      * Manages all models.
      */
-    public function actionAdmin() {
+/*    public function actionAdmin() {
         $model = new User('search');
         $model->unsetAttributes();  // clear any default values
         if (isset($_GET['User']))
@@ -317,7 +317,7 @@ JS
         $this->render('admin', array(
             'model' => $model,
         ));
-    }
+    }*/
 
     /**
      * Returns the data model based on the primary key given in the GET variable.
