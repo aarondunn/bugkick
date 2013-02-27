@@ -48,12 +48,12 @@ class LabelController extends Controller
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
-	public function actionView($id)
+/*	public function actionView($id)
 	{
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
-	}
+	}*/
 
 	/**
 	 * Creates a new model.
@@ -226,7 +226,12 @@ class LabelController extends Controller
 		if(Yii::app()->request->isPostRequest || Yii::app()->request->isAjaxRequest)
 		{
 			// we only allow deletion via POST request
-			$this->loadModel($id)->delete();
+			$model = $this->loadModel($id);
+            $companyID = Company::current();
+            if(empty($companyID) || $model->company_id!=$companyID)
+                throw new CHttpException(400,'Invalid request.');
+
+            $model->delete();
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
@@ -239,18 +244,18 @@ class LabelController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
+/*	public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Label');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
-	}
+	}*/
 
 	/**
 	 * Manages all models.
 	 */
-	public function actionAdmin()
+/*	public function actionAdmin()
 	{
 		$model=new Label('search');
 		$model->unsetAttributes();  // clear any default values
@@ -260,7 +265,7 @@ class LabelController extends Controller
 		$this->render('admin',array(
 			'model'=>$model,
 		));
-	}
+	}*/
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.

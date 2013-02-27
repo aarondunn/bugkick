@@ -357,20 +357,6 @@ class ProjectController extends Controller {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //to del
 //    public function actionManagePeople()
 //    {

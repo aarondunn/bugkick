@@ -633,7 +633,7 @@ JS
      * If deletion is successful, clearing selected comment from page.
      * @param integer $id the ID of the model to be deleted
      */
-    public function actionDeleteComment($id)
+/*    public function actionDeleteComment($id)
     {
         if (Yii::app()->request->isPostRequest) {
             try{
@@ -655,7 +655,7 @@ JS
 				echo json_encode(array("status" => $sErrEcho));
 			}
         }
-    }
+    }*/
     
     /**
      * Deletes a particular model.
@@ -1064,7 +1064,7 @@ JS
     /**
      * Manages all models.
      */
-    public function actionAdmin()
+/*    public function actionAdmin()
     {
         $model = new Bug('search');
         $model->unsetAttributes();  // clear any default values
@@ -1074,7 +1074,7 @@ JS
         $this->render('admin', array(
             'model' => $model,
         ));
-    }
+    }*/
 
     /**
      * Returns the data model based on the number of bug given in the GET variable.
@@ -1214,7 +1214,7 @@ JS
         Yii::app()->end();
     }
 
-    public function actionSetPriority($id)
+/*    public function actionSetPriority($id)
     {
         if (Yii::app()->request->isAjaxRequest) {
             $model = Bug::model()->resetScope()->findByPk($id);
@@ -1236,7 +1236,7 @@ JS
             }
         }
         Yii::app()->end();
-    }
+    }*/
 
     public function actionGetDuplicateFormByBugId()
     {

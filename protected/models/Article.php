@@ -89,7 +89,7 @@ class Article extends CActiveRecord
 		));
 	}
 
-    public function getSearch($searchQuery = null)
+    public static function getSearch($searchQuery = null)
     {
         return new CActiveDataProvider('Article', array(
             'criteria' => array(

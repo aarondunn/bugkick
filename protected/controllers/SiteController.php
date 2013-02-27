@@ -418,14 +418,14 @@ class SiteController extends Controller {
         $this->render('calendar', array('bugs' => $bugsArray));
     }
 
-    public function actionSendDateNotification() {
+/*    public function actionSendDateNotification() {
         $data = Bug::getOutdatedTickets();
         if (is_array($data))
             Notificator::sendDueDateNotification($data);
         else
             print 'No Outdated tickets.';
         Yii::app()->end();
-    }
+    }*/
 
     public function actionPreviewMarkdown() {
         $markdownContent = $this->request->getPost('data');

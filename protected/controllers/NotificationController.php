@@ -53,8 +53,11 @@ class NotificationController extends Controller
         if(Yii::app()->request->isPostRequest || Yii::app()->request->isAjaxRequest)
         {
             // we only allow deletion via POST request
-            $this->loadModel($id)->delete();
+            $model = $this->loadModel($id);
+            if($model->user_id!=User::current()->user_id)
+                throw new CHttpException(400,'Invalid request.');
 
+            $model->delete();
             // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
             if(!isset($_GET['ajax']))
                 $this->redirect(array('/notification'));
