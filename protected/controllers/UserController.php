@@ -26,7 +26,7 @@ class UserController extends Controller {
         return array(
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
                 'actions' => array(
-                    'index',
+                    //'index',
                     'view',
                     'create',
                     'update',
