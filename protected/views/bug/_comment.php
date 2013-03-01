@@ -165,7 +165,7 @@
                 'class'=>'bkButtonBlueSmall normal',
             ));*/
             echo CHtml::ajaxButton(Yii::t('main', 'Post Comment'),
-                              CController::createUrl('bug/UpdateAjaxComment'), 
+                              $this->createUrl('bug/UpdateAjaxComment'),
                               array('type' => 'POST',
                               'success' =>'function(html){
 
