@@ -433,18 +433,15 @@ JS
             $mailSubject = '[' . Yii::app()->name . '] ';
             $mailSubject .= Yii::app()->user->name . ' invites you to join the team for "' . Yii::app()->user->company_name . '"';
             $mailMessage = $this->renderFile(Yii::getPathOfAlias('application.views.mailTemplate.inviteMember') . '.php', array('acceptUrl' => $acceptUrl), true);
-            $headers = "Content-type: text/html; charset=utf-8 \r\n";
 
             if ($model->save()){
-                mail($model->email, $mailSubject, $mailMessage, $headers);
-
-//                $SESMail = new SESMail();
-//                $SESMail->send(
-//                    $model->email,
-//                    Yii::app()->params['adminEmail'],
-//                    $mailSubject,
-//                    $mailMessage
-//                );
+                $SESMail = new SESMail();
+                $SESMail->send(
+                    $model->email,
+                    Yii::app()->params['adminEmail'],
+                    $mailSubject,
+                    $mailMessage
+                );
             }
 
             Yii::app()->user->setFlash('success', "Reinvite complete");
