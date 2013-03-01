@@ -168,7 +168,12 @@
                               CController::createUrl('bug/UpdateAjaxComment'), 
                               array('type' => 'POST',
                               'success' =>'function(html){
-                              //$("#content").html(html);
+
+                                if($(html).find(".ticket_content").length==""){
+                                    window.location.href="'.$this->createUrl('/bug').'";
+                                    return false;
+                                }
+
                               	$(".ticket_content").html($(html).find(".ticket_content").html());
                               	$("ul.message").html($(html).find("ul.message").html());
                               	$("#sidebar").html($(html).find("#sidebar").html());

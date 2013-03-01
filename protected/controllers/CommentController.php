@@ -73,7 +73,6 @@ class CommentController extends Controller
 		function _400() {
 			throw new CHttpException(400,
 				'Invalid request. Please do not repeat this request again.');
-			Yii::app()->end();
 		}
 		$model=new Comment;
 		// Uncomment the following line if AJAX validation is needed
