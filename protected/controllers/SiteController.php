@@ -193,7 +193,7 @@ class SiteController extends Controller {
                     $this->redirect($this->createUrl('payment/pro-account', array('subscription' => $plan)));
                 }
             }
-            $user->delete($_SERVER['REMOTE_ADDR']);
+            $user->deleteUser($_SERVER['REMOTE_ADDR']);
             $this->redirect($this->createUrl('bug/'));
         }
         $model = new LoginForm;

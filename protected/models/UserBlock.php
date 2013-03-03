@@ -98,10 +98,10 @@ class UserBlock extends CActiveRecord
                 if($res['count_entry'] > 20 && $res['block_to'] > time()){
                    return true; 
                 }else if($res['count_entry'] > 20 && $res['block_to'] <= time()){
-                    $this->delete($res['user_ip']);
+                    $this->deleteUser($res['user_ip']);
                 }
                 if($res['first_entry'] < time()){
-                    $this->delete($res['user_ip']);
+                    $this->deleteUser($res['user_ip']);
                 }
                 return false;
             }else{
@@ -110,21 +110,21 @@ class UserBlock extends CActiveRecord
         }
         
         public function addBlock($ip){
-            $res = $this->select($ip);
+            $res = $this->selectUser($ip);
             if($res){
                 if($res >= 20){
-                    $this->update($ip,$res,true);
+                    $this->updateUser($ip,$res,true);
                 }else{
-                    $this->update($ip,$res);
+                    $this->updateUser($ip,$res);
                 }
             }else{
-                $this->insert($ip);
+                $this->insertUser($ip);
             }
         }
         
-        public function insert($ip) {
+        public function insertUser($ip) {
             $command = Yii::app()->db->createCommand();
-            $command->insert('bk_user_block', 
+            $command->insert('bk_user_block',
                     array(
                         'user_ip' => $ip,
                         'count_entry' => '1',
@@ -133,7 +133,7 @@ class UserBlock extends CActiveRecord
                 );
         }
         
-        public function update($ip, $count_entry, $block=false){
+        public function updateUser($ip, $count_entry, $block=false){
             $command = Yii::app()->db->createCommand();
             if($block){
                 $updateField = array('count_entry' => 1 + $count_entry,'block_to' => time()+60*60);
@@ -147,7 +147,7 @@ class UserBlock extends CActiveRecord
                 );
         }
         
-        public function select($ip){
+        public function selectUser($ip){
             $command = Yii::app()->db->createCommand();
             $res=$command->select('count_entry')
                     ->from('bk_user_block')
@@ -158,7 +158,7 @@ class UserBlock extends CActiveRecord
                 return false;
             }
         }
-        public function delete($ip){
+        public function deleteUser($ip){
             $command = Yii::app()->db->createCommand();
             $command->delete('bk_user_block', 'user_ip=:user_ip', array(':user_ip'=>$ip));
         }
