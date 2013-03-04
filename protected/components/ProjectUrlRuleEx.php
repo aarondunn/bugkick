@@ -60,6 +60,11 @@ class ProjectUrlRuleEx extends CBaseUrlRule {
 			if(empty($project))
 				return false;
 
+            if(!empty(Yii::app()->user) && !Yii::app()->user->isGuest
+                    && !Project::isProjectAccessAllowed($project->project_id, Yii::app()->user->id)) {
+                return false;
+            }
+
             $this->updateWebUser($project);
 
             //check if user is guest
@@ -87,6 +92,11 @@ class ProjectUrlRuleEx extends CBaseUrlRule {
             $project = Project::model()->findByPk($matches[1]);
 
             if(empty($project)) {
+                return false;
+            }
+
+            if(!empty(Yii::app()->user) && !Yii::app()->user->isGuest
+                    && !Project::isProjectAccessAllowed($project->project_id, Yii::app()->user->id)) {
                 return false;
             }
 
