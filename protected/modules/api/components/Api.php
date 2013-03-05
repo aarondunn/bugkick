@@ -286,10 +286,12 @@ class Api extends CComponent {
 	}
 	
 	protected function setDefaultAssignee(BugBase $bug, Project $project) {
-		if(!empty($project->api_ticket_default_assignee)) {
+        $projectSettings = $project->project_settings;
+		if(!empty($projectSettings)
+            && !empty($projectSettings->defaultAssignee)) {
 			$bugByUser=new BugByUser();
 			$bugByUser->bug_id=$bug->id;
-			$bugByUser->user_id=$project->api_ticket_default_assignee;
+			$bugByUser->user_id=$projectSettings->defaultAssignee;
 			$bugByUser->save();
 		}
 	}
