@@ -87,7 +87,7 @@ class BugBase extends GitHubRelated {
 				if(!empty(Yii::app()->user->company_id)) {
 					$this->company_id = Yii::app()->user->company_id;
 				}
-				if(!empty(Yii::app()->user->id)) {
+				if(!empty(Yii::app()->user->id) && $this->is_created_with_api==0) {
 					$this->owner_id = Yii::app()->user->id;
 				}
 			}
