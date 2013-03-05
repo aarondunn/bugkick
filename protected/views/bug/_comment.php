@@ -1,7 +1,6 @@
 <div class="form" id="commentBlock">
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'comment-form',
-	'enableAjaxValidation'=>false,
     'action'=>Yii::app()->createUrl('comment/create', array('bugId'=>$bug->id) ),
     'enableAjaxValidation' => true,
     'clientOptions'=>array(
@@ -116,7 +115,12 @@
                             ),
                         ),
                         'events'=>array(
-                            'keyup'=>'js:bugkick.bug.view.onCommentAreaKeyUp'
+                            'keyup'=>($useWysiwyg == 0)
+                                ? 'js:bugkick.bug.view.onCommentAreaKeyUp'
+                                : 'js:function(){
+                                    bugkick.bug.view.onCommentAreaKeyUp();
+                                    bugkick.bug.view.checkEmpty();
+                                }'
                         ),
                     ),
                     'htmlOptions'=>array(
@@ -165,45 +169,60 @@
                 'class'=>'bkButtonBlueSmall normal',
             ));*/
             echo CHtml::ajaxButton(Yii::t('main', 'Post Comment'),
-                              $this->createUrl('bug/UpdateAjaxComment'),
-                              array('type' => 'POST',
-                              'success' =>'function(html){
+                $this->createUrl('bug/UpdateAjaxComment'),
+                array('type' => 'POST',
+                    'beforeSend'=>'js:function(){
+                        var commentArea$ = $("#Comment_message").val();
+                        if(!commentArea$ || /^\s*$/.test(commentArea$)){
+                            $("#postCommentBtn").removeAttr("disabled");
+                            return false;
+                        }
+                    }
+                    ',
+                    'success' => 'function(html){
 
-                                if($(html).find(".ticket_content").length==""){
-                                    window.location.href="'.$this->createUrl('/bug').'";
-                                    return false;
-                                }
+                        if($(html).find(".ticket_content").length==""){
+                            window.location.href="' . $this->createUrl('/bug') . '";
+                            return false;
+                        }
 
-                              	$(".ticket_content").html($(html).find(".ticket_content").html());
-                              	$("ul.message").html($(html).find("ul.message").html());
-                              	$("#sidebar").html($(html).find("#sidebar").html());
-                              	$("#bug-update-form").html($(html).find("#sidebar").html());
-                              	$("#Comment_message").val("");
-                                $("#postCommentBtn").removeAttr("disabled");
-                                if($("#Comment_message-wysiwyg-iframe").length>0){
-                                    $(document.getElementById("Comment_message-wysiwyg-iframe").contentWindow.document.body).html("");
-                                }
-                                if($("#showAdvancedOptions").hasClass("open")){
-                                    $("#showAdvancedOptions").click();
-                                }
-                                var adjustheight = 30;
-                                $(".commentBlock").each(function(index) {
-                                    if($(this).height()>adjustheight){
-                                        $(this).find(".commentMessageFull").css("height", adjustheight).css("overflow", "hidden");
-                                        $(this).append(\'<div class="expand-icon"></div>\');
-                                    }
-                                });
-                                $(".photo a[title]").colorTip({color:"yellow", timeout:100});
-$("li.comment[title]").colorTip({color:"yellow", timeout:100});
-$("li.print[title]").colorTip({color:"yellow", timeout:100});
-$("li.delete[title]").colorTip({color:"yellow", timeout:100});
-$("li.duplicate[title]").colorTip({color:"yellow", timeout:100});
-$("span.tip-deleted[title]").colorTip({color:"yellow", timeout:100});
-                              	return false;
-                                                                
-                              }'
-                              ),
-                              array('id'=>'postCommentBtn','onclick'=>'$(this).attr("disabled","disabled");','class'=>'bkButtonBlueSmall normal','style'=>'width: 145px;margin-top: -1px;'));
+                        $(".ticket_content").html($(html).find(".ticket_content").html());
+                        $("ul.message").html($(html).find("ul.message").html());
+                        $("#sidebar").html($(html).find("#sidebar").html());
+                        $("#bug-update-form").html($(html).find("#sidebar").html());
+                        $("#Comment_message").val("");
+                        $("#postCommentBtn").removeAttr("disabled");
+                        if($("#Comment_message-wysiwyg-iframe").length>0){
+                            $(document.getElementById("Comment_message-wysiwyg-iframe").contentWindow.document.body).html("");
+                        }
+                        if($("#showAdvancedOptions").hasClass("open")){
+                            $("#showAdvancedOptions").click();
+                        }
+                        var adjustheight = 30;
+                        $(".commentBlock").each(function(index) {
+                            if($(this).height()>adjustheight){
+                                $(this).find(".commentMessageFull").css("height", adjustheight).css("overflow", "hidden");
+                                $(this).append(\'<div class="expand-icon"></div>\');
+                            }
+                        });
+
+                        $(".photo a[title]").colorTip({color:"yellow", timeout:100});
+                        $("li.comment[title]").colorTip({color:"yellow", timeout:100});
+                        $("li.print[title]").colorTip({color:"yellow", timeout:100});
+                        $("li.delete[title]").colorTip({color:"yellow", timeout:100});
+                        $("li.duplicate[title]").colorTip({color:"yellow", timeout:100});
+                        $("span.tip-deleted[title]").colorTip({color:"yellow", timeout:100});
+                        return false;
+                      }'
+                ),
+                array(
+                    'id'=>'postCommentBtn',
+                    'onclick'=>'
+                        $(this).attr("disabled","disabled");
+                    ',
+                    'class'=>'bkButtonBlueSmall normal',
+                    'style'=>'width: 145px;margin-top: -1px;')
+            );
             if (!$bug->isarchive){
                 echo CHtml::link(Yii::t('main', 'Comment and Close'), '#', array(
                     'id'=>'postCommentCloseBtn',

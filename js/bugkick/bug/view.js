@@ -23,5 +23,14 @@
         _.onCommentAreaKeyUp = function() {
             store.set(storeBugKey, commentArea$.wysiwyg('getContent'));
         };
+        _.checkEmpty = function() {
+            var commentError = $("#Comment_message_em_");
+            if(commentArea$.val()==""){
+                commentError.text("Message cannot be blank").css("display","block");
+            }
+            else{
+                commentError.text("").css("display","none");
+            }
+        };
     });
 })(jQuery);

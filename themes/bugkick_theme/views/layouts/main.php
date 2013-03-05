@@ -336,16 +336,5 @@ JS
     })();
 </script>
 
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('#postCommentBtn').click(function(){
-			if($('#Comment_message').val()==""){
-				$('#Comment_message_em_').text("Message cannot be blank");
-				$('#Comment_message_em_').css('display','block');
-				return false;
-			}
-		});
-	});
-</script>
 </body>
 </html>
