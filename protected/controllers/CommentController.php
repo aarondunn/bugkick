@@ -31,7 +31,7 @@ class CommentController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','commentdelete'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -73,6 +73,7 @@ class CommentController extends Controller
 		function _400() {
 			throw new CHttpException(400,
 				'Invalid request. Please do not repeat this request again.');
+			Yii::app()->end();
 		}
 		$model=new Comment;
 		// Uncomment the following line if AJAX validation is needed
@@ -148,7 +149,18 @@ die;*/
 		}
 		_400();
 	}
-
+        
+        // Function to delete the comment
+        public function actioncommentdelete($id=null)
+	{
+                        // Getting the url
+                        $url= $_SERVER['HTTP_REFERER']."#comments" ;
+			// we only allow deletion via  request
+                        // :oad the model and then delete
+			$model = $this->loadModel($id)->delete();
+		        $this->redirect($url);
+	}
+        
 
 	/**
 	 * Updates a particular model.

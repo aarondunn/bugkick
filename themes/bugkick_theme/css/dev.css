@@ -45,7 +45,7 @@
     position: relative;
 }
 a.cancel-search{
-    background: url("/themes/bugkick_theme/images/icons/help_cancel_edit.png") no-repeat scroll 0 0 transparent;
+    background: url("../images/icons/help_cancel_edit.png") no-repeat scroll 0 0 transparent;
     display: block;
     height: 16px;
     position: absolute;
@@ -87,7 +87,7 @@ ul.message :nth-last-child(2){
     outline: none !important;
 }
 span.view-more-label{
-    background: url("/themes/bugkick_theme/images/arrow1.png") 100% 50% no-repeat;
+    background: url("../images/arrow1.png") 100% 50% no-repeat;
     padding-right: 10px;
 }
 .view-more-pager li.previous a{
@@ -118,7 +118,7 @@ span.view-more-label{
 }
 
 #sidebar .ui-resizable-handle{
-    background: url("/themes/bugkick_theme/images/icons/ellipsis.png") no-repeat 50% 50%;
+    background: url("../images/icons/ellipsis.png") no-repeat 50% 50%;
     height: 14px;
     opacity: .2;
 }
@@ -137,13 +137,13 @@ span.view-more-label{
     padding-top: 70px;
 }
 .step1{
-    background: url("/themes/bugkick_theme/images/new/step1.png") no-repeat;
+    background: url("../images/new/step1.png") no-repeat;
 }
 .step2{
-    background: url("/themes/bugkick_theme/images/new/step2.png") no-repeat;
+    background: url("../images/new/step2.png") no-repeat;
 }
 .step3{
-    background: url("/themes/bugkick_theme/images/new/step3.png") no-repeat;
+    background: url("../images/new/step3.png") no-repeat;
 }
 .step-item{
     margin: 0 10px;
@@ -173,7 +173,7 @@ ul.options li.open {
     width: 50px;
     height: 34px;
     outline: none !important;
-    background: url("/themes/bugkick_theme/images/icons/back-help-form.png");
+    background: url("../images/icons/back-help-form.png");
     background-repeat: no-repeat;
 }
 
@@ -181,7 +181,7 @@ ul.options li.open {
     left: 55px;
 }
 #helpDialog .form-container .row.search #cancel-search {
-    background: url("/themes/bugkick_theme/images/icons/close-help-form.png");
+    background: url("../images/icons/close-help-form.png");
     background-repeat: no-repeat;
     right: 0px;
     top: 0px;
@@ -226,7 +226,7 @@ ul.options li.open {
     margin-left: 145px;
 }
 .payment .plans_summary{
-    background: url("/themes/bugkick_theme/images/payment/payment-background.png");
+    background: url("../images/payment/payment-background.png");
     height: 286px;
     width: 252px;
     padding: 20px;
@@ -249,7 +249,7 @@ ul.options li.open {
     width: 29px;
     float: left;
     height: 29px;
-    background: url("/themes/bugkick_theme/images/payment/payment-or.png");
+    background: url("../images/payment/payment-or.png");
 }
 .payment .plans_summary .price-year{
     float: left;
@@ -273,7 +273,7 @@ ul.options li.open {
     font-weight: bold;
 }
 .payment .plans_summary .bottom{
-    background: url("/themes/bugkick_theme/images/payment/payment-arrow.png");
+    background: url("../images/payment/payment-arrow.png");
     position: absolute;
     width: 150px;
     height: 64px;
@@ -370,10 +370,10 @@ a#calendar-tab, a#settings-tab{
     margin-top: 3px;
 }
 a#settings-tab{
-    background: url("/themes/bugkick_theme/images/icons/settings-icon.png") no-repeat;
+    background: url("../images/icons/settings-icon.png") no-repeat;
 }
 a#calendar-tab{
-    background: url("/themes/bugkick_theme/images/icons/calendar-i.png") no-repeat;
+    background: url("../images/icons/calendar-i.png") no-repeat;
 }
 #content #tabed-nav ul li:nth-last-of-type(-n+2){
     float: right;
@@ -601,7 +601,7 @@ a#calendar-tab{
 	padding: 0;
 }
 #header .top_tab.summary_tickets a{
-	background: url("/themes/bugkick_theme/images/icons/summary_tickets.png") no-repeat scroll 0 0 transparent;
+	background: url("../images/icons/summary_tickets.png") no-repeat scroll 0 0 transparent;
     display: block;
     height: 22px;
     margin: 8px 0 0;
@@ -609,7 +609,7 @@ a#calendar-tab{
     width: 22px;
 }
 #header .top_tab.t_separator{
-	background: url("/themes/bugkick_theme/images/bg_separator.png") no-repeat scroll 0 0 transparent;
+	background: url("../images/bg_separator.png") no-repeat scroll 0 0 transparent;
 	padding: 0;
 	margin-left: 5px;
     margin-right: 10px;
@@ -731,7 +731,7 @@ a#calendar-tab{
 	display: none;
 }
 #summary-tickets .b_closed_tickets ul.b_daily_score li .b_score{
-	background: url("/themes/bugkick_theme/images/bubble_count.png") no-repeat scroll 0 0 transparent;
+	background: url("../images/bubble_count.png") no-repeat scroll 0 0 transparent;
     color: #FFFFFF;
     font-size: 14px;
     font-weight: bold;
@@ -743,7 +743,7 @@ a#calendar-tab{
     position: absolute;
 }
 #summary-tickets .b_closed_tickets ul.b_daily_score li .b_date{
-	background: url("/themes/bugkick_theme/images/date_b.png") no-repeat scroll 0 0 transparent;
+	background: url("../images/date_b.png") no-repeat scroll 0 0 transparent;
     color: #767676;
     font-size: 12px;
     font-weight: bold;
@@ -760,4 +760,12 @@ a#calendar-tab{
 }
 #summary-tickets .b_closed_tickets ul.b_daily_score li:hover .b_graph{
 	background-color: #2875C4;
+}
+.commet_divsection
+{
+    float: left;width: 97%;
+}
+.comment_delete
+{
+    float: left;margin-top: 11px;
 }
