@@ -693,7 +693,7 @@ a#calendar-tab{
 	margin: 10px 15px;
 	display: block;
 	height: 80px;
-	widht: 100%;
+	width: 100%;
 }
 #summary-tickets .b_closed_tickets .b_label{
 	padding-top: 30px;
@@ -761,11 +761,10 @@ a#calendar-tab{
 #summary-tickets .b_closed_tickets ul.b_daily_score li:hover .b_graph{
 	background-color: #2875C4;
 }
-.commet_divsection
-{
-    float: left;width: 97%;
-}
-.comment_delete
-{
-    float: left;margin-top: 11px;
+.comment_delete{
+    float: right;
+    margin-bottom: -5px;
+    clear: both;
+    width: 16px;
+    height: 5px;
 }

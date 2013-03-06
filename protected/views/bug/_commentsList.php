@@ -30,18 +30,19 @@
                 ?>
                 <span class="date"><?php echo Helper::formatDateLongWithTime($comment->created_at); ?></span>
                 <br />
-                <div class="commentBlock commet_divsection" >
+                <?php if(Yii::app()->user->id == $comment->user_id){?>
+                <div class="comment_delete">
+                    <a onclick="return confirm('Are you sure you want to delete this comment?')" href="<?php echo Yii::app()->createUrl('/comment/delete', array('id'=>$comment->comment_id))?>">
+                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/icons/i_delete.png" title="Delete comment"/>
+                    </a>
+                </div>
+                <div class="clear"></div>
+                <?php } ?>
+                <div class="commentBlock">
                     <div class="commentMessageFull">
                         <?php echo nl2br($comment->message); ?>
                     </div>
                 </div>
-                <?php if(Yii::app()->user->id == $comment->user_id){?>
-                <div class="comment_delete">
-                    <a id="delete_bug_link" href="<?php echo Yii::app()->request->baseUrl?>/comment/commentdelete?id=<?php echo $comment->comment_id;?>">
-                        <img onclick="return commentdelete()" src="<?php echo Yii::app()->theme->baseUrl; ?>/images/icons/i_delete.png" title="Delete comment"/>
-                    </a>
-                </div>
-                <?php } ?>
             </li>
             <div class="clear"></div>
         <?php endforeach; ?>

@@ -136,11 +136,6 @@ $form = $this->beginWidget(
                         echo CHtml::link(
                             Yii::t('main', $project->archived==1? 'Restore project' : 'Delete project'),
                             array('project/setArchived', 'id'=>$project->project_id),
-                            $project->archived==1? 
-                            array(
-                                'style'=>'float:right; color:red',
-                                'onclick'=>'return confirm("After confirming of this action your project will become reactive.\n\nContinue?");',
-                            ):
                             array(
                                 'style'=>'float:right; color:red',
                                 'onclick'=>'return confirm("After confirming of this action you will lose the access to this project.\n\nContinue?");',
@@ -238,7 +233,7 @@ $form = $this->beginWidget(
                         if(!empty($bugLabel))
                             $projectSettings->defaultLabel= $bugLabel->label_id;
                     }
-                    $labels = ($project->isNewRecord)? Company::getPreCreatedLabels() : Company::getLabels();
+                    $labels = ($project->isNewRecord)? Company::getPreCreatedLabels() : Project::getLabels();
                     echo CHtml::activeDropDownList(
                         $projectSettings,
                         'defaultLabel',

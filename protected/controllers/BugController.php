@@ -738,34 +738,9 @@ JS
     /**
      * Lists all models.
      */
-    public function actionIndex(){
-        
-                // After login load the last active project of user 
-                if(isset($_SERVER['HTTP_REFERER'])){
-                   $url = array_reverse(explode("/",$_SERVER['HTTP_REFERER']));        
-                    
-                   // Check for login url 
-                     if(isset($url[0]) && $url[0]=='login'){
-                         $userid   = Yii::app()->user->getID();
-                         $user     = User::model()->find("user_id = '$userid'");
-                         
-                         //update the user current project 
-                         $user->current_project_id = $user->active_project;
-
-                         $user->save(false);
-                         // redirect to the loaded project
-                         $redirect = Yii::app()->request->baseUrl.'/'.$user->active_project;
-                         if(!isset($_SESSION['first'])){
-                             $_SESSION['first']='done';
-                         header("Location: $redirect");
-                         }
-
-                     }
-                     }
-                 
-                 
+    public function actionIndex()
+    {
 		$project = Project::getCurrent();
-                
 		if(empty($project))
 			$this->redirect($this->createUrl('/project/index'));
 

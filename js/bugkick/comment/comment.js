@@ -15,16 +15,3 @@
         return false;
     });
 })(this.jQuery, this, this.document);
-
-function commentdelete()
-{
-    var r=confirm("Do you want to delete comment !");
-    if (r==true)
-      {  
-          return true;
-      }
-      else
-        {
-            return false;
-        }
-}
