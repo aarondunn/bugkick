@@ -24,10 +24,14 @@
             <a class="name" href="<?php echo Yii::app()->createUrl("user/view", array('id'=>$data->user_id))?>">
               <?php echo CHtml::encode($data->user->name); ?>
             </a>
-            <?php }
-                  else {
-                      echo '<strong>Deleted</strong>';
-                  }
+            <?php
+                }
+                elseif($data->user_id === 0){
+                    echo '<strong>API User</strong>';
+                }
+                else {
+                    echo '<strong>Deleted</strong>';
+                }
             ?>
             <?php echo $data->change; ?>
        </li>

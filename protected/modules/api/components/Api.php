@@ -284,7 +284,7 @@ class Api extends CComponent {
             $changeLog = new BugChangelog();
             $changes[0]['field'] = 'created_at';
             $changes[0]['value'] = Helper::formatDate12();
-            $changeLog->populateChanges($bug, $changes);
+            $changeLog->populateChanges($bug, $changes, 0);
             $changeLog->save();
 		} else {
 			throw new ApiException('Internal error. Ticket has not been created.');

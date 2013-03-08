@@ -62,12 +62,15 @@ class BugChangelog extends CActiveRecord
 	}
 
     /**
-	 * populates model's attributes with a data
-	 */
-    public function populateChanges(BugBase $model,array $changes)
+	 * Populates model's attributes with a data
+     * @param BugBase $model
+     * @param array $changes
+     * @param int $userID user who made change in ticket
+     */
+    public function populateChanges(BugBase $model,array $changes,$userID=null)
     {
         $this->bug_id =  $model->id;
-        $this->user_id = Yii::app()->user->id;
+        $this->user_id = (empty($userID) && $userID!==0)? Yii::app()->user->id : $userID;
         $changesData = '';
 
         foreach($changes as $value){
