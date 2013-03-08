@@ -279,6 +279,13 @@ class Api extends CComponent {
 		if($this->createBug($bug, $project)) {
 			$this->setDefaultAssignee($bug, $project);
 			Notificator::newBug($bug);	//send notification
+
+            //save creation date in ticket history
+            $changeLog = new BugChangelog();
+            $changes[0]['field'] = 'created_at';
+            $changes[0]['value'] = Helper::formatDate12();
+            $changeLog->populateChanges($bug, $changes);
+            $changeLog->save();
 		} else {
 			throw new ApiException('Internal error. Ticket has not been created.');
 		}
