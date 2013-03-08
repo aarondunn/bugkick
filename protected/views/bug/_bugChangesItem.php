@@ -26,7 +26,7 @@
             </a>
             <?php
                 }
-                elseif($data->user_id === 0){
+                elseif($data->user_id == 0){
                     echo '<strong>API User</strong>';
                 }
                 else {
