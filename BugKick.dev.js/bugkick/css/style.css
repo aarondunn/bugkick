@@ -255,7 +255,6 @@
   margin-bottom: 9px;
   font-size: 13px;
   font-family: Helvetica, Arial, sans-serif;
-  line-height: 30px;
   color: #555555;
   background-color: #ffffff;
   border: 1px solid #cccccc;
@@ -303,7 +302,7 @@
     text-decoration:none;
     text-align: center;
     text-shadow:1px 1px 0px #448AE0;
-    margin-bottom: 3px;
+    margin: 0 3px 3px;
     cursor: pointer;
 }
 

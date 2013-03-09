@@ -138,7 +138,8 @@ $form = $this->beginWidget(
                             array('project/setArchived', 'id'=>$project->project_id),
                             array(
                                 'style'=>'float:right; color:red',
-                                'onclick'=>'return confirm("After confirming of this action you will lose the access to this project.\n\nContinue?");',
+                                'onclick'=>$project->archived==1? ''
+                                    : 'return confirm("After confirming of this action you will lose the access to this project.\n\nContinue?");',
                             )
                         );
                     }
