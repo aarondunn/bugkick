@@ -223,7 +223,12 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
                                 'type'=>'POST',
                                 //'update'=>'#output',
                                 'beforeSend'=>'js:function() {$.flashMessage().beginProgress();}',
-                                'success'=>'js:function(data) {$.flashMessage().message(data);}',
+                                'success'=>'js:function(data) {
+                                    if(data=="refresh")
+                                        location.reload();
+                                    else
+                                        $.flashMessage().message(data);
+                                }',
                             ),
                             array(
                                 'class'=>'bkButtonBlueSmall normal',

@@ -55,8 +55,14 @@ class SettingsController extends Controller {
             $userSettings->user_id = User::current()->user_id;
             $userSettings->save()*/
 
-            if ($user->save())
-                echo 'Saved';
+            if ($user->save()){
+                if(Yii::app()->user->name != $user->attributes['name']){
+                    Yii::app()->user->name = $user->attributes['name'];
+                    echo 'refresh';
+                } else
+                    echo 'Saved';
+            }
+
             Yii::app()->end();
         }
         $model = new PasswordForm();
