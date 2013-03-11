@@ -21,12 +21,20 @@
     };
 
     _.BugKickUI.prototype.applyStyle = function() {
-        $sFeedbackStyle = "322";
+        $sFeedbackStyle = _.widgetStyle;
         $iPosition = $sFeedbackStyle.substr(0, 1);
         $iStyle = $sFeedbackStyle.substr(1, 1);
         $iColor = $sFeedbackStyle.substr(2, 1);
 
         $oBugkick = $("#bugkick-feedback-widget .bugkick-feedback-button");
+
+        console.log($oBugkick);
+        console.log('----');
+        console.log($iPosition);
+        console.log($iStyle);
+        console.log($iColor);
+
+
 
         switch($iPosition){
             case('1'):
