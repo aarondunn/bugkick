@@ -10,7 +10,7 @@
 ;(function($, window) {
     var document = window.document,
         baseNameSpace = 'bugkick';
-    if(!window._bugKickKey || ! window._bugKickPID) {
+    if(!window._bugKickKey || !window._bugKickPID || !window._widgetStyle) {
         return;
     }
 	/**
@@ -21,6 +21,7 @@
     _.LIB_URL = 'http://bugkick.local/BugKick.dev.js/';
     _.apiKey = window._bugKickKey;
     _.projectID = window._bugKickPID;
+    _.widgetStyle = window._widgetStyle;
 	/**
 	 *
 	 * @param namespace {@string}

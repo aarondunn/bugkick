@@ -382,7 +382,7 @@ a#calendar-tab{
     margin-right: 282px;
 }
 
-#main .settings #save_feedback{
+#main .settings #feedback_code{
 	float: right;
 	width: 47px;
 	text-align: center;
@@ -763,8 +763,15 @@ a#calendar-tab{
 }
 .comment_delete{
     float: right;
-    margin-bottom: -5px;
     clear: both;
     width: 16px;
     height: 5px;
+}
+input[disabled],
+select[disabled],
+textarea[disabled],
+input[readonly],
+select[readonly],
+textarea[readonly] {
+  cursor: auto !important;
 }

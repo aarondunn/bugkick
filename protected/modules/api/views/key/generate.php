@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs = array(
-    'API key and Embed code',
+    'API keys',
 );
 Yii::app()->clientScript->registerScriptFile($this->request->baseUrl.'/js/__modules/api/key/register/common.js');
 ?>
@@ -11,16 +11,25 @@ Yii::app()->clientScript->registerScriptFile($this->request->baseUrl.'/js/__modu
 
 <div class="generate-api-key">
 <?php
-echo  CHtml::link(
-			Yii::t('main', 'Refresh API Key'),
-			$this->createUrl('key/generate', array('refresh'=>1)),
-			array('class'=>'bkButtonGraySmall medium')
-	   );
+    echo  CHtml::link(
+        Yii::t('main', 'Refresh API Key'),
+        $this->createUrl('key/generate', array('refresh'=>1)),
+        array('class'=>'bkButtonGraySmall medium')
+    );
 ?>
 </div>
-<?php if(!empty($company->project)) { ?>
-<h2><?php echo Yii::t('main', 'Project IDs and Embed codes'); ?></h2>
-	<?php foreach($company->project as $project) { ?>
+<?php
+$criteria = new CDbCriteria();
+$criteria->condition = 't.project_id IN(
+    SELECT ubp.project_id FROM {{user_by_project}} AS ubp WHERE 1
+       AND ubp.user_id = :user_id
+) AND archived=0';
+$criteria->params = array(':user_id'=>User::current()->user_id);
+
+$projects = Project::model()->findAll($criteria);
+if(!empty($projects) && is_array($projects)) { ?>
+<h2><?php echo Yii::t('main', 'Project IDs'); ?></h2>
+	<?php foreach($projects as $project) { ?>
 	<div class="project-settings-item">
         <h3><?php echo $project->name; ?></h3>
         <p>Project ID:</p>
@@ -29,9 +38,9 @@ echo  CHtml::link(
 			   readonly="readonly"
 			   class="apikey-textarea"
 			   value="<?php echo $project->api_id; ?>" />
-        <p>Embed code for submitting tickets, <br />place it at the end of BODY tag of your site's page:</p>
+<!--        <p>Embed code for submitting tickets, <br />place it at the end of BODY tag of your site's page:</p>-->
         <?php
-        echo CHtml::tag(
+/*        echo CHtml::tag(
             'textarea',
             array(
                 'readonly'=>'readonly',
@@ -47,7 +56,7 @@ echo  CHtml::link(
                     true
                 )
             )
-        );
+        );*/
         ?>
         <?php
 //        echo htmlspecialchars('<iframe src="'.$this->createAbsoluteUrl('/api/widget/', array(

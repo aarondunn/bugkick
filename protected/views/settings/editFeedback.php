@@ -2,6 +2,7 @@
 $this->breadcrumbs=array(
 	'Settings',
 );
+Yii::app()->clientScript->registerScriptFile($this->request->baseUrl.'/js/__modules/api/key/register/common.js');
 ?>
 
 <div class="settings">
@@ -82,39 +83,33 @@ $this->breadcrumbs=array(
 	<?php echo CHtml::hiddenField('hf_color',    $iColor); ?>
 </div>
 
-<?php echo CHtml::link('Save', '#',
-                        array(
-                            'id'=>'save_feedback',
-                            'class'=>'bkButtonBlueSmall normal'
-                        )
-       )
+<?php echo CHtml::link('Generate', '#', array(
+    'id'=>'feedback_code',
+    'class'=>'bkButtonBlueSmall normal'
+))
 ?>
 
 <div class="clear"></div>
 
-<?php
-Yii::app()->clientScript->registerScript('feedback_style_update', "
-jQuery('.settings a#save_feedback').live('click',function() {
-	$(this).text('Saving...');
-	jQuery.ajax({
-		'type': 'POST',
-		'url' : '" . CController::createUrl('Settings/EditFeedback') . "',
-		'data': {    YII_CSRF_TOKEN : '" . Yii::app()->request->csrfToken . "',
-					 hf_position: $('#hf_position').val(),
-					 hf_style: $('#hf_style').val(),
-					 hf_color: $('#hf_color').val()
-				},
-		'cache': false,
-		'success': function(data){
-			$(this).text('Save');
-			obj = jQuery.parseJSON(data);
-			if(obj.status == '200'){
-				location.reload();
-			}
-		}
-	});
-});
-", CClientScript::POS_END);
+<?php echo CHtml::tag(
+    'textarea',
+    array(
+        'readonly'=>'readonly',
+        'class'=>'apikey-textarea embed-textarea',
+        'style'=>'float:right',
+    ),
+    CHtml::encode(
+        $this->renderPartial(
+            'application.modules.api.views.key._js-snippet',
+            array(
+                'company'=>Company::model()->findByPk(Company::current()),
+                'project'=>Project::getCurrent(),
+            ),
+            true
+        )
+    )
+);
 ?>
 
+<div class="clear"></div>
 </div>

@@ -3168,6 +3168,7 @@ span.delete-filter:hover{
     margin: 5px 0;
 }
 .apikey-textarea{
+    color: #555555 !important;
     margin: 10px 0;
     padding: 0;
     width: 300px !important;
@@ -3718,7 +3719,7 @@ ul.membership > li ul.membership_ability li.very_big {
     width: 34px !important;
 }
 .embed-textarea{
-    width: 308px !important;
+    width: 428px !important;
     height: 110px;
     overflow: hidden;
 }

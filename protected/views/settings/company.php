@@ -75,15 +75,22 @@ $this->breadcrumbs = array(
         );
     }
 ?>
-	 <div class="generate-api-key">
-        <?php
-            echo  CHtml::link(
-                'Get API key and Embed code',
-                $this->createUrl('api/key/generate'),
-                array('class'=>'bkButtonGraySmall medium')
-            );
-        ?>
-     </div>
+    <div class="generate-api-key">
+    <?php
+        echo CHtml::link(
+            'Get API keys',
+            $this->createUrl('api/key/generate'),
+            array('class'=>'bkButtonGraySmall medium')
+        );
+    ?>
+    <?php
+        echo CHtml::link(
+            'Get Feedback embed code',
+            $this->createUrl('settings/editFeedback'),
+            array('class'=>'bkButtonGraySmall medium')
+        );
+    ?>
+    </div>
 
      <?php
           $form = $this->beginWidget('CActiveForm', array(
@@ -132,12 +139,12 @@ $this->breadcrumbs = array(
      <div class="row-left">
          <?php
              $this->widget('ext.colorpicker.SActiveColorPicker', array(
-             'model' => $model,
-             'attribute' => 'company_color',
-             'hidden'=>true, // defaults to false - can be set to hide the textarea with the hex
-             'options' => array(), // jQuery plugin options
-             'htmlOptions' => array(), // html attributes
-         ));
+                 'model' => $model,
+                 'attribute' => 'company_color',
+                 'hidden'=>true, // defaults to false - can be set to hide the textarea with the hex
+                 'options' => array(), // jQuery plugin options
+                 'htmlOptions' => array(), // html attributes
+             ));
           ?>
          <?php echo $form->error($model,'company_color'); ?>
      </div>

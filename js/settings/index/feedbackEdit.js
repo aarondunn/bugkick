@@ -20,4 +20,13 @@ $(function() {
 		$sColorName = $(this).attr('class').substr(2);
 		$(".b_panel ul.b_styles").find("li.b_" + $sColorName).first().addClass("active");
 	});
+    var currentStyle = '322';
+    $('.settings a#feedback_code').on('click',function() {
+        var selectedStyle = $('#hf_position').val()
+            + $('#hf_style').val()
+            + $('#hf_color').val();
+        $('.apikey-textarea').val($('.apikey-textarea').val().replace(currentStyle,selectedStyle));
+        currentStyle = selectedStyle;
+        return false;
+    });
 });

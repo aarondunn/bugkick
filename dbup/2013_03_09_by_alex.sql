@@ -1,0 +1,1 @@
+ALTER TABLE  `bk_user` DROP  `feedback_style`;

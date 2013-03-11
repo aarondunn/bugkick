@@ -19,7 +19,67 @@
         this.msgWnd$ = null;
         this.overlay$ = null;
     };
-    
+
+    _BugKickUI.ApplyStyle = function() {
+        $sFeedbackStyle = _.widgetStyle;
+        $iPosition = $sFeedbackStyle.substr(0, 1);
+        $iStyle = $sFeedbackStyle.substr(1, 1);
+        $iColor = $sFeedbackStyle.substr(2, 1);
+
+        $oBugkick = $("#bugkick-feedback-widget .bugkick-feedback-button");
+
+        switch($iPosition){
+            case('1'):
+                $oBugkick.addClass("p_left");
+                break;
+            case('2'):
+                $oBugkick.addClass("p_bottom");
+                break;
+            case('3'):
+                $oBugkick.addClass("p_right");
+                break;
+        }
+
+        switch($iStyle){
+            case('1'):
+                $oBugkick.addClass("s_1");
+                break;
+            case('2'):
+                $oBugkick.addClass("s_2");
+                break;
+            case('3'):
+                $oBugkick.addClass("s_3");
+                break;
+            case('4'):
+                $oBugkick.addClass("s_4");
+                break;
+        }
+
+        switch($iColor){
+            case('1'):
+                $oBugkick.addClass("c_azure");
+                break;
+            case('2'):
+                $oBugkick.addClass("c_blue");
+                break;
+            case('3'):
+                $oBugkick.addClass("c_gray");
+                break;
+            case('4'):
+                $oBugkick.addClass("c_green");
+                break;
+        }
+
+        $("#bugkick-feedback-widget .bugkick-feedback-button.s_1").hover(
+             function(){
+                 $(this).addClass("active");
+             },
+             function(){
+                 $(this).removeClass("active");
+             }
+        );
+    };
+
     _.BugKickUI.Template = {
         MAIN: _._url('bugkick/templates/main.html')
     };
@@ -147,6 +207,7 @@
     window.onload = function() {
         var bugkickUI = new _.BugKickUI();
         bugkickUI.render();
+        bugkickUI.ApplyStyle();
     };
     
 })(this.jQuery, this);

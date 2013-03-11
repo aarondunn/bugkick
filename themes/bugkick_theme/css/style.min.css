@@ -215,7 +215,7 @@ ul.sub_menu li a.project-url{background-image:url("../images/icons/i_blog.png");
 #common-label-form{margin-bottom:20px}span.delete-filter{background:url("../images/icons/close_sprite2.png") no-repeat scroll 0 -8px transparent;cursor:pointer;height:8px;margin-top:10px;width:8px;float:right;display:none}
 .saved-filters-link:hover span.delete-filter{display:block}span.delete-filter:hover{background:url("../images/icons/close_sprite2.png") no-repeat scroll 0 0 transparent}
 .tickets-container{padding:6px 5px 8px 6px}#main_wide .error{margin:10px 0}.company-settings{margin:10px 0 20px}.company-logo-top img{padding:10px}.company-settings .row-left{width:150px;float:left;margin-bottom:20px}
-#createProjectBtn{font-size:14px;text-decoration:none;width:144px;margin:8px}#createProjectBtn img{margin-bottom:-5px}.generate-api-key{margin:5px 0}.apikey-textarea{margin:10px 0;padding:0;width:300px!important}
+#createProjectBtn{font-size:14px;text-decoration:none;width:144px;margin:8px}#createProjectBtn img{margin-bottom:-5px}.generate-api-key{margin:5px 0}.apikey-textarea{color: #555555 !important;margin:10px 0;padding:0;width:300px!important}
 #projects-list-wrapper h2{padding-left:7px}.project-container{width:222px;margin:7px;float:left}.project-container .update,.project-container .hide{visibility:hidden;opacity:0;filter:alpha(opacity=0);-khtml-opacity:0;-moz-opacity:0}
 .project-container:hover .update,.project-container:hover .hide{visibility:visible;-webkit-transition:all .5s;-moz-transition:all .5s;-o-transition:all .5s;transition:all .5s;opacity:1;filter:alpha(opacity=100);-khtml-opacity:1;-moz-opacity:1}
 .project-container:before{content:"";display:block;width:222px;height:5px;background:url("../images/project-top.png") no-repeat}
@@ -256,7 +256,7 @@ ul.membership>li ul.membership_ability li.big{height:60px}ul.membership>li ul.me
 .settings-email-row .row-left label{font-size:12px}#email-preferences-form{overflow:hidden;padding-top:20px}#email-preferences-form h3{border-bottom:1px solid #f1f1f1;margin-bottom:20px}
 #email-preferences-form div.row.buttons{clear:both;float:left;min-height:70px;overflow:hidden}#emailPreferences{color:#5a6876;float:none;margin-bottom:10px;overflow:hidden;width:290px}
 #emailPreferences>label{line-height:27px;font-size:12px;display:block}#emailPreferences .iPhoneCheckContainer{float:right}.tickets-container .list-view-loading{background:none!important}
-.thumb a img{margin-right:3px}#sidebar .ticket_changes .photo.thumb{min-width:31px!important}.comment-thumb{width:34px!important}.embed-textarea{width:308px!important;height:110px;overflow:hidden}
+.thumb a img{margin-right:3px}#sidebar .ticket_changes .photo.thumb{min-width:31px!important}.comment-thumb{width:34px!important}.embed-textarea{width:428px!important;height:110px;overflow:hidden}
 .project-settings-item{width:320px;margin:10px 0 20px;padding-bottom:5px}.project-settings-item h3{margin:10px 0;color:#5a6876;font-size:14px;border-bottom:1px solid #f1f1f1;padding:10px 0}
 .registation_logo{float:left;margin-right:20px}.empty{margin:10px;display:block}#adminSidebar{margin:0 5px 10px}#adminSidebar h2{height:50px;line-height:50px;border-bottom:1px solid #f1f1f1;color:#5a6876;font-weight:bold;font-size:18px}
 #adminSidebar h3{height:40px;line-height:40px;color:#5a6876;font-weight:bold;font-size:15px}#adminSidebar .item{margin:2px 0 2px 10px;word-wrap:normal}
