@@ -36,7 +36,6 @@
                 $oBugkick.addClass("p_bottom");
                 break;
             case('3'):
-                console.log('ok');
                 $oBugkick.addClass("p_right");
                 break;
         }
@@ -46,7 +45,6 @@
                 $oBugkick.addClass("s_1");
                 break;
             case('2'):
-                console.log('ok');
                 $oBugkick.addClass("s_2");
                 break;
             case('3'):
@@ -65,7 +63,6 @@
                 $oBugkick.addClass("c_blue");
                 break;
             case('3'):
-                console.log('ok');
                 $oBugkick.addClass("c_gray");
                 break;
             case('4'):
@@ -210,7 +207,7 @@
     window.onload = function() {
         var bugkickUI = new _.BugKickUI();
         bugkickUI.render();
-        bugkickUI.applyStyle();
+      //  bugkickUI.applyStyle();
     };
     
 })(this.jQuery, this);
