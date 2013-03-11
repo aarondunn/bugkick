@@ -20,7 +20,7 @@
         this.overlay$ = null;
     };
 
-    _BugKickUI.ApplyStyle = function() {
+    _.BugKickUI.ApplyStyle = function() {
         $sFeedbackStyle = _.widgetStyle;
         $iPosition = $sFeedbackStyle.substr(0, 1);
         $iStyle = $sFeedbackStyle.substr(1, 1);
