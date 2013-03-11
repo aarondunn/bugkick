@@ -104,6 +104,7 @@
             this.msgWnd$ = $('.message-window', this.widget$);
             this.overlay$ = $('.overlay', this.widget$);
             this.initEventHandlers();
+            this.applyStyle();
         });
     };
     
@@ -207,8 +208,5 @@
     window.onload = function() {
         var bugkickUI = new _.BugKickUI();
         bugkickUI.render();
-        $(function() {
-            bugkickUI.applyStyle();
-        });
     };
 })(this.jQuery, this);
