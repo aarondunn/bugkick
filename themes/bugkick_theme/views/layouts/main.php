@@ -319,7 +319,7 @@ JS
 <script type="text/javascript">
     var _bugKickKey = '<?php echo Yii::app()->params['bugkickApiSettings']['apiKey']; ?>',
         _bugKickPID = '<?php echo Yii::app()->params['bugkickApiSettings']['projectID']; ?>',
-        _widgetStyle = '122';
+        _widgetStyle = '322';
     (function(d) {
         var s = d.createElement('script');
         s.type = 'text/javascript';
