@@ -207,8 +207,8 @@
     window.onload = function() {
         var bugkickUI = new _.BugKickUI();
         bugkickUI.render();
+        $(function() {
+            bugkickUI.applyStyle();
+        });
     };
-    $(function() {
-        bugkickUI.applyStyle();
-    });
 })(this.jQuery, this);
