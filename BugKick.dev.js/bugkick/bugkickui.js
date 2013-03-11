@@ -28,14 +28,6 @@
 
         $oBugkick = $("#bugkick-feedback-widget .bugkick-feedback-button");
 
-        console.log($oBugkick);
-        console.log('----');
-        console.log($iPosition);
-        console.log($iStyle);
-        console.log($iColor);
-
-
-
         switch($iPosition){
             case('1'):
                 $oBugkick.addClass("p_left");
@@ -44,6 +36,7 @@
                 $oBugkick.addClass("p_bottom");
                 break;
             case('3'):
+                console.log('ok');
                 $oBugkick.addClass("p_right");
                 break;
         }
@@ -53,6 +46,7 @@
                 $oBugkick.addClass("s_1");
                 break;
             case('2'):
+                console.log('ok');
                 $oBugkick.addClass("s_2");
                 break;
             case('3'):
@@ -71,6 +65,7 @@
                 $oBugkick.addClass("c_blue");
                 break;
             case('3'):
+                console.log('ok');
                 $oBugkick.addClass("c_gray");
                 break;
             case('4'):
