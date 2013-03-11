@@ -20,7 +20,7 @@
         this.overlay$ = null;
     };
 
-    _.BugKickUI.ApplyStyle = function() {
+    _.BugKickUI.prototype.applyStyle = function() {
         $sFeedbackStyle = _.widgetStyle;
         $iPosition = $sFeedbackStyle.substr(0, 1);
         $iStyle = $sFeedbackStyle.substr(1, 1);
@@ -207,7 +207,7 @@
     window.onload = function() {
         var bugkickUI = new _.BugKickUI();
         bugkickUI.render();
-        bugkickUI.ApplyStyle();
+        bugkickUI.applyStyle();
     };
     
 })(this.jQuery, this);
