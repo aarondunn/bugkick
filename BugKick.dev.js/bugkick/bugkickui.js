@@ -21,7 +21,7 @@
     };
 
     _.BugKickUI.prototype.applyStyle = function() {
-        $sFeedbackStyle = _.widgetStyle;
+        $sFeedbackStyle = 322;
         $iPosition = $sFeedbackStyle.substr(0, 1);
         $iStyle = $sFeedbackStyle.substr(1, 1);
         $iColor = $sFeedbackStyle.substr(2, 1);
@@ -93,7 +93,7 @@
         $.get(_.BugKickUI.Template.MAIN, function(template) {
             callback.call(bugkickUI, template);
         });
-    }
+    };
     
     _.BugKickUI.prototype.render = function() {
         this._getTemplate(function(template) {
