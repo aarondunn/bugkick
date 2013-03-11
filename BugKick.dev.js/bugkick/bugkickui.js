@@ -21,7 +21,7 @@
     };
 
     _.BugKickUI.prototype.applyStyle = function() {
-        $sFeedbackStyle = 322;
+        $sFeedbackStyle = "322";
         $iPosition = $sFeedbackStyle.substr(0, 1);
         $iStyle = $sFeedbackStyle.substr(1, 1);
         $iColor = $sFeedbackStyle.substr(2, 1);
