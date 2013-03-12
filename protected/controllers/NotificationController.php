@@ -119,10 +119,13 @@ class NotificationController extends Controller
                 FROM {{notification}} n
                     JOIN (
                         {{user}} u,
+                        {{bug}} b,
                         {{user_by_project}} up
                     )
                     ON (
-                        n.changer_id = u.user_id
+                        n.user_id = u.user_id
+                        AND n.bug_id IS NOT NULL
+                        AND n.bug_id = b.id
                         AND b.project_id = :current_project_id
                     )
                 WHERE n.user_id =:current_user_id
