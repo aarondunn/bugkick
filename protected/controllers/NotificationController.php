@@ -129,7 +129,7 @@ class NotificationController extends Controller
                         AND b.project_id = :current_project_id
                     )
                 WHERE n.user_id =:current_user_id
-                ORDER BY n.notification_id DESC LIMIT 25';
+                ORDER BY n.notification_id DESC LIMIT 50';
         //$connection = Yii::app()->db;
         //$connection->active = true;
         $command = Yii::app()->db->createCommand($sql);
