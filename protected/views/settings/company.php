@@ -84,11 +84,11 @@ $this->breadcrumbs = array(
         );
     ?>
     <?php
-        echo CHtml::link(
+/*        echo CHtml::link(
             'Get Feedback embed code',
-            $this->createUrl('settings/editFeedback'),
+            $this->createUrl('settings/addOns'),
             array('class'=>'bkButtonGraySmall medium')
-        );
+        );*/
     ?>
     </div>
 

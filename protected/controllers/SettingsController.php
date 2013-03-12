@@ -24,7 +24,7 @@ class SettingsController extends Controller {
 					'UserListing', 'InviteMembers', 'PendingMembers','Members', 
 					'PasswordChange', 'ExportTickets', 'UploadPhoto',
 					'ShortcutsState','Company', 'ResetCompanyTopBar', 'Groups',
-                    'Projects', 'projectSettings', 'EditFeedback'
+                    'Projects', 'projectSettings', 'addOns'
 				),
                 'users' => array('@'),
             ),
@@ -244,6 +244,8 @@ class SettingsController extends Controller {
         $pages->pageSize = self::PAGE_SIZE;
         $pages->applyLimit($criteria);
 
+
+
         $model = new CActiveDataProvider(
             Label::model(),
             array(
@@ -260,7 +262,7 @@ class SettingsController extends Controller {
         $this->render('labelListing', array('labelProvider' => $model, 'labelModel' => $labelModel));
     }
     
-    public function actionEditFeedback()
+    public function actionAddOns()
     {
         //default settings
     	$iPosition = 3;
@@ -269,7 +271,7 @@ class SettingsController extends Controller {
     	
     	MixPanel::instance()->registerEvent(MixPanel::FEEDBACK_SETTINGS_PAGE_VIEW); // MixPanel events tracking
     	Yii::app()->clientScript->registerScriptFile('/js/settings/index/feedbackEdit.js');
-    	$this->render('editFeedback', array('iPosition' => $iPosition, 'iStyle' => $iStyle, 'iColor' => $iColor));
+    	$this->render('addOns', array('iPosition' => $iPosition, 'iStyle' => $iStyle, 'iColor' => $iColor));
     }
 
     public function actionStatusListing()

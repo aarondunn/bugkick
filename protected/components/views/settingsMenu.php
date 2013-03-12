@@ -28,7 +28,10 @@
      */
     ?>
     <li><?php echo CHtml::link(Yii::t('main','Company Settings'), CHtml::normalizeUrl(array('settings/company')),
-                       ($controllerId == 'settings' && $actionId == 'company')? array('class'=>'active') : array()
+         ($controllerId == 'settings' && $actionId == 'company')? array('class'=>'active') : array()
+    ) ?></li>
+    <li><?php echo CHtml::link(Yii::t('main','Add Ons'), CHtml::normalizeUrl(array('settings/addOns')),
+         ($controllerId == 'settings' && $actionId == 'addOns')? array('class'=>'active') : array()
     ) ?></li>
     <?php
     if(empty(User::current()->githubUser)) {
