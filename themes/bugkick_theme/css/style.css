@@ -3808,9 +3808,9 @@ ul.membership > li ul.membership_ability li.very_big {
 }
 #filterForm a.filter-edit-link{
     float: right;
-    width: 14px;
+    width: 20px;
     height: 14px;
-    background: url("../images/icons/edit-icon.png") no-repeat 0 0;
+    background: url("../images/icons/edit-icon.png") no-repeat 3px 0;
     border: none;
     display: none;
     margin-top: 5px;

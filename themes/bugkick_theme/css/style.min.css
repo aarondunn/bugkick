@@ -263,7 +263,7 @@ ul.membership>li ul.membership_ability li.big{height:60px}ul.membership>li ul.me
 .ajax-loader{width:50px;height:50px;margin:0 auto;display:block}.w50,.grid-view .filters select.w50,.grid-view .filters input.w50{width:50px}.w75,.grid-view .filters select.w75,.grid-view .filters input.w75{width:75px}
 .w100,.grid-view .filters select.w100,.grid-view .filters input.w100{width:100px}.w125,.grid-view .filters select.w125 .grid-view .filters input.w125{width:125px}
 .w150,.grid-view .filters select.w150,.grid-view .filters input.w150{width:125px}.al-center{text-align:center}.al-left{text-align:left}.al-right{text-align:right}
-#filterForm a.filter-edit-link{float:right;width:14px;height:14px;background:url("../images/icons/edit-icon.png") no-repeat 0 0;border:0;display:none;margin-top:5px}
+#filterForm a.filter-edit-link{float:right;width:20px;height:14px;background:url("../images/icons/edit-icon.png") no-repeat 3px 0;border:0;display:none;margin-top:5px}
 #filterForm li.Node:hover a.filter-edit-link{display:block}.jspContainer{overflow:hidden;position:relative;height:auto}.jspPane{position:absolute}.jspVerticalBar{position:absolute;top:0;right:0;width:7px;height:100%;background:inherit}
 .jspHorizontalBar{position:absolute;bottom:0;left:0;width:100%;height:7px;background:inherit}.jspVerticalBar *,.jspHorizontalBar *{margin:0;padding:0}
 .jspCap{display:none}.jspHorizontalBar .jspCap{float:left}.jspTrack{background:inherit;position:relative;width:7px}.jspDrag{background:#56a8ee;border-radius:5px;position:relative;top:0;left:-5px;cursor:pointer;width:7px;opacity:.3;filter:alpha(opacity=30);-khtml-opacity:.3;-moz-opacity:.3}

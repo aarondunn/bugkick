@@ -47,7 +47,7 @@ $(document).ready(function() {
 
     var DELAY = 180 /*time for double click*/, clicks = 0, timer = null;
 
-	$(".operations a").click(function(){
+	$(".operations a[class!='filter-edit-link']").click(function(){
 
         var link = $(this);
         clicks++;  //count clicks
