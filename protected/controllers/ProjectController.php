@@ -214,7 +214,14 @@ class ProjectController extends Controller {
             else{
                 $model->archived = 1;
                 Yii::app()->user->setFlash('success', Yii::t('main', 'The project was deleted.'));
-            }
+            
+				$user = User::current();
+                if($id == $user->current_project_id){
+                    $user->current_project_id = null;
+                    $user->save();
+                    User::updateCurrent();
+                }
+			}
 
             $model->save();
             $this->redirect(Yii::app()->createUrl('/projects'));
