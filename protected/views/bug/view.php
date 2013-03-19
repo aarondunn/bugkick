@@ -226,6 +226,9 @@ LINKTEXT
             }
         ?>
         <div class="clear"></div>
+
+        <?php echo $this->renderPartial('application.views.task._task_list', array('tasks' => $tasks, 'ticket'=>$model));?>
+
     </div>
     <div class="ticket_content_bottom"></div>
     <!-- .ticket_content -->

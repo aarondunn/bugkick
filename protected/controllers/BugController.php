@@ -210,7 +210,14 @@ class BugController extends Controller
 JS
 			,
 			CClientScript::POS_END
-		);  
+		);
+
+        Yii::app()->clientScript->registerScriptFile(
+            Yii::app()->baseUrl . '/js/bugkick/task/common.min.js'
+//            Yii::app()->baseUrl . '/js/bugkick/task/common.js'
+        );
+
+
 		/*
 		$relatedToBug = array(
 			'comment'=>array(
@@ -240,6 +247,20 @@ JS
 			if(empty($bug->owner)) {
 				$bug->owner=new User();
 			}
+
+            $taskCriteria = new CDbCriteria();
+            $taskCriteria->condition = 'ticket_id=:ticket_id';
+            $taskCriteria->order = 'date DESC';
+            $taskCriteria->params = array(
+                ':ticket_id'=>$bug->id,
+            );
+            $tasks = new CActiveDataProvider('Task',array(
+                'criteria'=>$taskCriteria,
+                'pagination'=>array(
+                    'pageSize'=>50,
+                ),
+            ));
+
             $this->initBugForm();
             $criteria = new CDbCriteria();
             $criteria->order= 'date DESC';
@@ -257,6 +278,7 @@ JS
                 'model' => $bug,
                 'changesDataProvider' => $bugChanges,
                 'users' => User::model()->bugRelated($bug)->findAll(),
+                'tasks' => $tasks,
             ));
         }
         else

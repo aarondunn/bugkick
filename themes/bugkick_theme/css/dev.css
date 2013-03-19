@@ -773,5 +773,38 @@ textarea[disabled],
 input[readonly],
 select[readonly],
 textarea[readonly] {
-  cursor: auto !important;
+    cursor: auto !important;
+}
+/*Micro tasks*/
+.task-icon{
+    width: 33px;
+    height: 26px;
+    background: url("../images/icons/icon_task.png") no-repeat scroll 0 0 transparent;
+    float: right;
+}
+.task-list{
+    border-top: 1px solid #f1f1f1;
+}
+.task-box{
+    margin-top: 10px;
+}
+.task-item{
+    margin-left: -15px;
+    color: #5A6876;
+    padding: 7px 0 7px 15px;
+    display: block;
+    background: url("../images/task-bg.png") repeat-y;
+}
+.task-item input{
+    margin: 0 5px 0 0 !important;
+}
+.add-task{
+    margin-top: 10px;
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: url("../images/icons/icon_task_plus.png");
+}
+.crossed{
+    text-decoration: line-through;
 }
