@@ -109,6 +109,10 @@ class ProAccountAction extends Action {
 			//	Stripe payment:
 			if($this->viewData['model']->validate()) {
 				$paymentFactory=new StripePaymentFactory();
+                //if coupon was not entered by user, we unset that field
+                if(empty($paymentFormAttributes['coupon'])){
+                        $paymentFormAttributes['coupon']=null;
+                }
 				$paymentData=array_merge(
 					$paymentFormAttributes,
 					$this->getStripePaymentData($paymentFormAttributes['interval'])	// the keys of this array will override same keys from $paymentFormAttributes
