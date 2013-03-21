@@ -1,5 +1,6 @@
 assets/
 protected/config/db.php
+protected/config/stripe.php
 protected/config/node.php
 protected/config/curl-options.php
 protected/config/bugkick-api-settings.php
