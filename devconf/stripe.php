@@ -20,11 +20,7 @@ $stripeConfig=array(
  ******************************************************************************/
 if(STRIPE_PAYMENTS_DEBUG)
 	return array_merge($stripeConfig, array(
-		// f0t0n:
-		//'secretKey'=>'<secretKey>',
-		//'publishableKey'=>'<publishableKey>',
-
-		// Aaron:
+		// test:
 		'secretKey'=>'<secretKey>',
 		'publishableKey'=>'<publishableKey>',
 	));
@@ -35,7 +31,7 @@ if(STRIPE_PAYMENTS_DEBUG)
  ******************************************************************************/
 else
 	return array_merge($stripeConfig, array(
-		// Aaron:
+		// live:
 		'secretKey'=>'<secretKey>',
 		'publishableKey'=>'<publishableKey>',
 	));
