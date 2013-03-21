@@ -21,12 +21,12 @@ $stripeConfig=array(
 if(STRIPE_PAYMENTS_DEBUG)
 	return array_merge($stripeConfig, array(
 		// f0t0n:
-		//'secretKey'=>'V6OOc1jPn0iauNQPLt7TLGyK2riXyCnw',
-		//'publishableKey'=>'pk_KvxJ12R1KPyfLtyXOVyR053vQoIBM',
+		//'secretKey'=>'<secretKey>',
+		//'publishableKey'=>'<publishableKey>',
 
 		// Aaron:
-		'secretKey'=>'k0iMJ6xla2zyG7wztzRYzuX66Dd6ihMp',
-		'publishableKey'=>'pk_JOW98WC0ZOqolwsIRSmVEH9NEQT8s',
+		'secretKey'=>'<secretKey>',
+		'publishableKey'=>'<publishableKey>',
 	));
 /******************************************************************************
  *                                                                            *
@@ -36,6 +36,6 @@ if(STRIPE_PAYMENTS_DEBUG)
 else
 	return array_merge($stripeConfig, array(
 		// Aaron:
-		'secretKey'=>'lzRKu2uiUld8eeVUGJNZFQh8JKn7ddVo',
-		'publishableKey'=>'pk_i0sgZdOhWR1vjb93zZRBn7cwfUtq3',
+		'secretKey'=>'<secretKey>',
+		'publishableKey'=>'<publishableKey>',
 	));
