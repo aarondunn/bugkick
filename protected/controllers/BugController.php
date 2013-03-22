@@ -971,9 +971,10 @@ JS
             }
         }
 
-        $statusCondition = empty($statusFilter)
-            ? 'is_visible_by_default = 1 OR t.status_id = 0'
-            : '';
+//        $statusCondition = empty($statusFilter)
+//            ? 'is_visible_by_default = 1 OR t.status_id = 0'
+//            : '';
+        $statusCondition = '';
 		$criteria->with=array(
 			'status'=>array(
                 'condition'=>$statusCondition,

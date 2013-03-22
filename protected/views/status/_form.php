@@ -20,6 +20,7 @@
 		<?php echo $form->error($model,'label'); ?>
 	</div>
 
+<?php /*?>
 	<div class="row">
         <div style="clear: both;">
 		<?php echo $form->labelEx($model,'is_visible_by_default'); ?>
@@ -27,7 +28,7 @@
 		<?php echo $form->error($model,'is_visible_by_default'); ?>
         </div>
 	</div>
-
+<?php */ ?>
 
 <?php /* <!--	<div class="row">
 		<?php echo $form->labelEx($model,'company_id'); ?>

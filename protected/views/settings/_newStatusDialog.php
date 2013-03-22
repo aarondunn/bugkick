@@ -42,6 +42,7 @@
     <?php echo $form->error($statusModel,'label'); ?>
 </div>
 
+<?php /*?>
 <div class="row">
         <div style="clear: both;">
 		<?php echo $form->labelEx($statusModel,'is_visible_by_default'); ?>
@@ -49,6 +50,7 @@
 		<?php echo $form->error($statusModel,'is_visible_by_default'); ?>
         </div>
 </div>
+<?php */?>
 
 <br>
 
