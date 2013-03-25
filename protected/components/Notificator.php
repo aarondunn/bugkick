@@ -418,7 +418,7 @@ MSG;
         $subject = 'Successful Upgrade';
         $message = Renderer::renderInternal(
             Yii::getPathOfAlias('application.views.mailTemplate.plainEmail') . '.php',
-                array('user' => $user, 'message'=>'Your company was successfully upgraded to Pro account. Thank you!'));
+                array('user' => $user, 'message'=>'Your Bugkick account has been successfully upgraded. Thank you for your purchase.'));
         return self::sendEmail($user->email, '', $subject, $message, self::$headers);
     }
 }
