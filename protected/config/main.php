@@ -319,7 +319,7 @@ return array(
 
         // leave empty to use php mail(), or 'ses' - to use Amazon SES
         //'emailService' => 'ses','sqs'
-        'emailService' => '',
+        'emailService' => 'ses',
 
         'amazon'=>require($paramsDir . 'amazon.php'),
 
