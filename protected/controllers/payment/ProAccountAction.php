@@ -152,6 +152,7 @@ class ProAccountAction extends Action {
 			//	Next case is only for Stripe payment for now
 			if(!empty($_POST['subscription'])) {
 				if($this->subscribe($paymentFactory, $paymentData)) {
+                    Notificator::successfulSubscription($this->user);
 					$this->viewData['subscriptionSuccess']=true;
 				}
 			}

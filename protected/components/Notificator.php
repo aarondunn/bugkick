@@ -412,4 +412,13 @@ MSG;
             Yii::getPathOfAlias('application.views.mailTemplate.forumMessage') . '.php', array('user' => $user, 'post'=>$post));
         return self::sendEmail($user->email, '', $subject, $message, self::$headers);
     }
+
+    public static function successfulSubscription(User $user)
+    {
+        $subject = 'Successful Upgrade';
+        $message = Renderer::renderInternal(
+            Yii::getPathOfAlias('application.views.mailTemplate.plainEmail') . '.php',
+                array('user' => $user, 'message'=>'Your company was successfully upgraded to Pro account. Thank you!'));
+        return self::sendEmail($user->email, '', $subject, $message, self::$headers);
+    }
 }
