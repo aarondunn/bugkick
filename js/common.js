@@ -417,4 +417,6 @@ $(document).ready(function() {
     $('.ui-widget-overlay').live("click", function() {
         $(".ui-dialog-content").dialog("close");
     });
+    //convert comments time to local
+    bugkick.time.toLocal('.utc-timestamp-date', 'Do MMMM YYYY - h:mm a');
 });

@@ -273,6 +273,7 @@ JS
  <script type="text/javascript" src="<?php echo Yii::app()->minScript->generateUrl(array(
         '/js/plug-in/store.js/store+json2.min.js',
         '/js/bugkick/base.min.js',
+        '/js/plug-in/moment/moment.min.js',
         '/js/bugkick/mouseselection.js',
         '/js/bugkick/bug/create.js',
         '/js/bugkick/bug/list.js',

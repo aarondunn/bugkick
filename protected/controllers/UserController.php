@@ -734,7 +734,7 @@ JS
                 GROUP BY U.user_id, U.name, U.email
             ) AS S
             LEFT JOIN bk_comment C ON S.user_id = C.user_id
-            LEFT JOIN bk_comment RC ON S.user_id = RC.user_id AND RC.created_at > DATE_SUB(NOW(), INTERVAL 1 MONTH)
+            LEFT JOIN bk_comment RC ON S.user_id = RC.user_id AND RC.created_at > ".time()."
             GROUP BY S.user_id, S.name, S.email";
             $connection = Yii::app()->db;
             $connection->active = true;

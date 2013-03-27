@@ -205,6 +205,8 @@
                                 $(this).append(\'<div class="expand-icon"></div>\');
                             }
                         });
+                        //convert comments time to local
+                        bugkick.time.toLocal(".utc-timestamp-date", "Do MMMM YYYY - h:mm a");
 
                         $(".photo a[title]").colorTip({color:"yellow", timeout:100});
                         $("li.comment[title]").colorTip({color:"yellow", timeout:100});

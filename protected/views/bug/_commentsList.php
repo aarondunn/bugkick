@@ -28,7 +28,7 @@
                           echo '<span class="name">' . Yii::t('main', 'Deleted') . ':</span>';
                       }
                 ?>
-                <span class="date"><?php echo Helper::formatDateLongWithTime($comment->created_at); ?></span>
+                <span class="date utc-timestamp-date" utc-timestamp="<?php echo $comment->created_at?>"></span>
                 <br />
                 <?php if(Yii::app()->user->id == $comment->user_id){?>
                 <div class="comment_delete">

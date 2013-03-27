@@ -217,7 +217,6 @@ JS
 //            Yii::app()->baseUrl . '/js/bugkick/task/common.js'
         );
 
-
 		/*
 		$relatedToBug = array(
 			'comment'=>array(

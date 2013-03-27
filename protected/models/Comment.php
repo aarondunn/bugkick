@@ -5,7 +5,7 @@
  *
  * The followings are the available columns in table 'comment':
  * @property integer $comment_id
- * @property string $created_at
+ * @property integer $created_at
  * @property string $message
  * @property integer $user_id
  * @property integer $bug_id
@@ -41,8 +41,7 @@ class Comment extends GitHubRelated
 		// will receive user inputs.
 		return array(
 			array('message, user_id, bug_id', 'required'),
-			array('user_id, bug_id', 'numerical', 'integerOnly'=>true),
-			array('created_at', 'safe'),
+			array('user_id, created_at, bug_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('comment_id, created_at, message, user_id, bug_id', 'safe', 'on'=>'search'),
@@ -57,7 +56,8 @@ class Comment extends GitHubRelated
     }
 
     public function beforeSave() {
-        $this->created_at = date("Y-m-d H:i:s"); //we use server timezone. Returned because time still showing incorrect
+        //$this->created_at = date("Y-m-d H:i:s"); //we use server timezone. Returned because time still showing incorrect
+        $this->created_at = time();
         return true;
     }
 

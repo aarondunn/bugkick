@@ -35,6 +35,7 @@
 	_.ajax = _.namespace('ajax');
 	_.url = _.namespace('url');
 	_.page = _.namespace('page');
+	_.time = _.namespace('time');
 
 	/****************************/
 
@@ -133,4 +134,13 @@
 		_.page.appendToHead(link);
 	};
 
+    //converts utc timestamp to local time
+    _.time.toLocal = function(container, format) {
+        var utcTimestamps = $(container);
+        $.each(utcTimestamps, function() {
+            $(this).html(
+                moment.unix($(this).attr('utc-timestamp')).format(format)
+            );
+        });
+    }
 })(this);

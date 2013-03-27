@@ -261,7 +261,7 @@ LINKTEXT
             </li>
             <li class="leave-comment-part">
                 <span class="name"><?php echo User::current()->name . ' ' . User::current()->lname ?></span>
-                <span class="date"><?php echo Helper::formatDateLongWithTime() ?></span>
+                <span class="date utc-timestamp-date" utc-timestamp="<?php echo time();?>"></span>
                   <!--Comment form-->
                   <?php echo $this->renderPartial('_comment', array('model' => Comment::model(), 'bug'=>$model, 'useWysiwyg'=>User::current()->use_wysiwyg)); ?>
               </li>
