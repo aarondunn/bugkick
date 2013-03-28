@@ -58,7 +58,7 @@ class Comment extends GitHubRelated
     public function beforeSave() {
         //$this->created_at = date("Y-m-d H:i:s"); //we use server timezone. Returned because time still showing incorrect
         $this->created_at = time();
-        return true;
+        return parent::beforeSave();
     }
 
     protected function afterSave() {

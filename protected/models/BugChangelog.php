@@ -22,6 +22,12 @@ class BugChangelog extends CActiveRecord
 		return '{{bug_changelog}}';
 	}
 
+    public function beforeSave()
+    {
+        $this->date = time();
+        return parent::beforeSave();
+    }
+
 	/**
 	 * @return array validation rules for model attributes.
 	 */
@@ -30,8 +36,8 @@ class BugChangelog extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-            array('user_id, bug_id', 'numerical', 'integerOnly'=>true),
-			array('id, bug_id, user_id, change, date', 'safe', 'on'=>'search'),
+            array('user_id, bug_id, date', 'numerical', 'integerOnly'=>true),
+			array('id, bug_id, user_id, change', 'safe', 'on'=>'search'),
 		);
 	}
 

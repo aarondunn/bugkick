@@ -3,14 +3,14 @@
 -- Server version:               5.5.25-log - MySQL Community Server (GPL)
 -- Server OS:                    Win32
 -- HeidiSQL version:             7.0.0.4053
--- Date/time:                    2013-02-20 22:04:51
+-- Date/time:                    2013-03-29 00:57:15
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
 /*!40014 SET FOREIGN_KEY_CHECKS=0 */;
 
--- Dumping structure for table bug.bk_article
+-- Dumping structure for table bugkick.bk_article
 CREATE TABLE IF NOT EXISTS `bk_article` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
@@ -19,10 +19,12 @@ CREATE TABLE IF NOT EXISTS `bk_article` (
   KEY `title` (`title`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_article: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_article` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_article` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_bug
+-- Dumping structure for table bugkick.bk_bug
 CREATE TABLE IF NOT EXISTS `bk_bug` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `github_issue_id` bigint(20) unsigned DEFAULT NULL COMMENT 'FK(bk_github_issue)',
@@ -85,10 +87,12 @@ CREATE TABLE IF NOT EXISTS `bk_bug` (
   CONSTRAINT `bk_bug_ibfk_9` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_bug: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_bug` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_bug` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_bug_by_label
+-- Dumping structure for table bugkick.bk_bug_by_label
 CREATE TABLE IF NOT EXISTS `bk_bug_by_label` (
   `bug_id` bigint(20) unsigned NOT NULL,
   `label_id` bigint(20) unsigned NOT NULL,
@@ -112,10 +116,12 @@ CREATE TABLE IF NOT EXISTS `bk_bug_by_label` (
   CONSTRAINT `bk_bug_by_label_ibfk_9` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_bug_by_label: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_bug_by_label` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_bug_by_label` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_bug_by_user
+-- Dumping structure for table bugkick.bk_bug_by_user
 CREATE TABLE IF NOT EXISTS `bk_bug_by_user` (
   `bug_id` bigint(20) unsigned NOT NULL,
   `user_id` bigint(20) unsigned NOT NULL,
@@ -139,16 +145,18 @@ CREATE TABLE IF NOT EXISTS `bk_bug_by_user` (
   CONSTRAINT `bk_bug_by_user_ibfk_9` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_bug_by_user: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_bug_by_user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_bug_by_user` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_bug_changelog
+-- Dumping structure for table bugkick.bk_bug_changelog
 CREATE TABLE IF NOT EXISTS `bk_bug_changelog` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `bug_id` bigint(20) unsigned NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
   `change` text NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `bug_id` (`bug_id`,`user_id`),
   KEY `user_id` (`user_id`),
@@ -159,6 +167,7 @@ CREATE TABLE IF NOT EXISTS `bk_bug_changelog` (
   KEY `user_id_6` (`user_id`),
   KEY `user_id_7` (`user_id`),
   KEY `user_id_8` (`user_id`),
+  KEY `date` (`date`),
   CONSTRAINT `bk_bug_changelog_ibfk_1` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
   CONSTRAINT `bk_bug_changelog_ibfk_2` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
   CONSTRAINT `bk_bug_changelog_ibfk_3` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
@@ -169,20 +178,22 @@ CREATE TABLE IF NOT EXISTS `bk_bug_changelog` (
   CONSTRAINT `bk_bug_changelog_ibfk_8` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_bug_changelog: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_bug_changelog` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_bug_changelog` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_comment
+-- Dumping structure for table bugkick.bk_comment
 CREATE TABLE IF NOT EXISTS `bk_comment` (
   `comment_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `created_at` datetime DEFAULT NULL,
+  `created_at` int(10) unsigned NOT NULL,
   `message` text NOT NULL,
   `user_id` int(11) NOT NULL,
   `bug_id` bigint(20) unsigned NOT NULL,
   PRIMARY KEY (`comment_id`),
   KEY `comment_FI_1` (`user_id`),
   KEY `comment_FI_2` (`bug_id`),
-  KEY `created_at` (`created_at`),
+  KEY `date` (`created_at`),
   CONSTRAINT `bk_comment_ibfk_1` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
   CONSTRAINT `bk_comment_ibfk_2` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
   CONSTRAINT `bk_comment_ibfk_3` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE,
@@ -193,10 +204,12 @@ CREATE TABLE IF NOT EXISTS `bk_comment` (
   CONSTRAINT `bk_comment_ibfk_8` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_comment: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_comment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_comment` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_company
+-- Dumping structure for table bugkick.bk_company
 CREATE TABLE IF NOT EXISTS `bk_company` (
   `company_id` int(11) NOT NULL AUTO_INCREMENT,
   `created_at` datetime DEFAULT NULL,
@@ -221,10 +234,12 @@ CREATE TABLE IF NOT EXISTS `bk_company` (
   KEY `coupon_id` (`coupon_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_company: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_company` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_company` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_coupon
+-- Dumping structure for table bugkick.bk_coupon
 CREATE TABLE IF NOT EXISTS `bk_coupon` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `code` varchar(255) NOT NULL COMMENT 'Coupon code',
@@ -234,10 +249,12 @@ CREATE TABLE IF NOT EXISTS `bk_coupon` (
   KEY `code` (`code`,`enabled`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_coupon: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_coupon` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_coupon` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_domains_blacklist
+-- Dumping structure for table bugkick.bk_domains_blacklist
 CREATE TABLE IF NOT EXISTS `bk_domains_blacklist` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `domain` varchar(255) NOT NULL COMMENT 'Email services that are prohibited to register on Bugkick',
@@ -245,20 +262,29 @@ CREATE TABLE IF NOT EXISTS `bk_domains_blacklist` (
   KEY `domain` (`domain`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_domains_blacklist: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_domains_blacklist` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_domains_blacklist` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_email_preference
+-- Dumping structure for table bugkick.bk_email_preference
 CREATE TABLE IF NOT EXISTS `bk_email_preference` (
   `email_preference_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`email_preference_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_email_preference: ~4 rows (approximately)
+/*!40000 ALTER TABLE `bk_email_preference` DISABLE KEYS */;
+INSERT INTO `bk_email_preference` (`email_preference_id`, `name`) VALUES
+	(1, 'New ticket'),
+	(2, 'Ticket status changes'),
+	(3, 'New comment'),
+	(4, 'Due Date reminder');
+/*!40000 ALTER TABLE `bk_email_preference` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_file
+-- Dumping structure for table bugkick.bk_file
 CREATE TABLE IF NOT EXISTS `bk_file` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -274,10 +300,12 @@ CREATE TABLE IF NOT EXISTS `bk_file` (
   CONSTRAINT `bk_file_ibfk_1` FOREIGN KEY (`ticket_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_file: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_file` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_file` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_filter
+-- Dumping structure for table bugkick.bk_filter
 CREATE TABLE IF NOT EXISTS `bk_filter` (
   `filter_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) unsigned NOT NULL,
@@ -295,10 +323,12 @@ CREATE TABLE IF NOT EXISTS `bk_filter` (
   CONSTRAINT `bk_filter_ibfk_8` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_filter: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_filter` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_filter` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_forum
+-- Dumping structure for table bugkick.bk_forum
 CREATE TABLE IF NOT EXISTS `bk_forum` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
@@ -307,21 +337,25 @@ CREATE TABLE IF NOT EXISTS `bk_forum` (
   KEY `forum_title` (`title`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_forum: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_forum` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_forum` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_github_issue
+-- Dumping structure for table bugkick.bk_github_issue
 CREATE TABLE IF NOT EXISTS `bk_github_issue` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `number` bigint(20) unsigned NOT NULL,
   `html_url` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_github_issue: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_github_issue` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_github_issue` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_github_user
+-- Dumping structure for table bugkick.bk_github_user
 CREATE TABLE IF NOT EXISTS `bk_github_user` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `is_active` tinyint(1) unsigned NOT NULL DEFAULT '1',
@@ -330,12 +364,14 @@ CREATE TABLE IF NOT EXISTS `bk_github_user` (
   `avatar_url` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `is_active` (`is_active`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_github_user: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_github_user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_github_user` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_invite
+-- Dumping structure for table bugkick.bk_invite
 CREATE TABLE IF NOT EXISTS `bk_invite` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `company_id` bigint(20) unsigned NOT NULL,
@@ -351,10 +387,12 @@ CREATE TABLE IF NOT EXISTS `bk_invite` (
   KEY `invited_by_id` (`invited_by_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_invite: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_invite` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_invite` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_label
+-- Dumping structure for table bugkick.bk_label
 CREATE TABLE IF NOT EXISTS `bk_label` (
   `label_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
@@ -381,10 +419,12 @@ CREATE TABLE IF NOT EXISTS `bk_label` (
   CONSTRAINT `bk_label_ibfk_8` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_label: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_label` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_label` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_label_by_project
+-- Dumping structure for table bugkick.bk_label_by_project
 CREATE TABLE IF NOT EXISTS `bk_label_by_project` (
   `label_id` bigint(20) unsigned NOT NULL,
   `project_id` bigint(20) unsigned NOT NULL,
@@ -411,10 +451,12 @@ CREATE TABLE IF NOT EXISTS `bk_label_by_project` (
   CONSTRAINT `bk_label_by_project_ibfk_9` FOREIGN KEY (`label_id`) REFERENCES `bk_label` (`label_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_label_by_project: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_label_by_project` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_label_by_project` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_log
+-- Dumping structure for table bugkick.bk_log
 CREATE TABLE IF NOT EXISTS `bk_log` (
   `log_id` int(11) NOT NULL AUTO_INCREMENT,
   `timestamp` datetime NOT NULL,
@@ -425,20 +467,27 @@ CREATE TABLE IF NOT EXISTS `bk_log` (
   PRIMARY KEY (`log_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_log: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_log` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_log` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_log_action
+-- Dumping structure for table bugkick.bk_log_action
 CREATE TABLE IF NOT EXISTS `bk_log_action` (
   `log_action_id` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   PRIMARY KEY (`log_action_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_log_action: ~2 rows (approximately)
+/*!40000 ALTER TABLE `bk_log_action` DISABLE KEYS */;
+INSERT INTO `bk_log_action` (`log_action_id`, `description`) VALUES
+	('bug::addComment', 'Add new comment for bug'),
+	('mail::newComment', 'Send mail bug owner in case add comment');
+/*!40000 ALTER TABLE `bk_log_action` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_look_and_feel
+-- Dumping structure for table bugkick.bk_look_and_feel
 CREATE TABLE IF NOT EXISTS `bk_look_and_feel` (
   `name` varchar(255) NOT NULL COMMENT 'The name of look-and-feel',
   `css_file` varchar(255) NOT NULL COMMENT 'Style-sheet file that contains the styles of this look-and-feel scheme',
@@ -447,10 +496,19 @@ CREATE TABLE IF NOT EXISTS `bk_look_and_feel` (
   KEY `css_file` (`css_file`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Site look and feel schemes';
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_look_and_feel: ~6 rows (approximately)
+/*!40000 ALTER TABLE `bk_look_and_feel` DISABLE KEYS */;
+INSERT INTO `bk_look_and_feel` (`name`, `css_file`, `img_preview`) VALUES
+	('Black Linen', 'body__black-Linen.css', 'black-Linen_100x100px.png'),
+	('Bright Squares', 'body__bright_squares.css', 'bright_squares_100x100px.png'),
+	('Cork #1', 'body__cork_1.css', 'cork_1_100x100px.png'),
+	('Default', 'body__default.css', ''),
+	('Old Mathematics', 'body__old_mathematics.css', 'old_mathematics_100x100px.png'),
+	('Soft Wallpaper', 'body__soft_wallpaper.css', 'soft_wallpaper_100x100px.png');
+/*!40000 ALTER TABLE `bk_look_and_feel` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_notification
+-- Dumping structure for table bugkick.bk_notification
 CREATE TABLE IF NOT EXISTS `bk_notification` (
   `notification_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned NOT NULL COMMENT 'This is a user who will see this notification(owner or assigned person)',
@@ -470,10 +528,12 @@ CREATE TABLE IF NOT EXISTS `bk_notification` (
   CONSTRAINT `bk_notification_ibfk_6` FOREIGN KEY (`bug_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_notification: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_notification` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_notification` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_page
+-- Dumping structure for table bugkick.bk_page
 CREATE TABLE IF NOT EXISTS `bk_page` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `menu_label` varchar(20) NOT NULL,
@@ -482,10 +542,12 @@ CREATE TABLE IF NOT EXISTS `bk_page` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_page: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_page` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_page` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_post
+-- Dumping structure for table bugkick.bk_post
 CREATE TABLE IF NOT EXISTS `bk_post` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `time` datetime NOT NULL,
@@ -498,10 +560,12 @@ CREATE TABLE IF NOT EXISTS `bk_post` (
   CONSTRAINT `fk_topic` FOREIGN KEY (`topic_id`) REFERENCES `bk_topic` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_post: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_post` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_post` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_project
+-- Dumping structure for table bugkick.bk_project
 CREATE TABLE IF NOT EXISTS `bk_project` (
   `project_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'The unique identifier of the project',
   `company_id` int(11) NOT NULL COMMENT 'The identifier of project''s company',
@@ -533,20 +597,24 @@ CREATE TABLE IF NOT EXISTS `bk_project` (
   CONSTRAINT `bk_project_ibfk_6` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_project: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_project` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_project` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_project_by_group
+-- Dumping structure for table bugkick.bk_project_by_group
 CREATE TABLE IF NOT EXISTS `bk_project_by_group` (
   `project_id` bigint(20) unsigned NOT NULL,
   `group_id` bigint(20) unsigned NOT NULL,
   KEY `project_id` (`project_id`,`group_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_project_by_group: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_project_by_group` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_project_by_group` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_settings_by_project
+-- Dumping structure for table bugkick.bk_settings_by_project
 CREATE TABLE IF NOT EXISTS `bk_settings_by_project` (
   `project_id` bigint(20) unsigned NOT NULL,
   `defaultAssignee` int(10) unsigned NOT NULL,
@@ -562,10 +630,12 @@ CREATE TABLE IF NOT EXISTS `bk_settings_by_project` (
   CONSTRAINT `bk_settings_by_project_ibfk_6` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_settings_by_project: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_settings_by_project` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_settings_by_project` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_settings_by_user
+-- Dumping structure for table bugkick.bk_settings_by_user
 CREATE TABLE IF NOT EXISTS `bk_settings_by_user` (
   `user_id` bigint(20) unsigned NOT NULL,
   `defaultAssignee` int(10) unsigned NOT NULL,
@@ -581,22 +651,28 @@ CREATE TABLE IF NOT EXISTS `bk_settings_by_user` (
   CONSTRAINT `bk_settings_by_user_ibfk_6` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_settings_by_user: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_settings_by_user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_settings_by_user` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_site_settings
+-- Dumping structure for table bugkick.bk_site_settings
 CREATE TABLE IF NOT EXISTS `bk_site_settings` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `invites_module` tinyint(1) unsigned NOT NULL COMMENT 'Defines if invites module is enabled',
   `invites_count` int(10) unsigned NOT NULL COMMENT 'Limit of invites per user',
   `invites_limit` tinyint(1) unsigned NOT NULL COMMENT 'Defines if we limit number of available invites per user',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_site_settings: ~1 rows (approximately)
+/*!40000 ALTER TABLE `bk_site_settings` DISABLE KEYS */;
+INSERT INTO `bk_site_settings` (`id`, `invites_module`, `invites_count`, `invites_limit`) VALUES
+	(1, 1, 5, 1);
+/*!40000 ALTER TABLE `bk_site_settings` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_status
+-- Dumping structure for table bugkick.bk_status
 CREATE TABLE IF NOT EXISTS `bk_status` (
   `status_id` int(11) NOT NULL AUTO_INCREMENT,
   `label` varchar(30) NOT NULL,
@@ -610,10 +686,12 @@ CREATE TABLE IF NOT EXISTS `bk_status` (
   CONSTRAINT `bk_status_ibfk_3` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_status: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_status` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_status` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_stripe_customer
+-- Dumping structure for table bugkick.bk_stripe_customer
 CREATE TABLE IF NOT EXISTS `bk_stripe_customer` (
   `customer_id` varchar(255) NOT NULL COMMENT 'Stripe customer ID (PK, varchar)',
   `user_id` bigint(20) unsigned NOT NULL COMMENT 'BugKick user''s ID (FK, index bigint)',
@@ -625,6 +703,7 @@ CREATE TABLE IF NOT EXISTS `bk_stripe_customer` (
   `is_canceled` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `notified_at` bigint(20) unsigned DEFAULT NULL,
   `expires_at` bigint(20) DEFAULT NULL COMMENT 'The time of company''s subscription expiration',
+  `cancel_at_period_end` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Defines if subscription will be ended at the end of period',
   PRIMARY KEY (`customer_id`),
   UNIQUE KEY `company_id` (`company_id`),
   KEY `user_id` (`user_id`),
@@ -636,20 +715,42 @@ CREATE TABLE IF NOT EXISTS `bk_stripe_customer` (
   KEY `expires_at` (`expires_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stripe customers';
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_stripe_customer: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_stripe_customer` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_stripe_customer` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_tbl_migration
+-- Dumping structure for table bugkick.bk_task
+CREATE TABLE IF NOT EXISTS `bk_task` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `description` text NOT NULL,
+  `user_id` bigint(20) unsigned NOT NULL,
+  `ticket_id` bigint(20) unsigned NOT NULL,
+  `date` datetime NOT NULL,
+  `status` tinyint(4) NOT NULL COMMENT '0 - ''new'', 1 - ''completed''',
+  PRIMARY KEY (`id`),
+  KEY `ticket_id` (`ticket_id`),
+  CONSTRAINT `bk_task_ibfk_1` FOREIGN KEY (`ticket_id`) REFERENCES `bk_bug` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Dumping data for table bugkick.bk_task: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_task` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_task` ENABLE KEYS */;
+
+
+-- Dumping structure for table bugkick.bk_tbl_migration
 CREATE TABLE IF NOT EXISTS `bk_tbl_migration` (
   `version` varchar(255) NOT NULL,
   `apply_time` int(11) DEFAULT NULL,
   PRIMARY KEY (`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_tbl_migration: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_tbl_migration` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_tbl_migration` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_tmp_file
+-- Dumping structure for table bugkick.bk_tmp_file
 CREATE TABLE IF NOT EXISTS `bk_tmp_file` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'The unique identifier of temporary file (PK)',
   `path` varchar(255) NOT NULL COMMENT 'The path relative to ''webroot.tmp''',
@@ -659,10 +760,12 @@ CREATE TABLE IF NOT EXISTS `bk_tmp_file` (
   KEY `created_at` (`created_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Temporary files';
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_tmp_file: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_tmp_file` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_tmp_file` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_topic
+-- Dumping structure for table bugkick.bk_topic
 CREATE TABLE IF NOT EXISTS `bk_topic` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
@@ -679,10 +782,12 @@ CREATE TABLE IF NOT EXISTS `bk_topic` (
   CONSTRAINT `fk_forum` FOREIGN KEY (`forum_id`) REFERENCES `bk_forum` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_topic: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_topic` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_topic` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_user
+-- Dumping structure for table bugkick.bk_user
 CREATE TABLE IF NOT EXISTS `bk_user` (
   `user_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `facebook_id` varchar(255) DEFAULT NULL COMMENT 'User''s identifier at the Facebook',
@@ -718,7 +823,6 @@ CREATE TABLE IF NOT EXISTS `bk_user` (
   `use_wysiwyg` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `pro_status` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'pro_status  - means that all companies that the user has, were upgraded to ''Pro'' plan from admin panel',
   `forum_role` varchar(50) NOT NULL DEFAULT 'user',
-  `feedback_style` smallint(6) DEFAULT '322' COMMENT 'means Position | Style | Color',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email` (`email`),
   KEY `look_and_feel` (`look_and_feel`),
@@ -732,10 +836,12 @@ CREATE TABLE IF NOT EXISTS `bk_user` (
   KEY `forum_role` (`forum_role`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_user: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_user` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_user_block
+-- Dumping structure for table bugkick.bk_user_block
 CREATE TABLE IF NOT EXISTS `bk_user_block` (
   `user_ip` varchar(255) NOT NULL,
   `block_to` int(11) DEFAULT NULL,
@@ -745,10 +851,12 @@ CREATE TABLE IF NOT EXISTS `bk_user_block` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_user_block: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_user_block` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_user_block` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_user_by_company
+-- Dumping structure for table bugkick.bk_user_by_company
 CREATE TABLE IF NOT EXISTS `bk_user_by_company` (
   `user_id` bigint(20) unsigned NOT NULL,
   `company_id` int(11) NOT NULL,
@@ -765,10 +873,12 @@ CREATE TABLE IF NOT EXISTS `bk_user_by_company` (
   CONSTRAINT `bk_user_by_company_ibfk_4` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_user_by_company: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_user_by_company` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_user_by_company` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_user_by_email_preference
+-- Dumping structure for table bugkick.bk_user_by_email_preference
 CREATE TABLE IF NOT EXISTS `bk_user_by_email_preference` (
   `user_id` bigint(20) unsigned NOT NULL,
   `email_preference_id` int(10) unsigned NOT NULL,
@@ -780,10 +890,12 @@ CREATE TABLE IF NOT EXISTS `bk_user_by_email_preference` (
   CONSTRAINT `bk_user_by_email_preference_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `bk_user` (`user_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_user_by_email_preference: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_user_by_email_preference` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_user_by_email_preference` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_user_by_group
+-- Dumping structure for table bugkick.bk_user_by_group
 CREATE TABLE IF NOT EXISTS `bk_user_by_group` (
   `user_id` bigint(20) unsigned NOT NULL,
   `group_id` bigint(20) unsigned NOT NULL,
@@ -796,10 +908,12 @@ CREATE TABLE IF NOT EXISTS `bk_user_by_group` (
   CONSTRAINT `bk_user_by_group_ibfk_4` FOREIGN KEY (`group_id`) REFERENCES `bk_user_group` (`group_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_user_by_group: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_user_by_group` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_user_by_group` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_user_by_project
+-- Dumping structure for table bugkick.bk_user_by_project
 CREATE TABLE IF NOT EXISTS `bk_user_by_project` (
   `user_id` bigint(20) unsigned NOT NULL,
   `project_id` bigint(20) unsigned NOT NULL,
@@ -814,10 +928,12 @@ CREATE TABLE IF NOT EXISTS `bk_user_by_project` (
   CONSTRAINT `bk_user_by_project_ibfk_4` FOREIGN KEY (`project_id`) REFERENCES `bk_project` (`project_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_user_by_project: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_user_by_project` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_user_by_project` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_user_group
+-- Dumping structure for table bugkick.bk_user_group
 CREATE TABLE IF NOT EXISTS `bk_user_group` (
   `group_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `company_id` int(11) NOT NULL,
@@ -833,10 +949,12 @@ CREATE TABLE IF NOT EXISTS `bk_user_group` (
   CONSTRAINT `bk_user_group_ibfk_2` FOREIGN KEY (`company_id`) REFERENCES `bk_company` (`company_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_user_group: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_user_group` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_user_group` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.bk_yii_session
+-- Dumping structure for table bugkick.bk_yii_session
 CREATE TABLE IF NOT EXISTS `bk_yii_session` (
   `id` char(32) NOT NULL,
   `expire` int(11) DEFAULT NULL,
@@ -845,16 +963,20 @@ CREATE TABLE IF NOT EXISTS `bk_yii_session` (
   KEY `expire` (`expire`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.bk_yii_session: ~0 rows (approximately)
+/*!40000 ALTER TABLE `bk_yii_session` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bk_yii_session` ENABLE KEYS */;
 
 
--- Dumping structure for table bug.tbl_migration
+-- Dumping structure for table bugkick.tbl_migration
 CREATE TABLE IF NOT EXISTS `tbl_migration` (
   `version` varchar(255) NOT NULL,
   `apply_time` int(11) DEFAULT NULL,
   PRIMARY KEY (`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Data exporting was unselected.
+-- Dumping data for table bugkick.tbl_migration: ~0 rows (approximately)
+/*!40000 ALTER TABLE `tbl_migration` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_migration` ENABLE KEYS */;
 /*!40014 SET FOREIGN_KEY_CHECKS=1 */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
