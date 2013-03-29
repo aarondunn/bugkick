@@ -133,11 +133,20 @@ $form = $this->beginWidget(
                 <?php
                     if(!$project->isNewRecord && User::current()->isCompanyAdmin($project->company->company_id)
                         || User::current()->isProjectAdmin($project->project_id)){
+						echo CHtml::link(
+								Yii::t('main', 'Delete project'),
+								array('project/deleteProject', 'id'=>$project->project_id),
+								array(
+										'style'=>'float:right; color:red',
+										'onclick'=>'return confirm("After confirming of this action this project will be deleted.\n\nContinue?");',
+								)
+						);
+						
                         echo CHtml::link(
-                            Yii::t('main', $project->archived==1? 'Restore project' : 'Delete project'),
+                            Yii::t('main', $project->archived==1? 'Restore project' : 'Archive project'),
                             array('project/setArchived', 'id'=>$project->project_id),
                             array(
-                                'style'=>'float:right; color:red',
+                                'style'=>'float:right; color:red; margin-right:20px;',
                                 'onclick'=>$project->archived==1? ''
                                     : 'return confirm("After confirming of this action you will lose the access to this project.\n\nContinue?");',
                             )
