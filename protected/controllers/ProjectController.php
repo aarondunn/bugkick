@@ -213,7 +213,7 @@ class ProjectController extends Controller {
             }
             else{
                 $model->archived = 1;
-                Yii::app()->user->setFlash('success', Yii::t('main', 'The project was deleted.'));
+                Yii::app()->user->setFlash('success', Yii::t('main', 'The project was archived.'));
             
 				$user = User::current();
                 if($id == $user->current_project_id){
@@ -228,6 +228,32 @@ class ProjectController extends Controller {
             Yii::app()->end();
         }
         throw new CHttpException(400, 'Invalid request.');
+    }
+    
+    /**
+     * Delete project completely
+     * @param integer $id the ID of the model to be updated
+     * @throws CHttpException
+     */
+    public function actionDeleteProject($id)
+    {
+    	$model = Project::model()->findByPk($id);
+    	if($model){
+    		$model->delete();
+    		
+    		Yii::app()->user->setFlash('success', Yii::t('main', 'The project was deleted.'));
+    
+    		$user = User::current();
+    		if($id == $user->current_project_id){
+    			$user->current_project_id = null;
+    			$user->save();
+    			User::updateCurrent();
+    		}
+    
+    		$this->redirect(Yii::app()->createUrl('/projects'));
+    		Yii::app()->end();
+    	}
+    	throw new CHttpException(400, 'Invalid request.');
     }
 
     public function actionRemoveUser($id)
