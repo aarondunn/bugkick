@@ -808,3 +808,10 @@ textarea[readonly] {
 .crossed{
     text-decoration: line-through;
 }
+
+.access_del .comment_delete{
+    visibility: hidden;
+}
+.access_del:hover .comment_delete{
+    visibility: visible;
+}
