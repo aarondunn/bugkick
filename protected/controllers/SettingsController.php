@@ -264,6 +264,10 @@ class SettingsController extends Controller {
     
     public function actionAddOns()
     {
+        $project = Project::getCurrent();
+        if(empty($project))
+            $this->redirect($this->createUrl('/project/index'));
+
         //default settings
     	$iPosition = 3;
     	$iStyle    = 2;
