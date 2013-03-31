@@ -26,7 +26,7 @@ $this->breadcrumbs = array(
             );
         } elseif(Company::model()->findByPk(Company::current())->archivedProjectCount>0) {
             echo CHtml::link(
-                'View deleted projects',
+                'View archived projects',
                 $this->createUrl('/projects/index', array('archived'=>'1')),
                 array('id'=>'switch-view-btn')
             );
