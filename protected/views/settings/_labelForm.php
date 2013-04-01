@@ -43,9 +43,10 @@
 <div  class="row">
     <?php echo $form->labelEx($labelModel,'label_color'); ?>
     <?php
+    $defaultColors = Yii::app()->params['labelDefaultColors'];
     $this->widget('ext.colorpicker.SColorPicker', array(
         'id'=>'Label_color_picker',
-        'defaultValue'=>empty($labelModel->label_color) ? '#DFE2FF' : $labelModel->label_color,
+        'defaultValue'=>$labelModel->isNewRecord? $defaultColors[array_rand($defaultColors)] :  $labelModel->label_color,
         'hidden'=>true, // defaults to false - can be set to hide the textarea with the hex
         'options' => array(), // jQuery plugin options
         'htmlOptions' => array('class'=>'color_picker'), // html attributes

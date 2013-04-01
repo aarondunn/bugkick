@@ -377,6 +377,22 @@ return array(
             'Design'=> '#49ddab',
         ),
 
+        //default preset of label colors
+        'labelDefaultColors'=>array(
+            '#2D9BE7',
+            '#2ECBE7',
+            '#3FDEAA',
+            '#70DE33',
+            '#B1DE2F',
+            '#D5D035',
+            '#E0B730',
+            '#E0822C',
+            '#C83528',
+            '#DF2C51',
+            '#DD2B9D',
+            '#B42AD0',
+        ),
+
          //if set to false - we send both email and node notification,
         //else node message will be shown if user is online, email will be send if not.
         'skipEmailIfNodeReceived'=>false,

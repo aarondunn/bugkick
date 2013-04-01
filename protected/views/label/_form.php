@@ -48,14 +48,16 @@
     <div class="row">
         <?php echo $form->labelEx($model,'label_color'); ?>
         <?php
+            $defaultColors = Yii::app()->params['labelDefaultColors'];
+            $model->label_color = $model->isNewRecord? $defaultColors[array_rand($defaultColors)] : $model->label_color;
             $this->widget('ext.colorpicker.SActiveColorPicker', array(
-            'model' => $model,
-            'attribute' => 'label_color',
-            'hidden'=>true, // defaults to false - can be set to hide the textarea with the hex
-            'options' => array(), // jQuery plugin options
-            'htmlOptions' => array(), // html attributes
-        ));
-         ?>
+                'model' => $model,
+                'attribute' => 'label_color',
+                'hidden'=>true, // defaults to false - can be set to hide the textarea with the hex
+                'options' => array(), // jQuery plugin options
+                'htmlOptions' => array(), // html attributes
+            ));
+        ?>
         <?php echo $form->error($model,'label_color'); ?>
     </div>
 	<div class="row buttons">
