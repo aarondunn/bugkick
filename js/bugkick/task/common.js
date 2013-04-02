@@ -91,7 +91,7 @@ function saveTask(li, successCallback) {
   });
 }
 
-$(".edit_task_button").click(function() {
+$(".edit_task_button").live("click", function() {
   var li = $(this).parent().parent();
   var span = $(li.children("span")[0]);
   
