@@ -125,7 +125,7 @@ JS
 <?php if(!Yii::app()->user->isGuest): ?>
     <div class="top_tab has_menu"><span class="hi"><?php echo Yii::t('main', 'Hi') ?>,</span> <span class="name"><?php echo Helper::truncateString(Yii::app()->user->name, 18); ?></span><span class="menu-arrow"></span>
         <ul class="sub_menu">
-            <li><?php echo CHtml::link(Yii::t('main', 'Account'), Yii::app()->createAbsoluteUrl('/user/view'), array('id'=>'view_profile')) ?></li>
+            <li><?php echo CHtml::link(Yii::t('main', 'Account'), Yii::app()->createAbsoluteUrl('/settings'), array('id'=>'view_profile')) ?></li>
             <?php
             /*
             <li><?php echo CHtml::link(Yii::t('main', 'View Profile'), Yii::app()->createAbsoluteUrl('/user/view'), array('id'=>'view_profile')) ?></li>

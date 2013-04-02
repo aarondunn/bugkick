@@ -829,3 +829,6 @@ textarea[readonly] {
 .access_del:hover .task_actions{
     visibility: visible;
 }
+.task_actions a{
+    cursor: pointer;
+}
