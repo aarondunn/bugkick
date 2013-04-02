@@ -1,7 +1,7 @@
 <div class="task-box">
     <div class="task-icon"></div>
     <div class="clear"></div>
-    <div class="task-list">
+    <ul class="task-list">
         <h3><?php echo Yii::t('main', 'Micro Tasks');?></h3>
         <?php $this->widget('zii.widgets.CListView', array(
             'id'=>'task-list',
@@ -10,7 +10,7 @@
         	'dataProvider'=>$tasks,
         	'itemView'=>'application.views.task._task_item',
         )); ?>
-    </div>
+    </ul>
     <a href="<?php echo $this->createUrl('task/create', array('ticketID'=>$ticket->id));?>" class="add-task"></a>
 </div>
 <!-- Create Task-->
