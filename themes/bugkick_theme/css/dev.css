@@ -761,14 +761,10 @@ a#calendar-tab{
 #summary-tickets .b_closed_tickets ul.b_daily_score li:hover .b_graph{
 	background-color: #2875C4;
 }
-.comment_actions{
+.comment_delete{
     float: right;
     clear: both;
     height: 5px;
-}
-.comment_actions * {
-    float: left;
-    margin-right: 2px;
 }
 input[disabled],
 select[disabled],
@@ -816,5 +812,20 @@ textarea[readonly] {
     visibility: hidden;
 }
 .access_del:hover .comment_delete{
+    visibility: visible;
+}
+.task_actions{
+    float: right;
+    clear: both;
+    height: 5px;
+}
+.task_actions *{
+    float: left;
+    margin-right: 2px;
+}
+.access_del .task_actions{
+    visibility: hidden;
+}
+.access_del:hover .task_actions{
     visibility: visible;
 }

@@ -4,7 +4,7 @@
     <span class="task-description <?php if($data->status==Task::STATUS_COMPLETED) echo 'crossed' ?>">
         <?php echo CHtml::encode($data->description); ?>
     </span>
-    <div class="comment_actions">
+    <div class="task_actions">
         <a class="edit_task_button">
             <img src="/themes/bugkick_theme/images/icons/edit-icon.png" title="Edit micro task">
         </a>
