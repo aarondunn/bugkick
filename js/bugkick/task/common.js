@@ -42,7 +42,7 @@ createTask = function() {
 $(".task-item input[type=checkbox]").live("click", function(e) {
     $.jGrowl.defaults.life=2000;
     var checkBox = $(this);
-    var taskID = $(this).attr("taskID");
+    var taskID = $(this).parent().attr("taskID");
     $.ajax({
         url: '/task/complete',
         type: 'post',
@@ -68,4 +68,53 @@ $(".task-item input[type=checkbox]").live("click", function(e) {
         },
             dataType: "html"
     });
+});
+
+function saveTask(li, successCallback) {
+  $.jGrowl.defaults.life=2000;
+  var taskID = li.attr("taskID");
+  $.ajax({
+      url: '/task/edit',
+      type: 'post',
+      data: { YII_CSRF_TOKEN:YII_CSRF_TOKEN, taskID:taskID, description:$(textbox).val() },
+      success : function(data) {
+          successCallback();
+
+          $.jGrowl(
+              "Saved"
+          );
+      },
+      error : function(data){
+          $.jGrowl('Error. Please try again later');
+      },
+      dataType: "html"
+  });
+}
+
+$(".edit_task_button").click(function() {
+  var li = $(this).parent().parent();
+  var span = $(li.children("span")[0]);
+  
+  if (li.attr("editing")) {
+    li.attr("editing", null);
+    saveTask(li, function() {
+      $(span).html(textbox.val());
+      li.attr("editing", null);
+    });
+  }
+  else {
+    li.attr("editing", true);
+    textbox = $("<input type='text'></input>");
+    $(textbox).val(span.html().trim());
+    $(span).html($(textbox));
+    $(textbox).keyup(function(e) {
+      if (e.keyCode == 13) {
+        saveTask(li, function() {
+          $(textbox).replaceWith($(textbox).val());
+          
+          li.attr("editing", null);
+        });
+      }
+    });
+  }
 });
