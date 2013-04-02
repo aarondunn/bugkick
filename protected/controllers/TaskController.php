@@ -78,4 +78,28 @@ class TaskController extends Controller
             : Task::STATUS_COMPLETED;
         $task->save();
     }
+    
+	public function actionDelete($id)
+	{
+        $model = $this->loadModel($id);
+        if($model->user_id == Yii::app()->user->id)
+            $model->delete();
+        else
+            throw new CHttpException(400,'Invalid request');
+
+        $this->redirect(Yii::app()->request->getUrlReferrer());
+	}
+    
+	/**
+	 * Returns the data model based on the primary key given in the GET variable.
+	 * If the data model is not found, an HTTP exception will be raised.
+	 * @param integer the ID of the model to be loaded
+	 */
+	public function loadModel($id)
+	{
+		$model=Task::model()->findByPk((int)$id);
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}
 }
