@@ -5,9 +5,9 @@
 	<li><?php echo CHtml::link(Yii::t('main','Notifications'), CHtml::normalizeUrl(array('settings/email-preferences')),
          ($controllerId == 'settings' && $actionId == 'emailPreferences')? array('class'=>'active') : array()
     ) ?></li>
-	<li><?php echo CHtml::link(Yii::t('main','View Profile'), CHtml::normalizeUrl(array('user/view')),
+<!--	<li><?php /*echo CHtml::link(Yii::t('main','View Profile'), CHtml::normalizeUrl(array('user/view')),
          ($controllerId == 'user' && $actionId == 'view')? array('class'=>'active') : array()
-    ) ?></li>
+    ) */?></li>-->
 	<li><?php echo CHtml::link(Yii::t('main','Edit Labels'), CHtml::normalizeUrl(array('settings/labelListing')),
          ($controllerId == 'settings' && $actionId == 'labelListing')? array('class'=>'active') : array()
     ) ?></li>
