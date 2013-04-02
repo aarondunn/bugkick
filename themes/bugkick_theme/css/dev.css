@@ -761,11 +761,14 @@ a#calendar-tab{
 #summary-tickets .b_closed_tickets ul.b_daily_score li:hover .b_graph{
 	background-color: #2875C4;
 }
-.comment_delete{
+.comment_actions{
     float: right;
     clear: both;
-    width: 16px;
     height: 5px;
+}
+.comment_actions * {
+    float: left;
+    margin-right: 2px;
 }
 input[disabled],
 select[disabled],

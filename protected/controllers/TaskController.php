@@ -90,6 +90,25 @@ class TaskController extends Controller
         $this->redirect(Yii::app()->request->getUrlReferrer());
 	}
     
+	public function actionEdit()
+	{
+        $taskID = (int) $_POST['taskID'];
+        $user = User::current();
+
+        if (empty($taskID) || empty($user))
+            throw new CHttpException(400,'Invalid request.');
+
+        $task = Task::model()->findByPk($taskID);
+        if(empty($task))
+            throw new CHttpException(400,'Invalid request.');
+
+        if(!Project::isProjectAccessAllowed($task->ticket->project->project_id, $user->user_id))
+            throw new CHttpException(403,'You don\'t have permissions to perform this action.');
+
+        $task->description = $_POST['description'];
+        $task->save();
+	}
+    
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
