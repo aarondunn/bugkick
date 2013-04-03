@@ -84,6 +84,7 @@ class ForumController extends BaseForumController
                 )
             );
         }
+        $criteria->addSearchCondition('archived', "0", true, 'AND');
 
         $dataProvider = new CActiveDataProvider('BKTopic',array(
             'criteria'=>$criteria,
