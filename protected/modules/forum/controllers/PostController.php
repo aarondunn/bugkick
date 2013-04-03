@@ -73,7 +73,7 @@ class PostController extends BaseForumController
 		{
 			$model->attributes=$_POST['BKPost'];
 
-            $this->sendNotifications($model);
+            $this->sendNotifications($model, $topic);
             $model->body = BKActivateLinks::perform($model->body);
             $p = new CHtmlPurifier($this);
             $p->options=array(
@@ -95,21 +95,24 @@ class PostController extends BaseForumController
 	}
 
     /**
-     * Parses message, finds user names and send notification to them
+     * Parses message, finds user names and send notification to them and to other participants
      * @param BKPost $model
+     * @param BKTopic $topic
      * @return bool
      */
-    protected function sendNotifications($model)
+    protected function sendNotifications($model, $topic)
     {
         $currentCompany = Company::current();
         $message = $model->body;
-        if(empty($currentCompany) || empty($message))
+        if(empty($currentCompany) || empty($message) || empty($topic))
             return false;
 
+        $members = array();
+
+        //get users mentioned in the topic
         if (preg_match_all('#@([^ ]{3,}) ([^ @]{1,})?#i', $message, $matches)) {
             if(!empty($matches) && is_array($matches)){
                 if(isset($matches[1]) && is_array($matches[1]) && !empty($matches[1])){
-                    $members = array();
                     foreach($matches[1] as $key=>$name){
                         $criteria = new CDbCriteria();
                         $criteria->with = array(
@@ -144,16 +147,21 @@ class PostController extends BaseForumController
                         }
                         $members = array_merge($users,$members);
                     }
-                    if(!empty($members)){
-                        $membersUnique = array();
-                        foreach($members as $member){
-                            if(Yii::app()->user->id != $member->user_id)
-                                $membersUnique[$member->user_id]=$member;
-                        }
-                        $this->notifyMembers($membersUnique, $model);
-                    }
                 }
             }
+        }
+
+        //get all other participants of the topic
+        $topicUsers = $topic->getTopicParticipants();
+        $members = array_merge($members, $topicUsers);
+
+        if(!empty($members)){
+            $membersUnique = array();
+            foreach($members as $member){
+                if(Yii::app()->user->id != $member->user_id)
+                    $membersUnique[$member->user_id]=$member;
+            }
+            $this->notifyMembers($membersUnique, $model);
         }
         return true;
     }

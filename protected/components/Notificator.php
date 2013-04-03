@@ -405,7 +405,7 @@ MSG;
         return self::sendEmail($invitedUserEmail, '', $subject, $message, self::$headers);
     }
 
-    public static function forumMessage(User $user, BKPost $post)
+    public static function forumMessage(BKUser $user, BKPost $post)
     {
         $subject = 'New message on Bugkick Forum';
         $message = Renderer::renderInternal(

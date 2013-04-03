@@ -115,4 +115,24 @@ class BKTopic extends ForumActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+    /**
+     * Returns all users who left posts in the topic
+     * @return array
+     */
+    public function getTopicParticipants()
+    {
+        $users = array();
+        $posts = $this->posts;
+        if(!empty($this->topicStarter))
+            $users[]=$this->topicStarter;
+
+        if(!empty($posts) && is_array($posts)){
+            foreach ($posts as $post){
+                if(!empty($post->user))
+                    $users[]=$post->user;
+            }
+        }
+        return $users;
+    }
 }
