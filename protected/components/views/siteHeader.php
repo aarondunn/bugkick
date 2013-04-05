@@ -5,7 +5,5 @@
  * Time: 17:18
  */
 
- echo CHtml::link('<img src="'. $companyLogoSrc .  '" />',
-                   Yii::app()->createAbsoluteUrl('/'), array('id'=>'logo'));
-
-
+echo CHtml::link('<img src="'. $companyLogoSrc .  '" />',
+    Yii::app()->getController()->getDefaultPage(), array('id'=>'logo'));

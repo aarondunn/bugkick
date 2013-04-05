@@ -74,7 +74,7 @@ class SiteController extends Controller {
         // using the default layout 'protected/views/layouts/main.php'
 
         if (!Yii::app()->user->isGuest) {
-            $this->redirect($this->createUrl('bug/'));
+            $this->redirectToDefaultPage();
         }
         //if user already registered then redirect
         //to the login page instead of showing main page
@@ -143,7 +143,8 @@ class SiteController extends Controller {
         if (!$userIdentity->authenticate())
             $this->fbSignUp($graph);
         Yii::app()->user->login($userIdentity);
-        Yii::app()->request->redirect($this->createUrl('bug/'));
+        $this->redirectToDefaultPage();
+       // Yii::app()->request->redirect($this->createUrl('bug/'));
     }
 
     protected function setBkUserCookie() {
@@ -180,7 +181,8 @@ class SiteController extends Controller {
                 }
             }
             $user->deleteUser($_SERVER['REMOTE_ADDR']);
-            $this->redirect($this->createUrl('bug/'));
+            $this->redirectToDefaultPage();
+            //$this->redirect($this->createUrl('bug/'));
         }
         $model = new LoginForm;
         // if it is ajax validation request

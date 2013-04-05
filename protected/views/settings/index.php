@@ -179,6 +179,17 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
                         <?php echo $form->error($userModel, 'tickets_per_page'); ?>
 					</span>
 				</li>
+                <li class="tickets_per_page">
+                    <span class="label"><?php echo $form->labelEx($userModel, 'default_page'); ?>:</span>
+					<span class="selectbox">
+                        <?php echo CHtml::activeDropDownList(
+                            $userModel,
+                            'default_page',
+                            User::getDefaultPageOptions(),
+                            array('class'=>'chzn-select selectbox')); ?>
+                        <?php echo $form->error($userModel, 'default_page'); ?>
+					</span>
+                </li>
 				<li class="ticket_update_return">
 					<span class="label"><?php echo $form->labelEx($userModel, 'After updating a ticket'); ?>:</span>
 					<span class="selectbox">
@@ -186,7 +197,7 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
                             $userModel,
                             'ticket_update_return',
                             User::getTicketUpdRtnOptions(),
-                            array('prompt'=>'&nbsp;', 'class'=>'chzn-select selectbox')); ?>
+                            array('class'=>'chzn-select selectbox')); ?>
                         <?php echo $form->error($userModel, 'ticket_update_return'); ?>
 					</span>
 				</li>

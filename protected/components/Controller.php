@@ -217,9 +217,31 @@ class Controller extends CController
 	/**
 	 *
 	 * Throws a CHttpException with status 404 and message $message.
-	 * @param string $message 
+	 * @param string $message
+     * @throws CHttpException
 	 */
 	public function _404($message) {
 		throw new CHttpException(404, $message);
 	}
+
+    public function redirectToDefaultPage()
+    {
+        $this->redirect($this->getDefaultPage());
+    }
+
+    public function getDefaultPage()
+    {
+        $user = User::current();
+        if(!empty($user)){
+            switch($user->default_page){
+                case User::DEFAULT_PAGE_DASHBOARD:
+                    return $this->createAbsoluteUrl('/site/dashboard');
+                    break;
+                case User::DEFAULT_PAGE_TICKETS_LIST:
+                    return $this->createAbsoluteUrl('/bug/');
+                    break;
+            }
+        }
+        return $this->createAbsoluteUrl('/');
+    }
 }

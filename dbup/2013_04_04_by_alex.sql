@@ -1,0 +1,1 @@
+ALTER TABLE  `bk_user` ADD  `default_page` TINYINT UNSIGNED NOT NULL DEFAULT  '1' COMMENT  '1-dashboard, 2-tickets list' AFTER  `tickets_per_page`;

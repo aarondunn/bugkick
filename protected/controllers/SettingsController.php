@@ -54,8 +54,8 @@ class SettingsController extends Controller {
                     $this->request->getPost('SettingsByUser');
             $userSettings->user_id = User::current()->user_id;
             $userSettings->save()*/
-
             if ($user->save()){
+                Yii::app()->cache->flush();
                 if(Yii::app()->user->name != $user->attributes['name']){
                     Yii::app()->user->name = $user->attributes['name'];
                     echo 'refresh';

@@ -31,6 +31,7 @@ Yii::import('application.controllers.RegistrationController');
  * @property string $invited_by_id
  * @property string $registration_token
  * @property string $ticket_update_return
+ * @property string $default_page
  * @property integer $use_wysiwyg
  * @property integer $bugCount The count of bugs which the user is assigned to.
  * @property integer $bugCreatedCount The count of bugs which the user has created.
@@ -63,6 +64,9 @@ class User extends CActiveRecord
     
     const ALGORITHM_SHA256 = 1;
     const ALGORITHM_BCRYPT = 2;
+
+    const DEFAULT_PAGE_DASHBOARD = 1;
+    const DEFAULT_PAGE_TICKETS_LIST = 2;
 
     /**
      * Returns the static model of the specified AR class.
@@ -100,7 +104,7 @@ class User extends CActiveRecord
             array('name, email, password', 'required', 'on'=>array('insert', 'registration')),
             array('email', 'application.extensions.validators.UniqueOrInvitedValidator', 'on' => 'registration'),
             array('email', 'application.extensions.validators.DomainsBlacklistValidator', 'on' => 'registration'),
-            array('encryption_algorithm, invited_by_id, email_notify, isadmin, is_global_admin, email_preference, hotkey_preference, userStatus, defaultAssignee, defaultCompany, defaultStatus, defaultLabel, tickets_per_page, ticket_update_return, use_wysiwyg, pro_status', 'numerical', 'integerOnly' => true),
+            array('encryption_algorithm, invited_by_id, default_page, email_notify, isadmin, is_global_admin, email_preference, hotkey_preference, userStatus, defaultAssignee, defaultCompany, defaultStatus, defaultLabel, tickets_per_page, ticket_update_return, use_wysiwyg, pro_status', 'numerical', 'integerOnly' => true),
             array(
                 'encryption_algorithm',
                 'default',
@@ -120,7 +124,7 @@ class User extends CActiveRecord
 			array('encryption_algorithm', 'default', 'value'=>self::ALGORITHM_SHA256),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
-            array('user_id, is_global_admin, pro_status, invited_by_id, facebook_id, created_at, name, lname, email, password, salt, email_notify, current_project_id, isadmin, profile_img, email_preference, hotkey_preference, look_and_feel, randomPassword, userStatus, defaultAssignee, defaultStatus, defaultLabel, use_wysiwyg', 'safe', 'on' => 'search'),
+            array('user_id, is_global_admin, pro_status, default_page, invited_by_id, facebook_id, created_at, name, lname, email, password, salt, email_notify, current_project_id, isadmin, profile_img, email_preference, hotkey_preference, look_and_feel, randomPassword, userStatus, defaultAssignee, defaultStatus, defaultLabel, use_wysiwyg', 'safe', 'on' => 'search'),
         );
     }
 
@@ -440,7 +444,8 @@ class User extends CActiveRecord
 			'tickets_per_page' => 'Tickets Per Page',
 			'ticket_update_return' => 'Ticket Update Return',
             'look_and_feel' => 'Choose Theme',
-            'use_wysiwyg' => 'Use WYSIWYG-editor'
+            'use_wysiwyg' => 'Use WYSIWYG-editor',
+            'default_page' => 'Default Page',
         );
     }
 
@@ -475,6 +480,7 @@ class User extends CActiveRecord
         $criteria->compare('defaultStatus', $this->defaultStatus);
         $criteria->compare('defaultLabel', $this->defaultLabel);
         $criteria->compare('pro_status', $this->pro_status);
+        $criteria->compare('default_page', $this->default_page);
 
         return new CActiveDataProvider(get_class($this),
             array(
@@ -493,10 +499,10 @@ class User extends CActiveRecord
         }
 
         $users = User::model()->with(array('company' => array(
-                                              'select' => false,
-                                              'joinType' => 'INNER JOIN',
-                                              'condition' => 'company.company_id=' . $company_id,
-                                          )))->findAll(($adminsOnly)? $criteria: '');
+            'select' => false,
+            'joinType' => 'INNER JOIN',
+            'condition' => 'company.company_id=' . $company_id,
+        )))->findAll(($adminsOnly)? $criteria: '');
         return $users;
     }
 
@@ -508,6 +514,13 @@ class User extends CActiveRecord
         return array(
 			1 => 'Return home',
 			2 => 'Stay in the ticket',
+		);
+    }
+
+	public static function getDefaultPageOptions() {
+        return array(
+			self::DEFAULT_PAGE_DASHBOARD => 'Dashboard',
+			self::DEFAULT_PAGE_TICKETS_LIST => 'Tickets List',
 		);
     }
 
