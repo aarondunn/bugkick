@@ -67,6 +67,7 @@ class User extends CActiveRecord
 
     const DEFAULT_PAGE_DASHBOARD = 1;
     const DEFAULT_PAGE_TICKETS_LIST = 2;
+    const DEFAULT_PAGE_UPDATES = 3;
 
     /**
      * Returns the static model of the specified AR class.
@@ -521,6 +522,7 @@ class User extends CActiveRecord
         return array(
 			self::DEFAULT_PAGE_DASHBOARD => 'Dashboard',
 			self::DEFAULT_PAGE_TICKETS_LIST => 'Tickets List',
+			self::DEFAULT_PAGE_UPDATES => 'Updates',
 		);
     }
 

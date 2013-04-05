@@ -240,6 +240,9 @@ class Controller extends CController
                 case User::DEFAULT_PAGE_TICKETS_LIST:
                     return $this->createAbsoluteUrl('/bug/');
                     break;
+                case User::DEFAULT_PAGE_UPDATES:
+                    return $this->createAbsoluteUrl('/notification/');
+                    break;
             }
         }
         return $this->createAbsoluteUrl('/');
