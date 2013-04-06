@@ -6,4 +6,4 @@
  */
 
 echo CHtml::link('<img src="'. $companyLogoSrc .  '" />',
-    Yii::app()->getController()->getDefaultPage(), array('id'=>'logo'));
+    Yii::app()->createUrl('/bug'), array('id'=>'logo'));

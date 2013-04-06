@@ -235,7 +235,7 @@ class Controller extends CController
         if(!empty($user)){
             switch($user->default_page){
                 case User::DEFAULT_PAGE_DASHBOARD:
-                    return $this->createAbsoluteUrl('/site/dashboard');
+                    return $this->createAbsoluteUrl('/bug/summaryTickets');
                     break;
                 case User::DEFAULT_PAGE_TICKETS_LIST:
                     return $this->createAbsoluteUrl('/bug/');
