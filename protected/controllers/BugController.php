@@ -360,6 +360,9 @@ JS
                     }
                     echo $result; // it's array
                 }
+                else{
+                    throw new CHttpException(500, 'Error has occurred while creating a ticket.');
+                }
 			}
             else{
                 throw new CHttpException(400, 'Invalid request.');
@@ -434,7 +437,7 @@ JS
                 ));
 			$model->project_id = $project->project_id;
 			$model->next_id = 0;
-			$model->next_number = 0;
+			$model->next_number = empty($prevBug)? 100 : $prevBug->number + 100; //just temp value to prevent constraints conflict
 			if(empty($prevBug)) {
 				/*$globalPrevBug = Bug::model()->resetScope()->find('next_id=0');*/
                 $globalPrevBug = Bug::model()->resetScope()->findBySql(
@@ -466,6 +469,10 @@ JS
 					if(!$globalPrevBug->save())
 						throw new Exception('Previous bug has not been saved');
 				}
+                $model->next_number = 0;
+                if(!$model->save())
+                    throw new Exception('Error while saving current ticket');
+
 				Notificator::newBug($model);	//send notification
 			} else {
 				throw new Exception('New bug has not been saved');

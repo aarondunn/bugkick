@@ -173,16 +173,16 @@ class SiteController extends Controller {
         $cookie_name = null;
         if (!Yii::app()->user->isGuest) {
             $plan = $this->session['planType'];
+            $user->deleteUser($_SERVER['REMOTE_ADDR']);
             if ($this->session['fromRegistration'] == 1) {
                 $this->setBkUserCookie();
                 $this->session['fromRegistration'] = 0;
                 if (!empty($plan) && $this->session['registersWithCoupon']!=1) {
                     $this->redirect($this->createUrl('payment/pro-account', array('subscription' => $plan)));
                 }
+                $this->redirect($this->createUrl('bug/'));
             }
-            $user->deleteUser($_SERVER['REMOTE_ADDR']);
             $this->redirectToDefaultPage();
-            //$this->redirect($this->createUrl('bug/'));
         }
         $model = new LoginForm;
         // if it is ajax validation request

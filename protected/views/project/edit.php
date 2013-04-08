@@ -243,7 +243,7 @@ $form = $this->beginWidget(
                         if(!empty($bugLabel))
                             $projectSettings->defaultLabel= $bugLabel->label_id;
                     }
-                    $labels = ($project->isNewRecord)? Company::getPreCreatedLabels() : Project::getLabels();
+                    $labels = ($project->isNewRecord)? Company::getPreCreatedLabels() : Project::getLabels($project->project_id);
                     echo CHtml::activeDropDownList(
                         $projectSettings,
                         'defaultLabel',
