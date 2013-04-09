@@ -19,6 +19,14 @@ class PeopleAction extends Action
         if(empty($this->project))
             throw new CHttpException(404, 'Please choose project first.');
 
+        //Edit Project stuff
+        $baseUrl = Yii::app()->assetManager->publish('protected/extensions/EAjaxUpload/assets');
+        Yii::app()->clientScript->registerScriptFile($baseUrl . '/fileuploader.js', CClientScript::POS_HEAD);
+        Yii::app()->clientScript->registerCssFile($baseUrl.'/fileuploader.css');
+        Yii::app()->clientScript->registerScriptFile(
+            Yii::app()->baseUrl . '/js/project/index/common.js'
+        );
+
         $user = User::current();
         if(empty($user)
             || $user->getStatusInCompany(Company::current())

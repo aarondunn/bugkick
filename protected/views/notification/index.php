@@ -78,3 +78,26 @@ $this->breadcrumbs = array(
     </div>
 </script>
 <!-- end templates -->
+
+<?php
+$this->beginWidget(
+    'zii.widgets.jui.CJuiDialog',
+    array(
+        'id'=>'project-form-dialog',
+        'options'=>array(
+            'title'=>'Edit Project',
+            'autoOpen'=>false,
+//    			'width'=>565,
+            //'height'=>440,
+            'modal'=>true,
+            'hide'=>'drop',
+            'show'=>'drop',
+            'buttons'=>array(
+                'Save'=>'js:submitProjectForm',
+                //'Cancel'=>'js:closeDialog',
+            ),
+        )
+    )
+);
+$this->endWidget();
+?>

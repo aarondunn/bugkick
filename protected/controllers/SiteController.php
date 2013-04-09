@@ -324,6 +324,14 @@ class SiteController extends Controller {
         if (empty($project))
             $this->redirect($this->createUrl('/project/index'));
 
+        //Edit Project stuff
+        $baseUrl = Yii::app()->assetManager->publish('protected/extensions/EAjaxUpload/assets');
+        Yii::app()->clientScript->registerScriptFile($baseUrl . '/fileuploader.js', CClientScript::POS_HEAD);
+        Yii::app()->clientScript->registerCssFile($baseUrl.'/fileuploader.css');
+        Yii::app()->clientScript->registerScriptFile(
+            Yii::app()->baseUrl . '/js/project/index/common.js'
+        );
+
         $bugCount = Company::getBugsCount();
         $archivedBugCount = Company::getArchivedBugsCount();
         $usersCount = Company::getUsersCount();
