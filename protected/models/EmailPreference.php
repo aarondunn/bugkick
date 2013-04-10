@@ -101,7 +101,7 @@ class EmailPreference extends CActiveRecord
 	
 	public static function setUserPreferences(
 		User $user, EmailPreferenceForm $emailPrefForm) {
-		$user->email_notify=(int)$emailPrefForm->email_notify;
+		$user->email_notify=1;//(int)$emailPrefForm->email_notify;
 		if(!$user->save())
 			return false;
 		$genInsertRow=function($n) {

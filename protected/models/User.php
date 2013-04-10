@@ -120,6 +120,7 @@ class User extends CActiveRecord
             array('email', 'email'),
             array('profile_img', 'file', 'types' => 'jpg, jpeg, gif, png', 'allowEmpty' => true),
             array('look_and_feel', 'default', 'value' => 'Default', 'setOnEmpty' => true),
+            array('email_notify', 'default', 'value' => 1, 'setOnEmpty' => true),
 			array('current_project_id, github_user_id, github_auth_token', 'default', 'value'=>null),
             array('github_auth_token', 'length', 'max'=>40, 'allowEmpty'=>true),
 			array('encryption_algorithm', 'default', 'value'=>self::ALGORITHM_SHA256),
