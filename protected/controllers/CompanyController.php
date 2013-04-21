@@ -173,8 +173,9 @@ class CompanyController extends Controller
 	/**
 	 * Performs the AJAX validation.
 	 * @param CModel the model to be validated
+     * @param string $formID The ID of form to validate.
 	 */
-	public function performAjaxValidation($model)
+	public function performAjaxValidation($model, $formID=null)
 	{
 		if(isset($_POST['ajax']) && $_POST['ajax']==='company-form')
 		{
