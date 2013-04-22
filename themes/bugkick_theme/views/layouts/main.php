@@ -205,7 +205,7 @@ JS
 		</div><!-- .wrapper -->
 	</div><!-- #header -->
     <div id="content">
-        <?php $this->renderPartial('application.views.site._menu'); ?>
+        <?php //$this->renderPartial('application.views.site._menu'); ?>
         <?php $this->renderPartial('application.views.site._flash'); ?>
         <?php echo $content; ?>
         <?php if (!Yii::app()->user->isGuest && !empty(Yii::app()->user->company_id)) {

@@ -30,6 +30,9 @@
 
 #content .ticket_content .description{
     word-wrap: break-word;
+    color: #889099;
+    margin-top: 30px;
+    padding: 0px 20px;
 }
 .signup_plans.plans_summary{
     margin: 10px 20px;
@@ -43,6 +46,8 @@
 
 .search-container{
     position: relative;
+    padding: 20px;
+    border-bottom: 1px solid #e8e8e9;
 }
 a.cancel-search{
     background: url("../images/icons/help_cancel_edit.png") no-repeat scroll 0 0 transparent;
@@ -67,8 +72,9 @@ a.cancel-search{
 .collapse-icon{
     background: url("../images/icons/expand.png") 0 0 repeat-x;
 }
-ul.message :nth-last-child(2){
+ul.message div:last-child{
     border: none !important;
+    margin: 0px;
 }
 
 .view-more-pager li.next a{
@@ -831,4 +837,472 @@ textarea[readonly] {
 }
 .task_actions a{
     cursor: pointer;
+}
+
+/* changes made by Artur */
+
+ul.membership > li .membership_fee {
+    height: 55px;    
+}
+
+ul.membership>li.highlighted{    
+    height: 465px;
+}
+
+/* --- cotext menu restyling --- */
+
+.vmenu{
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+}
+
+.btn-edit{
+    border-radius: 5px 5px 0px 0px;
+    -webkit-border-radius: 5px 5px 0px 0px;
+    -moz-border-radius: 5px 5px 0px 0px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background: url("/themes/bugkick_theme/images/icons/i_comment.png") no-repeat 5px 50%;    
+}
+
+.btn-close{
+    background: url("/themes/bugkick_theme/images/icons/i_print.png") no-repeat 5px 50%;
+}
+
+.btn-duplicate{
+    background: url("/themes/bugkick_theme/images/icons/i_duplicate.png") no-repeat 5px 50%;
+}
+
+.btn-delete{
+    color: red;
+    border-radius: 0px 0px 5px 5px;
+    -webkit-border-radius: 0px 0px 5px 5px;
+    -moz-border-radius: 0px 0px 5px 5px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background: url("/themes/bugkick_theme/images/icons/i_delete.png") no-repeat 5px 50%;
+}
+
+.vmenu .first_li span, .vmenu_dl .first_li span{
+    width: 90px !important;
+    margin: 0px 5px 0px 5px;
+    padding: 5px 0px 5px 25px!important;    
+}
+
+.vmenu .btn-edit span, .vmenu .btn-close span{
+    border-bottom: 1px solid #dfdfdf;
+}
+
+/* --- single ticket restyling --- */
+
+#content .ticket_content_top #btn_next {
+right: 18px;
+background: url("/themes/bugkick_theme/images/btn-next-new.png") no-repeat 0 0;
+}
+
+#content .ticket_content_top #btn_prev {
+right: 60px;
+background: url("/themes/bugkick_theme/images/btn-prev-new.png") no-repeat 0 0;
+}
+
+#content .ticket_content_top #btn_prev, #content .ticket_content_top #btn_next {
+display: block;
+position: absolute;
+width: 32px;
+height: 32px;
+text-indent: -9999px;
+top: 19px;
+}
+
+div.ticket_content_top span.status {
+border-left: 1px solid transparent;
+width: 4px;
+float: left;
+height: 70px;
+border-radius: 2px 0 0 0;
+-webkit-border-radius: 2px 0 0 0;
+-moz-border-radius: 2px 0 0 0;
+-moz-background-clip: padding;
+-webkit-background-clip: padding-box;
+background-clip: padding-box;
+behavior: url(/themes/bugkick_theme/css/PIE.htc);
+}
+
+#content .ticket_content_top{
+    height: 70px;
+    width: auto;
+    position: relative;
+    background: none;
+    padding-left: 1px;
+    border-radius: 3px 3px 0 0;
+    -webkit-border-radius: 3px 3px 0 0;
+    -moz-border-radius: 3px 3px 0 0;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    behavior: url(/themes/bugkick_theme/css/PIE.htc);
+}
+#content #main{
+    background: url("/themes/bugkick_theme/images/main-bg-new.png") repeat-y 0 0;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    behavior: url(/themes/bugkick_theme/css/PIE.htc);
+    width: 776px;
+}
+
+#content .ticket_wrapper{
+    padding: 0px;    
+}
+#content #main h3{
+    padding: 15px 0px 15px 16px;
+    font-size: 18px;
+    font-family: "proxima-nova-alt-n7","proxima-nova-alt",sans-serif;
+}
+
+#content{
+    width: 1080px; 
+}
+
+#content .ticket_content{
+    width: 776px;    
+    padding: 0px;
+    position: relative;
+    background: url("/themes/bugkick_theme/images/ticket_wrapper_new.png") repeat-y 0 0;
+    border-bottom: 1px solid #eceded;
+}
+
+#content .ticket_info {
+border-bottom: 1px solid #eceded;
+border-top: 1px solid #e8e8e9;
+margin-top: 0px;
+padding: 0px 20px;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.task-box{
+    padding: 0px 20px; 
+}
+
+.comment_wrapper{
+    border-bottom: 1px solid #e8e8e9;
+    margin-bottom: 20px;
+}
+
+#content #main:after{
+    background: url("/themes/bugkick_theme/images/main_bottom_bg_new.png") no-repeat 0 0;
+    width: 776px;
+    height: 5px;
+}
+
+#content #main:before {
+  width: 776px;
+  height: 2px;
+  background: url("../images/main_top_bg_new.png") no-repeat 0 0;
+}
+
+#content .ticket_reply{
+    margin: 0 auto;
+    width: 100%;
+}
+
+#content .ticket_reply ul.message{
+    padding: 20px 20px 0px 20px;
+    border: none;
+}
+
+#content .ticket_reply ul.post_comment li.leave-comment-part, #content .ticket_reply ul.message li{
+    width: 690px;
+}
+
+#content .ticket_reply ul.post_comment li.photo, #content .ticket_reply ul.message li.photo{
+    margin-right: 10px;
+}
+
+.collapse-icon, .expand-icon{
+    background: url("/themes/bugkick_theme/images/icons/collapse_new.png") 0 0 repeat-x;
+    margin: 0px;
+    width: 21px;
+}
+
+#content .ticket_reply ul.post_comment {
+/* borders left and right commented in main.css */
+width: 734px;
+padding: 20px;
+margin-left: 1px;
+}
+
+#commentBlock {
+width: 690px;
+}
+
+#comment-form .row{
+    width: 690px;
+}
+
+#content .ticket_reply ul.post_comment li textarea{
+    border: 1px solid #e8e8e9;
+    background: #ffffff;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 1px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    behavior: url(/themes/bugkick_theme/css/PIE.htc);
+}
+
+#sidebar{
+    width: 286px;
+}
+
+#sidebar .sidebar_middle{
+    width: 274px;
+    background: url("/themes/bugkick_theme/images/sidebar_middle_bg_new.png") repeat-y 0 0;
+    padding-top: 5px;
+}
+
+#sidebar:before {
+    content: "";
+    display: block;
+    width: 286px;
+    height: 4px;
+    background: url("/themes/bugkick_theme/images/sidebar_top_bg_new.png") no-repeat 0 0;
+}
+
+#sidebar:after {
+    content: "";
+    display: block;
+    width: 286px;
+    height: 5px;
+    background: url("/themes/bugkick_theme/images/sidebar_bottom_bg_new.png") no-repeat 0 0;
+}
+
+#sidebar .items{
+    padding: 0px 14px;
+}
+
+#sidebar ul.ticket_changes {
+padding: 9px 0px;
+border-bottom: 1px solid #eceded;
+}
+
+#sidebar ul.ticket_changes:last-child{
+    border: none;
+}
+
+#sidebar ul.ticket_changes li.info{
+    width: 200px;
+    padding-top: 6px;
+}
+
+#header .wrapper{
+    width: 1040px;
+}
+
+.bubble-ticket{
+    color: #949ba8!important;
+    font-weight: bolder;
+    margin: 0px;
+    font-size: 12px;
+}
+
+#content .ticket_info span.top-line{
+    font-size: 12px;
+}
+
+.add-task{
+    margin: 10px 0px 10px 0px;
+}
+
+input[type="submit"].bkButtonBlueSmall.normal, input[type="button"].bkButtonBlueSmall.normal, .bkButtonBlueSmall.normal{
+    padding: 0px !important;
+}
+
+.bkButtonGraySmall.normal, a.bkButtonBlueSmall.normal, a.bkButtonGraySmall.normal{
+    padding: 8px 19px;
+}
+
+input[type="submit"].bkButtonBlueSmall.normal, input[type="button"].bkButtonBlueSmall.normal, .bkButtonBlueSmall.normal,
+.bkButtonGraySmall.normal, a.bkButtonBlueSmall.normal, a.bkButtonGraySmall.normal, .button{
+    border-radius: 2px;
+-webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+-moz-background-clip: padding;
+-webkit-background-clip: padding-box;
+background-clip: padding-box;
+}
+
+.button.light-gray{
+    background: #ededed !important;
+    border: 1px solid #dcdcdc !important;
+}
+
+.footer-inner{
+    width: 1040px;
+}
+
+/* --- Tickets Restyling --- */
+
+#content #tabed-nav{
+    margin: 0px !important;
+    padding: 0px 20px;    
+}
+
+.portlet-content{
+    margin: 0px;
+    border-bottom: 1px solid #e8e8e9;
+}
+
+#content #tabed-nav ul li a{
+    font-weight: bold;
+    color: #92959b;
+    padding: 0px;
+    font-size: 18px;
+    border-bottom: 1px solid #e3e3e5;
+}
+
+#content #tabed-nav ul li.current a{
+    color: #464a50;
+}
+
+#content #tabed-nav ul li:hover a, #content #tabed-nav ul li.current a{
+    border: none;
+}
+
+#content #tabed-nav ul li:hover, #content #tabed-nav ul li.current{
+    border-bottom: 5px solid #e8e8e9;
+    cursor: pointer;
+}
+
+#content #tabed-nav ul li{
+    padding: 30px 0;
+    margin-left: 40px;
+}
+
+#content #tabed-nav ul li:nth-last-of-type(-n+2) a{
+    padding: 6px 15px;    
+}
+
+#content #tabed-nav ul li:nth-last-of-type(-n+2){
+    border-bottom: none;
+    margin-left: 10px;
+}
+
+a#settings-tab{
+    background: url("/themes/bugkick_theme/images/icons/settings-icon-new.png") no-repeat;
+}
+
+a#calendar-tab{
+    background: url("/themes/bugkick_theme/images/icons/calendar-i-new.png") no-repeat;
+}
+
+a#calendar-tab, a#settings-tab{
+    margin-top: -7px;
+}
+
+#content #main_wide{
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    behavior: url(/themes/bugkick_theme/css/PIE.htc);
+    width: 1080px;
+    padding: 0px;
+}
+
+.wide_content_wraper{
+    padding: 15px;        
+}
+
+.settings{
+    padding: 0px 5px;
+}
+
+.jspPane{
+    padding: 0px !important;
+    width: 285px !important;
+}
+
+#sidebar .search_box{
+    background: url("/themes/bugkick_theme/images/search_box_bg_new.png") no-repeat 50% 50%;
+    width: 195px;
+    height: 32px;
+    padding: 0 35px 0 17px;
+    margin: 0px;
+}
+
+a.cancel-search{
+    left: 215px;
+    top: 28px;
+}
+
+#filterForm{
+    padding: 10px 0px;
+}
+
+.tickets-container{
+    padding: 0px;
+}
+
+#content div#bug-list div.ticket-item{
+    border-radius: 0px;
+    border: none;
+    border-bottom: 1px solid #eceded;
+    width: 734px;
+    margin: 0 auto;
+    height: 50px;
+}
+
+span.status {
+    border-left: 1px solid transparent;
+    width: 4px;
+    float: left;
+    height: 50px;    
+}
+
+.ticket-item-wrapper{
+    height: 50px;
+    margin-bottom: 1px;    
+}
+
+#content div#bug-list div.ticket-item .comments .comment-count-icon, .comment-count-number{        
+    float: left;
+    display: block;
+    height: 13px;
+    margin: 5px auto;
+    width: 14px;
+}
+
+#content div#bug-list div.ticket-item .comments{
+    height: 24px;
+    padding: 0 0 0 10px;    
+    width: 29px;
+    border-left: 1px solid #eceded;
+    margin-top: 15px;
+}
+
+#content div#bug-list div.ticket-item .photo{
+    margin-top: 15px;
+    margin-right: 10px;
+}
+
+#content div#bug-list div.ticket-item .title{
+    line-height: 50px;
+    padding: 0 12px 0 4px;
+}
+
+#content div#bug-list div.ticket-item .title a{
+    color: #0086cd;
 }

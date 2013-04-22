@@ -60,7 +60,7 @@
             echo $form->textArea($model,'message',array(
                 'rows'=>6,
                 'cols'=>50,
-                'style'=>'width:565px;max-width:565px;',
+                'style'=>'width:677px;max-width:677px;',
             ));
         }
         else{
@@ -223,7 +223,7 @@
                         $(this).attr("disabled","disabled");
                     ',
                     'class'=>'bkButtonBlueSmall normal',
-                    'style'=>'width: 145px;margin-top: -1px;')
+                    'style'=>'width: 145px;margin-top: 0px;height:32px')
             );
             if (!$bug->isarchive){
                 echo CHtml::link(Yii::t('main', 'Comment and Close'), '#', array(

@@ -7,6 +7,7 @@
 					$access_del = array("className"=>"access_del","comment_id"=>$comment->comment_id);
 				}
             ?>
+            <div class="comment_wrapper">
             <li class="photo thumb comment-thumb"<?php echo isset($access_del) ? " access_del=\"" . $access_del['comment_id'] . "\"" : "" ?>>
                 <?php
 				if(!empty($comment->user)) {
@@ -45,5 +46,6 @@
                 </div>
             </li>
             <div class="clear"></div>
+            </div>
         <?php endforeach; ?>
 <?php endif; ?>

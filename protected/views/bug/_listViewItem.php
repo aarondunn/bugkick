@@ -14,17 +14,19 @@ $beginCache=function($controller, $cacheId, $duration, $expression) {
 	);
 };
 ?>
+<div class="ticket-item-wrapper">
+<?php 
+        echo (!empty($data->status->status_color))
+              ? '<span class="status" style="background: ' . $data->status->status_color . '"></span>'
+              : '<span class="status not-set"></span>' ;
+    ?>
 <div id="<?php echo $data->id ?>" class="ticket-item <?php echo Bug::getDueDateRemainAlias($data); ?> unchecked"
         data-ticket-id="<?php echo $data->id; ?>"
         ticketID="<?php echo $data->id ?>"
         position="<?php echo $data->priority_order ?>"
         user_set="<?php echo (empty($data->user_set))? null : implode(CJSON::decode($data->user_set), ',') ?>"
         label_set="<?php echo (empty($data->label_set))? null : implode(CJSON::decode($data->label_set), ',') ?>">
-    <?php 
-        echo (!empty($data->status->status_color))
-              ? '<span class="status" style="background: ' . $data->status->status_color . '"></span>'
-              : '<span class="status not-set"></span>' ;
-    ?>
+    
     <div class="opacity05 checkbox unchecked" data-ticket-id="<?php echo $data->id; ?>"></div>
     <span class="title">
         <?php
@@ -41,8 +43,8 @@ if($beginCache($this, 'ticket_comment_count', 3600, "'{$data->commentCount}'")) 
 ?>
 	<a href="<?php echo $this->createUrl('bug/view', array('id'=>$data->number, '#'=>'comments'))?>">
        <div class="comments" title="<?php //$sl=strlen(strip_tags($data->getLastComment($data->id))); echo substr(strip_tags($data->getLastComment($data->id)),0,160).(($sl>160)? '...':''); ?>" >
-            <span class="comment-count-icon" ></span>
-            <?php echo $data->commentCount; ?>
+           <span class="comment-count-number"><?php echo $data->commentCount; ?></span> 
+           <span class="comment-count-icon" ></span>            
         </div>
     </a>
 <?php
@@ -61,3 +63,4 @@ if($beginCache($this, 'ticket_comment_count', 3600, "'{$data->commentCount}'")) 
 	}
 	?>
 </div>
+</div>    

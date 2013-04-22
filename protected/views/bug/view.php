@@ -46,15 +46,22 @@ $this->endClip();
 ?>
 <div id="ajaxUpdate">
 <div class="ticket_wrapper">
-    <div class="ticket_content_top"></div>
-	<div class="ticket_content">
-		<h3 class="title"><?php echo '#' . $model->number . ' ' . ActivateLinks::perform($model->title) ?></h3>
+    <div class="ticket_content_top">
+        <?php 
+        echo (!empty($model->status->status_color))
+              ? '<span class="status" style="background: ' . $model->status->status_color . '"></span>'
+              : '<span class="status not-set"></span>' ;
+    ?>
+        <h3 class="title"><?php echo '#' . $model->number . ' ' . ActivateLinks::perform($model->title) ?></h3>
         <?php if($model->prev_number != 0): ?>
             <a id="btn_prev" href="<?php echo Yii::app()->createUrl("bug/view", array('id'=>$model->prev_number))?>" title="Previous Ticket"></a>
         <?php endif;?>
         <?php if($model->next_number != 0): ?>
             <a id="btn_next" href="<?php echo Yii::app()->createUrl("bug/view", array('id'=>$model->next_number))?>" title="Next Ticket"></a>
 		<?php endif;?>
+    </div>
+	<div class="ticket_content">
+		
         <div class="ticket_info">
 
             <?php if ($model->is_created_with_api != 1){ //hide owner if created via API ?>
@@ -110,11 +117,11 @@ $this->endClip();
                     if($model->label != null)
                         foreach($model->label as $label) {
                 ?>
-                    <span class="bubble bubble-ticket" style="background-color:<?php echo $label->label_color; ?>"><?php echo $label->name; ?></span>
+                    <span class="bubble bubble-ticket" style="background-color:<?php //echo $label->label_color; ?>"><?php echo $label->name; ?></span>
                 <?php
                         }
                     if ($model->is_created_with_api == 1){ ?>
-                    <span class="bubble bubble-ticket" style="background-color:#008000;"><?php echo Yii::t('main', 'USER SUBMITTED'); ?></span>
+                    <span class="bubble bubble-ticket" ><?php echo Yii::t('main', 'USER SUBMITTED'); ?></span>
                 <?php
                     }
                 ?>
@@ -126,7 +133,7 @@ $this->endClip();
                         echo 'Closed';
                    }
                    elseif(!empty($model->status)){
-                        echo ($model->status->status_color != null)? '<span class="bubble bubble-ticket" style="background-color:'. $model->status->status_color . '">'. $model->status->label . '</span>' : $model->status->label;
+                        echo ($model->status->status_color != null)? '<span class="bubble bubble-ticket" >'. $model->status->label . '</span>' : $model->status->label;
                    }
                 ?>
             </span>
@@ -210,7 +217,7 @@ LINKTEXT
                 echo CHtml::link(
                     Yii::t('main', 'Login to Box.com to attach files'),
                     $this->createUrl('/box/authenticate'),
-                    array('style'=>'float:right; clear: both'));
+                    array('style'=>'float:right; clear: both; padding-right:20px;'));
             }
             else{
                 Yii::import("xupload.models.XUploadForm");
@@ -230,10 +237,10 @@ LINKTEXT
         <?php echo $this->renderPartial('application.views.task._task_list', array('tasks' => $tasks, 'ticket'=>$model));?>
 
     </div>
-    <div class="ticket_content_bottom"></div>
+<!--    <div class="ticket_content_bottom"></div>-->
     <!-- .ticket_content -->
 	<div class="ticket_reply">
-		<h3 class="header" id="comments"><?php echo Yii::t('main', 'Replies and Issue History'); ?></h3>
+<!--		<h3 class="header" id="comments"><?php echo Yii::t('main', 'Replies and Issue History'); ?></h3>-->
         <!-- List of comments     -->
             <ul class="message">
 		<?php
@@ -267,7 +274,7 @@ LINKTEXT
               </li>
               <div class="clear"></div>
       	</ul>
-        <div class="bottom"></div>
+<!--        <div class="bottom"></div>-->
 	</div>
 </div><!-- .ticket_wrapper -->
 </div>

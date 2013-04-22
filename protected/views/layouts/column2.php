@@ -1,11 +1,11 @@
 <?php $this->beginContent('//layouts/main'); ?>
 <div id="main">
     <!-- <div class="main_top"></div> -->
-    <div class="main_middle">
-
+<!--    <div class="main_middle">-->
+        <?php $this->renderPartial('application.views.site._menu'); ?>
         <?php echo $content; ?>
 
-    </div>
+<!--    </div>-->
     <!-- .main_middle -->
     <!-- <div class="main_bottom"></div> -->
 </div>

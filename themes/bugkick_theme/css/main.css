@@ -2754,15 +2754,15 @@ body *.unselectable {
 }
 #content .ticket_reply ul.post_comment {
   border-top: 1px solid #ececed;
-  border-left: 1px solid #f0f0f0;
-  border-right: 1px solid #f0f0f0;
+/*  border-left: 1px solid #f0f0f0;
+  border-right: 1px solid #f0f0f0;*/
   width: 635px;
   padding: 19px 18px 21px 15px;
 }
-#content .ticket_reply ul.message li.body-comment {
+/*#content .ticket_reply ul.message li.body-comment {
   border-bottom: 1px solid #F0F0F0;
   margin-bottom: 20px;
-}
+}*/
 #content .ticket_reply ul.message {
   border-top: 1px solid #f7f7f7;
 }
