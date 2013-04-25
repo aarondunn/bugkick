@@ -986,7 +986,6 @@ border-bottom: 1px solid #eceded;
 border-top: 1px solid #e8e8e9;
 margin-top: 0px;
 padding: 0px 20px;
-font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .task-box{
@@ -1122,14 +1121,6 @@ border-bottom: 1px solid #eceded;
 
 .add-task{
     margin: 10px 0px 10px 0px;
-}
-
-input[type="submit"].bkButtonBlueSmall.normal, input[type="button"].bkButtonBlueSmall.normal, .bkButtonBlueSmall.normal{
-    padding: 0px !important;
-}
-
-.bkButtonGraySmall.normal, a.bkButtonBlueSmall.normal, a.bkButtonGraySmall.normal{
-    padding: 8px 19px;
 }
 
 input[type="submit"].bkButtonBlueSmall.normal, input[type="button"].bkButtonBlueSmall.normal, .bkButtonBlueSmall.normal,
