@@ -1,6 +1,0 @@
-<?php
-return array(
-	'notifications'=>array(
-		'turned-on'=>false,
-	)
-);
