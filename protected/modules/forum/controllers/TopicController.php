@@ -189,8 +189,9 @@ class TopicController extends BaseForumController
 	/**
 	 * Performs the AJAX validation.
 	 * @param CModel the model to be validated
+     * @param $formID
 	 */
-    public function performAjaxValidation($model)
+    public function performAjaxValidation($model, $formID=null)
 	{
 		if(isset($_POST['ajax']) && $_POST['ajax']==='bktopic-form')
 		{

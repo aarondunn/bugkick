@@ -97,7 +97,7 @@ class ProjectController extends Controller {
             ? $project->archived()->visibleOnly()
             : $project->active()->visibleOnly();
         $viewData['projectSettings'] = $projectSettings;
-		$viewData['pager'] = array('pageSize'=>self::PAGE_SIZE);
+		$viewData['pager'] = array('pageSize'=>self::PAGE_SIZE, 'header'=>false);
         $viewData['ajax']=false;
 
         MixPanel::instance()->registerEvent(MixPanel::PROJECTS_PAGE_VIEW); // MixPanel events tracking
