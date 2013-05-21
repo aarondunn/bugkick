@@ -5,11 +5,11 @@
     Description:
         Intended to be merged with main stylesheet eventually.
     Additional ( from Boyan ): 	Please use this file to place any styles you need,
-                                                                while I am doing the cleaning up of dead CSS and the conversion to LESS.
-                                                                Later I'll review the code here and place it in the appropriate files.
-                                                                It will take some time, and I'll do it step by step.
-                                                                After I start you can look into the less folder for the files already converted and 
-                                                                edit them there. ( Recompilations is needed );
+    while I am doing the cleaning up of dead CSS and the conversion to LESS.
+    Later I'll review the code here and place it in the appropriate files.
+    It will take some time, and I'll do it step by step.
+    After I start you can look into the less folder for the files already converted and
+    edit them there. ( Recompilations is needed );
 */
 
 #comment-form .wysiwyg {
@@ -27,7 +27,7 @@
     cursor: pointer;
     margin: 1px 0 1px 4px;
 }
-
+.attached-files,
 #content .ticket_content .description{
     word-wrap: break-word;
     color: #889099;
@@ -1149,7 +1149,7 @@ background-clip: padding-box;
     padding: 0px 20px;    
 }
 
-.portlet-content{
+#main .portlet .portlet-content{
     margin: 0px;
     border-bottom: 1px solid #e8e8e9;
 }
@@ -1272,20 +1272,20 @@ span.status {
     float: left;
     display: block;
     height: 13px;
-    margin: 5px auto;
+    margin: 5px 5px;
     width: 14px;
 }
 
 #content div#bug-list div.ticket-item .comments{
     height: 24px;
-    padding: 0 0 0 10px;    
-    width: 29px;
+    padding: 0px;
+    width: 48px;
     border-left: 1px solid #eceded;
     margin-top: 15px;
 }
 
 #content div#bug-list div.ticket-item .photo{
-    margin-top: 15px;
+    margin-top: 10px;
     margin-right: 10px;
 }
 
@@ -1296,4 +1296,38 @@ span.status {
 
 #content div#bug-list div.ticket-item .title a{
     color: #0086cd;
+}
+
+#content div#bug-list div.ticket-item .clock{
+    margin-top: 18px;    
+}
+
+#content div#bug-list .ticket-item-wrapper:last-child div.ticket-item{
+    border: none;
+}
+
+div.form .row{
+    padding: 0px 10px;
+}
+
+.list-pager{
+    padding: 20px 20px;
+}
+
+#content #main .project-center .project-description a h3{
+    height: 30px;
+    line-height: 30px;
+    padding: 0px;
+}
+
+#projects-list-wrapper h2{
+    padding-left: 20px;
+}
+
+#projects-list-wrapper .list-view{
+    padding: 0px 14px;
+}
+
+.float-filters .sidebar_middle:last-child{
+    border-top: 1px solid #e8e8e9;
 }

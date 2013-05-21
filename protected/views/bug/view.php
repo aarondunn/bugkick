@@ -198,7 +198,7 @@ LINKTEXT
             <?php }?>
 		</p>
         <?php if(!empty($model->attachments) && is_array($model->attachments)):?>
-        <p class="attached-files">
+        <div class="attached-files">
             <?php foreach($model->attachments as $file):?>
             <div>
                 <?php echo CHtml::link(
@@ -208,7 +208,7 @@ LINKTEXT
                 ) . ' &nbsp ' . Helper::getReadableFileSize($file->size); ?>
             </div>
             <?php endforeach;?>
-        </p>
+        </div>
         <?php endif;?>
 
         <?php

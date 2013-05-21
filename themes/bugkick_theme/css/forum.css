@@ -16,9 +16,18 @@ input.btn:hover{
 /* Forum Sidebar */
 
 #sidebar .sidebar_middle{
-	padding-left: 15px;
-	padding-right: 15px;
-	width: 213px;
+	padding-left: 20px;
+	padding-right: 20px;
+	width: 246px;
+}
+
+.search-container{
+    padding: 20px 0px 20px;
+    border: none;
+}
+
+.sidebar-nav{
+    margin-top: 10px;
 }
 
 /* Padding fix for forum nav */
