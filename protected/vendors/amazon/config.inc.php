@@ -49,7 +49,7 @@ define('AWS_CANONICAL_NAME', '');
  *
  * Leave this set to `false` if you're not sure.
  */
-define('AWS_CERTIFICATE_AUTHORITY', false);
+define('AWS_CERTIFICATE_AUTHORITY', true);
 
 /**
  * This option allows you to configure a preferred storage type to use for caching by default. This can
