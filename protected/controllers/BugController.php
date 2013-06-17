@@ -726,11 +726,11 @@ JS
 					$prevBug->next_id=0;
 					$prevBug->next_number=0;
 				}
+                if(!$bug->delete())
+                    $this->tranFault();
 				if(!empty($nextBug) && !$nextBug->save())
 					$this->tranFault();
 				if(!empty($prevBug) && !$prevBug->save())
-					$this->tranFault();
-				if(!$bug->delete())
 					$this->tranFault();
 				$delCondition='bug_id=:bug_id';
 				$delParams=array(':bug_id'=>$bug_id);
