@@ -181,8 +181,9 @@ class Api extends CComponent {
 			$prevBug = $this->getPrevBug($project);
 			$bug->project_id = $project->project_id;
 			$bug->next_id = 0;
-			$bug->next_number = 0;
-			if(empty($prevBug)) {
+//			$bug->next_number = 0;
+            $bug->next_number = empty($prevBug)? 100 : $prevBug->number + 100; //just temp value to prevent constraints conflict
+            if(empty($prevBug)) {
 				$globalPrevBug = Bug::model()->resetScope()->find('next_id=0');
 				$bug->prev_id = empty($globalPrevBug) ? 0 : $globalPrevBug->id;
 				$bug->prev_number = 0;
@@ -195,6 +196,8 @@ class Api extends CComponent {
                 $bug->priority_order = $prevBug->id + 1;
 			}
 			$this->saveBugChain($bug, $prevBug, $globalPrevBug);
+            $bug->next_number = 0;
+            $this->saveNewBug($bug); //saving ticket again with correct next_number to prevent constraints conflict
 			$transaction->commit();
 			return true;
 		} catch(Exception $ex) {
