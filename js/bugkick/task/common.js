@@ -10,6 +10,12 @@ jQuery("a.add-task").live("click",function() {
         { YII_CSRF_TOKEN:YII_CSRF_TOKEN },
           function(data){
             jQuery("#createTaskForm").html(data);
+            jQuery("#TaskForm_description").keypress(function(e){
+                if(e.which == 13) {
+                    createTask();
+                    return false;
+                }
+            });
             jQuery("#createTaskDialog").dialog("open");
           },
           "html"
